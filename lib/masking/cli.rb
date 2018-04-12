@@ -2,10 +2,10 @@ module Masking
   require 'thor'
 
   class Cli < ::Thor
-    default_command :execute
+    default_command :mask
 
-    desc "TODO:", 'TODO:'
-    def execute
+    desc "mask", 'mask database value'
+    def mask
       Masking.run
     end
   end
