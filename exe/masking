@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'masking'
+require 'masking/cli'
+
+Masking::Cli.start(ARGV)

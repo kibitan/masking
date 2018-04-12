@@ -1,5 +1,19 @@
 require "masking/version"
+require "masking/cli"
 
 module Masking
-  # Your code goes here...
+  class << self
+    def run
+      Main.new.run
+    end
+  end
+
+  class Main
+    def initialize
+    end
+
+    def run
+      puts 'hello'
+    end
+  end
 end
