@@ -50,9 +50,17 @@ RSpec.describe Masking::SQLDumpLine do
       subject { described_class.new(line).send(:data_line?) }
 
       context "when line is NOT data line" do
-        let(:line) { "" }
+        context "empty" do
+          let(:line) { "" }
 
-        it { is_expected.to eq false }
+          it { is_expected.to eq false }
+        end
+
+        context "headline" do
+          let(:line) { %Q|-- MySQL dump 10.13  Distrib 5.7.21, for osx10.13 (x86_64)| }
+
+          it { is_expected.to eq false }
+        end
       end
 
       context "when line is data line" do
