@@ -1,28 +1,61 @@
 # MasKING🤴
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/masking`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Command line tool of input MySQL database dump file, mask sensitive data and output.
 
 ## Installation
 
-Add this line to your application's Gemfile:
 
-```ruby
-gem 'masking'
+
+```bash
+ $ git clone git@github.com:kibitan/masking.git
+ $ bin/setup
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+or install it yourself as:
 
     $ gem install masking
 
+(not published to RubyGems yet)
+
+## Requirement
+
+ * Ruby 2.4
+
 ## Usage
 
-TODO: Write usage instructions here
+1. setup configuration of target columns to `config/target_columns.yml`
+
+  ```yaml
+  # table_name:
+  #   column_name: mask_mathod
+
+  users:
+    name: name
+    email: email
+    password_digest: string
+  ```
+
+2. dump with mask
+
+  MakING works with `mysqldump --complete-insert`
+
+  e.g.
+  ```
+    $ mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > masked_dump.sql
+  ```
+
+3. restore
+  e.g.
+
+  ```
+   $ mysql -u USERNAME MASKED_DATABASE_NAME < masked_dump.sql
+  ```
+
+## Run test
+
+```
+ $ bundle exec rspec
+```
 
 ## Development
 
