@@ -11,5 +11,10 @@ module Masking
     private
 
     attr_reader :line
+
+    DATALINE_REGEXP = /^INSERT/
+    def data_line?
+      line.match?(DATALINE_REGEXP)
+    end
   end
 end

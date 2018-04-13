@@ -10,7 +10,7 @@ RSpec.describe Masking::SQLDumpLine do
       it { is_expected.to eq line }
     end
 
-    context "when line is not data line" do
+    context "when line is NOT data line" do
       context "empty" do
         let(:line) { "" }
 
@@ -33,6 +33,22 @@ RSpec.describe Masking::SQLDumpLine do
         let(:line) { %Q|DROP TABLE IF EXISTS `users`;| }
 
         it_behaves_like 'should same with line'
+      end
+    end
+
+    describe '#data_line?' do
+      subject { described_class.new(line).send(:data_line?) }
+
+      context "when line is NOT data line" do
+        let(:line) { "" }
+
+        it { is_expected.to eq false }
+      end
+
+      context "when line is data line" do
+        let(:line) { DATALINE }
+
+        it { is_expected.to eq true }
       end
     end
   end
