@@ -1,4 +1,5 @@
 # MasKING🤴
+**Caution: this library is WIP now**
 
 Command line tool of input MySQL database dump file, mask sensitive data and output.
 
