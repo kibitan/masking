@@ -36,6 +36,16 @@ RSpec.describe Masking::SQLDumpLine do
       end
     end
 
+    context "when line is data line" do
+      let(:line) { DATALINE }
+
+      it 'call Dataline' do
+        expect(Masking::DataLine).to receive(:new).with(line)
+
+        expect { subject }.not_to raise_error
+      end
+    end
+
     describe '#data_line?' do
       subject { described_class.new(line).send(:data_line?) }
 

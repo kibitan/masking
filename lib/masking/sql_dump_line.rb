@@ -1,3 +1,5 @@
+require 'masking/data_line'
+
 module Masking
   class SQLDumpLine
     def initialize(line)
@@ -5,7 +7,7 @@ module Masking
     end
 
     def output
-      line
+      data_line? ? DataLine.new(line) : line
     end
 
     private
