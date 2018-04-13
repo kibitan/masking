@@ -39,13 +39,11 @@ or install it yourself as:
 
   MakING works with `mysqldump --complete-insert`
 
-  e.g.
   ```
     $ mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > masked_dump.sql
   ```
 
 3. restore
-  e.g.
 
   ```
    $ mysql -u USERNAME MASKED_DATABASE_NAME < masked_dump.sql
