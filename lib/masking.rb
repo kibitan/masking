@@ -13,7 +13,10 @@ module Masking
     end
 
     def run
-      puts 'hello'
+      ## NOTE: probably here has memory consumption issue when STDIN is bigger
+      STDIN.each_line {|line|
+        STDOUT.print line
+      }
     end
   end
 end

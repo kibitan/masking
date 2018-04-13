@@ -7,5 +7,7 @@ RSpec.describe Masking::Cli do
 
       expect { subject }.not_to raise_error
     end
+
+    pending 'receive from STDIN and write to OUTPUT'
   end
 end
