@@ -1,6 +1,6 @@
 RSpec.describe Masking::Cli do
-  describe '#execute' do
-    subject { Masking::Cli.new.execute }
+  describe '#mask' do
+    subject { Masking::Cli.new.mask }
 
     it 'call Main.run' do
       expect(Masking).to receive(:run)
