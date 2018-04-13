@@ -38,7 +38,7 @@ or install it yourself as:
 
 2. dump with mask
 
-  MakING works with `mysqldump --complete-insert`
+  MasKING works with `mysqldump --complete-insert`
 
   ```
     $ mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > masked_dump.sql
