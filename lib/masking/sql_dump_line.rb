@@ -7,7 +7,7 @@ module Masking
     end
 
     def output
-      data_line? ? DataLine.new(line) : line
+      data_line? ? DataLine.new(line).mask : line
     end
 
     private
