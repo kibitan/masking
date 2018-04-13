@@ -2,7 +2,7 @@ require "masking/data_line"
 
 RSpec.describe Masking::DataLine do
   ## TODO: extract defination to factory, duplicate with SQLDumpLine spec
-  let(:raw_line) { %Q|INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (1,'Chikahiro','kibitan@example.com','password_digest','2018-03-14 00:00:00','2018-03-29 00:00:00');| }
+  let(:raw_line) { %Q|INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (1,'Super Chikahiro','kibitan@example.com','password_digest','2018-03-14 00:00:00','2018-03-29 00:00:00');| }
 
   describe '#mask' do
     subject { described_class.new(raw_line).mask }
@@ -41,12 +41,6 @@ RSpec.describe Masking::DataLine do
 
       it { is_expected.to be false }
     end
+
   end
-
-  describe '#columns' do
-    subject { described_class.new(raw_line).columns }
-
-    it { is_expected.to eq %w(id name email password_digest created_at updated_at) }
-  end
-
 end
