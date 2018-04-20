@@ -1,7 +1,7 @@
 require "masking/config/target_columns"
 
 RSpec.describe Masking::Config::TargetColumns do
-  describe '.initialize' do
+  describe '#initialize' do
     subject { described_class.new }
 
     context "without argument(file_path)" do
@@ -14,7 +14,7 @@ RSpec.describe Masking::Config::TargetColumns do
     end
   end
 
-  describe '.contains?' do
+  describe '#contains?' do
     context "arguments has just table_name" do
       subject { described_class.new(file_path).contains?(table_name: table_name) }
       # TODO: define factory for dummy_file
