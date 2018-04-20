@@ -67,7 +67,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
  - [x] commandline-tool `Thor`
  - [x] load config `target_columns.yml`
-   - [ ] define `TargetColumns` class
+   - [x] define `TargetColumns` class
    - [ ] generator
  - [x] input SQLDump from stdin
  - [ ] parse SQL
