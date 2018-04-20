@@ -75,6 +75,13 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
  - [ ] mask data
    - [ ] with Faker
  - [ ] output SQL to stdout
+ - [ ] publish to gem
+
+ - [ ] setup CI
+   - [ ] TravisCI
+   - [ ] CodeClimate
+   - [ ] Coverage
+   - [ ] rake notes
 
 ## Future Todo
 
