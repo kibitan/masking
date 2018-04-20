@@ -7,7 +7,7 @@ module Masking
     end
 
     def output
-      data_line? ? SQLDataStatement.new(line).mask : line
+      data_statement? ? SQLDataStatement.new(line).mask : line
     end
 
     private
@@ -15,7 +15,7 @@ module Masking
     attr_reader :line
 
     SQL_DATA_STATEMENT_REGEXP = /^INSERT/
-    def data_line?
+    def data_statement?
       line.match?(SQL_DATA_STATEMENT_REGEXP)
     end
   end

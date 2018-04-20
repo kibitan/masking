@@ -46,8 +46,8 @@ RSpec.describe Masking::SQLDumpLine do
       end
     end
 
-    describe '#data_line?' do
-      subject { described_class.new(line).send(:data_line?) }
+    describe '#data_statement?' do
+      subject { described_class.new(line).send(:data_statement?) }
 
       context "when line is NOT data line" do
         context "empty" do
