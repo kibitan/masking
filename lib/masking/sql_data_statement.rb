@@ -1,5 +1,5 @@
 module Masking
-  class DataLine
+  class SQLDataStatement
     require 'yaml'
     attr_reader :raw_line, :table_name, :target_columns
 

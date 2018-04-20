@@ -40,7 +40,7 @@ RSpec.describe Masking::SQLDumpLine do
       let(:line) { DATALINE }
 
       it 'call Dataline' do
-        expect(Masking::DataLine).to receive(:new).with(line).and_call_original
+        expect(Masking::SQLDataStatement).to receive(:new).with(line).and_call_original
 
         expect { subject }.not_to raise_error
       end
