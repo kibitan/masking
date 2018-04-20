@@ -1,0 +1,6 @@
+# table_name:
+#   column_name: mask_mathod
+
+address:
+  country: country
+  city: city

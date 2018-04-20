@@ -13,34 +13,28 @@ RSpec.describe Masking::SQLDataStatement do
   describe '#table_name' do
     subject { described_class.new(raw_line).table_name }
 
-    it { is_expected.to eq :users }
+    it { is_expected.to eq 'users' }
   end
 
   describe '#columns' do
     subject { described_class.new(raw_line).columns }
 
-    it { is_expected.to eq %i(id name email password_digest created_at updated_at) }
+    it { is_expected.to eq %w(id name email password_digest created_at updated_at) }
   end
 
   describe '#target_table?' do
     subject { described_class.new(raw_line, target_columns: target_columns).target_table? }
 
     context 'table is defined in target_columns' do
-      let(:target_columns) do
-        {
-          users: {
-            name: 'name'
-          }
-        }
-      end
+      # TODO: define factory
+      let(:target_columns) { Masking::Config::TargetColumns.new(Pathname('spec/masking/config/dummy_files/target_columns.yml')) }
       it { is_expected.to be true }
     end
 
     context 'table is NOT defined in target_columns' do
-      let(:target_columns) { Hash.new }
-
+      # TODO: define factory
+      let(:target_columns) { Masking::Config::TargetColumns.new(Pathname('spec/masking/config/dummy_files/address_target_columns.yml')) }
       it { is_expected.to be false }
     end
-
   end
 end

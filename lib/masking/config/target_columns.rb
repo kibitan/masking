@@ -1,6 +1,7 @@
 module Masking
   module Config
     class TargetColumns
+      ## TODO: singletonize?
       require 'yaml'
 
       DEFAULT_TARGET_COLUMNS_YAML_PATH = Pathname('config/target_columns.yml').freeze

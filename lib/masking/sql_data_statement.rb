@@ -1,15 +1,15 @@
+require 'masking/config/target_columns'
+
 module Masking
   class SQLDataStatement
-    require 'yaml'
     attr_reader :raw_line, :table_name, :target_columns
 
-    ## TODO: define target_columns to another class
-    def initialize(raw_line, target_columns: YAML.load(Pathname('target_columns.yml').read))
+    def initialize(raw_line, target_columns: Config::TargetColumns.new)
       @raw_line = raw_line
       @target_columns = target_columns
 
       PARSE_REGEXP.match(raw_line).tap do |match_data|
-        @table_name   = match_data[:table_name].to_sym
+        @table_name   = match_data[:table_name]
         @columns_data = match_data[:columns_data]
       end
     end
@@ -18,11 +18,11 @@ module Masking
     end
 
     def columns
-      @columns ||= columns_data.split(', ').map { |str| str.tr('`', '') }.map(&:to_sym)
+      @columns ||= columns_data.split(', ').map { |str| str.tr('`', '') }
     end
 
     def target_table?
-      !!target_columns[table_name]
+      target_columns.contains?(table_name: table_name)
     end
 
     private
