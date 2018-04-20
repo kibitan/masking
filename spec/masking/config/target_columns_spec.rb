@@ -8,8 +8,6 @@ RSpec.describe Masking::Config::TargetColumns do
       it 'contains default file_path' do
         # TODO: extract default file pathname definition
         expect(subject.file_path).to eq Pathname('config/target_columns.yml')
-        expect(subject.send(:data)).not_to be_empty
-        expect(subject.send(:data)).to be_a Hash
       end
     end
   end

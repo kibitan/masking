@@ -8,7 +8,6 @@ module Masking
 
       def initialize(file_path = DEFAULT_TARGET_COLUMNS_YAML_PATH)
         @file_path = file_path
-        @data = YAML.load(file_path.read)
       end
 
       def contains?(table_name:)
@@ -16,7 +15,9 @@ module Masking
       end
 
       private
-      attr_reader :data
+      def data
+        @data ||= YAML.load(file_path.read)
+      end
     end
   end
 end
