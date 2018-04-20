@@ -5,4 +5,6 @@ set -vx
 
 bundle install
 
-# Do any other automated setup that you need to do here
+if [[ ! -a config/target_columns.yml ]]; then
+  cp config/target_columns.sample.yml config/target_columns.yml
+fi
