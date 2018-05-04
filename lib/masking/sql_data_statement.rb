@@ -19,7 +19,7 @@ module Masking
     end
 
     def columns
-      @columns ||= columns_data.split(', ').map { |str| str.tr('`', '') }
+      @columns ||= columns_data.scan(COLUMNS_REGEXP).flatten
     end
 
     def target_table?
@@ -33,6 +33,7 @@ module Masking
     private
     attr_reader :columns_data, :values_data
     PARSE_REGEXP = /INSERT INTO `(?<table_name>.+)` \((?<columns_data>.+)\) VALUES (?<values_data>.+);/
+    COLUMNS_REGEXP = /`(.*?)`/
 
     def values_regexp
       /\(#{(Array("(.*?)") * columns.count).join(?,)}\),?/
