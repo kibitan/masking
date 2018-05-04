@@ -16,7 +16,7 @@ module Masking
     def run
       ## NOTE: probably here has memory consumption issue when STDIN is bigger
       STDIN.each_line {|line|
-        STDOUT.print SQLDumpLine.new(line).output
+        $stdout.print SQLDumpLine.new(line).output
       }
     end
   end
