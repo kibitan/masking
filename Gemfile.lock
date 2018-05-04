@@ -78,6 +78,7 @@ DEPENDENCIES
   pry-byebug
   rake (~> 10.0)
   rspec (~> 3.0)
+  simplecov
   tapp
 
 BUNDLED WITH
