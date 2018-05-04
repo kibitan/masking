@@ -1,13 +1,11 @@
 require "bundler/setup"
 require 'tapp'
 require 'simplecov'
-SimpleCov.start do
-  add_filter %r{^/spec/}
-end
-
+require 'coveralls'
 if ENV['CI'] == 'true'
-  require 'coveralls'
   Coveralls.wear!
+else
+  SimpleCov.start { add_filter %r{^/spec/} }
 end
 
 require "masking"
