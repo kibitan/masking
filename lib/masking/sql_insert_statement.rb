@@ -9,9 +9,9 @@ module Masking
       @target_columns = target_columns
 
       PARSE_REGEXP.match(raw_statement).tap do |match_data|
-        @table_name   = match_data[:table_name]
-        @columns_data = match_data[:columns_data]
-        @values_data  = match_data[:values_data]
+        @table_name      = match_data[:table_name]
+        @columns_section = match_data[:columns_section]
+        @values_section  = match_data[:values_section]
       end
     end
 
@@ -19,20 +19,20 @@ module Masking
     end
 
     def columns
-      @columns ||= columns_data.scan(COLUMNS_REGEXP).flatten
+      @columns ||= columns_section.scan(COLUMNS_REGEXP).flatten
     end
 
     def target_table?
       target_columns.contains?(table_name: table_name)
     end
 
-    def values
-      @values ||= values_data.scan(values_regexp)
+    def values_datas
+      @values_datas ||= values_section.scan(values_regexp)
     end
 
     private
-    attr_reader :columns_data, :values_data
-    PARSE_REGEXP = /INSERT INTO `(?<table_name>.+)` \((?<columns_data>.+)\) VALUES (?<values_data>.+);/
+    attr_reader :columns_section, :values_section
+    PARSE_REGEXP = /INSERT INTO `(?<table_name>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/
     COLUMNS_REGEXP = /`(.*?)`/
 
     def values_regexp
