@@ -15,10 +15,10 @@ RSpec.describe Masking do
 
   describe Masking::Main do
     describe "#run" do
-      subject { described_class.new.run }
+      subject { described_class.new(input: input).run }
 
-      context "with STDIN: 'string'" do
-        before { STDIN = "string" }
+      context "with input: 'string'" do
+        let(:input) { StringIO.new("string") }
 
         it "output 'string' to STDOUT" do
           expect { subject }.to output('string').to_stdout

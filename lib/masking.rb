@@ -10,14 +10,19 @@ module Masking
   end
 
   class Main
-    def initialize
+    def initialize(input: $stdin, output: $stdout)
+      @input  = input
+      @output = output
     end
 
     def run
       ## NOTE: probably here has memory consumption issue when STDIN is bigger
-      STDIN.each_line {|line|
-        $stdout.print SQLDumpLine.new(line).output
-      }
+      input.each_line do |line|
+        output.print SQLDumpLine.new(line).output
+      end
     end
+
+    private
+    attr_reader :input, :output
   end
 end
