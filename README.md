@@ -82,7 +82,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
  - [ ] setup CI
    - [x] TravisCI
    - [ ] CodeClimate
-   - [ ] Coverage
+   - [x] Coverage
    - [ ] rake notes
 
 ## Future Todo

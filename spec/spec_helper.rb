@@ -1,4 +1,9 @@
 require "bundler/setup"
+require 'simplecov'
+SimpleCov.start do
+  add_filter %r{^/spec/}
+end
+
 require "masking"
 
 RSpec.configure do |config|
