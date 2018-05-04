@@ -24,7 +24,7 @@ or install it yourself as:
 
 ## Requirement
 
- * Ruby 2.4
+ * Ruby 2.5
 
 ## Usage
 
