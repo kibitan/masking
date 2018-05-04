@@ -20,8 +20,9 @@ RSpec.describe Masking::SQLInsertStatement::Value do
     let(:data) { %w(1 'John' 'john@example.com' 'berlin') }
 
     it 'has writer of data' do
-      subject.name = 'George'
-      expect(subject.name).to eq 'George'
+      expect { subject.name = "'George'" }.to change { subject.name }
+                                        .from("'John'")
+                                        .to("'George'")
     end
   end
 
