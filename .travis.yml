@@ -6,3 +6,15 @@ before_install: gem install bundler -v 1.16.1
 
 script:
   - bundle exec rspec
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=530fe4f83df27df0dd0ecf098389f4f17cea55a2424201d7758babaf4bac66c6
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESUL

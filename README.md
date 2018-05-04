@@ -1,6 +1,7 @@
 # MasKING🤴
 [![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/test_coverage)](https://codeclimate.com/github/kibitan/masking/test_coverage)
 
 **Caution: this library is WIP now**
 
