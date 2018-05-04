@@ -1,5 +1,6 @@
 # MasKING🤴
 [![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
+[![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 
 **Caution: this library is WIP now**
 
@@ -81,7 +82,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
  - [ ] setup CI
    - [x] TravisCI
-   - [ ] CodeClimate
+   - [x] CodeClimate
    - [x] Coverage
    - [ ] rake notes
 
