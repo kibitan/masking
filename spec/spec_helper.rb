@@ -1,4 +1,5 @@
 require "bundler/setup"
+require 'tapp'
 require 'coveralls'
 Coveralls.wear!
 
