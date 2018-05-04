@@ -19,7 +19,7 @@ RSpec.describe Masking::SQLInsertStatement do
   describe '#columns' do
     subject { described_class.new(raw_line).columns }
 
-    it { is_expected.to eq %w(id name email password_digest created_at updated_at) }
+    it { is_expected.to eq %i(id name email password_digest created_at updated_at) }
   end
 
   describe '#target_table?' do
@@ -39,7 +39,7 @@ RSpec.describe Masking::SQLInsertStatement do
   end
 
   describe '#values_datas' do
-    subject { described_class.new(raw_line).values_datas }
+    subject { described_class.new(raw_line).send(:values_datas) }
 
     it 'returns values datas' do
       is_expected.to match_array [
@@ -54,6 +54,15 @@ RSpec.describe Masking::SQLInsertStatement do
 
     it 'returns dynamic regexp' do
       is_expected.to eq /\((.*?),(.*?),(.*?),(.*?),(.*?),(.*?)\),?/
+    end
+  end
+
+  describe '#values' do
+    subject { described_class.new(raw_line).values }
+
+    it 'returns array of SQLInsertStatement::Value', :aggregate_failures do
+      is_expected.not_to be_empty
+      is_expected.to all be_an(Masking::SQLInsertStatement::Value)
     end
   end
 end
