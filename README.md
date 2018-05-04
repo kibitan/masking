@@ -1,4 +1,6 @@
 # MasKING🤴
+[![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
+
 **Caution: this library is WIP now**
 
 Command line tool of input MySQL database dump file, mask sensitive data and output.
@@ -78,7 +80,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
  - [ ] publish to gem
 
  - [ ] setup CI
-   - [ ] TravisCI
+   - [x] TravisCI
    - [ ] CodeClimate
    - [ ] Coverage
    - [ ] rake notes
