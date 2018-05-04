@@ -1,6 +1,6 @@
-require "masking/sql_data_statement"
+require "masking/sql_insert_statement"
 
-RSpec.describe Masking::SQLDataStatement do
+RSpec.describe Masking::SQLInsertStatement do
   ## TODO: extract defination to factory, duplicate with SQLDumpLine spec
   let(:raw_line) { %Q|INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (1,'Super Chikahiro','kibitan@example.com','password_digest','2018-03-14 00:00:00','2018-03-29 00:00:00'),(2,'Super Tokoro','kibitan++@example.com','password_digest2','2018-04-01 00:00:00','2018-04-03 12:00:00');| }
 

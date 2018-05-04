@@ -1,14 +1,14 @@
 require 'masking/config/target_columns'
 
 module Masking
-  class SQLDataStatement
-    attr_reader :raw_line, :table_name, :target_columns
+  class SQLInsertStatement
+    attr_reader :raw_statement, :table_name, :target_columns
 
-    def initialize(raw_line, target_columns: Config::TargetColumns.new)
-      @raw_line = raw_line
+    def initialize(raw_statement, target_columns: Config::TargetColumns.new)
+      @raw_statement  = raw_statement
       @target_columns = target_columns
 
-      PARSE_REGEXP.match(raw_line).tap do |match_data|
+      PARSE_REGEXP.match(raw_statement).tap do |match_data|
         @table_name   = match_data[:table_name]
         @columns_data = match_data[:columns_data]
         @values_data  = match_data[:values_data]

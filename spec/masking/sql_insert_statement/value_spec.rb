@@ -1,6 +1,6 @@
-require "masking/sql_data_statement/value"
+require "masking/sql_insert_statement/value"
 
-RSpec.describe Masking::SQLDataStatement::Value do
+RSpec.describe Masking::SQLInsertStatement::Value do
   describe ".new" do
     subject { described_class.new(columns: columns, data: data) }
     let(:columns) { %i(id name email address) }

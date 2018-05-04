@@ -1,4 +1,4 @@
-require 'masking/sql_data_statement'
+require 'masking/sql_insert_statement'
 
 module Masking
   class SQLDumpLine
@@ -7,16 +7,16 @@ module Masking
     end
 
     def output
-      data_statement? ? SQLDataStatement.new(line).mask : line
+      insert_statement? ? SQLInsertStatement.new(line).mask : line
     end
 
     private
 
     attr_reader :line
 
-    SQL_DATA_STATEMENT_REGEXP = /^INSERT/
-    def data_statement?
-      line.match?(SQL_DATA_STATEMENT_REGEXP)
+    SQL_INSERT_STATEMENT_REGEXP = /^INSERT/
+    def insert_statement?
+      line.match?(SQL_INSERT_STATEMENT_REGEXP)
     end
   end
 end

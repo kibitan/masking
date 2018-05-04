@@ -1,7 +1,7 @@
 require "masking/sql_dump_line"
 
 RSpec.describe Masking::SQLDumpLine do
-  DATALINE = %Q|INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (1,'Chikahiro','kibitan@example.com','password_digest','2018-03-14 00:00:00','2018-03-29 00:00:00');|.freeze
+  INSERT_STATEMENT = %Q|INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (1,'Chikahiro','kibitan@example.com','password_digest','2018-03-14 00:00:00','2018-03-29 00:00:00');|.freeze
 
   describe '#output' do
     subject { described_class.new(line).output }
@@ -36,20 +36,20 @@ RSpec.describe Masking::SQLDumpLine do
       end
     end
 
-    context "when line is data line" do
-      let(:line) { DATALINE }
+    context "when line is insert statement" do
+      let(:line) { INSERT_STATEMENT }
 
       it 'call Dataline' do
-        expect(Masking::SQLDataStatement).to receive(:new).with(line).and_call_original
+        expect(Masking::SQLInsertStatement).to receive(:new).with(line).and_call_original
 
         expect { subject }.not_to raise_error
       end
     end
 
-    describe '#data_statement?' do
-      subject { described_class.new(line).send(:data_statement?) }
+    describe '#insert_statement?' do
+      subject { described_class.new(line).send(:insert_statement?) }
 
-      context "when line is NOT data line" do
+      context "when line is NOT insert statement" do
         context "empty" do
           let(:line) { "" }
 
@@ -63,8 +63,8 @@ RSpec.describe Masking::SQLDumpLine do
         end
       end
 
-      context "when line is data line" do
-        let(:line) { DATALINE }
+      context "when line is insert statement" do
+        let(:line) { INSERT_STATEMENT }
 
         it { is_expected.to eq true }
       end
