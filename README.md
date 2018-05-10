@@ -80,6 +80,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
    - [ ] with Faker
  - [ ] output SQL to stdout
  - [ ] publish to gem
+ - [ ] publish to HomeBrew?
 
  - [ ] setup CI
    - [x] TravisCI
