@@ -26,11 +26,11 @@ RSpec.describe Masking::SQLInsertStatement::Value do
     end
   end
 
-  describe "#statement" do
-    subject { described_class.new(columns: columns, data: data).statement }
+  describe "#phrase" do
+    subject { described_class.new(columns: columns, data: data).phrase }
     let(:columns) { %i(id name email address) }
     let(:data) { %w(1 'John' 'john@example.com' 'berlin') }
 
-    it { is_expected.to eq %Q|1,'John','john@example.com','berlin'| }
+    it { is_expected.to eq %Q|(1,'John','john@example.com','berlin')| }
   end
 end

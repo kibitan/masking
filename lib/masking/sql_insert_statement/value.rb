@@ -5,8 +5,8 @@ module Masking
       super(@data)
     end
 
-    def statement
-      to_a.join(?,)
+    def phrase
+      '(' + to_a.join(?,) + ')'
     end
   end
 end
