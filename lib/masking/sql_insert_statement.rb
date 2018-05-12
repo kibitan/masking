@@ -24,7 +24,7 @@ module Masking
     end
 
     def values
-      values_datas.map { |data| Value.new(columns: columns, data: data) }
+      @values ||= values_datas.map { |data| Value.new(columns: columns, data: data) }
     end
 
     def target_table?
@@ -37,7 +37,7 @@ module Masking
     COLUMNS_REGEXP = /`(.*?)`/
 
     def values_datas
-      @values_datas ||= values_section.scan(values_regexp)
+      values_section.scan(values_regexp)
     end
 
     def values_regexp
