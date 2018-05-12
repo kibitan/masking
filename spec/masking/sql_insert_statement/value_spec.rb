@@ -33,4 +33,12 @@ RSpec.describe Masking::SQLInsertStatement::Value do
 
     it { is_expected.to eq %Q|(1,'John','john@example.com','berlin')| }
   end
+
+  describe "#==" do
+    subject { described_class.new(columns: columns, data: data) == described_class.new(columns: columns, data: data) }
+    let(:columns) { %i(id name email address) }
+    let(:data) { %w(1 'John' 'john@example.com' 'berlin') }
+
+    it { is_expected.to be true }
+  end
 end

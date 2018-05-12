@@ -60,9 +60,17 @@ RSpec.describe Masking::SQLInsertStatement do
   describe '#values' do
     subject { described_class.new(raw_line).values }
 
-    it 'returns array of SQLInsertStatement::Value', :aggregate_failures do
-      is_expected.not_to be_empty
-      is_expected.to all be_an(Masking::SQLInsertStatement::Value)
+    it 'returns array of SQLInsertStatement::Value' do
+      is_expected.to match_array [
+        Masking::SQLInsertStatement::Value.new(
+          columns: %i(id name email password_digest created_at updated_at),
+          data: ["1","'Super Chikahiro'","'kibitan@example.com'","'password_digest'","'2018-03-14 00:00:00'","'2018-03-29 00:00:00'"]
+        ),
+        Masking::SQLInsertStatement::Value.new(
+          columns: %i(id name email password_digest created_at updated_at),
+          data: ["2","'Super Tokoro'","'kibitan++@example.com'","'password_digest2'","'2018-04-01 00:00:00'","'2018-04-03 12:00:00'"]
+        )
+      ]
     end
   end
 end

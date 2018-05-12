@@ -8,5 +8,11 @@ module Masking
     def phrase
       '(' + to_a.join(?,) + ')'
     end
+
+    # override for make comparable
+    # NOTE: original #== method comapares struct subclass
+    def ==(other)
+      to_h == other.to_h
+    end
   end
 end
