@@ -7,8 +7,8 @@ RSpec.describe Masking::SQLInsertStatement::Builder do
     let(:columns) { %i(id name email address) }
     let(:values) do
       [
-        Masking::SQLInsertStatement::Value.new(columns: columns, data: %w(1 'John' 'john@example.com' 'berlin')),
-        Masking::SQLInsertStatement::Value.new(columns: columns, data: %w(2 'Super\ Chikahiro' 'kibitan++@example.com' 'tokyo'))
+        Struct.new(:phrase).new("(1,'John','john@example.com','berlin')"),
+        Struct.new(:phrase).new("(2,'Super Chikahiro','kibitan++@example.com','tokyo')")
       ]
     end
 
