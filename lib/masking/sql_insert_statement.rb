@@ -20,10 +20,12 @@ module Masking
     end
 
     def columns
+      # NOTE: define and extract to ColumnSet class?
       @columns ||= columns_section.scan(COLUMNS_REGEXP).flatten.map(&:to_sym)
     end
 
     def values
+      # NOTE: define and extract to ValueSet class?
       @values ||= values_section.scan(values_regexp).map { |data| Value.new(columns: columns, data: data) }
     end
 
