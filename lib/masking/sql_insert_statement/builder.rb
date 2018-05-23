@@ -1,30 +1,32 @@
 module Masking
-  class SQLInsertStatement::Builder
-    class << self
-      def build(table:, columns:, values:)
-        new(table: table, columns: columns, values: values).send(:build)
+  class SQLInsertStatement
+    class Builder
+      class << self
+        def build(table:, columns:, values:)
+          new(table: table, columns: columns, values: values).send(:build)
+        end
       end
-    end
 
-    private
+      private
 
-    attr_reader :table, :columns, :values
-    def initialize(table:, columns:, values:)
-      @table   = table
-      @columns = columns
-      @values  = values
-    end
+      attr_reader :table, :columns, :values
+      def initialize(table:, columns:, values:)
+        @table   = table
+        @columns = columns
+        @values  = values
+      end
 
-    def build
-      %Q|INSERT INTO `#{table}` #{columns_section} VALUES #{values_section};|
-    end
+      def build
+        %Q|INSERT INTO `#{table}` #{columns_section} VALUES #{values_section};|
+      end
 
-    def columns_section
-      '(' + columns.map { |column| "`#{column}`" }.join(', ') + ')'
-    end
+      def columns_section
+        '(' + columns.map { |column| "`#{column}`" }.join(', ') + ')'
+      end
 
-    def values_section
-      values.map(&:phrase).join(?,)
+      def values_section
+        values.map(&:phrase).join(?,)
+      end
     end
   end
 end
