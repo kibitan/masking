@@ -40,7 +40,7 @@ RSpec.describe Masking::SQLDumpLine do
       let(:line) { INSERT_STATEMENT }
 
       it 'call Dataline' do
-        expect(Masking::SQLInsertStatement).to receive(:new).with(line).and_call_original
+        expect(Masking::DataMaskProcessor).to receive(:process).with(line)
 
         expect { subject }.not_to raise_error
       end
