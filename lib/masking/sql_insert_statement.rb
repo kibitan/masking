@@ -1,22 +1,16 @@
-require 'masking/config/target_columns'
-
 module Masking
   class SQLInsertStatement
     require 'masking/sql_insert_statement/value'
-    attr_reader :raw_statement, :table_name, :target_columns
+    attr_reader :raw_statement, :table_name
 
-    def initialize(raw_statement, target_columns: Config::TargetColumns.new)
-      @raw_statement  = raw_statement
-      @target_columns = target_columns
+    def initialize(raw_statement)
+      @raw_statement = raw_statement
 
       PARSE_REGEXP.match(raw_statement).tap do |match_data|
         @table_name      = match_data[:table_name]
         @columns_section = match_data[:columns_section]
         @values_section  = match_data[:values_section]
       end
-    end
-
-    def mask
     end
 
     def columns
@@ -29,11 +23,8 @@ module Masking
       @values ||= values_section.scan(values_regexp).map { |data| Value.new(columns: columns, data: data) }
     end
 
-    def target_table?
-      target_columns.contains?(table_name: table_name)
-    end
-
     private
+
     attr_reader :columns_section, :values_section
     PARSE_REGEXP = /INSERT INTO `(?<table_name>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/
     COLUMNS_REGEXP = /`(.*?)`/
