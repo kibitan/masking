@@ -25,3 +25,7 @@ end
 def config_fixture_path(name)
   Pathname('spec/fixtures/config').join(name)
 end
+
+def sql_insert_statement_fixture(name = 'sample.sql')
+  Pathname('spec/fixtures/sql_insert_statement').join(name).read
+end

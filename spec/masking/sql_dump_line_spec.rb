@@ -1,8 +1,6 @@
 require "masking/sql_dump_line"
 
 RSpec.describe Masking::SQLDumpLine do
-  INSERT_STATEMENT = %Q|INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (1,'Chikahiro','kibitan@example.com','password_digest','2018-03-14 00:00:00','2018-03-29 00:00:00');|.freeze
-
   describe '#output' do
     subject { described_class.new(line).output }
 
@@ -37,7 +35,7 @@ RSpec.describe Masking::SQLDumpLine do
     end
 
     context "when line is insert statement" do
-      let(:line) { INSERT_STATEMENT }
+      let(:line) { sql_insert_statement_fixture }
 
       it 'call Dataline' do
         expect(Masking::DataMaskProcessor).to receive(:process).with(line)
@@ -64,7 +62,7 @@ RSpec.describe Masking::SQLDumpLine do
       end
 
       context "when line is insert statement" do
-        let(:line) { INSERT_STATEMENT }
+        let(:line) { sql_insert_statement_fixture }
 
         it { is_expected.to eq true }
       end
