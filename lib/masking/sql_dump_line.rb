@@ -1,4 +1,4 @@
-require 'masking/data_mask_processor'
+require "masking/data_mask_processor"
 
 module Masking
   class SQLDumpLine

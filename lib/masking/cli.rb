@@ -1,6 +1,6 @@
-module Masking
-  require 'thor'
+require "thor"
 
+module Masking
   class Cli < ::Thor
     default_command :mask
 

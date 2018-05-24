@@ -1,5 +1,5 @@
-require 'masking/config/target_columns'
-require 'masking/sql_insert_statement'
+require "masking/config/target_columns"
+require "masking/sql_insert_statement"
 
 module Masking
   class DataMaskProcessor

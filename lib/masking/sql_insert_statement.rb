@@ -1,6 +1,7 @@
+require "masking/sql_insert_statement/value"
+
 module Masking
   class SQLInsertStatement
-    require 'masking/sql_insert_statement/value'
     attr_reader :raw_statement, :table_name
 
     def initialize(raw_statement)
