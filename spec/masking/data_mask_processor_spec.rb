@@ -6,7 +6,7 @@ RSpec.describe Masking::DataMaskProcessor do
     let(:sql_insert_statement_line) { sql_insert_statement_fixture }
     let(:target_columns) do
       instance_double(Masking::Config::TargetColumns).tap do |config|
-        allow(config).to receive(:contains?).with(table_name: 'users').and_return(target_columns_stubbed_return)
+        allow(config).to receive(:contains?).with(table: 'users').and_return(target_columns_stubbed_return)
       end
     end
 
@@ -30,10 +30,9 @@ RSpec.describe Masking::DataMaskProcessor do
     let(:sql_insert_statement_line) { sql_insert_statement_fixture }
     let(:target_columns) do
       instance_double(Masking::Config::TargetColumns).tap do |config|
-        allow(config).to receive(:contains?).with(table_name: 'users').and_return(target_columns_stubbed_return)
+        allow(config).to receive(:contains?).with(table: 'users').and_return(target_columns_stubbed_return)
       end
     end
-
 
     context 'table is defined in target_columns' do
       let(:target_columns_stubbed_return) { true }

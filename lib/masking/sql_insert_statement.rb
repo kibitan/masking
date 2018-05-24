@@ -2,13 +2,13 @@ require "masking/sql_insert_statement/value"
 
 module Masking
   class SQLInsertStatement
-    attr_reader :raw_statement, :table_name
+    attr_reader :raw_statement, :table
 
     def initialize(raw_statement)
       @raw_statement = raw_statement
 
       PARSE_REGEXP.match(raw_statement).tap do |match_data|
-        @table_name      = match_data[:table_name]
+        @table           = match_data[:table]
         @columns_section = match_data[:columns_section]
         @values_section  = match_data[:values_section]
       end
@@ -27,7 +27,7 @@ module Masking
     private
 
     attr_reader :columns_section, :values_section
-    PARSE_REGEXP = /INSERT INTO `(?<table_name>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/
+    PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/
     COLUMNS_REGEXP = /`(.*?)`/
 
     def values_regexp

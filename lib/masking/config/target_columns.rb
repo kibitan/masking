@@ -11,8 +11,8 @@ module Masking
         @file_path = file_path
       end
 
-      def contains?(table_name:)
-        data.has_key?(table_name)
+      def contains?(table:)
+        data.has_key?(table)
       end
 
       private

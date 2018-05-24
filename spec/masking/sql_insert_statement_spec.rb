@@ -3,8 +3,8 @@ require "masking/sql_insert_statement"
 RSpec.describe Masking::SQLInsertStatement do
   let(:raw_line) { sql_insert_statement_fixture }
 
-  describe '#table_name' do
-    subject { described_class.new(raw_line).table_name }
+  describe '#table' do
+    subject { described_class.new(raw_line).table }
 
     it { is_expected.to eq 'users' }
   end

@@ -28,17 +28,17 @@ RSpec.describe Masking::Config::TargetColumns do
 
   describe '#contains?' do
     context "arguments has just table_name" do
-      subject { described_class.new(file_path).contains?(table_name: table_name) }
+      subject { described_class.new(file_path).contains?(table: table) }
       let(:file_path) { config_fixture_path }
 
       context 'table_name is included in config yaml' do
-        let(:table_name) { 'users' }
+        let(:table) { 'users' }
 
         it { is_expected.to eq true }
       end
 
       context 'table_name is NOT included in config yaml' do
-        let(:table_name) { 'hogehoge' }
+        let(:table) { 'hogehoge' }
 
         it { is_expected.to eq false }
       end
