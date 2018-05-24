@@ -26,14 +26,12 @@ RSpec.describe Masking::SQLInsertStatement do
     subject { described_class.new(raw_line, target_columns: target_columns).target_table? }
 
     context 'table is defined in target_columns' do
-      # TODO: define factory
-      let(:target_columns) { Masking::Config::TargetColumns.new(Pathname('spec/masking/config/dummy_files/target_columns.yml')) }
+      let(:target_columns) { Masking::Config::TargetColumns.new(config_fixture_path('target_columns.yml')) }
       it { is_expected.to be true }
     end
 
     context 'table is NOT defined in target_columns' do
-      # TODO: define factory
-      let(:target_columns) { Masking::Config::TargetColumns.new(Pathname('spec/masking/config/dummy_files/address_target_columns.yml')) }
+      let(:target_columns) { Masking::Config::TargetColumns.new(config_fixture_path('address_target_columns.yml')) }
       it { is_expected.to be false }
     end
   end

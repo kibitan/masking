@@ -21,3 +21,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+def config_fixture_path(name)
+  Pathname('spec/fixtures/config').join(name)
+end

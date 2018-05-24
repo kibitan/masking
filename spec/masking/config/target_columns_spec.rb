@@ -29,8 +29,7 @@ RSpec.describe Masking::Config::TargetColumns do
   describe '#contains?' do
     context "arguments has just table_name" do
       subject { described_class.new(file_path).contains?(table_name: table_name) }
-      # TODO: define factory for dummy_file
-      let(:file_path) { Pathname('spec/masking/config/dummy_files/target_columns.yml') }
+      let(:file_path) { config_fixture_path('target_columns.yml') }
 
       context 'table_name is included in config yaml' do
         let(:table_name) { 'users' }
