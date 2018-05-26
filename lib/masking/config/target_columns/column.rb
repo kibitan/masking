@@ -7,6 +7,10 @@ module Masking
         def initialize(name)
           @name = name.to_sym
         end
+
+        def ==(other)
+          name == other.name
+        end
       end
     end
   end
