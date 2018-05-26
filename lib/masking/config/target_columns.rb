@@ -1,5 +1,6 @@
 module Masking
   module Config
+    # TODO: find better naming of TargetColumns
     class TargetColumns
       ## TODO: singletonize?
       require 'yaml'

@@ -2,6 +2,7 @@ require "masking/config/target_columns"
 require "masking/sql_insert_statement"
 
 module Masking
+  # TODO: find better naming/modeling of DataMaskProcessor
   class DataMaskProcessor
     class << self
       def process(sql_insert_statement_line, target_columns: Config::TargetColumns.new)
