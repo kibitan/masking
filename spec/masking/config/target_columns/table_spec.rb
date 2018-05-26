@@ -15,9 +15,9 @@ RSpec.describe Masking::Config::TargetColumns::Table do
 
     it do
       is_expected.to match_array [
-        Masking::Config::TargetColumns::Column.new('column_a'),
-        Masking::Config::TargetColumns::Column.new('column_b'),
-        Masking::Config::TargetColumns::Column.new('column_c')
+        Masking::Config::TargetColumns::Column.new('column_a', table: 'sample_table'),
+        Masking::Config::TargetColumns::Column.new('column_b', table: 'sample_table'),
+        Masking::Config::TargetColumns::Column.new('column_c', table: 'sample_table')
       ]
     end
   end

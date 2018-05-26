@@ -2,14 +2,15 @@ module Masking
   module Config
     class TargetColumns
       class Column
-        attr_reader :name
+        attr_reader :name, :table
 
-        def initialize(name)
-          @name = name.to_sym
+        def initialize(name, table:)
+          @name  = name.to_sym
+          @table = table.to_sym
         end
 
         def ==(other)
-          name == other.name
+          name == other.name && table == other.table
         end
       end
     end
