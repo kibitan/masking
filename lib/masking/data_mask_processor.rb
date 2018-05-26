@@ -22,6 +22,16 @@ module Masking
 
     def process
       return raw_line unless target_table?
+      ## code sample as for considering class design
+      # # TODO: define SQLInsertStatement.mask_value(column, mask_method) method
+      # target_columns.each do |target_column, mask_method|
+      #   sql_insert_statement.values.map do |valus|
+      #     value[target_column] = mask_method.call
+      #   end
+      # end
+      #
+      # # TODO: define SQLInsertStatement.build method?
+      # SQLInsertStatementBuilder.build(sql_insert_statement)
     end
 
     def target_table?
