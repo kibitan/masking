@@ -11,13 +11,13 @@ RSpec.describe Masking::Config::TargetColumns::Table do
   end
 
   describe '#columns' do
-    subject { described_class.new(name, columns: columns).columns }
+    subject { described_class.new(name, columns: columns) }
 
     it do
-      is_expected.to match_array [
-        Masking::Config::TargetColumns::Column.new('column_a', table: 'sample_table'),
-        Masking::Config::TargetColumns::Column.new('column_b', table: 'sample_table'),
-        Masking::Config::TargetColumns::Column.new('column_c', table: 'sample_table')
+      expect(subject.columns).to match_array [
+        Masking::Config::TargetColumns::Column.new('column_a', table: subject),
+        Masking::Config::TargetColumns::Column.new('column_b', table: subject),
+        Masking::Config::TargetColumns::Column.new('column_c', table: subject)
       ]
     end
   end

@@ -6,7 +6,7 @@ module Masking
 
         def initialize(name, table:)
           @name  = name.to_sym
-          @table = table.to_sym
+          @table = table
         end
 
         def ==(other)
