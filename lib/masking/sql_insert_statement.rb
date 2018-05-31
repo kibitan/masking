@@ -1,4 +1,5 @@
 require "masking/sql_insert_statement/value"
+require "masking/sql_insert_statement/builder"
 
 module Masking
   class SQLInsertStatement
@@ -22,6 +23,10 @@ module Masking
     def values
       # NOTE: define and extract to ValueSet class?
       @values ||= values_section.scan(values_regexp).map { |data| Value.new(columns: columns, data: data) }
+    end
+
+    def sql
+      Builder.build(table: table, columns: columns, values: values)
     end
 
     private

@@ -15,6 +15,22 @@ RSpec.describe Masking::SQLInsertStatement do
     it { is_expected.to eq %i(id name email password_digest created_at updated_at) }
   end
 
+  describe '#sql' do
+    subject { described_class.new(raw_line).sql }
+
+    it 'call Builder' do
+      expect(Masking::SQLInsertStatement::Builder).to receive(:build).with(
+        table:  'users',
+        columns: %i(id name email password_digest created_at updated_at),
+        values: [
+          instance_of(Masking::SQLInsertStatement::Value),
+          instance_of(Masking::SQLInsertStatement::Value)
+        ]
+      )
+      subject
+    end
+  end
+
   describe '#values_regexp' do
     subject { described_class.new(raw_line).send(:values_regexp) }
 

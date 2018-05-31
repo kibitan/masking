@@ -30,8 +30,7 @@ module Masking
       #   end
       # end
       #
-      # # TODO: define SQLInsertStatement.build method?
-      # SQLInsertStatementBuilder.build(sql_insert_statement)
+      # sql_insert_statement.sql
     end
 
     def target_table?
