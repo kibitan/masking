@@ -1,5 +1,5 @@
 require "masking/insert_statement/value"
-require "masking/insert_statement/builder"
+require "masking/insert_statement/sql_builder"
 
 module Masking
   class InsertStatement
@@ -26,7 +26,7 @@ module Masking
     end
 
     def sql
-      Builder.build(table: table, columns: columns, values: values)
+      SQLBuilder.build(table: table, columns: columns, values: values)
     end
 
     private

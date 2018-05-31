@@ -1,6 +1,6 @@
-require "masking/insert_statement/builder"
+require "masking/insert_statement/sql_builder"
 
-RSpec.describe Masking::InsertStatement::Builder do
+RSpec.describe Masking::InsertStatement::SQLBuilder do
   describe ".build" do
     subject { described_class.build(table: table, columns: columns, values: values) }
     let(:table) { 'users' }

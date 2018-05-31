@@ -1,6 +1,6 @@
 module Masking
   class InsertStatement
-    class Builder
+    class SQLBuilder
       class << self
         def build(table:, columns:, values:)
           new(table: table, columns: columns, values: values).send(:build)

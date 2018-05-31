@@ -18,8 +18,8 @@ RSpec.describe Masking::InsertStatement do
   describe '#sql' do
     subject { described_class.new(raw_line).sql }
 
-    it 'call Builder' do
-      expect(Masking::InsertStatement::Builder).to receive(:build).with(
+    it 'call SQLBuilder' do
+      expect(Masking::InsertStatement::SQLBuilder).to receive(:build).with(
         table:  'users',
         columns: %i(id name email password_digest created_at updated_at),
         values: [
