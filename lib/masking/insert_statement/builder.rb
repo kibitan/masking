@@ -1,5 +1,5 @@
 module Masking
-  class SQLInsertStatement
+  class InsertStatement
     class Builder
       class << self
         def build(table:, columns:, values:)

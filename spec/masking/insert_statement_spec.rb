@@ -1,7 +1,7 @@
-require "masking/sql_insert_statement"
+require "masking/insert_statement"
 
-RSpec.describe Masking::SQLInsertStatement do
-  let(:raw_line) { sql_insert_statement_fixture }
+RSpec.describe Masking::InsertStatement do
+  let(:raw_line) { insert_statement_fixture }
 
   describe '#table' do
     subject { described_class.new(raw_line).table }
@@ -19,12 +19,12 @@ RSpec.describe Masking::SQLInsertStatement do
     subject { described_class.new(raw_line).sql }
 
     it 'call Builder' do
-      expect(Masking::SQLInsertStatement::Builder).to receive(:build).with(
+      expect(Masking::InsertStatement::Builder).to receive(:build).with(
         table:  'users',
         columns: %i(id name email password_digest created_at updated_at),
         values: [
-          instance_of(Masking::SQLInsertStatement::Value),
-          instance_of(Masking::SQLInsertStatement::Value)
+          instance_of(Masking::InsertStatement::Value),
+          instance_of(Masking::InsertStatement::Value)
         ]
       )
       subject
@@ -42,13 +42,13 @@ RSpec.describe Masking::SQLInsertStatement do
   describe '#values' do
     subject { described_class.new(raw_line).values }
 
-    it 'returns array of SQLInsertStatement::Value' do
+    it 'returns array of InsertStatement::Value' do
       is_expected.to match_array [
-        Masking::SQLInsertStatement::Value.new(
+        Masking::InsertStatement::Value.new(
           columns: %i(id name email password_digest created_at updated_at),
           data: ["1","'Super Chikahiro'","'kibitan@example.com'","'password_digest'","'2018-03-14 00:00:00'","'2018-03-29 00:00:00'"]
         ),
-        Masking::SQLInsertStatement::Value.new(
+        Masking::InsertStatement::Value.new(
           columns: %i(id name email password_digest created_at updated_at),
           data: ["2","'Super Tokoro'","'kibitan++@example.com'","'password_digest2'","'2018-04-01 00:00:00'","'2018-04-03 12:00:00'"]
         )

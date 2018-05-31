@@ -35,7 +35,7 @@ RSpec.describe Masking::SQLDumpLine do
     end
 
     context "when line is insert statement" do
-      let(:line) { sql_insert_statement_fixture }
+      let(:line) { insert_statement_fixture }
 
       it 'call Dataline' do
         expect(Masking::DataMaskProcessor).to receive(:process).with(line)
@@ -62,7 +62,7 @@ RSpec.describe Masking::SQLDumpLine do
       end
 
       context "when line is insert statement" do
-        let(:line) { sql_insert_statement_fixture }
+        let(:line) { insert_statement_fixture }
 
         it { is_expected.to eq true }
       end

@@ -1,5 +1,5 @@
 module Masking
-  class SQLInsertStatement
+  class InsertStatement
     class Value < SimpleDelegator
       def initialize(columns:, data:)
         @data = Struct.new(*columns).new(*data)

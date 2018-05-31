@@ -14,9 +14,9 @@ module Masking
 
     attr_reader :line
 
-    SQL_INSERT_STATEMENT_REGEXP = /^INSERT/
+    INSERT_STATEMENT_REGEXP = /^INSERT/
     def insert_statement?
-      line.match?(SQL_INSERT_STATEMENT_REGEXP)
+      line.match?(INSERT_STATEMENT_REGEXP)
     end
   end
 end
