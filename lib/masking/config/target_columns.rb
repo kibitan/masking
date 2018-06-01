@@ -15,8 +15,8 @@ module Masking
         @file_path = file_path
       end
 
-      def contains?(table:)
-        data.has_key?(table)
+      def contains?(table_name:)
+        data.has_key?(table_name)
       end
 
       # TODO: refactoring

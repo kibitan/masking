@@ -34,7 +34,7 @@ module Masking
     end
 
     def target_table?
-      target_columns.contains?(table: insert_statement.table)
+      target_columns.contains?(table_name: insert_statement.table)
     end
   end
 end
