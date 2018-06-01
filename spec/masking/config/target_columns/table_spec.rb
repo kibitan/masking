@@ -27,4 +27,10 @@ RSpec.describe Masking::Config::TargetColumns::Table do
       ]
     end
   end
+
+  describe '#==(other)' do
+    subject { described_class.new(name, columns: columns) == described_class.new(name, columns: columns) }
+
+    it { is_expected.to be true }
+  end
 end
