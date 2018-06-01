@@ -74,11 +74,14 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
    - [x] define `TargetColumns` class
    - [ ] generator
  - [x] input SQLDump from stdin
- - [ ] parse SQL
+ - [x] parse SQL
    - [ ] streaming process
- - [ ] mask data
-   - [ ] with Faker
- - [ ] output SQL to stdout
+ - [x] mask data ( only fixed string )
+   - [ ] various Type
+   - [ ] dynamic dummy value
+   - [ ] Faker
+ - [x] output SQL to stdout
+ - [ ] write integration test
  - [ ] publish to gem
  - [ ] publish to HomeBrew?
 
