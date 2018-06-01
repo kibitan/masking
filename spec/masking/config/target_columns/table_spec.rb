@@ -21,9 +21,9 @@ RSpec.describe Masking::Config::TargetColumns::Table do
 
     it do
       expect(subject.columns).to match_array [
-        Masking::Config::TargetColumns::Column.new('column_a', table: subject, method: 'method_a'),
-        Masking::Config::TargetColumns::Column.new('column_b', table: subject, method: 'method_b'),
-        Masking::Config::TargetColumns::Column.new('column_c', table: subject, method: 'method_c')
+        Masking::Config::TargetColumns::Column.new('column_a', table_name: name, method: 'method_a'),
+        Masking::Config::TargetColumns::Column.new('column_b', table_name: name, method: 'method_b'),
+        Masking::Config::TargetColumns::Column.new('column_c', table_name: name, method: 'method_c')
       ]
     end
   end

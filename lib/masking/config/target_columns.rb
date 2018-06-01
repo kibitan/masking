@@ -33,7 +33,7 @@ module Masking
       def tables
         @tables ||= [].tap do |arr|
           data.each do |table_name, columns|
-            arr << Table.new(table_name, columns: columns.keys)
+            arr << Table.new(table_name, columns: columns)
           end
         end
       end

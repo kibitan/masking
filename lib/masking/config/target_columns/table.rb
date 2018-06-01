@@ -9,8 +9,12 @@ module Masking
         def initialize(name, columns:)
           @name = name.to_sym
           @columns = columns.map do |column, method|
-            Masking::Config::TargetColumns::Column.new(column, table: self, method: method)
+            Masking::Config::TargetColumns::Column.new(column, table_name: self.name, method: method)
           end
+        end
+
+        def ==(other)
+          name == other.name
         end
       end
     end
