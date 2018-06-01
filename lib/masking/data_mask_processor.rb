@@ -15,15 +15,15 @@ module Masking
     attr_reader :raw_line, :target_columns, :insert_statement
 
     def initialize(insert_statement_line, target_columns:)
-      @raw_line             = insert_statement_line
-      @target_columns       = target_columns
+      @raw_line         = insert_statement_line
+      @target_columns   = target_columns
       @insert_statement = InsertStatement.new(insert_statement_line)
     end
 
     def process
       return raw_line unless target_table?
       ## code sample as for considering class design
-      # # TODO: define InsertStatement.mask_value(column, mask_method) method
+      # # TODO: define insert_statement.mask_values(column, mask_method) method
       # target_columns.each do |target_column, mask_method|
       #   insert_statement.values.map do |valus|
       #     value[target_column] = mask_method.call

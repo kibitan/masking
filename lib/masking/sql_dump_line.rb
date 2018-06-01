@@ -13,8 +13,8 @@ module Masking
     private
 
     attr_reader :line
-
     INSERT_STATEMENT_REGEXP = /^INSERT/
+
     def insert_statement?
       line.match?(INSERT_STATEMENT_REGEXP)
     end

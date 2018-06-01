@@ -1,3 +1,4 @@
+require 'yaml'
 require "masking/config/target_columns/table"
 require "masking/config/target_columns/column"
 
@@ -6,8 +7,6 @@ module Masking
     # TODO: find better naming of TargetColumns
     class TargetColumns
       ## TODO: singletonize?
-      require 'yaml'
-
       DEFAULT_TARGET_COLUMNS_YAML_PATH = Pathname('config/target_columns.yml').freeze
       attr_reader :file_path
 
@@ -25,6 +24,7 @@ module Masking
       end
 
       private
+
       def data
         @data ||= YAML.load(file_path.read)
       end
