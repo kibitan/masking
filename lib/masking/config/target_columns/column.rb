@@ -12,7 +12,7 @@ module Masking
 
         def method
           # TODO: this is temporary implementation, this should be different/flexible class
-          -> { @method }
+          -> { %Q|'#{@method}'| }
         end
 
         def ==(other)

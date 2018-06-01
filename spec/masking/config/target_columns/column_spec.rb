@@ -22,7 +22,7 @@ RSpec.describe Masking::Config::TargetColumns::Column do
   describe '#method' do
     subject { described_class.new(name, table_name: table_name, method: method).method }
 
-    it { expect(subject.call).to eq 'sample_method' }
+    it { expect(subject.call).to eq "'sample_method'" }
   end
 
   describe '#==(other)' do

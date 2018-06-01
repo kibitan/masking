@@ -27,5 +27,5 @@ def config_fixture_path(name = 'target_columns.yml')
 end
 
 def insert_statement_fixture(name = 'sample.sql')
-  Pathname('spec/fixtures/insert_statement').join(name).read
+  Pathname('spec/fixtures/insert_statement').join(name).read.chomp
 end

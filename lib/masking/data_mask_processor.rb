@@ -22,15 +22,15 @@ module Masking
 
     def process
       return raw_line unless target_table?
-      ## code sample as for considering class design
-      # # TODO: define insert_statement.mask_values(column, mask_method) method
-      # target_columns.each do |target_column, mask_method|
-      #   insert_statement.values.map do |valus|
-      #     value[target_column] = mask_method.call
-      #   end
-      # end
-      #
-      # insert_statement.sql
+
+      # TODO: define insert_statement.mask_values(column, mask_method) method & refactoring
+      target_columns.columns(table_name: insert_statement.table).each do |target_column|
+        insert_statement.values.map do |value|
+          value[target_column.name] = target_column.method.call if value.respond_to?(target_column.name)
+        end
+      end
+
+      insert_statement.sql
     end
 
     def target_table?

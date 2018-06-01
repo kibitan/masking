@@ -1,0 +1,1 @@
+INSERT INTO `users` (`id`, `name`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES (1,'name','email','string','2018-03-14 00:00:00','2018-03-29 00:00:00'),(2,'name','email','string','2018-04-01 00:00:00','2018-04-03 12:00:00');
