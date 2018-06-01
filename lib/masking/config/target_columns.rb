@@ -19,6 +19,11 @@ module Masking
         data.has_key?(table)
       end
 
+      # TODO: refactoring
+      def columns(table_name:)
+        tables.find { |table| table.name == table_name.to_sym }&.columns
+      end
+
       private
       def data
         @data ||= YAML.load(file_path.read)

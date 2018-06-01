@@ -45,6 +45,29 @@ RSpec.describe Masking::Config::TargetColumns do
     end
   end
 
+  describe '#columns' do
+    subject { described_class.new(file_path).columns(table_name: table_name) }
+    let(:file_path) { config_fixture_path }
+
+    context 'table_name is included in config yaml' do
+      let(:table_name) { 'users' }
+
+      it do
+        is_expected.to match [
+          instance_of(Masking::Config::TargetColumns::Column),
+          instance_of(Masking::Config::TargetColumns::Column),
+          instance_of(Masking::Config::TargetColumns::Column)
+        ]
+      end
+    end
+
+    context 'table_name is NOT included in config yaml' do
+      let(:table_name) { 'dummy_users' }
+
+      it { is_expected.to eq nil }
+    end
+  end
+
   describe '#tables' do
     subject { described_class.new(file_path).send(:tables) }
     let(:file_path) { config_fixture_path }
