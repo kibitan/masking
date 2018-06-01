@@ -5,3 +5,7 @@ users:
   name: name
   email: email
   password_digest: string
+admin:
+  first_name: good_naming
+  last_name: nice_name
+  email: email
