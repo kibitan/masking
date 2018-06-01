@@ -44,4 +44,15 @@ RSpec.describe Masking::Config::TargetColumns do
       end
     end
   end
+
+  describe '#tables' do
+    subject { described_class.new(file_path).send(:tables) }
+    let(:file_path) { config_fixture_path }
+
+    it do
+      is_expected.to match [
+        instance_of(Masking::Config::TargetColumns::Table)
+      ]
+    end
+  end
 end

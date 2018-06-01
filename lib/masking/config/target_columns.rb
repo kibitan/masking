@@ -1,3 +1,6 @@
+require "masking/config/target_columns/table"
+require "masking/config/target_columns/column"
+
 module Masking
   module Config
     # TODO: find better naming of TargetColumns
@@ -19,6 +22,15 @@ module Masking
       private
       def data
         @data ||= YAML.load(file_path.read)
+      end
+
+      # TODO: extract to other class
+      def tables
+        @tables ||= [].tap do |arr|
+          data.each do |table_name, columns|
+            arr << Table.new(table_name, columns: columns.keys)
+          end
+        end
       end
     end
   end
