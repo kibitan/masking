@@ -7,7 +7,7 @@ module Masking
     # TODO: find better naming of TargetColumns
     class TargetColumns
       ## TODO: singletonize?
-      DEFAULT_TARGET_COLUMNS_YAML_PATH = Pathname('config/target_columns.yml').freeze
+      DEFAULT_TARGET_COLUMNS_YAML_PATH = Pathname('target_columns.yml').freeze
       attr_reader :file_path
 
       def initialize(file_path = DEFAULT_TARGET_COLUMNS_YAML_PATH)

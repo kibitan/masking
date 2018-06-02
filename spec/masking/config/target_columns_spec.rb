@@ -6,7 +6,7 @@ RSpec.describe Masking::Config::TargetColumns do
       subject { described_class.new }
 
       it 'contains default file_path' do
-        expect(subject.file_path).to eq Pathname('config/target_columns.yml')
+        expect(subject.file_path).to eq Pathname('target_columns.yml')
       end
     end
 

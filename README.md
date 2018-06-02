@@ -28,7 +28,7 @@ or install it yourself as:
 
 ## Usage
 
-1. setup configuration of target columns to `config/target_columns.yml`
+1. setup configuration of target columns to `target_columns.yml`
 
   ```yaml
   # table_name:
