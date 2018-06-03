@@ -29,3 +29,7 @@ end
 def insert_statement_fixture(name = 'sample.sql')
   Pathname('spec/fixtures/insert_statement').join(name).read.chomp
 end
+
+def sql_dump_line_fixture(name)
+  Pathname('spec/fixtures/sql_dump_line').join(name).read.chomp
+end
