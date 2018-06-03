@@ -1,0 +1,1 @@
+INSERT INTO `tests` (`id`, `binary`) VALUES (1,'{I\"time:EFU: ActiveSupport::TimeWithZone[Iu:	Time\r±‹À\09t/:	zoneI\"UTC;\0FI\"Berlin;\0TIu;\r³‹À\09t/;I\"UTC;\0FI\"url;\0FI\"2http://localhost:3000;\0T');

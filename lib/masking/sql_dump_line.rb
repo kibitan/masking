@@ -3,7 +3,9 @@ require "masking/data_mask_processor"
 module Masking
   class SQLDumpLine
     def initialize(line)
-      @line = line
+      # TODO: line.scrub is currently workaround for avoinding
+      #   `invalid byte sequence in UTF-8` error in binary file
+      @line = line.scrub
     end
 
     def output

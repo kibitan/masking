@@ -73,6 +73,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
  - [x] load config `target_columns.yml`
    - [x] define `TargetColumns` class
    - [ ] generator
+   - [ ] validate `target_columns.yml` ( format / exists )
  - [x] input SQLDump from stdin
  - [x] parse SQL
    - [ ] streaming process
@@ -81,6 +82,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
    - [ ] dynamic dummy value
    - [ ] Faker
  - [x] output SQL to stdout
+   - [ ] work with binary data
  - [ ] write integration test
  - [ ] publish to gem
  - [ ] publish to HomeBrew?
