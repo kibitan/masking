@@ -26,7 +26,7 @@ module Masking
       # TODO: define insert_statement.mask_values(column, mask_method) method & refactoring
       target_columns.columns(table_name: insert_statement.table).each do |target_column|
         insert_statement.values.map do |value|
-          value[target_column.name] = target_column.method.call if value.respond_to?(target_column.name)
+          value[target_column.name] = target_column.method.call if value.has_column?(target_column.name)
         end
       end
 

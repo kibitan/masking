@@ -2,7 +2,8 @@ module Masking
   class InsertStatement
     class Value < SimpleDelegator
       def initialize(columns:, data:)
-        @data = Struct.new(*columns).new(*data)
+        @columns = columns
+        @data    = Struct.new(*columns).new(*data)
         super(@data)
       end
 
@@ -14,6 +15,10 @@ module Masking
       # NOTE: original #== method comapares struct subclass
       def ==(other)
         to_h == other.to_h
+      end
+
+      def has_column?(column_name)
+        @columns.include?(column_name.to_sym)
       end
     end
   end
