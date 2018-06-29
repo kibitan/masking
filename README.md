@@ -76,30 +76,41 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
    - [ ] validate `target_columns.yml` ( format / exists )
  - [x] input SQLDump from stdin
  - [x] parse SQL
-   - [ ] streaming process
  - [x] mask data ( only fixed string )
-   - [ ] various Type
-   - [ ] dynamic dummy value
-   - [ ] Faker
+   - [ ] Type
+     - [ ] verify Date/Time format
+   - [ ] sequencial value "%n"
  - [x] output SQL to stdout
-   - [ ] work with binary data
- - [ ] write integration test
+   - [ ] fix bug: work with binary data (non utf-8)
+ - write integration test
+   - [ ] with types
+   - [ ] make unit test decoupled
+ - [ ] refactoring
+   - rename Masking::Config::TargetColumns::Column::Method
+   - extract Masking::Config::TargetColumns::TargetColumns.tables ( yaml parser )
+   - singletonize Masking::Config::TargetColumns
+   - rename Masking::Config::TargetColumns
+   - refactoring inside of DataMaskProcessor.process
+   - rename DataMaskProcessor
  - [ ] publish to gem
  - [ ] publish to HomeBrew?
 
- - [ ] setup CI
+ - setup CI
    - [x] TravisCI
    - [x] CodeClimate
    - [x] Coverage
+   - [ ] rubocop
    - [ ] SideCI(rubocop, reek)
    - [ ] PR ready
    - [ ] rake notes
 
 ## Future Todo
 
- - pluguable/customizable for masking way
+ - pluguable/customizable for masking way e.g. using Faker
  - Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
- - perfomance optimization: rewrite by another language?
+ - perfomance optimization
+   - make streaming process
+   - rewrite by another language?
 
 ## Contributing
 
