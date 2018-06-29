@@ -1,8 +1,10 @@
+require 'masking/config/target_columns/method'
+
 module Masking
   module Config
     class TargetColumns
       class Column
-        attr_reader :name, :table_name
+        attr_reader :name, :table_name, :method
 
         def initialize(name, table_name:, method:)
           @name        = name.to_sym
@@ -10,19 +12,12 @@ module Masking
           @method      = method
         end
 
-        def method
-          case @method
-          when nil
-            -> { 'NULL' }
-          when String
-            -> { "'#{@method}'" }
-          when Integer, Float
-            -> { "#{@method}" }
-          end
+        def masked_value
+          Method.new(@method).call
         end
 
         def ==(other)
-          name == other.name && table_name == other.table_name && method.call == other.method.call
+          name == other.name && table_name == other.table_name && method == other.method
         end
       end
     end

@@ -1,12 +1,17 @@
 Dir[Pathname(__FILE__).dirname.join("method/*.rb").to_s].each(&method(:require))
+require 'forwardable'
 
 module Masking
   module Config
     class TargetColumns
       class Method
+        extend Forwardable
+
         def initialize(method)
-          MAPPING[method.class.name].new(method)
+          @method_type = MAPPING[method.class.name].new(method)
         end
+
+        def_delegator :@method_type, :call
 
         private
 

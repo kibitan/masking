@@ -4,9 +4,9 @@ RSpec.describe Masking::Config::TargetColumns::Table do
   let(:name) { 'sample_table' }
   let(:columns) do
     {
-      column_a: :method_a,
-      column_b: :method_b,
-      column_c: :method_c
+      column_a: 'string',
+      column_b: 123,
+      column_c: nil
     }
   end
 
@@ -21,9 +21,9 @@ RSpec.describe Masking::Config::TargetColumns::Table do
 
     it do
       expect(subject.columns).to match_array [
-        Masking::Config::TargetColumns::Column.new('column_a', table_name: name, method: 'method_a'),
-        Masking::Config::TargetColumns::Column.new('column_b', table_name: name, method: 'method_b'),
-        Masking::Config::TargetColumns::Column.new('column_c', table_name: name, method: 'method_c')
+        Masking::Config::TargetColumns::Column.new('column_a', table_name: name, method: 'string'),
+        Masking::Config::TargetColumns::Column.new('column_b', table_name: name, method: 123),
+        Masking::Config::TargetColumns::Column.new('column_c', table_name: name, method: nil)
       ]
     end
   end

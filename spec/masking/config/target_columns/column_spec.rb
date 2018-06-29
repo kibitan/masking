@@ -24,38 +24,14 @@ RSpec.describe Masking::Config::TargetColumns::Column do
     it { is_expected.to be true }
   end
 
-  describe '#method' do
-    subject { described_class.new(name, table_name: table_name, method: method).method }
+  describe '#masked_value' do
+    subject { described_class.new(name, table_name: table_name, method: method).masked_value }
 
-    context 'when string' do
-      let(:method) { 'sample string' }
-
-      it { expect(subject.call).to eq "'sample string'" }
-    end
-
-    context 'when integer' do
-      let(:method) { 123 }
-
-      it { expect(subject.call).to eq '123' }
-    end
-
-    context 'when float' do
-      let(:method) { 123.456 }
-
-      it { expect(subject.call).to eq '123.456' }
-    end
-
-    # TODO: check all date/time format
-    context 'when datetime' do
-      let(:method) { '2018-03-14 15:31:02' }
-
-      it { expect(subject.call).to eq "'2018-03-14 15:31:02'" }
-    end
-
-    context 'when nil' do
-      let(:method) { nil }
-
-      it { expect(subject.call).to eq 'NULL' }
+    it do
+      expect(Masking::Config::TargetColumns::Method).to receive(:new).with(method).and_return(
+        instance_double(Masking::Config::TargetColumns::Method::String, call: nil)
+      )
+      subject
     end
   end
 end

@@ -1,7 +1,7 @@
 require "masking/config/target_columns/method"
 
 RSpec.describe Masking::Config::TargetColumns::Method do
-  describe '#new' do
+  describe '.new' do
     subject { Masking::Config::TargetColumns::Method.new(method) }
 
     context 'when String' do
@@ -47,6 +47,19 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::Null).to receive(:new).with(nil)
         subject
       end
+    end
+  end
+
+  describe '#call' do
+    subject { Masking::Config::TargetColumns::Method.new(nil).call }
+
+    it 'delegate to concreate object' do
+      expect(Masking::Config::TargetColumns::Method::Null).to receive(:new).with(nil).and_return(
+        instance_double(Masking::Config::TargetColumns::Method::Null).tap do |double|
+          expect(double).to receive(:call)
+        end
+      )
+      subject
     end
   end
 end
