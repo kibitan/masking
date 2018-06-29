@@ -7,12 +7,18 @@ module Masking
         def initialize(name, table_name:, method:)
           @name        = name.to_sym
           @table_name  = table_name.to_sym
-          @method      = method.to_s
+          @method      = method
         end
 
         def method
-          # TODO: this is temporary implementation, this should be different/flexible class
-          -> { %Q|'#{@method}'| }
+          case @method
+          when nil
+            -> { 'NULL' }
+          when String
+            -> { "'#{@method}'" }
+          when Integer, Float
+            -> { "#{@method}" }
+          end
         end
 
         def ==(other)
