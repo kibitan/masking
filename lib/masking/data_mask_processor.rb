@@ -1,5 +1,7 @@
-require "masking/config/target_columns"
-require "masking/insert_statement"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns'
+require 'masking/insert_statement'
 
 module Masking
   # TODO: find better naming/modeling of DataMaskProcessor

@@ -1,4 +1,6 @@
-require "masking/sql_dump_line"
+# frozen_string_literal: true
+
+require 'masking/sql_dump_line'
 
 RSpec.describe Masking::SQLDumpLine do
   describe '#output' do
@@ -8,33 +10,33 @@ RSpec.describe Masking::SQLDumpLine do
       it { is_expected.to eq line }
     end
 
-    context "when line is NOT insert statement line" do
-      context "empty" do
-        let(:line) { "" }
+    context 'when line is NOT insert statement line' do
+      context 'empty' do
+        let(:line) { '' }
 
         it_behaves_like 'should be same with line'
       end
 
-      context "headline" do
+      context 'headline' do
         let(:line) { sql_dump_line_fixture('headline.sql') }
 
         it_behaves_like 'should be same with line'
       end
 
-      context "metadata" do
+      context 'metadata' do
         let(:line) { sql_dump_line_fixture('metadata.sql') }
 
         it_behaves_like 'should be same with line'
       end
 
-      context "DDL" do
+      context 'DDL' do
         let(:line) { sql_dump_line_fixture('ddl.sql') }
 
         it_behaves_like 'should be same with line'
       end
     end
 
-    context "when line is insert statement" do
+    context 'when line is insert statement' do
       let(:line) { insert_statement_fixture }
 
       it 'call DataMaskProcessor' do
@@ -44,7 +46,7 @@ RSpec.describe Masking::SQLDumpLine do
       end
     end
 
-    context "when line is insert statement including invalid utf8 char" do
+    context 'when line is insert statement including invalid utf8 char' do
       let(:line) { insert_statement_fixture('with_binary.sql') }
 
       it 'call DataMaskProcessor' do
@@ -60,27 +62,27 @@ RSpec.describe Masking::SQLDumpLine do
   describe '#insert_statement?' do
     subject { described_class.new(line).send(:insert_statement?) }
 
-    context "when line is NOT insert statement" do
-      context "empty" do
-        let(:line) { "" }
+    context 'when line is NOT insert statement' do
+      context 'empty' do
+        let(:line) { '' }
 
         it { is_expected.to eq false }
       end
 
-      context "headline" do
+      context 'headline' do
         let(:line) { sql_dump_line_fixture('headline.sql') }
 
         it { is_expected.to eq false }
       end
     end
 
-    context "when line is insert statement" do
+    context 'when line is insert statement' do
       let(:line) { insert_statement_fixture }
 
       it { is_expected.to eq true }
     end
 
-    context "when line is insert statement including invalid utf8 char" do
+    context 'when line is insert statement including invalid utf8 char' do
       let(:line) { insert_statement_fixture('with_binary.sql') }
 
       # NOTE: `ArgumentError: invalid byte sequence in UTF-8` can be happen here

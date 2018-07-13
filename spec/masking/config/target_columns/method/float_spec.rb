@@ -1,4 +1,6 @@
-require "masking/config/target_columns/method/float"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns/method/float'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Float do
   describe '#call' do

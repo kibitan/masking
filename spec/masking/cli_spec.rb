@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Masking::Cli do
   describe '#mask' do
     subject { Masking::Cli.new.mask }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'masking/config/target_columns/column'
 
 module Masking

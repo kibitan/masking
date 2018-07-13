@@ -1,4 +1,6 @@
-require "masking/config/target_columns/method/null"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns/method/null'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Null do
   describe '#call' do

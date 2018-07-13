@@ -1,4 +1,6 @@
-Dir[Pathname(__FILE__).dirname.join("method/*.rb").to_s].each(&method(:require))
+# frozen_string_literal: true
+
+Dir[Pathname(__FILE__).dirname.join('method/*.rb').to_s].each(&method(:require))
 require 'forwardable'
 
 module Masking

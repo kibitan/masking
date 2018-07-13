@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Masking
   class InsertStatement
     class SQLBuilder
@@ -17,7 +19,7 @@ module Masking
       end
 
       def build
-        %Q|INSERT INTO `#{table}` #{columns_section} VALUES #{values_section};|
+        %(INSERT INTO `#{table}` #{columns_section} VALUES #{values_section};)
       end
 
       def columns_section

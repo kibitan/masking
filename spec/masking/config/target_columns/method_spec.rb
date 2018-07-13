@@ -1,4 +1,6 @@
-require "masking/config/target_columns/method"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns/method'
 
 RSpec.describe Masking::Config::TargetColumns::Method do
   describe '.new' do

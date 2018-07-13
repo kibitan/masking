@@ -1,11 +1,13 @@
-require "masking/config/target_columns/method/integer"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns/method/integer'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Integer do
   describe '#call' do
     subject { described_class.new(value).call }
 
     context 'when 12345' do
-      let(:value) { 12345 }
+      let(:value) { 12_345 }
 
       it { is_expected.to eq '12345' }
     end

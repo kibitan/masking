@@ -1,4 +1,6 @@
-require "date"
+# frozen_string_literal: true
+
+require 'date'
 
 module Masking
   module Config
@@ -16,7 +18,7 @@ module Masking
           private
 
           attr_reader :date
-          FORMAT = "%Y-%m-%d".freeze
+          FORMAT = '%Y-%m-%d'
 
           def date_format
             date.strftime(FORMAT)

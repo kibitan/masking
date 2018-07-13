@@ -1,10 +1,12 @@
-require "thor"
+# frozen_string_literal: true
+
+require 'thor'
 
 module Masking
   class Cli < ::Thor
     default_command :mask
 
-    desc "mask", 'mask database value'
+    desc 'mask', 'mask database value'
     def mask
       Masking.run
     end

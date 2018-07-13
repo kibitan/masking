@@ -1,7 +1,9 @@
-require "masking/data_mask_processor"
+# frozen_string_literal: true
+
+require 'masking/data_mask_processor'
 
 RSpec.describe Masking::DataMaskProcessor do
-  describe ".process" do
+  describe '.process' do
     subject { described_class.process(insert_statement_line, target_columns: target_columns) }
     let(:target_columns) { Masking::Config::TargetColumns.new(config_fixture_path) }
 

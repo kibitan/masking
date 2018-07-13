@@ -1,4 +1,6 @@
-require "masking/data_mask_processor"
+# frozen_string_literal: true
+
+require 'masking/data_mask_processor'
 
 module Masking
   class SQLDumpLine

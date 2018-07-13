@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Masking
   module Config
     class TargetColumns
@@ -14,7 +16,7 @@ module Masking
           private
 
           attr_reader :time
-          FORMAT = "%Y-%m-%d %H:%M:%S".freeze
+          FORMAT = '%Y-%m-%d %H:%M:%S'
 
           def time_format
             time.strftime(FORMAT)

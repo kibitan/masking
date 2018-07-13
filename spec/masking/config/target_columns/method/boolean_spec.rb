@@ -1,4 +1,6 @@
-require "masking/config/target_columns/method/boolean"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns/method/boolean'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Boolean do
   describe '#call' do
@@ -7,13 +9,13 @@ RSpec.describe Masking::Config::TargetColumns::Method::Boolean do
     context 'when false' do
       let(:value) { false }
 
-      it { is_expected.to eq "0" }
+      it { is_expected.to eq '0' }
     end
 
     context 'when true' do
       let(:value) { true }
 
-      it { is_expected.to eq "1" }
+      it { is_expected.to eq '1' }
     end
   end
 end

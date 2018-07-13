@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Masking
   class InsertStatement
     class Value < SimpleDelegator

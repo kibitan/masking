@@ -1,4 +1,6 @@
-require "masking/config/target_columns/table"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns/table'
 
 RSpec.describe Masking::Config::TargetColumns::Table do
   let(:name) { 'sample_table' }

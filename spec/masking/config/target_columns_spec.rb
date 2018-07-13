@@ -1,8 +1,10 @@
-require "masking/config/target_columns"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns'
 
 RSpec.describe Masking::Config::TargetColumns do
   describe '#initialize' do
-    context "without argument" do
+    context 'without argument' do
       subject { described_class.new }
 
       it 'contains default file_path' do
@@ -10,7 +12,7 @@ RSpec.describe Masking::Config::TargetColumns do
       end
     end
 
-    context "with argument(file_path)" do
+    context 'with argument(file_path)' do
       subject { described_class.new(file_path) }
       let(:file_path) { Pathname('hoge') }
 
@@ -27,7 +29,7 @@ RSpec.describe Masking::Config::TargetColumns do
   end
 
   describe '#contains?' do
-    context "arguments has just table_name" do
+    context 'arguments has just table_name' do
       subject { described_class.new(file_path).contains?(table_name: table_name) }
       let(:file_path) { config_fixture_path }
 

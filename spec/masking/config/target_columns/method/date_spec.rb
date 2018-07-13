@@ -1,4 +1,6 @@
-require "masking/config/target_columns/method/date"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns/method/date'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Date do
   describe '#call' do

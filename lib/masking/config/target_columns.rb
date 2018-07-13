@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'yaml'
-require "masking/config/target_columns/table"
-require "masking/config/target_columns/column"
+require 'masking/config/target_columns/table'
+require 'masking/config/target_columns/column'
 
 module Masking
   module Config
@@ -15,7 +17,7 @@ module Masking
       end
 
       def contains?(table_name:)
-        data.has_key?(table_name)
+        data.key?(table_name)
       end
 
       # TODO: refactoring
@@ -26,7 +28,7 @@ module Masking
       private
 
       def data
-        @data ||= YAML.load(file_path.read)
+        @data ||= YAML.safe_load(file_path.read, [Date, Time])
       end
 
       # TODO: extract to other class

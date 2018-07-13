@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Masking
   module Config
     class TargetColumns
@@ -8,7 +10,7 @@ module Masking
           end
 
           def call
-            "#{boolean_format}"
+            boolean_format.to_s
           end
 
           private

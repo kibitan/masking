@@ -1,6 +1,8 @@
-require "masking/version"
-require "masking/cli"
-require "masking/sql_dump_line"
+# frozen_string_literal: true
+
+require 'masking/version'
+require 'masking/cli'
+require 'masking/sql_dump_line'
 
 module Masking
   class << self

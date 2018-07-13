@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 RSpec.describe Masking do
-  it "has a version number" do
+  it 'has a version number' do
     expect(Masking::VERSION).not_to be nil
   end
 
-  describe ".run" do
+  describe '.run' do
     subject { described_class.run }
 
-    it "call Main.new.run" do
+    it 'call Main.new.run' do
       expect_any_instance_of(Masking::Main).to receive(:run)
 
       expect { subject }.not_to raise_error
@@ -14,11 +16,11 @@ RSpec.describe Masking do
   end
 
   describe Masking::Main do
-    describe "#run" do
+    describe '#run' do
       subject { described_class.new(input: input).run }
 
       context "with input: 'string'" do
-        let(:input) { StringIO.new("string") }
+        let(:input) { StringIO.new('string') }
 
         it "output 'string' to STDOUT" do
           expect { subject }.to output('string').to_stdout

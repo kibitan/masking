@@ -1,4 +1,6 @@
-require "masking/config/target_columns/method/time"
+# frozen_string_literal: true
+
+require 'masking/config/target_columns/method/time'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Time do
   describe '#call' do
