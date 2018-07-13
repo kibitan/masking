@@ -9,11 +9,19 @@ RSpec.describe Masking::InsertStatement::SQLBuilder do
     let(:columns) { %i[id name email address] }
     let(:values) do
       [
-        instance_double(Masking::InsertStatement::Value, phrase: "(1,'John','john@example.com','berlin')"),
-        instance_double(Masking::InsertStatement::Value, phrase: "(2,'Super Chikahiro','kibitan++@example.com','tokyo')")
+        instance_double(
+          Masking::InsertStatement::Value,
+          phrase: "(1,'John','john@example.com','berlin')"
+        ),
+        instance_double(
+          Masking::InsertStatement::Value,
+          phrase: "(2,'Super Chikahiro','kibitan++@example.com','tokyo')"
+        )
       ]
     end
 
+    # rubocop:disable Metrics/LineLength
     it { is_expected.to eq %|INSERT INTO `users` (`id`, `name`, `email`, `address`) VALUES (1,'John','john@example.com','berlin'),(2,'Super Chikahiro','kibitan++@example.com','tokyo');| }
+    # rubocop:enable Metrics/LineLength
   end
 end

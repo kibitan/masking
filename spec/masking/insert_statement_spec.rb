@@ -41,6 +41,7 @@ RSpec.describe Masking::InsertStatement do
     end
   end
 
+  # rubocop:disable Metrics/LineLength
   describe '#values' do
     subject { described_class.new(raw_line).values }
 
@@ -57,4 +58,5 @@ RSpec.describe Masking::InsertStatement do
       ]
     end
   end
+  # rubocop:enable Metrics/LineLength
 end
