@@ -4,15 +4,27 @@ module Masking
       class Method
         class String
           def initialize(value)
-            @string = value
+            @string   = value
+            @sequence = 0
           end
 
           def call
-            "'#{string}'"
+            "'#{output}'"
           end
 
           private
+
           attr_reader :string
+
+          SEQUENTIAL_NUMBER_PLACEHOLDER = /\#\{n\}/
+
+          def output
+            string.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, sequence.to_s)
+          end
+
+          def sequence
+            @sequence += 1
+          end
         end
       end
     end

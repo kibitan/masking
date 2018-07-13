@@ -15,5 +15,17 @@ RSpec.describe Masking::Config::TargetColumns::Method::String do
 
       it { is_expected.to eq "'あああ'" }
     end
+
+    context 'with sequential number placeholder #{n}' do
+      subject { described_class.new(value) }
+
+      let(:value) { 'number#{n}' }
+
+      it 'increment number each by call' do
+        expect(subject.call).to eq "'number1'"
+        expect(subject.call).to eq "'number2'"
+        expect(subject.call).to eq "'number3'"
+      end
+    end
   end
 end
