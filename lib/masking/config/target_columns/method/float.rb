@@ -12,6 +12,7 @@ module Masking
           end
 
           private
+
           attr_reader :float
         end
       end

@@ -23,6 +23,7 @@ module Masking
     end
 
     private
+
     attr_reader :input, :output
   end
 end

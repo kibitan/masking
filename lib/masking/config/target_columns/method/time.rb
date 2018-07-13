@@ -14,8 +14,8 @@ module Masking
           private
 
           attr_reader :time
-
           FORMAT = "%Y-%m-%d %H:%M:%S".freeze
+
           def time_format
             time.strftime(FORMAT)
           end

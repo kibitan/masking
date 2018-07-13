@@ -12,6 +12,7 @@ module Masking
           end
 
           private
+
           attr_reader :integer
         end
       end

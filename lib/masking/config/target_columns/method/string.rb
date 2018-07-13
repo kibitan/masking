@@ -15,7 +15,6 @@ module Masking
           private
 
           attr_reader :string
-
           SEQUENTIAL_NUMBER_PLACEHOLDER = /\#\{n\}/
 
           def output
