@@ -31,6 +31,15 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       end
     end
 
+    context 'when date' do
+      let(:method) { Date.new(2018, 3, 14) }
+
+      it do
+        expect(Masking::Config::TargetColumns::Method::Date).to receive(:new).with(Date.new(2018, 3, 14))
+        subject
+      end
+    end
+
     context 'when time' do
       let(:method) { Time.new(2018, 3, 14, 15, 31, 0) }
 

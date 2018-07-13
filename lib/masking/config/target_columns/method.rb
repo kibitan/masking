@@ -19,6 +19,7 @@ module Masking
           ::String   => String,
           ::Integer  => Integer,
           ::Float    => Float,
+          ::Date     => Date,
           ::Time     => Time,
           ::NilClass => Null
         }.freeze
