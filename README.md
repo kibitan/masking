@@ -108,6 +108,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
  - pluguable/customizable for masking way e.g. using Faker
  - Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
+ - parse the schema type information and validate target columns value
+ - (integration test with real database)
  - perfomance optimization
    - make streaming process
    - rewrite by another language?
