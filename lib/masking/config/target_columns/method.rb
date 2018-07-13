@@ -8,7 +8,7 @@ module Masking
         extend Forwardable
 
         def initialize(method)
-          @method_type = MAPPING[method.class.name].new(method)
+          @method_type = MAPPING[method.class].new(method)
         end
 
         def_delegator :@method_type, :call
@@ -16,11 +16,11 @@ module Masking
         private
 
         MAPPING = {
-          'String'   => String,
-          'Integer'  => Integer,
-          'Float'    => Float,
-          'Time'     => Time,
-          'NilClass' => Null
+          ::String   => String,
+          ::Integer  => Integer,
+          ::Float    => Float,
+          ::Time     => Time,
+          ::NilClass => Null
         }.freeze
       end
     end
