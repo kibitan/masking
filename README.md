@@ -85,7 +85,7 @@ $ pre-commit install
  - [x] mask data ( only fixed string )
    - [ ] Type
      - [x] verify Date/Time format
-   - [x] sequencial value "%n"
+   - [x] sequencial value "%{n}"
  - [x] output SQL to stdout
    - [ ] fix bug: work with binary data (non utf-8)
  - write integration test

@@ -18,10 +18,11 @@ RSpec.describe Masking::Config::TargetColumns::Method::String do
       it { is_expected.to eq "'あああ'" }
     end
 
-    context 'with sequential number placeholder #{n}' do
+    # rubocop:disable Style/FormatStringToken
+    context 'with sequential number placeholder %{n}' do
       subject { described_class.new(value) }
 
-      let(:value) { 'number#{n}' }
+      let(:value) { 'number%{n}' }
 
       it 'increment number each by call' do
         expect(subject.call).to eq "'number1'"
@@ -29,5 +30,6 @@ RSpec.describe Masking::Config::TargetColumns::Method::String do
         expect(subject.call).to eq "'number3'"
       end
     end
+    # rubocop:enable Style/FormatStringToken
   end
 end
