@@ -16,12 +16,14 @@ module Masking
         private
 
         MAPPING = {
-          ::String   => String,
-          ::Integer  => Integer,
-          ::Float    => Float,
-          ::Date     => Date,
-          ::Time     => Time,
-          ::NilClass => Null
+          ::String     => String,
+          ::Integer    => Integer,
+          ::Float      => Float,
+          ::Date       => Date,
+          ::Time       => Time,
+          ::TrueClass  => Boolean,
+          ::FalseClass => Boolean,
+          ::NilClass   => Null
         }.freeze
       end
     end

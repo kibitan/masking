@@ -49,6 +49,24 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       end
     end
 
+    context 'when true' do
+      let(:method) { true }
+
+      it do
+        expect(Masking::Config::TargetColumns::Method::Boolean).to receive(:new).with(true)
+        subject
+      end
+    end
+
+    context 'when false' do
+      let(:method) { false }
+
+      it do
+        expect(Masking::Config::TargetColumns::Method::Boolean).to receive(:new).with(false)
+        subject
+      end
+    end
+
     context 'when nil' do
       let(:method) { nil }
 
