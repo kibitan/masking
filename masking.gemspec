@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 lib = File.expand_path('lib', __dir__)
@@ -40,7 +39,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov'
 
   # for debug stuff
+  spec.add_development_dependency 'pre-commit'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-byebug'
+  spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'tapp'
 end
