@@ -8,8 +8,8 @@ module Masking
 
         def initialize(name, columns:)
           @name = name.to_sym
-          @columns = columns.map do |column, method|
-            Masking::Config::TargetColumns::Column.new(column, table_name: self.name, method: method)
+          @columns = columns.map do |column, method_value|
+            Masking::Config::TargetColumns::Column.new(column, table_name: self.name, method_value: method_value)
           end
         end
 

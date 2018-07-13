@@ -54,9 +54,9 @@ RSpec.describe Masking::Config::TargetColumns do
 
       it do
         is_expected.to match [
-          Masking::Config::TargetColumns::Column.new('name',            table_name: 'users', method: 'name'),
-          Masking::Config::TargetColumns::Column.new('email',           table_name: 'users', method: 'email'),
-          Masking::Config::TargetColumns::Column.new('password_digest', table_name: 'users', method: 'string')
+          Masking::Config::TargetColumns::Column.new('name',            table_name: 'users', method_value: 'name'),
+          Masking::Config::TargetColumns::Column.new('email',           table_name: 'users', method_value: 'email'),
+          Masking::Config::TargetColumns::Column.new('password_digest', table_name: 'users', method_value: 'string')
         ]
       end
     end

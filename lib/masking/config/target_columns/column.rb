@@ -6,11 +6,11 @@ module Masking
       class Column
         attr_reader :name, :table_name, :method_value
 
-        def initialize(name, table_name:, method:)
+        def initialize(name, table_name:, method_value:)
           @name         = name.to_sym
           @table_name   = table_name.to_sym
-          @method_value = method
-          @method       = Method.new(method)
+          @method_value = method_value
+          @method       = Method.new(method_value)
         end
 
         def masked_value
