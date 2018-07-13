@@ -78,20 +78,20 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
  - [x] parse SQL
  - [x] mask data ( only fixed string )
    - [ ] Type
-     - [ ] verify Date/Time format
-   - [ ] sequencial value "%n"
+     - [x] verify Date/Time format
+   - [x] sequencial value "%n"
  - [x] output SQL to stdout
    - [ ] fix bug: work with binary data (non utf-8)
  - write integration test
    - [ ] with types
    - [ ] make unit test decoupled
  - [ ] refactoring
-   - rename Masking::Config::TargetColumns::Column::Method
-   - extract Masking::Config::TargetColumns::TargetColumns.tables ( yaml parser )
-   - singletonize Masking::Config::TargetColumns
-   - rename Masking::Config::TargetColumns
-   - refactoring inside of DataMaskProcessor.process
-   - rename DataMaskProcessor
+   - [ ] rename Masking::Config::TargetColumns::Column::Method
+   - [ ] extract Masking::Config::TargetColumns::TargetColumns.tables ( yaml parser )
+   - [ ] singletonize Masking::Config::TargetColumns
+   - [ ] rename Masking::Config::TargetColumns
+   - [ ] refactoring inside of DataMaskProcessor.process
+   - [ ] rename DataMaskProcessor
  - [ ] publish to gem
  - [ ] publish to HomeBrew?
 
