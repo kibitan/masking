@@ -75,6 +75,12 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         subject
       end
     end
+
+    context 'unhappy path: Unknown type' do
+      let(:method) { NotImplementedError }
+
+      it { expect { subject }.to raise_error(Masking::Config::TargetColumns::Method::UnknownType) }
+    end
   end
 
   describe '#call' do

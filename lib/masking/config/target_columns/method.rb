@@ -8,7 +8,7 @@ module Masking
         extend Forwardable
 
         def initialize(method)
-          @method_type = MAPPING[method.class].new(method)
+          @method_type = mapping(method.class).new(method)
         end
 
         def_delegator :@method_type, :call
@@ -25,6 +25,12 @@ module Masking
           ::FalseClass => Boolean,
           ::NilClass   => Null
         }.freeze
+
+        def mapping(klass)
+          MAPPING[klass] || raise(UnknownType)
+        end
+
+        class UnknownType < RuntimeError; end
       end
     end
   end
