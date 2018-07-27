@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require 'delegate'
+
 module Masking
   class InsertStatement
-    class Value < SimpleDelegator
+    class Value < ::SimpleDelegator
       def initialize(columns:, data:)
         @columns = columns
         @data    = Struct.new(*columns).new(*data)
