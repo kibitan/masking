@@ -4,7 +4,7 @@ Dir[Pathname(__FILE__).dirname.join('method/*.rb').to_s].each(&method(:require))
 require 'forwardable'
 
 module Masking
-  module Config
+  class Config
     class TargetColumns
       class Method
         extend Forwardable

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Masking
-  module Config
+  class Config
     class TargetColumns
       class Method
         class Float

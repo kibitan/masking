@@ -3,7 +3,7 @@
 require 'date'
 
 module Masking
-  module Config
+  class Config
     class TargetColumns
       class Method
         class Date

@@ -3,7 +3,7 @@
 require 'masking/config/target_columns/column'
 
 module Masking
-  module Config
+  class Config
     class TargetColumns
       class Table
         attr_reader :name, :columns

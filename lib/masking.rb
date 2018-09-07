@@ -2,12 +2,17 @@
 
 require 'masking/version'
 require 'masking/cli'
+require 'masking/config'
 require 'masking/sql_dump_line'
 
 module Masking
   class << self
     def run
       Main.new.run
+    end
+
+    def config
+      Masking::Config
     end
   end
 

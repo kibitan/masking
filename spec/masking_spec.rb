@@ -5,6 +5,14 @@ RSpec.describe Masking do
     expect(Masking::VERSION).not_to be nil
   end
 
+  describe '.config' do
+    subject { described_class.config }
+
+    it 'return a Config class' do
+      is_expected.to eq Masking::Config
+    end
+  end
+
   describe '.run' do
     subject { described_class.run }
 

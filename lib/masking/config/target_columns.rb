@@ -5,14 +5,12 @@ require 'masking/config/target_columns/table'
 require 'masking/config/target_columns/column'
 
 module Masking
-  module Config
+  class Config
     # TODO: find better naming of TargetColumns
     class TargetColumns
-      ## TODO: singletonize?
-      DEFAULT_TARGET_COLUMNS_YAML_PATH = Pathname('target_columns.yml').freeze
       attr_reader :file_path
 
-      def initialize(file_path = DEFAULT_TARGET_COLUMNS_YAML_PATH)
+      def initialize(file_path)
         @file_path = file_path
       end
 

@@ -4,28 +4,18 @@ require 'masking/config/target_columns'
 
 RSpec.describe Masking::Config::TargetColumns do
   describe '#initialize' do
-    context 'without argument' do
-      subject { described_class.new }
+    subject { described_class.new(file_path) }
+    let(:file_path) { Pathname('hoge') }
 
-      it 'contains default file_path' do
-        expect(subject.file_path).to eq Pathname('target_columns.yml')
+    context 'file_path is valid' do
+      it 'contains file_path' do
+        expect(subject.file_path).to eq Pathname('hoge')
       end
     end
 
-    context 'with argument(file_path)' do
-      subject { described_class.new(file_path) }
-      let(:file_path) { Pathname('hoge') }
-
-      context 'file_path is valid' do
-        it 'contains file_path' do
-          expect(subject.file_path).to eq Pathname('hoge')
-        end
-      end
-
-      pending 'file_path is NOT exists'
-      pending 'file_path is NOT file'
-      pending 'file_path is NOT valid Yaml'
-    end
+    pending 'file_path is NOT exists'
+    pending 'file_path is NOT file'
+    pending 'file_path is NOT valid Yaml'
   end
 
   describe '#contains?' do
