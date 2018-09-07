@@ -26,19 +26,39 @@ or install it yourself as:
 
  * Ruby 2.5
 
+## Supported RDBMS
+
+ * MySQL 5.7...(TBC)
+
 ## Usage
 
 1. setup configuration of target columns to `target_columns.yml`
 
   ```yaml
   # table_name:
-  #   column_name: mask_mathod
+  #   column_name: masked_value
 
   users:
-    name: name
-    email: email
-    password_digest: string
+    string: anonymized string
+    email: anonymized+%{n}@example.com # %{n} will be replaced with sequencial number
+    integer: 12345
+    float: 123.45
+    boolean: true
+    null: null
+    date: 2018-08-24
+    time: 2018-08-24 15:54:06
   ```
+
+A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1 ](http://yaml.org/spec/current.html#id2503753)
+
+```yaml
+not-date: !!str 2002-04-28
+```
+
+String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/refman/8.0/en/string-type-overview.html). Integer/Float should be matched with [MySQL Numeric Type](https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html). Date/Time should be matched with [MySQL Date and Time Type](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-type-overview.html).
+
+
+*NOTE: MasKING doesn't check actual schema's type from dump. If you put uncomaptible value it will cause error during restoring to database.*
 
 2. dump with mask
 

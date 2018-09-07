@@ -1,7 +1,12 @@
 # table_name:
-#   column_name: mask_mathod
+#   column_name: masked_value
 
 users:
-  name: name
-  email: email
-  password_digest: string
+  string: anonymized string
+  email: anonymized+%{n}@example.com # %{n} will be replaced with sequencial number
+  integer: 12345
+  float: 123.45
+  boolean: true
+  null: null
+  date: 2018-08-24
+  time: 2018-08-24 15:54:06
