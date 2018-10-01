@@ -10,10 +10,6 @@ module Masking
     def run
       Main.new.run
     end
-
-    def config
-      Masking::Config
-    end
   end
 
   class Main
