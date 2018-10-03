@@ -4,4 +4,4 @@
 require 'masking'
 require 'masking/cli'
 
-Masking::Cli.start(ARGV)
+Masking::Cli.new(ARGV).run

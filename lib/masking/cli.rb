@@ -1,14 +1,37 @@
 # frozen_string_literal: true
 
-require 'thor'
+require 'masking/config'
+require 'optparse'
 
 module Masking
-  class Cli < ::Thor
-    default_command :mask
+  class Cli
+    def initialize(argv)
+      @argv = argv
+    end
 
-    desc 'mask', 'mask database value'
-    def mask
+    def run
+      option_parser.parse(argv)
       Masking.run
+    end
+
+    private
+
+    attr_reader :argv
+
+    def option_parser
+      OptionParser.new do |parser|
+        parser.banner = 'Usage: masking [options]'
+
+        define_config_option(parser)
+      end
+    end
+
+    def define_config_option(parser)
+      parser.on('-cFILE_PATH', '--config=FILE_PATH', 'specify config file. default: target_columns.yml') do |file_path|
+        Masking.configure do |config|
+          config.target_columns_file_path = file_path
+        end
+      end
     end
   end
 end

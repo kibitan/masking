@@ -4,11 +4,7 @@ require 'open3'
 
 RSpec.describe 'execute in command line' do
   context 'with target_columns.yml' do
-    subject { Open3.capture3('masking', stdin_data: insert_statement_fixture) }
-
-    # TODO: make the option of configurable by specific file, this is workaround
-    before { File.write('target_columns.yml', config_fixture_path.read) }
-    after { File.delete('target_columns.yml') }
+    subject { Open3.capture3("masking -c #{config_fixture_path}", stdin_data: insert_statement_fixture) }
 
     # TODO: separate to test helper
     let(:stdout) { subject[0] }

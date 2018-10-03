@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     masking (0.1.0)
-      thor
 
 GEM
   remote: https://rubygems.org/

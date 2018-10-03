@@ -2,14 +2,37 @@
 
 RSpec.describe Masking::Cli do
   describe '#mask' do
-    subject { Masking::Cli.new.mask }
+    subject { Masking::Cli.new(argv).run }
 
-    it 'call Main.run' do
-      expect(Masking).to receive(:run)
+    shared_examples 'set config and call Main.run' do
+      it 'set config and call Main.run' do
+        expect(Masking).to receive(:config).and_return(
+          instance_double(Masking::Config).tap do |config|
+            expect(config).to receive(:target_columns_file_path=).with('config.yml')
+          end
+        )
+        expect(Masking).to receive(:run)
 
-      expect { subject }.not_to raise_error
+        subject
+      end
     end
 
-    pending 'receive from STDIN and write to OUTPUT'
+    context 'with option `-cconfig.yml`' do
+      let(:argv) { ['-cconfig.yml'] }
+
+      it_behaves_like 'set config and call Main.run'
+    end
+
+    context 'with option `-c config.yml`' do
+      let(:argv) { ['-c', 'config.yml'] }
+
+      it_behaves_like 'set config and call Main.run'
+    end
+
+    context 'with option `--config`' do
+      let(:argv) { ['--config', 'config.yml'] }
+
+      it_behaves_like 'set config and call Main.run'
+    end
   end
 end
