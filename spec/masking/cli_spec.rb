@@ -41,7 +41,7 @@ RSpec.describe Masking::Cli do
 
         before do
           allow(Masking).to receive(:run)
-            .and_raise(Masking::Config::TargetColumns::FileDoesNotExist)
+            .and_raise(Masking::Error::ConfigFileDoesNotExist)
         end
 
         it { expect { subject }.to output("ERROR: config file (target_columns.yml) does not exist\n").to_stderr }

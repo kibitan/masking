@@ -18,7 +18,7 @@ RSpec.describe Masking::Config::TargetColumns do
       let(:file_path) { Pathname('unexist.txt') }
 
       it 'raise error' do
-        expect { subject }.to raise_error Masking::Config::TargetColumns::FileDoesNotExist
+        expect { subject }.to raise_error Masking::Error::ConfigFileDoesNotExist
       end
     end
 

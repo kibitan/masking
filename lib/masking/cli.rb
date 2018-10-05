@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'masking/config'
+require 'masking/errors'
 require 'optparse'
 
 module Masking
@@ -12,8 +13,8 @@ module Masking
     def run
       option_parser.parse(argv)
       Masking.run
-    rescue Masking::Config::TargetColumns::FileDoesNotExist
-      $stderr.puts "ERROR: config file (#{Masking.config.target_columns_file_path}) does not exist"
+    rescue Masking::Error::ConfigFileDoesNotExist
+      warn "ERROR: config file (#{Masking.config.target_columns_file_path}) does not exist"
       at_exit { exit(false) }
     end
 

@@ -3,19 +3,18 @@
 require 'yaml'
 require 'masking/config/target_columns/table'
 require 'masking/config/target_columns/column'
+require 'masking/errors'
 
 module Masking
   class Config
     # TODO: find better naming of TargetColumns
     class TargetColumns
-      class FileDoesNotExist < StandardError; end
-
       attr_reader :file_path
 
       def initialize(file_path)
         @file_path = file_path
 
-        raise FileDoesNotExist unless file_path.exist?
+        raise Masking::Error::ConfigFileDoesNotExist unless file_path.exist?
       end
 
       def contains?(table_name:)
