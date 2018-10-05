@@ -8,6 +8,7 @@ module Masking
       def initialize(columns:, data:)
         @columns = columns
         @data    = Struct.new(*columns).new(*data)
+        # NOTE: is it better to get rid of SimpleDelegator, store data in instance variable and define accesor for it?
         super(@data)
       end
 
