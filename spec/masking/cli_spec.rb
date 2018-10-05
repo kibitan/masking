@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Masking::Cli do
-  describe '#mask' do
+  describe '#run' do
     subject { Masking::Cli.new(argv).run }
 
     shared_examples 'set config and call Main.run' do
@@ -33,6 +33,19 @@ RSpec.describe Masking::Cli do
       let(:argv) { ['--config', 'config.yml'] }
 
       it_behaves_like 'set config and call Main.run'
+    end
+
+    context 'unhappy path' do
+      context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
+        let(:argv) { [] }
+
+        before do
+          allow(Masking).to receive(:run)
+            .and_raise(Masking::Config::TargetColumns::FileDoesNotExist)
+        end
+
+        it { expect { subject }.to output("ERROR: config file (target_columns.yml) does not exist\n").to_stderr }
+      end
     end
   end
 end

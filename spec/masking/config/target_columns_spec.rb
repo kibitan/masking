@@ -5,15 +5,23 @@ require 'masking/config/target_columns'
 RSpec.describe Masking::Config::TargetColumns do
   describe '#initialize' do
     subject { described_class.new(file_path) }
-    let(:file_path) { Pathname('hoge') }
 
     context 'file_path is valid' do
+      let(:file_path) { config_fixture_path }
+
       it 'contains file_path' do
-        expect(subject.file_path).to eq Pathname('hoge')
+        expect(subject.file_path).to eq config_fixture_path
       end
     end
 
-    pending 'file_path is NOT exists'
+    context 'file_path does NOT exist' do
+      let(:file_path) { Pathname('unexist.txt') }
+
+      it 'raise error' do
+        expect { subject }.to raise_error Masking::Config::TargetColumns::FileDoesNotExist
+      end
+    end
+
     pending 'file_path is NOT file'
     pending 'file_path is NOT valid Yaml'
   end
