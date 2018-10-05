@@ -74,6 +74,15 @@ String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/ref
    $ mysql -u USERNAME MASKED_DATABASE_NAME < masked_dump.sql
   ```
 
+### options
+
+```bash
+$ masking -h
+Usage: masking [options]
+    -c, --config=FILE_PATH           specify config file. default: target_columns.yml
+```
+
+
 ## Run test
 
 ```
