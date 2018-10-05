@@ -37,7 +37,7 @@ RSpec.describe Masking::InsertStatement do
     subject { described_class.new(raw_line).send(:values_regexp) }
 
     it 'returns dynamic regexp' do
-      is_expected.to eq /\((.*?),(.*?),(.*?),(.*?),(.*?),(.*?)\),?/
+      is_expected.to eq(/\(([0-9.]+|'.+?'),([0-9.]+|'.+?'),([0-9.]+|'.+?'),([0-9.]+|'.+?'),([0-9.]+|'.+?'),([0-9.]+|'.+?')\),?/) # rubocop:disable Metrics/LineLength
     end
   end
 
@@ -56,6 +56,23 @@ RSpec.describe Masking::InsertStatement do
           data: ['2', "'Super Tokoro'", "'kibitan++@example.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
         )
       ]
+    end
+
+    context 'with comma and bracket in value' do
+      let(:raw_line) { insert_statement_fixture('comma_and_bracket_and_single_quote_in_value.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[float_id name email],
+            data: ['1.23', "'comma ,,, and bracket () and single quote \\'\\'. there you go!'", "'kibitan@example.com'"]
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[float_id name email],
+            data: ['2.5', "'Super Tokoro'", "'kibitan++@example.com'"]
+          )
+        ]
+      end
     end
   end
   # rubocop:enable Metrics/LineLength

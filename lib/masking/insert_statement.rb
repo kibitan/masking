@@ -38,7 +38,11 @@ module Masking
     COLUMNS_REGEXP = /`(.*?)`/
 
     def values_regexp
-      /\(#{(Array("(.*?)") * columns.count).join(?,)}\),?/
+      # NOTE:
+      #   in mysqldump, integer/float type has dumped without single quote. e.g. 123 / 2.4
+      #   other type has dumped with single quote. e.g. 'string' / 'NULL' / '2018-08-22 13:27:34'
+      #   if there is single quote inside of value, it will dumped with escape. e.g. 'chikahiro\'s item'
+      /\(#{(Array("([0-9.]+|'.+?')") * columns.count).join(?,)}\),?/
     end
   end
 end
