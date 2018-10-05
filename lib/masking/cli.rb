@@ -15,7 +15,7 @@ module Masking
       Masking.run
     rescue Masking::Error::ConfigFileDoesNotExist
       warn "ERROR: config file (#{Masking.config.target_columns_file_path}) does not exist"
-      at_exit { exit(false) }
+      exit(false)
     end
 
     private

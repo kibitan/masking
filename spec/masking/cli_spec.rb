@@ -44,7 +44,10 @@ RSpec.describe Masking::Cli do
             .and_raise(Masking::Error::ConfigFileDoesNotExist)
         end
 
-        it { expect { subject }.to output("ERROR: config file (target_columns.yml) does not exist\n").to_stderr }
+        it do
+          expect { subject }.to raise_error(SystemExit) & \
+                                output("ERROR: config file (target_columns.yml) does not exist\n").to_stderr
+        end
       end
     end
   end
