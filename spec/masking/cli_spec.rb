@@ -36,9 +36,9 @@ RSpec.describe Masking::Cli do
     end
 
     context 'unhappy path' do
-      context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
-        let(:argv) { [] }
+      let(:argv) { [] }
 
+      context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
         before do
           allow(Masking).to receive(:run)
             .and_raise(Masking::Error::ConfigFileDoesNotExist)
@@ -47,6 +47,18 @@ RSpec.describe Masking::Cli do
         it do
           expect { subject }.to raise_error(SystemExit) & \
                                 output("ERROR: config file (target_columns.yml) does not exist\n").to_stderr
+        end
+      end
+
+      context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
+        before do
+          allow(Masking).to receive(:run)
+            .and_raise(Masking::Error::ConfigFileIsNotFile)
+        end
+
+        it do
+          expect { subject }.to raise_error(SystemExit) & \
+                                output("ERROR: config file (target_columns.yml) is not file\n").to_stderr
         end
       end
     end

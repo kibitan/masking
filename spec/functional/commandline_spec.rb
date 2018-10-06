@@ -13,13 +13,25 @@ RSpec.describe 'execute in command line' do
     end
   end
 
-  context 'with not exists config' do
-    command_subject('masking -c not_exists.yml', stdin: insert_statement_fixture)
+  context 'error handling(unhappy path)' do
+    context 'with not exists config' do
+      command_subject('masking -c not_exists.yml', stdin: insert_statement_fixture)
 
-    it 'should failed with error message', :aggregate_failures do
-      expect(stdout).to be_empty
-      expect(stderr).to eq "ERROR: config file (not_exists.yml) does not exist\n"
-      expect(exitstatus).to eq(1)
+      it 'should failed with error message', :aggregate_failures do
+        expect(stdout).to be_empty
+        expect(stderr).to eq "ERROR: config file (not_exists.yml) does not exist\n"
+        expect(exitstatus).to eq(1)
+      end
+    end
+
+    context 'with directory path (not file)' do
+      command_subject('masking -c tmp/', stdin: insert_statement_fixture)
+
+      it 'should failed with error message', :aggregate_failures do
+        expect(stdout).to be_empty
+        expect(stderr).to eq "ERROR: config file (tmp/) is not file\n"
+        expect(exitstatus).to eq(1)
+      end
     end
   end
 end

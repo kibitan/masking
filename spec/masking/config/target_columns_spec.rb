@@ -22,7 +22,14 @@ RSpec.describe Masking::Config::TargetColumns do
       end
     end
 
-    pending 'file_path is NOT file'
+    context 'file_path is directory(NOT file)' do
+      let(:file_path) { Pathname('tmp/') }
+
+      it 'raise error' do
+        expect { subject }.to raise_error Masking::Error::ConfigFileIsNotFile
+      end
+    end
+
     pending 'file_path is NOT valid Yaml'
   end
 

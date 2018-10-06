@@ -15,6 +15,7 @@ module Masking
         @file_path = file_path
 
         raise Masking::Error::ConfigFileDoesNotExist unless file_path.exist?
+        raise Masking::Error::ConfigFileIsNotFile unless file_path.file?
       end
 
       def contains?(table_name:)
