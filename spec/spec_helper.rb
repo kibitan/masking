@@ -2,6 +2,7 @@
 
 require 'bundler/setup'
 require 'tapp'
+require 'rspec'
 require 'simplecov'
 require 'coveralls'
 if ENV['CI'] == 'true'
