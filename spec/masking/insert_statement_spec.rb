@@ -37,7 +37,7 @@ RSpec.describe Masking::InsertStatement do
     subject { described_class.new(raw_line).send(:values_regexp) }
 
     it 'returns dynamic regexp' do
-      is_expected.to eq(/\(([0-9.]+|'.*?'|NULL),([0-9.]+|'.*?'|NULL),([0-9.]+|'.*?'|NULL),([0-9.]+|'.*?'|NULL),([0-9.]+|'.*?'|NULL),([0-9.]+|'.*?'|NULL)\),?/) # rubocop:disable Metrics/LineLength
+      is_expected.to eq(/\(([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL)\),?/) # rubocop:disable Metrics/LineLength
     end
   end
 
@@ -69,7 +69,7 @@ RSpec.describe Masking::InsertStatement do
           ),
           Masking::InsertStatement::Value.new(
             columns: %i[float_id name email],
-            data: ['2.5', "''", "NULL"]
+            data: ['-2.5', "''", 'NULL']
           )
         ]
       end
