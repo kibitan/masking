@@ -36,13 +36,14 @@ module Masking
     attr_reader :columns_section, :values_section
     PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/
     COLUMNS_REGEXP = /`(.*?)`/
+    # NOTE:
+    #   in mysqldump, integer/float/NULL type has dumped without single quote. e.g. 123 / 2.4 / NULL
+    #   string/time type has dumped with single quote. e.g. 'string' / '2018-08-22 13:27:34'
+    #   if there is single quote inside of value, it will dumped with escape. e.g. 'chikahiro\'s item'
+    VALUE_REGEXP = "([0-9.]+|'.*?'|NULL)"
 
     def values_regexp
-      # NOTE:
-      #   in mysqldump, integer/float type has dumped without single quote. e.g. 123 / 2.4
-      #   other type has dumped with single quote. e.g. 'string' / 'NULL' / '2018-08-22 13:27:34'
-      #   if there is single quote inside of value, it will dumped with escape. e.g. 'chikahiro\'s item'
-      /\(#{(Array("([0-9.]+|'.+?')") * columns.count).join(?,)}\),?/
+      /\(#{([VALUE_REGEXP] * columns.count).join(?,)}\),?/
     end
   end
 end
