@@ -13,6 +13,8 @@ RSpec.describe 'execute in command line' do
     end
   end
 
+  pending 'with various type of data'
+
   context 'error handling(unhappy path)' do
     context 'with not exists config' do
       command_subject('masking -c not_exists.yml', stdin: insert_statement_fixture)
@@ -43,5 +45,8 @@ RSpec.describe 'execute in command line' do
         expect(exitstatus).to eq(1)
       end
     end
+
+    pending 'with invalid config structure'
+    pending 'with sqldump without `--complete-insert` option'
   end
 end
