@@ -29,8 +29,6 @@ RSpec.describe Masking::Config::TargetColumns do
         expect { subject }.to raise_error Masking::Error::ConfigFileIsNotFile
       end
     end
-
-    pending 'file_path is NOT valid Yaml'
   end
 
   describe '#contains?' do
@@ -42,6 +40,14 @@ RSpec.describe Masking::Config::TargetColumns do
         let(:table_name) { 'users' }
 
         it { is_expected.to eq true }
+
+        context 'file_path is NOT valid Yaml' do
+          let(:file_path) { config_fixture_path('invalid_yaml.yml') }
+
+          it 'raise error' do
+            expect { subject }.to raise_error Masking::Error::ConfigFileIsNotValidYaml
+          end
+        end
       end
 
       context 'table_name is NOT included in config yaml' do

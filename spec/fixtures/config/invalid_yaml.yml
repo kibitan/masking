@@ -1,0 +1,8 @@
+# table_name:
+#   column_name: masked_value
+
+users:
+  name: name
+  email: email
+  password_digest: string
+admin-admin

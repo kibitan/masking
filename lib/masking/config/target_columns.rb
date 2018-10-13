@@ -31,6 +31,8 @@ module Masking
 
       def data
         @data ||= YAML.safe_load(file_path.read, [Date, Time])
+      rescue Psych::SyntaxError
+        raise Masking::Error::ConfigFileIsNotValidYaml
       end
 
       # TODO: extract to other class

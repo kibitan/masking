@@ -61,6 +61,18 @@ RSpec.describe Masking::Cli do
                                 output("ERROR: config file (target_columns.yml) is not file\n").to_stderr
         end
       end
+
+      context 'raise Masking::Config::TargetColumns::ConfigFileIsNotValidYaml' do
+        before do
+          allow(Masking).to receive(:run)
+            .and_raise(Masking::Error::ConfigFileIsNotValidYaml)
+        end
+
+        it do
+          expect { subject }.to raise_error(SystemExit) & \
+                                output("ERROR: config file (target_columns.yml) is not valid yaml format\n").to_stderr
+        end
+      end
     end
   end
 end

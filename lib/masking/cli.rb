@@ -14,11 +14,11 @@ module Masking
       option_parser.parse(argv)
       Masking.run
     rescue Masking::Error::ConfigFileDoesNotExist
-      warn "ERROR: config file (#{Masking.config.target_columns_file_path}) does not exist"
-      exit(false)
+      warn_and_exit "ERROR: config file (#{Masking.config.target_columns_file_path}) does not exist"
     rescue Masking::Error::ConfigFileIsNotFile
-      warn "ERROR: config file (#{Masking.config.target_columns_file_path}) is not file"
-      exit(false)
+      warn_and_exit "ERROR: config file (#{Masking.config.target_columns_file_path}) is not file"
+    rescue Masking::Error::ConfigFileIsNotValidYaml
+      warn_and_exit "ERROR: config file (#{Masking.config.target_columns_file_path}) is not valid yaml format"
     end
 
     private
@@ -39,6 +39,11 @@ module Masking
           config.target_columns_file_path = file_path
         end
       end
+    end
+
+    def warn_and_exit(warning_message)
+      warn(warning_message)
+      exit(false)
     end
   end
 end

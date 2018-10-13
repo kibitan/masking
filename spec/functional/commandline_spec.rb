@@ -33,5 +33,15 @@ RSpec.describe 'execute in command line' do
         expect(exitstatus).to eq(1)
       end
     end
+
+    context 'with invalid yaml file path' do
+      command_subject("masking -c #{config_fixture_path('invalid_yaml.yml')}", stdin: insert_statement_fixture)
+
+      it 'should failed with error message', :aggregate_failures do
+        expect(stdout).to be_empty
+        expect(stderr).to eq "ERROR: config file (spec/fixtures/config/invalid_yaml.yml) is not valid yaml format\n"
+        expect(exitstatus).to eq(1)
+      end
+    end
   end
 end
