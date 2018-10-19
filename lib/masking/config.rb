@@ -23,6 +23,7 @@ module Masking
 
     def target_columns_file_path=(val)
       @target_columns_file_path = Pathname(val)
+      @target_columns = TargetColumns.new(target_columns_file_path)
     end
 
     def target_columns

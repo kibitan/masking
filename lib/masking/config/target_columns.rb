@@ -27,6 +27,10 @@ module Masking
         tables.find { |table| table.name == table_name.to_sym }&.columns
       end
 
+      def ==(other)
+        file_path == other.file_path
+      end
+
       private
 
       def data

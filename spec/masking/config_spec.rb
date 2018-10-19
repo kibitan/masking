@@ -32,11 +32,12 @@ RSpec.describe Masking::Config do
   describe '#target_columns_file_path=' do
     subject { config.target_columns_file_path = target_columns_file_path }
     let(:config) { described_class.new }
-    let(:target_columns_file_path) { 'changed_target_columns.yml' }
+    let(:target_columns_file_path) { config_fixture_path }
 
     it 'set target_columns_file_path' do
       subject
-      expect(config.target_columns_file_path).to eq Pathname('changed_target_columns.yml')
+      expect(config.target_columns_file_path).to eq Pathname(config_fixture_path)
+      expect(config.target_columns).to eq Masking::Config::TargetColumns.new(config_fixture_path)
     end
   end
 
