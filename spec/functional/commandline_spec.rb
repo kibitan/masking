@@ -13,7 +13,22 @@ RSpec.describe 'execute in command line' do
     end
   end
 
-  pending 'with various type of data'
+  context 'with various type of data' do
+    context 'config file with sequential_number_replace' do
+      context 'multiple insert statement lines for same table' do
+        command_subject(
+          "masking -c #{config_fixture_path('target_columns_with_sequential_number_replace.yml')}",
+          stdin: sql_dump_line_fixture('multiple_lines_of_users.sql')
+        )
+
+        it 'should masked correctly', :aggregate_failures do
+          expect(stdout).to eq(sql_dump_line_fixture('masked_multiple_lines_of_users.sql'))
+          expect(stderr).to be_empty
+          expect(exitstatus).to eq(0)
+        end
+      end
+    end
+  end
 
   context 'error handling(unhappy path)' do
     context 'with not exists config' do

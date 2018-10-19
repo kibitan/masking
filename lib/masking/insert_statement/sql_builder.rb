@@ -19,7 +19,7 @@ module Masking
       end
 
       def build
-        %(INSERT INTO `#{table}` #{columns_section} VALUES #{values_section};)
+        %(INSERT INTO `#{table}` #{columns_section} VALUES #{values_section};\n)
       end
 
       def columns_section

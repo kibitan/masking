@@ -26,7 +26,7 @@ module Masking
     end
 
     def target_columns
-      TargetColumns.new(target_columns_file_path)
+      @target_columns ||= TargetColumns.new(target_columns_file_path)
     end
   end
 end

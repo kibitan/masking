@@ -1,0 +1,11 @@
+# table_name:
+#   column_name: masked_value
+
+users:
+  name: name
+  email: example+%{n}@example.com
+  password_digest: string
+admin:
+  first_name: good_naming
+  last_name: nice_name
+  email: email
