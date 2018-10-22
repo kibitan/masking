@@ -1,0 +1,6 @@
+Masking::Error::ConfigFileDoesNotExist:
+  "ERROR: config file (<%= config_file_path %>) does not exist"
+Masking::Error::ConfigFileIsNotFile:
+  "ERROR: config file (<%= config_file_path %>) is not file"
+Masking::Error::ConfigFileIsNotValidYaml:
+  "ERROR: config file (<%= config_file_path %>) is not valid yaml format"

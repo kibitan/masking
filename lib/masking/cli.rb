@@ -2,6 +2,7 @@
 
 require 'masking/config'
 require 'masking/errors'
+require 'masking/cli/error_message'
 require 'optparse'
 
 module Masking
@@ -13,12 +14,9 @@ module Masking
     def run
       option_parser.parse(argv)
       Masking.run
-    rescue Masking::Error::ConfigFileDoesNotExist
-      warn_and_exit "ERROR: config file (#{Masking.config.target_columns_file_path}) does not exist"
-    rescue Masking::Error::ConfigFileIsNotFile
-      warn_and_exit "ERROR: config file (#{Masking.config.target_columns_file_path}) is not file"
-    rescue Masking::Error::ConfigFileIsNotValidYaml
-      warn_and_exit "ERROR: config file (#{Masking.config.target_columns_file_path}) is not valid yaml format"
+    rescue Masking::Error => error
+      warn(Masking::Cli::ErrorMessage.new(error).message(config_file_path: Masking.config.target_columns_file_path))
+      exit(false)
     end
 
     private
@@ -39,11 +37,6 @@ module Masking
           config.target_columns_file_path = file_path
         end
       end
-    end
-
-    def warn_and_exit(warning_message)
-      warn(warning_message)
-      exit(false)
     end
   end
 end
