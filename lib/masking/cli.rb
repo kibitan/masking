@@ -32,7 +32,7 @@ module Masking
     end
 
     def define_config_option(parser)
-      parser.on('-cFILE_PATH', '--config=FILE_PATH', 'specify config file. default: target_columns.yml') do |file_path|
+      parser.on('-cFILE_PATH', '--config=FILE_PATH', 'specify config file. default: masking.yml') do |file_path|
         Masking.configure do |config|
           config.target_columns_file_path = file_path
         end

@@ -32,7 +32,7 @@ or install it yourself as:
 
 ## Usage
 
-1. setup configuration of target columns to `target_columns.yml`
+1. setup configuration of target columns to `masking.yml`
 
   ```yaml
   # table_name:
@@ -79,7 +79,7 @@ String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/ref
 ```bash
 $ masking -h
 Usage: masking [options]
-    -c, --config=FILE_PATH           specify config file. default: target_columns.yml
+    -c, --config=FILE_PATH           specify config file. default: masking.yml
 ```
 
 

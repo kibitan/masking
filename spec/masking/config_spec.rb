@@ -25,7 +25,7 @@ RSpec.describe Masking::Config do
     let(:config) { described_class.new }
 
     context 'setting with default' do
-      it { expect(config.target_columns_file_path).to eq Pathname('target_columns.yml') }
+      it { expect(config.target_columns_file_path).to eq Pathname('masking.yml') }
     end
   end
 
@@ -46,7 +46,7 @@ RSpec.describe Masking::Config do
     let(:config) { described_class.new }
 
     it 'return Masking::Config::TargetColumns' do
-      expect(Masking::Config::TargetColumns).to receive(:new).with(Pathname('target_columns.yml'))
+      expect(Masking::Config::TargetColumns).to receive(:new).with(Pathname('masking.yml'))
       subject
     end
   end

@@ -46,7 +46,7 @@ RSpec.describe Masking::Cli do
 
         it do
           expect { subject }.to raise_error(SystemExit) & \
-                                output("ERROR: config file (target_columns.yml) does not exist\n").to_stderr
+                                output("ERROR: config file (masking.yml) does not exist\n").to_stderr
         end
       end
 
@@ -58,7 +58,7 @@ RSpec.describe Masking::Cli do
 
         it do
           expect { subject }.to raise_error(SystemExit) & \
-                                output("ERROR: config file (target_columns.yml) is not file\n").to_stderr
+                                output("ERROR: config file (masking.yml) is not file\n").to_stderr
         end
       end
 
@@ -70,7 +70,7 @@ RSpec.describe Masking::Cli do
 
         it do
           expect { subject }.to raise_error(SystemExit) & \
-                                output("ERROR: config file (target_columns.yml) is not valid yaml format\n").to_stderr
+                                output("ERROR: config file (masking.yml) is not valid yaml format\n").to_stderr
         end
       end
     end

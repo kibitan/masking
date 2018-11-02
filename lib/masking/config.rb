@@ -14,7 +14,7 @@ module Masking
   end
 
   class Config
-    DEFAULT_TARGET_COLUMNS_YAML_PATH = Pathname('target_columns.yml')
+    DEFAULT_TARGET_COLUMNS_YAML_PATH = Pathname('masking.yml')
     attr_reader :target_columns_file_path
 
     def initialize
