@@ -18,7 +18,7 @@ module Masking
         private
 
         MAPPING = {
-          ::String     => String,
+          ::String     => StringBinaryDistinctor,
           ::Integer    => Integer,
           ::Float      => Float,
           ::Date       => Date,
