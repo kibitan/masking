@@ -3,7 +3,7 @@
 
 users:
   string: anonymized string
-  email: anonymized+%{n}@example.com # %{n} will be replaced with sequencial number
+  email: anonymized+%{n}@example.com # %{n} will be replaced with sequential number
   integer: 12345
   float: 123.45
   boolean: true

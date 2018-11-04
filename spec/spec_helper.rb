@@ -26,7 +26,7 @@ RSpec.configure do |config|
   end
 end
 
-def config_fixture_path(name = 'target_columns.yml')
+def config_fixture_path(name = 'masking.yml')
   Pathname('spec/fixtures/config').join(name)
 end
 

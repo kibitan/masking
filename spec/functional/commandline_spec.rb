@@ -17,7 +17,7 @@ RSpec.describe 'execute in command line' do
     context 'config file with sequential_number_replace' do
       context 'multiple insert statement lines for same table' do
         command_subject(
-          "masking -c #{config_fixture_path('target_columns_with_sequential_number_replace.yml')}",
+          "masking -c #{config_fixture_path('masking_with_sequential_number_replace.yml')}",
           stdin: sql_dump_line_fixture('multiple_lines_of_users.sql')
         )
 
