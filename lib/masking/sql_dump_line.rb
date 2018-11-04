@@ -5,9 +5,7 @@ require 'masking/data_mask_processor'
 module Masking
   class SQLDumpLine
     def initialize(line)
-      # TODO: line.scrub is currently workaround for avoinding
-      #   `invalid byte sequence in UTF-8` error in binary file
-      @line = line.scrub
+      @line = line.b
     end
 
     def output
@@ -17,7 +15,7 @@ module Masking
     private
 
     attr_reader :line
-    INSERT_STATEMENT_REGEXP = /^INSERT/
+    INSERT_STATEMENT_REGEXP = /^INSERT/n
 
     def insert_statement?
       line.match?(INSERT_STATEMENT_REGEXP)

@@ -10,8 +10,7 @@ module Masking
           end
 
           def call
-            # TODO: should put with Encoding::ASCII_8BIT
-            "_binary '#{binary}'".dup.force_encoding(Encoding::UTF_8)
+            "_binary '#{binary}'".b
           end
 
           private

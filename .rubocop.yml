@@ -2,8 +2,3 @@ inherit_from: .rubocop_todo.yml
 
 Metrics/LineLength:
   Max: 120
-
-# this library treat ASCII-8BIT(binary) so disable.
-# refs: https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Performance/UnfreezeString
-Performance/UnfreezeString:
-  Enabled: false

@@ -3,10 +3,15 @@
 
 users:
   string: anonymized string
-  email: anonymized+%{n}@example.com # %{n} will be replaced with sequential number
+  email: anonymized+%{n}@example.com
   integer: 12345
   float: 123.45
   boolean: true
   null: null
   date: 2018-08-24
   time: 2018-08-24 15:54:06
+  binary_or_blob: !binary |
+    R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
+    OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
+    +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
+    AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=

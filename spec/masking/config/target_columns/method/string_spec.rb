@@ -15,7 +15,7 @@ RSpec.describe Masking::Config::TargetColumns::Method::String do
     context 'when "あああ"' do
       let(:value) { 'あああ' }
 
-      it { is_expected.to eq "'あああ'" }
+      it { is_expected.to eq "'あああ'".b }
     end
 
     # rubocop:disable Style/FormatStringToken

@@ -50,12 +50,12 @@ RSpec.describe Masking::SQLDumpLine do
       let(:line) { insert_statement_fixture('with_binary.sql') }
 
       it 'call DataMaskProcessor' do
-        pending 'workaround implementation'
-        expect(Masking::DataMaskProcessor).to receive(:process).with(line)
+        expect(Masking::DataMaskProcessor).to receive(:process).with(line.b)
 
         expect { subject }.not_to raise_error
-        it_behaves_like 'should be same with line'
       end
+
+      it_behaves_like 'should be same with line'
     end
   end
 
@@ -85,11 +85,6 @@ RSpec.describe Masking::SQLDumpLine do
     context 'when line is insert statement including invalid utf8 char' do
       let(:line) { insert_statement_fixture('with_binary.sql') }
 
-      # NOTE: `ArgumentError: invalid byte sequence in UTF-8` can be happen here
-      # ArgumentError:
-      #   invalid byte sequence in UTF-8
-      # ./lib/masking/sql_dump_line.rb:21:in `match?'
-      # ./lib/masking/sql_dump_line.rb:21:in `insert_statement?'
       it { is_expected.to eq true }
     end
   end
