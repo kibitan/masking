@@ -19,7 +19,6 @@ module Masking
     end
 
     def run
-      ## NOTE: probably here has memory consumption issue when STDIN is bigger
       input.each_line do |line|
         output.print SQLDumpLine.new(line).output
       end

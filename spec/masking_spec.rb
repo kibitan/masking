@@ -9,7 +9,7 @@ RSpec.describe Masking do
     subject { described_class.run }
 
     it 'call Main.new.run' do
-      expect_any_instance_of(Masking::Main).to receive(:run)
+      expect(Masking::Main).to receive_message_chain(:new, :run)
 
       expect { subject }.not_to raise_error
     end
