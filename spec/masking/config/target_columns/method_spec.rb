@@ -10,7 +10,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { 'string' }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::String).to receive(:new).with('string')
+        expect(Masking::Config::TargetColumns::Method::StringBinaryDistinctor).to receive(:new).with('string')
         subject
       end
     end

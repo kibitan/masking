@@ -33,14 +33,6 @@ RSpec.describe Masking::InsertStatement do
     end
   end
 
-  describe '#values_regexp' do
-    subject { described_class.new(raw_line).send(:values_regexp) }
-
-    it 'returns dynamic regexp' do
-      is_expected.to eq(/\(([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL),([0-9.-]+|'.*?'|NULL)\),?/) # rubocop:disable Metrics/LineLength
-    end
-  end
-
   # rubocop:disable Metrics/LineLength
   describe '#values' do
     subject { described_class.new(raw_line).values }
@@ -70,6 +62,19 @@ RSpec.describe Masking::InsertStatement do
           Masking::InsertStatement::Value.new(
             columns: %i[float_id name email],
             data: ['-2.5', "''", 'NULL']
+          )
+        ]
+      end
+    end
+
+    context 'with binary type' do
+      let(:raw_line) { insert_statement_fixture('with_binary_type.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar binary blob varchar2 text int],
+            data: ['1', "'sample text'", "_binary 'binarydata'", "_binary 'blob'", "'varchar2'", "'text text'", '123']
           )
         ]
       end

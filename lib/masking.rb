@@ -14,12 +14,11 @@ module Masking
 
   class Main
     def initialize(input: $stdin, output: $stdout)
-      @input  = input
-      @output = output
+      @input  = input.set_encoding(Encoding::ASCII_8BIT, Encoding::ASCII_8BIT)
+      @output = output.set_encoding(Encoding::ASCII_8BIT, Encoding::ASCII_8BIT)
     end
 
     def run
-      ## NOTE: probably here has memory consumption issue when STDIN is bigger
       input.each_line do |line|
         output.print SQLDumpLine.new(line).output
       end

@@ -31,9 +31,9 @@ def config_fixture_path(name = 'masking.yml')
 end
 
 def insert_statement_fixture(name = 'sample.sql')
-  Pathname('spec/fixtures/insert_statement').join(name).read
+  Pathname('spec/fixtures/insert_statement').join(name).read.b
 end
 
 def sql_dump_line_fixture(name)
-  Pathname('spec/fixtures/sql_dump_line').join(name).read
+  Pathname('spec/fixtures/sql_dump_line').join(name).read.b
 end
