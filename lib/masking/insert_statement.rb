@@ -41,7 +41,9 @@ module Masking
     #   string/time type has dumped with single quote. e.g. 'string' / '2018-08-22 13:27:34'
     #   binary/blob type has dumped with _binary prefix. e.g. _binary 'binarydata'
     #   if there is single quote inside of value, it will dumped with escape. e.g. 'chikahiro\'s item'
-    VALUE_REGEXP = "([0-9.-]+|_binary '.*?'|'.*?'|NULL)"
+    #   in number, there could be include Scientific notation e.g. 1.2E3 / -1.2E-3 / 1e+030 / 9.71726e-17
+    #     refs: https://dev.mysql.com/doc/refman/5.7/en/precision-math-numbers.html
+    VALUE_REGEXP = "([+eE0-9.-]+|_binary '.*?'|'.*?'|NULL)"
 
     def values_regexp
       /\(#{([VALUE_REGEXP] * columns.count).join(?,)}\),?/

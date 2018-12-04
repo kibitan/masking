@@ -67,6 +67,23 @@ RSpec.describe Masking::InsertStatement do
       end
     end
 
+    context 'with Scientific notation in value' do
+      let(:raw_line) { insert_statement_fixture('number_with_scientific_notation.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[float1 float2 string],
+            data: ['9.71726e-17', '1e+030', 'NULL']
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[float1 float2 string],
+            data: ['1.2E3', '-1.2E-3', "'test string'"]
+          )
+        ]
+      end
+    end
+
     context 'with binary type' do
       let(:raw_line) { insert_statement_fixture('with_binary_type.sql') }
 
