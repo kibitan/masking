@@ -88,7 +88,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
-  coveralls (= 0.7.12)
+  coveralls
   masking!
   pre-commit
   pry
