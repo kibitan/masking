@@ -96,6 +96,24 @@ RSpec.describe Masking::InsertStatement do
         ]
       end
     end
+
+    context 'with binary type' do
+      let(:raw_line) { insert_statement_fixture('binary_type_include_parenthesis.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar binary],
+            data: ['1', "'sample text'", "_binary 'include apostrophe and ending parenthesis ') this pattern can be wrong'"]
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar binary],
+            data: ['2', "'sample text 2'", "_binary 'test binary'"]
+          )
+        ]
+      end
+    end
   end
+
   # rubocop:enable Metrics/LineLength
 end

@@ -1,0 +1,1 @@
+INSERT INTO `sample_with_binary_type` (`id`, `varchar`, `binary`) VALUES (1,'sample text',_binary 'last order of columns and include apostrophe and ending parenthesis ') this pattern can be wrong'),(2,'sample text 2',_binary 'test binary');
