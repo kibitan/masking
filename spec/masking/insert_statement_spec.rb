@@ -92,6 +92,10 @@ RSpec.describe Masking::InsertStatement do
           Masking::InsertStatement::Value.new(
             columns: %i[id varchar binary blob varchar2 text int],
             data: ['1', "'sample text'", "_binary 'binarydata'", "_binary 'blob'", "'varchar2'", "'text text'", '123']
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar binary blob varchar2 text int],
+            data: ['2', "'sample text 2'", "_binary 'binarydata 2'", "_binary 'blob 2'", "'varchar2 2'", "'text text text'", '1234']
           )
         ]
       end
