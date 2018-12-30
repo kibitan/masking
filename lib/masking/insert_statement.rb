@@ -43,7 +43,14 @@ module Masking
     #   if there is single quote inside of value, it will dumped with escape. e.g. 'chikahiro\'s item'
     #   in number, there could be include Scientific notation e.g. 1.2E3 / -1.2E-3 / 1e+030 / 9.71726e-17
     #     refs: https://dev.mysql.com/doc/refman/5.7/en/precision-math-numbers.html
-    VALUE_REGEXP = %q{([+eE0-9.-]+|_binary '(?~\'\)).*?'|'.*?'|NULL)}
+    REGEXPS = {
+      number:      '[+eE0-9.-]+',
+      null:        'NULL',
+      string_time: "'.*?'",
+      binary:      %q|_binary '(?~\'\)).*?'|,
+    }.freeze
+
+    VALUE_REGEXP = "(#{REGEXPS.values.join(?|)})"
 
     def values_regexp
       /\(#{([VALUE_REGEXP] * columns.count).join(?,)}\),?/
