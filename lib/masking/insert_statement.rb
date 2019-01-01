@@ -36,8 +36,8 @@ module Masking
     private
 
     attr_reader :columns_section, :values_section
-    PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/
-    COLUMNS_REGEXP = /`(.*?)`/
+    PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/.freeze
+    COLUMNS_REGEXP = /`(.*?)`/.freeze
     # NOTE: in mysqldump,
     #   integer/float/NULL type has dumped without single quote. e.g. -123 / 2.4 / NULL
     #   string/time type has dumped with single quote. e.g. 'string' / '2018-08-22 13:27:34'
