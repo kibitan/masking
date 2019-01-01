@@ -24,7 +24,9 @@ module Masking
 
     def values
       # NOTE: define and extract to ValueSet class?
-      @values ||= values_section.scan(values_regexp).map { |data| Value.new(columns: columns, data: data) }
+      @values ||= values_section.split('),(')
+                                .map { |row| row.scan(values_regexp).flatten }
+                                .map { |data| Value.new(columns: columns, data: data) }
     end
 
     def sql
