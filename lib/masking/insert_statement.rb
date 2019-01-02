@@ -24,9 +24,21 @@ module Masking
 
     def values
       # NOTE: define and extract to ValueSet class?
-      @values ||= values_section.split('),(')
-                                .map { |row| row.scan(values_regexp).flatten }
-                                .map { |data| Value.new(columns: columns, data: data) }
+      @values ||= begin
+        value_rows = values_section.split(VALUE_ROW_SPLITTER)
+        value_rows.each_with_index do |value_row, i|
+          # Check quote count on each value and continue if it's even, concat if it's odd ( it means a value contains "),(" pattern )
+          # refs: Ruby 2.6.0とより高速なcsv - ククログ(2018-12-25)]: https://www.clear-code.com/blog/2018/12/25.html
+          #  > このようなケースにも対応するために、FasterCSVはline.split(",")した後の各要素のダブルクォートの数を数えます。
+          #  > ダブルクォートの数が偶数ならダブルクォートの対応が取れていて、奇数なら取れていないというわけです。
+          #  > ダブルクォートの対応が取れていない場合は後続する要素と連結します。
+          if value_row.gsub(/\\'/, '').scan(/'/).count.odd?
+            value_rows[i] += VALUE_ROW_SPLITTER + value_rows.delete_at(i + 1)
+          end
+        end
+        value_rows.map { |row| row.scan(values_regexp).flatten }
+                  .map { |data| Value.new(columns: columns, data: data) }
+      end
     end
 
     def sql
@@ -36,8 +48,11 @@ module Masking
     private
 
     attr_reader :columns_section, :values_section
+
+    VALUE_ROW_SPLITTER = '),('
     PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/.freeze
     COLUMNS_REGEXP = /`(.*?)`/.freeze
+
     # NOTE: in mysqldump,
     #   integer/float/NULL type has dumped without single quote. e.g. -123 / 2.4 / NULL
     #   string/time type has dumped with single quote. e.g. 'string' / '2018-08-22 13:27:34'
@@ -53,7 +68,7 @@ module Masking
     VALUE_REGEXP = "(#{NUMBER_REGEXP}|#{NULL_REGEXP}|#{STRING_TIME_REGEXP}|#{BINARY_REGEXP})"
 
     def values_regexp
-      /\(#{([VALUE_REGEXP] * columns.count).join(?,)}\),?/
+      /\(?#{([VALUE_REGEXP] * columns.count).join(?,)}\)?/
     end
   end
 end
