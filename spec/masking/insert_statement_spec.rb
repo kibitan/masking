@@ -67,6 +67,23 @@ RSpec.describe Masking::InsertStatement do
       end
     end
 
+    context 'with bracket and comman more than once in value' do
+      let(:raw_line) { insert_statement_fixture('bracket_and_comma_appears_more_than_once.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[id name email],
+            data: ['1', "'patten ),( and ),( more than once ),('", "'kibitan2@example.com'"]
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[id name email],
+            data: ['-2', "'single quote \\' also appear '", 'NULL']
+          )
+        ]
+      end
+    end
+
     context 'with Scientific notation in value' do
       let(:raw_line) { insert_statement_fixture('number_with_scientific_notation.sql') }
 

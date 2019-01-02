@@ -32,13 +32,17 @@ module Masking
           #  > このようなケースにも対応するために、FasterCSVはline.split(",")した後の各要素のダブルクォートの数を数えます。
           #  > ダブルクォートの数が偶数ならダブルクォートの対応が取れていて、奇数なら取れていないというわけです。
           #  > ダブルクォートの対応が取れていない場合は後続する要素と連結します。
-          if value_row.gsub(/\\'/, '').scan(/'/).count.odd?
-            value_rows[i] += VALUE_ROW_SPLITTER + value_rows.delete_at(i + 1)
-          end
+          func(value_rows, i)
         end
         value_rows.map { |row| row.scan(values_regexp).flatten }
                   .map { |data| Value.new(columns: columns, data: data) }
       end
+    end
+
+    def func(value_rows, i)
+      return if value_rows[i].gsub(/\\'/, '').scan(/'/).count.even?
+      value_rows[i] += VALUE_ROW_SPLITTER + value_rows.delete_at(i + 1)
+      func(value_rows, i)
     end
 
     def sql
