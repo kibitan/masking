@@ -60,11 +60,13 @@ module Masking
       /\(?#{([VALUE_REGEXP] * columns.count).join(?,)}\)?/
     end
 
-    # Check quote count on each value and continue if it's even, concat if it's odd ( it means a value contains "),(" pattern )
-    #   refs: Ruby 2.6.0とより高速なcsv - ククログ(2018-12-25)]: https://www.clear-code.com/blog/2018/12/25.html
-    #    > このようなケースにも対応するために、FasterCSVはline.split(",")した後の各要素のダブルクォートの数を数えます。
-    #    > ダブルクォートの数が偶数ならダブルクォートの対応が取れていて、奇数なら取れていないというわけです。
-    #    > ダブルクォートの対応が取れていない場合は後続する要素と連結します。
+    # Check single quote count on each value, and just continue if it's even number.
+    # if it's odd, concat with next row (it means a value contains "),(" pattern)
+    #   e.g. INSERT ... VALUES (123,'string ),( abc'),(456,'ab');
+    # refs: Ruby 2.6.0とより高速なcsv - ククログ(2018-12-25)]: https://www.clear-code.com/blog/2018/12/25.html
+    #   > このようなケースにも対応するために、FasterCSVはline.split(",")した後の各要素のダブルクォートの数を数えます。
+    #   > ダブルクォートの数が偶数ならダブルクォートの対応が取れていて、奇数なら取れていないというわけです。
+    #   > ダブルクォートの対応が取れていない場合は後続する要素と連結します。
     def recursive_pattern_value_concat(value_rows, index)
       return if value_rows[index].gsub(/\\'/, '').scan(/'/).count.even?
 
