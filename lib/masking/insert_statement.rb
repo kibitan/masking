@@ -24,25 +24,10 @@ module Masking
 
     def values
       # NOTE: define and extract to ValueSet class?
-      @values ||= begin
-        value_rows = values_section.split(VALUE_ROW_SPLITTER)
-        value_rows.each_with_index do |value_row, i|
-          # Check quote count on each value and continue if it's even, concat if it's odd ( it means a value contains "),(" pattern )
-          # refs: Ruby 2.6.0とより高速なcsv - ククログ(2018-12-25)]: https://www.clear-code.com/blog/2018/12/25.html
-          #  > このようなケースにも対応するために、FasterCSVはline.split(",")した後の各要素のダブルクォートの数を数えます。
-          #  > ダブルクォートの数が偶数ならダブルクォートの対応が取れていて、奇数なら取れていないというわけです。
-          #  > ダブルクォートの対応が取れていない場合は後続する要素と連結します。
-          func(value_rows, i)
-        end
-        value_rows.map { |row| row.scan(values_regexp).flatten }
-                  .map { |data| Value.new(columns: columns, data: data) }
-      end
-    end
-
-    def func(value_rows, i)
-      return if value_rows[i].gsub(/\\'/, '').scan(/'/).count.even?
-      value_rows[i] += VALUE_ROW_SPLITTER + value_rows.delete_at(i + 1)
-      func(value_rows, i)
+      @values ||= values_section.split(VALUE_ROW_SPLITTER)
+                                .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat(rows, i) } }
+                                .map { |row| row.scan(values_regexp).flatten }
+                                .map { |data| Value.new(columns: columns, data: data) }
     end
 
     def sql
@@ -73,6 +58,18 @@ module Masking
 
     def values_regexp
       /\(?#{([VALUE_REGEXP] * columns.count).join(?,)}\)?/
+    end
+
+    # Check quote count on each value and continue if it's even, concat if it's odd ( it means a value contains "),(" pattern )
+    #   refs: Ruby 2.6.0とより高速なcsv - ククログ(2018-12-25)]: https://www.clear-code.com/blog/2018/12/25.html
+    #    > このようなケースにも対応するために、FasterCSVはline.split(",")した後の各要素のダブルクォートの数を数えます。
+    #    > ダブルクォートの数が偶数ならダブルクォートの対応が取れていて、奇数なら取れていないというわけです。
+    #    > ダブルクォートの対応が取れていない場合は後続する要素と連結します。
+    def recursive_pattern_value_concat(value_rows, index)
+      return if value_rows[index].gsub(/\\'/, '').scan(/'/).count.even?
+
+      value_rows[index] += VALUE_ROW_SPLITTER + value_rows.delete_at(index + 1)
+      recursive_pattern_value_concat(value_rows, index)
     end
   end
 end
