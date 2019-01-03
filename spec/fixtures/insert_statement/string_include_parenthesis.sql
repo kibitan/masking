@@ -1,0 +1,1 @@
+INSERT INTO `sample_with_string` (`id`, `varchar`, `text`) VALUES (1,'sample text','last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'),(2,'sample text 2','test text 2');

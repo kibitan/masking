@@ -84,6 +84,23 @@ RSpec.describe Masking::InsertStatement do
       end
     end
 
+    context 'string seated in last order of columns and include apostrophe and ending parenthesis' do
+      let(:raw_line) { insert_statement_fixture('string_include_parenthesis.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar text],
+            data: ['1', "'sample text'", %q|'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|]
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar text],
+            data: ['2', "'sample text 2'", "'test text 2'"]
+          )
+        ]
+      end
+    end
+
     context 'with Scientific notation in value' do
       let(:raw_line) { insert_statement_fixture('number_with_scientific_notation.sql') }
 
