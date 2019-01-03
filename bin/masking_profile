@@ -17,7 +17,7 @@ end
 $stdout.reopen(original_stdout)
 
 flat_result_file = Pathname(__dir__).join('../profile/flat.txt')
-RubyProf::FlatPrinter.new(result).tap do |flat_printer|
+RubyProf::FlatPrinterWithLineNumbers.new(result).tap do |flat_printer|
   flat_printer.print(File.new(flat_result_file, 'w'))
   puts "flat result is saved at #{flat_result_file}"
 end
