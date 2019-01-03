@@ -16,4 +16,16 @@ end
 
 $stdout.reopen(original_stdout)
 
-RubyProf::FlatPrinter.new(result).print(STDOUT)
+flat_result_file = Pathname(__dir__).join('../profile/flat.txt')
+RubyProf::FlatPrinter.new(result).tap do |flat_printer|
+  # flat_printer.print(STDOUT)
+  flat_printer.print(File.new(flat_result_file, 'w'))
+  puts "result is saved at #{flat_result_file}"
+end
+
+## it will produce huge html file. just comment out if you want to use it
+# graph_html_file = Pathname(__dir__).join('../profile/graph.html')
+# RubyProf::GraphHtmlPrinter.new(result).tap do |graph_html_printer|
+#   graph_html_printer.print(File.new(graph_html_file, 'w'))
+#   puts "graph html is saved at #{graph_html_file}"
+# end

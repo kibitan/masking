@@ -112,8 +112,9 @@ $ pre-commit install
 use `bin/masking_profile`
 
 ```
- $ cat your_sample.sql | bin/masking_profile > tmp/profile_result
- $ less tmp/profile_result
+ $ cat your_sample.sql | bin/masking_profile
+result is saved at /your/repo/profile/flat.txt
+ $ less profile/flat.txt
 ```
 
 see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
