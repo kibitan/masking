@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'masking'
+require 'masking/cli'
+
+require 'ruby-prof'
+
+original_stdout = $stdout.clone
+$stdout.reopen(File.new(File::NULL, 'w'))
+
+result = RubyProf.profile do
+  Masking::Cli.new(ARGV).run
+end
+
+$stdout.reopen(original_stdout)
+
+RubyProf::FlatPrinter.new(result).print(STDOUT)

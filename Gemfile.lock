@@ -69,6 +69,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
+    ruby-prof (0.17.0)
     ruby-progressbar (1.10.0)
     simplecov (0.16.1)
       docile (~> 1.1)
@@ -99,6 +100,7 @@ DEPENDENCIES
   rake (~> 10.0)
   rspec (~> 3.0)
   rubocop
+  ruby-prof
   simplecov
   tapp
 
