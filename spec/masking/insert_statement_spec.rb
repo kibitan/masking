@@ -125,7 +125,7 @@ RSpec.describe Masking::InsertStatement do
         is_expected.to match_array [
           Masking::InsertStatement::Value.new(
             columns: %i[id varchar binary],
-            data: ['1', "'sample text'", %q|_binary 'last order of columns and include apostrophe and ending parenthesis \') this pattern can be wrong'|]
+            data: ['1', "'sample text'", %q|_binary 'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|]
           ),
           Masking::InsertStatement::Value.new(
             columns: %i[id varchar binary],
