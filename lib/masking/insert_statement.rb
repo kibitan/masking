@@ -57,7 +57,7 @@ module Masking
     VALUE_REGEXP = "(#{NUMBER_REGEXP}|#{NULL_REGEXP}|#{STRING_TIME_REGEXP}|#{BINARY_REGEXP})"
 
     def values_regexp
-      /^\(?#{([VALUE_REGEXP] * columns.count).join(?,)}\)?$/
+      @values_regexp ||= /^\(?#{([VALUE_REGEXP] * columns.count).join(?,)}\)?$/
     end
 
     # Check single quote count on each value, and just continue if it's even number.
