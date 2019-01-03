@@ -1,1 +1,1 @@
-INSERT INTO `sample_with_binary_type` (`id`, `varchar`, `binary`, `blob`, `varchar2`, `text`, `int`) VALUES (1,'sample text',_binary 'binarydata',_binary 'blob','varchar2','text text',123);
+INSERT INTO `sample_with_binary_type` (`id`, `varchar`, `binary`, `blob`, `varchar2`, `text`, `int`) VALUES (1,'sample text',_binary 'binarydata',_binary 'blob','varchar2','text text',123),(2,'sample text 2',_binary 'binarydata 2',_binary 'blob 2','varchar2 2','text text text',1234);

@@ -33,7 +33,7 @@ RSpec.describe Masking::InsertStatement do
     end
   end
 
-  # rubocop:disable Metrics/LineLength
+  # rubocop:disable Metrics/LineLength,Metrics/BlockLength
   describe '#values' do
     subject { described_class.new(raw_line).values }
 
@@ -67,6 +67,40 @@ RSpec.describe Masking::InsertStatement do
       end
     end
 
+    context 'with bracket and comman more than once in value' do
+      let(:raw_line) { insert_statement_fixture('bracket_and_comma_appears_more_than_once.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[id name email],
+            data: ['1', "'patten ),( and ),( more than once ),('", "'kibitan2@example.com'"]
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[id name email],
+            data: ['-2', "'single quote \\' also appear '", 'NULL']
+          )
+        ]
+      end
+    end
+
+    context 'string seated in last order of columns and include apostrophe and ending parenthesis' do
+      let(:raw_line) { insert_statement_fixture('string_include_parenthesis.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar text],
+            data: ['1', "'sample text'", %q|'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|]
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar text],
+            data: ['2', "'sample text 2'", "'test text 2'"]
+          )
+        ]
+      end
+    end
+
     context 'with Scientific notation in value' do
       let(:raw_line) { insert_statement_fixture('number_with_scientific_notation.sql') }
 
@@ -92,10 +126,32 @@ RSpec.describe Masking::InsertStatement do
           Masking::InsertStatement::Value.new(
             columns: %i[id varchar binary blob varchar2 text int],
             data: ['1', "'sample text'", "_binary 'binarydata'", "_binary 'blob'", "'varchar2'", "'text text'", '123']
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar binary blob varchar2 text int],
+            data: ['2', "'sample text 2'", "_binary 'binarydata 2'", "_binary 'blob 2'", "'varchar2 2'", "'text text text'", '1234']
+          )
+        ]
+      end
+    end
+
+    context 'binary type seated in last order of columns and include apostrophe and ending parenthesis' do
+      let(:raw_line) { insert_statement_fixture('binary_type_include_parenthesis.sql') }
+
+      it 'returns array of InsertStatement::Value' do
+        is_expected.to match_array [
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar binary],
+            data: ['1', "'sample text'", %q|_binary 'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|]
+          ),
+          Masking::InsertStatement::Value.new(
+            columns: %i[id varchar binary],
+            data: ['2', "'sample text 2'", "_binary 'test binary'"]
           )
         ]
       end
     end
   end
-  # rubocop:enable Metrics/LineLength
+
+  # rubocop:enable Metrics/LineLength,Metrics/BlockLength
 end
