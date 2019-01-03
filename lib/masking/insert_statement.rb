@@ -68,7 +68,7 @@ module Masking
     #   > ダブルクォートの数が偶数ならダブルクォートの対応が取れていて、奇数なら取れていないというわけです。
     #   > ダブルクォートの対応が取れていない場合は後続する要素と連結します。
     def recursive_pattern_value_concat(value_rows, index)
-      return if value_rows[index].gsub(/\\'/, '').scan(/'/).count.even?
+      return if value_rows[index].gsub(/\\\\/, '').gsub(/\\'/, '').scan(/'/).count.even?
 
       value_rows[index] += VALUE_ROW_SPLITTER + value_rows.delete_at(index + 1)
       recursive_pattern_value_concat(value_rows, index)

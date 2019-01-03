@@ -57,7 +57,7 @@ RSpec.describe Masking::InsertStatement do
         is_expected.to match_array [
           Masking::InsertStatement::Value.new(
             columns: %i[float_id name email],
-            data: ['1.23', "'comma ,,, and bracket () and single quote \\'\\' and particular patten ),( there you go!'", "'kibitan@example.com'"]
+            data: ['1.23', "'comma ,,, and bracket () and single quote \\'\\' and particular patten ),( and finished on backslash \\\\'", "'kibitan@example.com'"]
           ),
           Masking::InsertStatement::Value.new(
             columns: %i[float_id name email],
