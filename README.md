@@ -93,6 +93,17 @@ Usage: masking [options]
   bundle exec rake
 ```
 
+### Pro tip
+
+It's useful that set `rake` on [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
+
+```bash
+touch .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit && cat << EOF > .git/hooks/pre-commit
+#!/usr/bin/env bash
+bundle exec rake
+EOF
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -109,7 +120,7 @@ flat result is saved at /your/repo/profile/flat.txt
 graph result is saved at /your/repo/profile/graph.txt
 graph html is saved at /your/repo/profile/graph.html
 
- $ less profile/flat.txt
+ $ open profile/flat.txt
 ```
 
 see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
