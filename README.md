@@ -113,7 +113,9 @@ use `bin/masking_profile`
 
 ```
  $ cat your_sample.sql | bin/masking_profile
-result is saved at /your/repo/profile/flat.txt
+flat result is saved at /your/repo/profile/flat.txt
+graph result is saved at /your/repo/profile/graph.txt
+graph html is saved at /your/repo/profile/graph.html
  $ less profile/flat.txt
 ```
 
