@@ -29,7 +29,7 @@ module Masking
 
       target_columns.columns(table_name: insert_statement.table).each do |target_column|
         insert_statement.values.map do |value|
-          value[target_column.name] = target_column.masked_value if value.has_column?(target_column.name)
+          value[target_column.name] = target_column.masked_value if value.column?(target_column.name)
         end
       end
 

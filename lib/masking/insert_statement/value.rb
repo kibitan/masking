@@ -22,7 +22,7 @@ module Masking
         to_h == other.to_h
       end
 
-      def has_column?(column_name)
+      def column?(column_name)
         @columns.include?(column_name.to_sym)
       end
     end

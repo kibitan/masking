@@ -44,8 +44,8 @@ RSpec.describe Masking::InsertStatement::Value do
     it { is_expected.to be true }
   end
 
-  describe '#has_column?' do
-    subject { described_class.new(columns: columns, data: []).has_column?(column_name) }
+  describe '#column?' do
+    subject { described_class.new(columns: columns, data: []).column?(column_name) }
     let(:columns) { %i[id name email address] }
 
     context 'argument column name is in columns' do
