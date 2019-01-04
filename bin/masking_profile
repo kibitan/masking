@@ -22,16 +22,16 @@ RubyProf::FlatPrinterWithLineNumbers.new(result).tap do |flat_printer|
   puts "flat result is saved at #{flat_result_file}"
 end
 
-## it will produce big file. just comment out if you don't want to use it
+# it can produce big file. just comment out if you don't want to use it
 graph_file = Pathname(__dir__).join('../profile/graph.txt')
 RubyProf::GraphPrinter.new(result).tap do |graph_html_printer|
   graph_html_printer.print(File.new(graph_file, 'w'))
   puts "graph result is saved at #{graph_file}"
 end
 
-## it will produce huge html file. just comment in if you want to use it
-# graph_html_file = Pathname(__dir__).join('../profile/graph.html')
-# RubyProf::GraphHtmlPrinter.new(result).tap do |graph_html_printer|
-#   graph_html_printer.print(File.new(graph_html_file, 'w'))
-#   puts "graph html is saved at #{graph_html_file}"
-# end
+# it can produce huge html file. just comment out if you want to use it
+graph_html_file = Pathname(__dir__).join('../profile/graph.html')
+RubyProf::GraphHtmlPrinter.new(result).tap do |graph_html_printer|
+  graph_html_printer.print(File.new(graph_html_file, 'w'))
+  puts "graph html is saved at #{graph_html_file}"
+end
