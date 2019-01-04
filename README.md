@@ -121,52 +121,15 @@ graph html is saved at /your/repo/profile/graph.html
 
 see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
 
-## TODO
-
- - [x] commandline-tool `Thor`
- - [x] load config `target_columns.yml`
-   - [x] define `TargetColumns` class
-   - [ ] generator
-   - [ ] validate `target_columns.yml` ( format / exists )
- - [x] input SQLDump from stdin
- - [x] parse SQL
- - [x] mask data ( only fixed string )
-   - [ ] Type
-     - [x] verify Date/Time format
-   - [x] sequencial value "%{n}"
- - [x] output SQL to stdout
-   - [ ] fix bug: work with binary data (non utf-8)
- - write integration test
-   - [ ] with types
-   - [ ] make unit test decoupled
- - [ ] refactoring
-   - [ ] rename Masking::Config::TargetColumns::Column::Method
-   - [ ] extract Masking::Config::TargetColumns::TargetColumns.tables ( yaml parser )
-   - [ ] singletonize Masking::Config::TargetColumns
-   - [ ] rename Masking::Config::TargetColumns
-   - [ ] refactoring inside of DataMaskProcessor.process
-   - [ ] rename DataMaskProcessor
- - [ ] publish to gem
- - [ ] publish to HomeBrew?
-
- - setup CI
-   - [x] TravisCI
-   - [x] CodeClimate
-   - [x] Coverage
-   - [ ] rubocop
-   - [ ] SideCI(rubocop, reek)
-   - [ ] PR ready
-   - [ ] rake notes
-
 ## Future Todo
 
- - pluguable/customizable for masking way e.g. using Faker
- - Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
- - parse the schema type information and validate target columns value
- - (integration test with real database)
- - perfomance optimization
-   - make streaming process
-   - rewrite by another language?
+ * pluguable/customizable for masking way e.g. using Faker
+ * Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
+ * parse the schema type information and validate target columns value
+ * (integration test with real database)
+ * perfomance optimization
+   * make streaming process
+   * rewrite by another language?
 
 ## Contributing
 
