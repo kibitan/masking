@@ -120,7 +120,7 @@ see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https
 * Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
 * parse the schema type information and validate target columns value
 * (integration test with real database)
-* perfomance optimization
+* performance optimization
   * make streaming process
   * rewrite by another language?
 
