@@ -2,6 +2,7 @@
 
 require 'masking/insert_statement'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Masking::InsertStatement do
   let(:raw_line) { insert_statement_fixture }
 
@@ -22,7 +23,7 @@ RSpec.describe Masking::InsertStatement do
 
     it 'call SQLBuilder' do
       expect(Masking::InsertStatement::SQLBuilder).to receive(:build).with(
-        table:  'users',
+        table: 'users',
         columns: %i[id name email password_digest created_at updated_at],
         values: [
           instance_of(Masking::InsertStatement::Value),
@@ -33,7 +34,7 @@ RSpec.describe Masking::InsertStatement do
     end
   end
 
-  # rubocop:disable Metrics/LineLength,Metrics/BlockLength
+  # rubocop:disable Metrics/LineLength
   describe '#values' do
     subject { described_class.new(raw_line).values }
 
@@ -153,5 +154,6 @@ RSpec.describe Masking::InsertStatement do
     end
   end
 
-  # rubocop:enable Metrics/LineLength,Metrics/BlockLength
+  # rubocop:enable Metrics/LineLength
 end
+# rubocop:enable Metrics/BlockLength

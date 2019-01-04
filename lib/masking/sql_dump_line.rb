@@ -15,7 +15,7 @@ module Masking
     private
 
     attr_reader :line
-    INSERT_STATEMENT_REGEXP = /^INSERT/
+    INSERT_STATEMENT_REGEXP = /^INSERT/.freeze
 
     def insert_statement?
       line.match?(INSERT_STATEMENT_REGEXP)
