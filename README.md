@@ -107,6 +107,20 @@ Recommend to setup [pre-commit](https://github.com/jish/pre-commit)
 $ pre-commit install
 ```
 
+### Profiling
+
+use `bin/masking_profile`
+
+```
+ $ cat your_sample.sql | bin/masking_profile
+flat result is saved at /your/repo/profile/flat.txt
+graph result is saved at /your/repo/profile/graph.txt
+graph html is saved at /your/repo/profile/graph.html
+ $ less profile/flat.txt
+```
+
+see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
+
 ## TODO
 
  - [x] commandline-tool `Thor`

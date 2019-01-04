@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'masking'
+require 'masking/cli'
+
+require 'ruby-prof'
+
+original_stdout = $stdout.clone
+$stdout.reopen(File.new(File::NULL, 'w'))
+
+result = RubyProf.profile do
+  Masking::Cli.new(ARGV).run
+end
+
+$stdout.reopen(original_stdout)
+
+flat_result_file = Pathname(__dir__).join('../profile/flat.txt')
+RubyProf::FlatPrinterWithLineNumbers.new(result).tap do |flat_printer|
+  flat_printer.print(File.new(flat_result_file, 'w'))
+  puts "flat result is saved at #{flat_result_file}"
+end
+
+# it can produce big file. just comment out if you don't want to use it
+graph_file = Pathname(__dir__).join('../profile/graph.txt')
+RubyProf::GraphPrinter.new(result).tap do |graph_html_printer|
+  graph_html_printer.print(File.new(graph_file, 'w'))
+  puts "graph result is saved at #{graph_file}"
+end
+
+# it can produce huge html file. just comment out if you don't want to use it
+graph_html_file = Pathname(__dir__).join('../profile/graph.html')
+RubyProf::GraphHtmlPrinter.new(result).tap do |graph_html_printer|
+  graph_html_printer.print(File.new(graph_html_file, 'w'))
+  puts "graph html is saved at #{graph_html_file}"
+end
+
+# # this is quite slow so commented out. but it's useful
+# call_stack_html_file = Pathname(__dir__).join('../profile/call_stack.html')
+# RubyProf::CallStackPrinter.new(result).tap do |call_stack_html_printer|
+#   call_stack_html_printer.print(File.new(call_stack_html_file, 'w'))
+#   puts "call stack html is saved at #{call_stack_html_file}"
+# end
+
+# # I'm not sure how to read this
+# call_graph_dot_file = Pathname(__dir__).join('../profile/call_graph.dot')
+# RubyProf::DotPrinter.new(result).tap do |dot_printer|
+#   dot_printer.print(File.new(call_graph_dot_file, 'w'))
+#   puts "call graph dot file is saved at #{call_graph_dot_file}"
+# end
+
+# # I'm not sure how to read this
+# call_tree_dir = Pathname(__dir__).join('../profile/call_tree')
+# RubyProf::CallTreePrinter.new(result).tap do |call_tree_printer|
+#   call_tree_printer.print(path: File.dirname(call_tree_dir) , profile: File.basename(call_tree_dir))
+#   puts "call tree file is saved at #{call_tree_dir}"
+# end
