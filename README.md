@@ -126,7 +126,7 @@ see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kibitan/masking. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/kibitan/masking](https://github.com/kibitan/masking). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
