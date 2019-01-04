@@ -88,7 +88,7 @@ Usage: masking [options]
 ```
 
 
-## Run test & rubocop
+## Run test & rubocop & notes
 
 ```
  $ bundle exec rake
