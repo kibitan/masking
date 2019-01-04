@@ -22,7 +22,7 @@ RSpec.describe Masking::Config::TargetColumns::Column do
 
   describe '#==(other)' do
     subject do
-      described_class.new(name, table_name: table_name, method_value: method_value) ==
+      described_class.new(name, table_name: table_name, method_value: method_value) == # rubocop:disable Lint/UselessComparison,Metrics/LineLength
         described_class.new(name, table_name: table_name, method_value: method_value)
     end
 

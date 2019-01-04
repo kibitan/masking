@@ -88,10 +88,10 @@ Usage: masking [options]
 ```
 
 
-## Run test
+## Run test & rubocop
 
 ```
- $ bundle exec rspec
+ $ bundle exec rake
 ```
 
 ## Development

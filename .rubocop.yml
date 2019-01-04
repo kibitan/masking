@@ -1,7 +1,11 @@
-inherit_from: .rubocop_todo.yml
-
 Metrics/LineLength:
   Max: 120
 
-Style/AsciiComments:
+Metrics/BlockLength:
+  Max: 75
+
+Style/Documentation:
+  Enabled: false
+
+Style/CharacterLiteral:
   Enabled: false

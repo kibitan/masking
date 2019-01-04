@@ -3,6 +3,7 @@
 require 'masking/insert_statement/value'
 
 RSpec.describe Masking::InsertStatement::Value do
+  # rubocop:disable Lint/PercentStringArray
   describe '.new' do
     subject { described_class.new(columns: columns, data: data) }
     let(:columns) { %i[id name email address] }
@@ -37,15 +38,16 @@ RSpec.describe Masking::InsertStatement::Value do
   end
 
   describe '#==' do
-    subject { described_class.new(columns: columns, data: data) == described_class.new(columns: columns, data: data) }
+    subject { described_class.new(columns: columns, data: data) == described_class.new(columns: columns, data: data) } # rubocop:disable Lint/UselessComparison,Metrics/LineLength
     let(:columns) { %i[id name email address] }
     let(:data) { %w[1 'John' 'john@example.com' 'berlin'] }
 
     it { is_expected.to be true }
   end
+  # rubocop:enable Lint/PercentStringArray
 
-  describe '#has_column?' do
-    subject { described_class.new(columns: columns, data: []).has_column?(column_name) }
+  describe '#column?' do
+    subject { described_class.new(columns: columns, data: []).column?(column_name) }
     let(:columns) { %i[id name email address] }
 
     context 'argument column name is in columns' do

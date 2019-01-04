@@ -17,7 +17,7 @@ module Masking
           private
 
           attr_reader :string
-          SEQUENTIAL_NUMBER_PLACEHOLDER = /%{n}/
+          SEQUENTIAL_NUMBER_PLACEHOLDER = /%{n}/.freeze
 
           def output
             string.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, sequence.to_s)
