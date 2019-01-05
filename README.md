@@ -34,23 +34,23 @@ gem install masking
 1. setup configuration of target columns to `masking.yml`
 
   ```yaml
-# table_name:
-#   column_name: masked_value
+  # table_name:
+  #   column_name: masked_value
 
-users:
-  string: anonymized string
-  email: anonymized+%{n}@example.com # %{n} will be replaced with sequential number
-  integer: 12345
-  float: 123.45
-  boolean: true
-  null: null
-  date: 2018-08-24
-  time: 2018-08-24 15:54:06
-  binary_or_blob: !binary | # Binary Data Language-Independent Type for YAML™ Version 1.1: http://yaml.org/type/binary.html
-    R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
-    OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
-    +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
-    AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
+  users:
+    string: anonymized string
+    email: anonymized+%{n}@example.com # %{n} will be replaced with sequential number
+    integer: 12345
+    float: 123.45
+    boolean: true
+    null: null
+    date: 2018-08-24
+    time: 2018-08-24 15:54:06
+    binary_or_blob: !binary | # Binary Data Language-Independent Type for YAML™ Version 1.1: http://yaml.org/type/binary.html
+      R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
+      OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
+      +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
+      AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
   ```
 
 A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
