@@ -19,8 +19,6 @@ or install it yourself as:
 gem install masking
 ```
 
-(not published to RubyGems yet)
-
 ## Requirement
 
 * Ruby 2.5/2.6
@@ -137,7 +135,7 @@ No connection to database, No handling file, Only dealing with stdin/stdout. ~ D
 
 ### No External Dependency
 
-Depend on only pure language standard libraries, no external libraries. (except development/test enviorment)
+Depend on only pure language standard libraries, no external libraries. (except development/test environment)
 
 ### High Code Quality
 
