@@ -1,0 +1,13 @@
+version: "2"
+plugins:
+  bundler-audit:
+    enabled: true
+  markdownlint:
+    enabled: true
+    checks:
+      MD013:
+        enabled: false
+      MD034:
+        enabled: false
+      MD036:
+        enabled: false
