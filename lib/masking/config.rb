@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'pathname'
 require 'masking/config/target_columns'
 
 module Masking
