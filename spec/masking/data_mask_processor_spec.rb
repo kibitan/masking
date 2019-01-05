@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 require 'masking/data_mask_processor'
 
 RSpec.describe Masking::DataMaskProcessor do

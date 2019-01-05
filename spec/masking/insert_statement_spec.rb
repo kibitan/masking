@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 require 'masking/insert_statement'
 
 # rubocop:disable Metrics/BlockLength

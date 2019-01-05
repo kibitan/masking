@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 require 'masking/cli/error_message'
 
 RSpec.describe Masking::Cli::ErrorMessage do

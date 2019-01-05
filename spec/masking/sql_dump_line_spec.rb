@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 require 'masking/sql_dump_line'
 
 RSpec.describe Masking::SQLDumpLine do
