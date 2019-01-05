@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
 
-Command line tool of input MySQL database dump file, mask sensitive data and output.
+The command line tool for anonymizing database records by parsing a SQL dump file and build new SQL dump file with masking sensitive/credential data.
 
 ## Installation
 
@@ -91,7 +91,7 @@ Usage: masking [options]
   bundle exec rake
 ```
 
-### Pro tip
+### Protip
 
 It's useful that set `rake` on [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
 

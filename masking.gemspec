@@ -10,8 +10,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['kibitan']
   spec.email         = ['uzukifirst@gmail.com']
 
-  spec.summary       = 'database masking tool'
-  spec.description   = 'TBD'
+  spec.summary       = 'Command line tool for anonymizing databese records'
+  spec.description   = 'Command line tool for anonymizing database records by parsing a SQL dump file and ' \
+                       'build new SQL dump file with masking sensitive/credential data.'
   spec.homepage      = 'https://github.com/kibitan/masking'
   spec.license       = 'MIT'
 
