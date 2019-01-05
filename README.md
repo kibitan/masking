@@ -1,10 +1,24 @@
 # MasKING🤴
 
+The command line tool for anonymizing database records by parsing a SQL dump file and build new SQL dump file with masking sensitive/credential data.
+
+## Design Concept
+
+### KISS ~ keep it simple, stupid ~
+
+No connection to database, No handling file, Only dealing with stdin/stdout. ~ Do One Thing and Do It Well ~
+
+### No External Dependency
+
+Depend on only pure language standard libraries, no external libraries. (except development/test enviorment)
+
+### High Code Quality
+
+100% of code coverage and low complexity.
+
+[![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
 [![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
-
-The command line tool for anonymizing database records by parsing a SQL dump file and build new SQL dump file with masking sensitive/credential data.
 
 ## Installation
 
