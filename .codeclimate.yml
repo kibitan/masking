@@ -7,6 +7,9 @@ plugins:
     checks:
       MD013:
         enabled: false
+      # below 3 checks are disabled because Codeclimate's Markdownlint is not latest version
+      MD022:
+        enabled: false
       MD034:
         enabled: false
       MD036:
