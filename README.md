@@ -1,10 +1,10 @@
 # MasKING🤴
 
 [![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
-[![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 
-Command line tool of input MySQL database dump file, mask sensitive data and output.
+The command line tool for anonymizing database records by parsing a SQL dump file and build new SQL dump file with masking sensitive/credential data.
 
 ## Installation
 
@@ -18,8 +18,6 @@ or install it yourself as:
 ```bash
 gem install masking
 ```
-
-(not published to RubyGems yet)
 
 ## Requirement
 
@@ -91,7 +89,7 @@ Usage: masking [options]
   bundle exec rake
 ```
 
-### Pro tip
+### Protip
 
 It's useful that set `rake` on [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
 
@@ -129,15 +127,30 @@ graph html is saved at /your/repo/profile/graph.html
 
 see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
 
+## Design Concept
+
+### KISS ~ keep it simple, stupid ~
+
+No connection to database, No handling file, Only dealing with stdin/stdout. ~ Do One Thing and Do It Well ~
+
+### No External Dependency
+
+Depend on only pure language standard libraries, no external libraries. (except development/test environment)
+
+### High Code Quality
+
+100% of code coverage [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master) and low complexity [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
+
 ## Future Todo
 
-* pluguable/customizable for masking way e.g. using Faker
-* Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
-* parse the schema type information and validate target columns value
-* (integration test with real database)
-* performance optimization
-  * make streaming process
+* Pluguable/customizable for a mask way  e.g. integrate with [Faker](https://github.com/stympy/faker)
+* Compatible with other RDBMS  e.g. PostgreSQL, Oracle, SQL Server
+* Parse the schema type information and validate target columns value
+* Integration test with real database
+* Performance optimization
+  * Write in streaming process
   * rewrite by another language?
+* Well-documentation
 
 ## Contributing
 

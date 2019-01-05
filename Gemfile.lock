@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    masking (0.1.0)
+    masking (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -41,10 +41,7 @@ GEM
     parallel (1.12.1)
     parser (2.5.3.0)
       ast (~> 2.4.0)
-    pluginator (1.5.0)
     powerpack (0.1.2)
-    pre-commit (0.39.0)
-      pluginator (~> 1.5)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -108,7 +105,6 @@ DEPENDENCIES
   coveralls
   masking!
   mdl
-  pre-commit
   pry
   pry-byebug
   rake (~> 10.0)
