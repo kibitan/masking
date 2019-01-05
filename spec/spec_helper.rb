@@ -6,7 +6,7 @@ require 'tapp'
 require 'rspec'
 require 'simplecov'
 require 'coveralls'
-if ENV['CI'] == 'true'
+if ENV['CI'] == 'true' && RUBY_VERSION == Pathname(__dir__).join('../.ruby-version').read.chomp
   Coveralls.wear!
 else
   SimpleCov.start { add_filter %r{^/spec/} }
