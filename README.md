@@ -53,7 +53,7 @@ gem install masking
       AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
   ```
 
-A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1 ](http://yaml.org/spec/current.html#id2503753)
+A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
 
 ```yaml
 not-date: !!str 2002-04-28
@@ -135,7 +135,8 @@ see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/kibitan/masking](https://github.com/kibitan/masking). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/kibitan/masking](https://github.com/kibitan/masking).
+This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
