@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 require 'masking/config/target_columns/method/string_binary_distinctor'
 
 RSpec.describe Masking::Config::TargetColumns::Method::StringBinaryDistinctor do

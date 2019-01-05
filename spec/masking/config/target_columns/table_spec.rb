@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 require 'masking/config/target_columns/table'
 
 RSpec.describe Masking::Config::TargetColumns::Table do

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 require 'open3'
 
 def command_subject(command, stdin: '')
