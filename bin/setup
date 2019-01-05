@@ -5,6 +5,6 @@ set -vx
 
 bundle install
 
-if [[ ! -a config/target_columns.yml ]]; then
-  cp config/target_columns.sample.yml config/target_columns.yml
+if [[ ! -a masking.yml ]]; then
+  cp masking.yml.sample masking.yml
 fi
