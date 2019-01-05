@@ -145,13 +145,14 @@ see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https
 
 ## Future Todo
 
-* pluguable/customizable for masking way e.g. using Faker
-* Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
-* parse the schema type information and validate target columns value
-* (integration test with real database)
-* performance optimization
-  * make streaming process
+* Pluguable/customizable for a mask way  e.g. integrate with [Faker](https://github.com/stympy/faker)
+* Compatible with other RDBMS  e.g. PostgreSQL, Oracle, SQL Server
+* Parse the schema type information and validate target columns value
+* Integration test with real database
+* Performance optimization
+  * Write in streaming process
   * rewrite by another language?
+* Well-documentation
 
 ## Contributing
 
