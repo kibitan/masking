@@ -1,0 +1,14 @@
+version: "2"
+plugins:
+  bundler-audit:
+    enabled: true
+  markdownlint:
+    enabled: true
+    checks:
+      # below 3 checks are disabled because Codeclimate's Markdownlint is not latest version
+      MD023:
+        enabled: false
+      MD034:
+        enabled: false
+      MD036:
+        enabled: false

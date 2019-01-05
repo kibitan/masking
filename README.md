@@ -1,34 +1,33 @@
 # MasKING🤴
+
 [![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
-
-**Caution: this library is WIP now**
 
 Command line tool of input MySQL database dump file, mask sensitive data and output.
 
 ## Installation
 
-
-
 ```bash
- $ git clone git@github.com:kibitan/masking.git
- $ bin/setup
+git clone git@github.com:kibitan/masking.git
+bin/setup
 ```
 
 or install it yourself as:
 
-    $ gem install masking
+```bash
+gem install masking
+```
 
 (not published to RubyGems yet)
 
 ## Requirement
 
- * Ruby 2.5/2.6
+* Ruby 2.5/2.6
 
 ## Supported RDBMS
 
- * MySQL 5.7...(TBC)
+* MySQL 5.7...(TBC)
 
 ## Usage
 
@@ -54,7 +53,7 @@ or install it yourself as:
       AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
   ```
 
-A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1 ](http://yaml.org/spec/current.html#id2503753)
+A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
 
 ```yaml
 not-date: !!str 2002-04-28
@@ -62,21 +61,20 @@ not-date: !!str 2002-04-28
 
 String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/refman/8.0/en/string-type-overview.html). Integer/Float should be matched with [MySQL Numeric Type](https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html). Date/Time should be matched with [MySQL Date and Time Type](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-type-overview.html).
 
-
 *NOTE: MasKING doesn't check actual schema's type from dump. If you put uncomaptible value it will cause error during restoring to database.*
 
-2. dump with mask
+1. dump with mask
 
   MasKING works with `mysqldump --complete-insert`
 
-  ```
-    $ mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > masked_dump.sql
+  ```bash
+    mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > masked_dump.sql
   ```
 
-3. restore
+1. restore
 
-  ```
-   $ mysql -u USERNAME MASKED_DATABASE_NAME < masked_dump.sql
+  ```bash
+    mysql -u USERNAME MASKED_DATABASE_NAME < masked_dump.sql
   ```
 
 ### options
@@ -87,11 +85,27 @@ Usage: masking [options]
     -c, --config=FILE_PATH           specify config file. default: masking.yml
 ```
 
-
 ## Run test & rubocop & notes
 
+```bash
+  bundle exec rake
 ```
- $ bundle exec rake
+
+### Pro tip
+
+It's useful that set `rake` on [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
+
+```bash
+touch .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit && cat << EOF > .git/hooks/pre-commit
+#!/usr/bin/env bash
+bundle exec rake
+EOF
+```
+
+### [Markdown lint](https://github.com/markdownlint/markdownlint)
+
+```bash
+bundle exec mdl *.md
 ```
 
 ## Development
@@ -104,29 +118,31 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 use `bin/masking_profile`
 
-```
+```bash
  $ cat your_sample.sql | bin/masking_profile
 flat result is saved at /your/repo/profile/flat.txt
 graph result is saved at /your/repo/profile/graph.txt
 graph html is saved at /your/repo/profile/graph.html
- $ less profile/flat.txt
+
+ $ open profile/flat.txt
 ```
 
 see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
 
 ## Future Todo
 
- * pluguable/customizable for masking way e.g. using Faker
- * Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
- * parse the schema type information and validate target columns value
- * (integration test with real database)
- * perfomance optimization
-   * make streaming process
-   * rewrite by another language?
+* pluguable/customizable for masking way e.g. using Faker
+* Compatible with other RDBMS e.g. PostgreSQL, Oracle etc
+* parse the schema type information and validate target columns value
+* (integration test with real database)
+* performance optimization
+  * make streaming process
+  * rewrite by another language?
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kibitan/masking. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/kibitan/masking](https://github.com/kibitan/masking).
+This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
