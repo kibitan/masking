@@ -4,8 +4,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
 
-**Caution: this library is WIP now**
-
 Command line tool of input MySQL database dump file, mask sensitive data and output.
 
 ## Installation
