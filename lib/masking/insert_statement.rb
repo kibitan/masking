@@ -39,7 +39,7 @@ module Masking
     attr_reader :columns_section, :values_section
 
     VALUE_ROW_SPLITTER = '),('
-    PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/.freeze
+    PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES \((?<values_section>.+)\);/.freeze
     COLUMNS_REGEXP = /`(.*?)`/.freeze
 
     # NOTE: in mysqldump,
@@ -57,7 +57,7 @@ module Masking
     VALUE_REGEXP = "(#{NUMBER_REGEXP}|#{NULL_REGEXP}|#{STRING_TIME_REGEXP}|#{BINARY_REGEXP})"
 
     def values_regexp
-      @values_regexp ||= /^\(?#{([VALUE_REGEXP] * columns.count).join(?,)}\)?$/
+      @values_regexp ||= /^?#{([VALUE_REGEXP] * columns.count).join(?,)}?$/
     end
 
     # Check single quote count on each value, and just continue if it's even number.
