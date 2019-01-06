@@ -3,17 +3,11 @@
 [![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
 [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
+[![Gem Version](https://badge.fury.io/rb/masking.svg)](https://badge.fury.io/rb/masking)
 
 The command line tool for anonymizing database records by parsing a SQL dump file and build new SQL dump file with masking sensitive/credential data.
 
 ## Installation
-
-```bash
-git clone git@github.com:kibitan/masking.git
-bin/setup
-```
-
-or install it yourself as:
 
 ```bash
 gem install masking
@@ -83,6 +77,17 @@ Usage: masking [options]
     -c, --config=FILE_PATH           specify config file. default: masking.yml
 ```
 
+## Development
+
+```bash
+git clone git@github.com:kibitan/masking.git
+bin/setup
+```
+
+You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. 
+
 ## Run test & rubocop & notes
 
 ```bash
@@ -105,12 +110,6 @@ EOF
 ```bash
 bundle exec mdl *.md
 ```
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ### Profiling
 
