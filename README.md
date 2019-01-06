@@ -25,49 +25,49 @@ gem install masking
 
 1. Setup configuration for anonymizing target tables/columns to `masking.yml`
 
-  ```yaml
-  # table_name:
-  #   column_name: masked_value
+    ```yaml
+      # table_name:
+      #   column_name: masked_value
 
-  users:
-    string: anonymized string
-    email: anonymized+%{n}@example.com # %{n} will be replaced with sequential number
-    integer: 12345
-    float: 123.45
-    boolean: true
-    null: null
-    date: 2018-08-24
-    time: 2018-08-24 15:54:06
-    binary_or_blob: !binary | # Binary Data Language-Independent Type for YAML™ Version 1.1: http://yaml.org/type/binary.html
-      R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
-      OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
-      +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
-      AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
-  ```
+      users:
+        string: anonymized string
+        email: anonymized+%{n}@example.com # %{n} will be replaced with sequential number
+        integer: 12345
+        float: 123.45
+        boolean: true
+        null: null
+        date: 2018-08-24
+        time: 2018-08-24 15:54:06
+        binary_or_blob: !binary | # Binary Data Language-Independent Type for YAML™ Version 1.1: http://yaml.org/type/binary.html
+          R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
+          OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
+          +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
+          AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
+    ```
 
-  A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
+    A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
 
-  ```yaml
-  not-date: !!str 2002-04-28
-  ```
+    ```yaml
+      not-date: !!str 2002-04-28
+    ```
 
-  String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/refman/8.0/en/string-type-overview.html). Integer/Float should be matched with [MySQL Numeric Type](https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html). Date/Time should be matched with [MySQL Date and Time Type](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-type-overview.html).
+    String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/refman/8.0/en/string-type-overview.html). Integer/Float should be matched with [MySQL Numeric Type](https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html). Date/Time should be matched with [MySQL Date and Time Type](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-type-overview.html).
 
-  *NOTE: MasKING doesn't check actual schema's type from dump. If you put uncomaptible value it will cause error during restoring to database.*
+    *NOTE: MasKING doesn't check actual schema's type from dump. If you put uncomaptible value it will cause error during restoring to database.*
 
 1. Dump database with anonymizing
 
-  MasKING works with `mysqldump --complete-insert`
+    MasKING works with `mysqldump --complete-insert`
 
-  ```bash
-    mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > anonymized_dump.sql
-  ```
+    ```bash
+      mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > anonymized_dump.sql
+    ```
 
 1. Restore from anonymized dump file
 
-  ```bash
-    mysql -u USERNAME ANONYMIZED_DATABASE_NAME < anonymized_dump.sql
-  ```
+    ```bash
+      mysql -u USERNAME ANONYMIZED_DATABASE_NAME < anonymized_dump.sql
+    ```
 
 ### options
 
@@ -86,7 +86,7 @@ bin/setup
 
 You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. 
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ### Run test & rubocop & notes
 
