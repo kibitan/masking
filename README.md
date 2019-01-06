@@ -23,7 +23,7 @@ gem install masking
 
 ## Usage
 
-1. setup configuration of target columns to `masking.yml`
+1. Setup configuration for anonymizing target tables/columns to `masking.yml`
 
   ```yaml
   # table_name:
@@ -45,28 +45,28 @@ gem install masking
       AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
   ```
 
-A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
+  A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
 
-```yaml
-not-date: !!str 2002-04-28
-```
+  ```yaml
+  not-date: !!str 2002-04-28
+  ```
 
-String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/refman/8.0/en/string-type-overview.html). Integer/Float should be matched with [MySQL Numeric Type](https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html). Date/Time should be matched with [MySQL Date and Time Type](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-type-overview.html).
+  String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/refman/8.0/en/string-type-overview.html). Integer/Float should be matched with [MySQL Numeric Type](https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html). Date/Time should be matched with [MySQL Date and Time Type](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-type-overview.html).
 
-*NOTE: MasKING doesn't check actual schema's type from dump. If you put uncomaptible value it will cause error during restoring to database.*
+  *NOTE: MasKING doesn't check actual schema's type from dump. If you put uncomaptible value it will cause error during restoring to database.*
 
-1. dump with mask
+1. Dump database with anonymizing
 
   MasKING works with `mysqldump --complete-insert`
 
   ```bash
-    mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > masked_dump.sql
+    mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > anonymized_dump.sql
   ```
 
-1. restore
+1. Restore from anonymized dump file
 
   ```bash
-    mysql -u USERNAME MASKED_DATABASE_NAME < masked_dump.sql
+    mysql -u USERNAME ANONYMIZED_DATABASE_NAME < anonymized_dump.sql
   ```
 
 ### options
@@ -88,13 +88,13 @@ You can also run `bin/console` for an interactive prompt that will allow you to 
 
 To install this gem onto your local machine, run `bundle exec rake install`. 
 
-## Run test & rubocop & notes
+### Run test & rubocop & notes
 
 ```bash
   bundle exec rake
 ```
 
-### Protip
+#### Protip
 
 It's useful that set `rake` on [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
 
@@ -105,7 +105,7 @@ bundle exec rake
 EOF
 ```
 
-### [Markdown lint](https://github.com/markdownlint/markdownlint)
+#### [Markdown lint](https://github.com/markdownlint/markdownlint)
 
 ```bash
 bundle exec mdl *.md
