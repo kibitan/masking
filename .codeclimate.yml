@@ -5,10 +5,12 @@ plugins:
   markdownlint:
     enabled: true
     checks:
-      # below 3 checks are disabled because Codeclimate's Markdownlint is not latest version
+      # below 3 checks are disabled because Codeclimate's Markdownlint is not latest version (0.5.0)
       MD023:
         enabled: false
       MD034:
         enabled: false
       MD036:
         enabled: false
+    exclude_patterns:
+    - ".chglog/*.tpl.md"
