@@ -97,7 +97,7 @@ Using similar data with real one will be good to make a good view of how feature
 
 * Analyze metrics on our production data with respecting GDPR
 
-We can use this database for BI and some trouble shooting.  
+We can use this database for BI and some trouble shooting.
 
 * And… your idea here!
 
