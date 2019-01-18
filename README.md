@@ -83,7 +83,6 @@ Usage: masking [options]
 
 Some schema changing statement will lock table and it will cause trouble during the migration. But, without having a large number of record such as production, a migration will finish at the moment and easy to overlook.
 
-
 * Performance optimization of database queries
 
 Some database query can be slow, but some query isn't reproducible until you have similar amount of records/cardinality.
@@ -96,12 +95,11 @@ Some bugs are related to unexpected data in production (for instance so long tex
 
 Using similar data with real one will be good to make a good view of how feature looks like. It makes easy to find out the things to be changed/fixed before release/check the feature in production.
 
-*  Analyze metrics on our production data with respecting GDPR
+* Analyze metrics on our production data with respecting GDPR
 
 We can use this database for BI and some trouble shooting.  
 
 * And… your idea here!
-
 
 ## Development
 
