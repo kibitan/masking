@@ -62,6 +62,20 @@ RSpec.describe 'execute in command line' do
     end
 
     pending 'with invalid config structure'
-    pending 'with sqldump without `--complete-insert` option'
+
+    context 'with sqldump which is not specified `--complete-insert` option' do
+      command_subject(
+        "masking -c #{config_fixture_path}",
+        stdin: insert_statement_fixture('without_complete_insert_option.sql')
+      )
+
+      it 'should failed with error message', :aggregate_failures do
+        expect(stdout).to be_empty
+        expect(stderr).to eq(
+          "ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?\n"
+        )
+        expect(exitstatus).to eq(1)
+      end
+    end
   end
 end
