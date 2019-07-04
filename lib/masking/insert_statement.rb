@@ -27,7 +27,6 @@ module Masking
       @values ||= values_section.split(VALUE_ROW_SPLITTER)
                                 .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat(rows, i) } }
                                 .map { |row| row.scan(values_regexp).flatten }
-                                .map { |data| Value.new(columns: columns, data: data) }
     end
 
     def sql
