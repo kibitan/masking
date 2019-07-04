@@ -28,8 +28,8 @@ RSpec.describe Masking::InsertStatement do
         table: 'users',
         columns: %i[id name email password_digest created_at updated_at],
         values: [
-          instance_of(Masking::InsertStatement::Value),
-          instance_of(Masking::InsertStatement::Value)
+          instance_of(Array),
+          instance_of(Array)
         ]
       )
       subject
@@ -42,14 +42,8 @@ RSpec.describe Masking::InsertStatement do
 
     it 'returns array of InsertStatement::Value' do
       is_expected.to match_array [
-        Masking::InsertStatement::Value.new(
-          columns: %i[id name email password_digest created_at updated_at],
-          data: ['1', "'Super Chikahiro'", "'kibitan@example.com'", "'password_digest'", "'2018-03-14 00:00:00'", "'2018-03-29 00:00:00'"]
-        ),
-        Masking::InsertStatement::Value.new(
-          columns: %i[id name email password_digest created_at updated_at],
-          data: ['2', "'Super Tokoro'", "'kibitan++@example.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
-        )
+        ['1', "'Super Chikahiro'", "'kibitan@example.com'", "'password_digest'", "'2018-03-14 00:00:00'", "'2018-03-29 00:00:00'"],
+        ['2', "'Super Tokoro'", "'kibitan++@example.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
       ]
     end
 
@@ -58,14 +52,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          Masking::InsertStatement::Value.new(
-            columns: %i[float_id name email],
-            data: ['1.23', "'comma ,,, and bracket () and single quote \\'\\' and particular patten ),( and finished on backslash \\\\'", "'kibitan@example.com'"]
-          ),
-          Masking::InsertStatement::Value.new(
-            columns: %i[float_id name email],
-            data: ['-2.5', "''", 'NULL']
-          )
+            ['1.23', "'comma ,,, and bracket () and single quote \\'\\' and particular patten ),( and finished on backslash \\\\'", "'kibitan@example.com'"],
+            ['-2.5', "''", 'NULL']
         ]
       end
     end
@@ -75,14 +63,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          Masking::InsertStatement::Value.new(
-            columns: %i[id name email],
-            data: ['1', "'patten ),( and ),( more than once ),('", "'kibitan2@example.com'"]
-          ),
-          Masking::InsertStatement::Value.new(
-            columns: %i[id name email],
-            data: ['-2', "'single quote \\' also appear '", 'NULL']
-          )
+          ['1', "'patten ),( and ),( more than once ),('", "'kibitan2@example.com'"],
+          ['-2', "'single quote \\' also appear '", 'NULL']
         ]
       end
     end
@@ -92,14 +74,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          Masking::InsertStatement::Value.new(
-            columns: %i[id varchar text],
-            data: ['1', "'sample text'", %q|'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|]
-          ),
-          Masking::InsertStatement::Value.new(
-            columns: %i[id varchar text],
-            data: ['2', "'sample text 2'", "'test text 2'"]
-          )
+          ['1', "'sample text'", %q|'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|],
+          ['2', "'sample text 2'", "'test text 2'"]
         ]
       end
     end
@@ -109,14 +85,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          Masking::InsertStatement::Value.new(
-            columns: %i[float1 float2 string],
-            data: ['9.71726e-17', '1e+030', 'NULL']
-          ),
-          Masking::InsertStatement::Value.new(
-            columns: %i[float1 float2 string],
-            data: ['1.2E3', '-1.2E-3', "'test string'"]
-          )
+           ['9.71726e-17', '1e+030', 'NULL'],
+           ['1.2E3', '-1.2E-3', "'test string'"]
         ]
       end
     end
@@ -126,14 +96,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          Masking::InsertStatement::Value.new(
-            columns: %i[id varchar binary blob varchar2 text int],
-            data: ['1', "'sample text'", "_binary 'binarydata'", "_binary 'blob'", "'varchar2'", "'text text'", '123']
-          ),
-          Masking::InsertStatement::Value.new(
-            columns: %i[id varchar binary blob varchar2 text int],
-            data: ['2', "'sample text 2'", "_binary 'binarydata 2'", "_binary 'blob 2'", "'varchar2 2'", "'text text text'", '1234']
-          )
+          ['1', "'sample text'", "_binary 'binarydata'", "_binary 'blob'", "'varchar2'", "'text text'", '123'],
+          ['2', "'sample text 2'", "_binary 'binarydata 2'", "_binary 'blob 2'", "'varchar2 2'", "'text text text'", '1234']
         ]
       end
     end
@@ -143,14 +107,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          Masking::InsertStatement::Value.new(
-            columns: %i[id varchar binary],
-            data: ['1', "'sample text'", %q|_binary 'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|]
-          ),
-          Masking::InsertStatement::Value.new(
-            columns: %i[id varchar binary],
-            data: ['2', "'sample text 2'", "_binary 'test binary'"]
-          )
+          ['1', "'sample text'", %q|_binary 'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|],
+          ['2', "'sample text 2'", "_binary 'test binary'"]
         ]
       end
     end
