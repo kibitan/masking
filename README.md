@@ -150,6 +150,17 @@ graph html is saved at /your/repo/profile/graph.html
 
 see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
 
+### Benchmark
+
+use `bin/benchmark.rb`
+
+```bash
+$ bin/benchmark.rb
+       user     system      total        real
+   1.152776   0.207064   1.359840 (  1.375090)
+```
+
+
 ## Design Concept
 
 ### KISS ~ keep it simple, stupid ~
