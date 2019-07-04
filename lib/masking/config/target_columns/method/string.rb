@@ -6,12 +6,12 @@ module Masking
       class Method
         class String
           def initialize(value)
-            @string   = value.split("%{n}")
+            @string   = value
             @sequence = 0
           end
 
           def call
-            "'" + output + "'"
+            ("'" + output + "'").b
           end
 
           private
@@ -19,7 +19,7 @@ module Masking
           attr_reader :string
 
           def output
-            string.join(sequence.to_s)
+            string.sub("%{n}", sequence.to_s)
           end
 
           def sequence
