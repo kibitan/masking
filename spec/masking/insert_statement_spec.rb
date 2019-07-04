@@ -36,6 +36,36 @@ RSpec.describe Masking::InsertStatement do
     end
   end
 
+  describe '#values_separators' do
+    subject { described_class.new(raw_line).values_separators }
+
+    context "with simple statement" do
+      let(:raw_line) { insert_statement_fixture }
+      let(:start_idx) { 98 }
+      let(:value_separator1) { [100, 118, 140, 158, 180] }
+      let(:record_separator1) { 203 }
+      let(:value_separator2) { [206, 221, 245, 264, 286] }
+      let(:end_idx) { 308 }
+
+      it 'returns array of separators' do
+        is_expected.to match_array [start_idx, value_separators1, record_separator1, value_separator2, end_idx]
+      end
+    end
+
+    context "with comma and bracket in value" do
+      let(:raw_line) { insert_statement_fixture('comma_and_bracket_and_single_quote_and_empty_string_and_null_in_value.sql') }
+      let(:start_idx) { 57 }
+      let(:value_separator1) { [62, 166] }
+      let(:record_separator1) { 189 }
+      let(:value_separator2) { [195, 198] }
+      let(:end_idx) { 203 }
+
+      it 'returns array of separators' do
+        is_expected.to match_array [start_idx, value_separators1, record_separator1, value_separator2, end_idx]
+      end
+    end
+  end
+
   # rubocop:disable Metrics/LineLength
   describe '#values' do
     subject { described_class.new(raw_line).values }

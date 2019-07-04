@@ -22,6 +22,12 @@ module Masking
     end
 
     def values
+      start_index = values_separators.first
+      @values = Array.new(values_separators.size - 1)
+      values_separators[1..-1].each do |index|
+        values << raw_statement[start_index..index]
+        start_index = index
+      end
       # NOTE: define and extract to ValueSet class?
       @values ||= values_section.split(VALUE_ROW_SPLITTER)
                                 .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat(rows, i) } }
@@ -33,6 +39,42 @@ module Masking
     end
 
     private
+
+    attr_reader :raw_statement, :value_start_index, :value_end_index
+
+    def value_separate_commas
+      p_open = false
+      q_open = false
+      comma_indexes = []
+      value_sep = []
+
+      index = value_start_index
+      while index < value_end_index
+        case raw_statement[index+=1]
+        when '('
+          p_open = true unless q_open
+        when '\\'
+          nchar = raw_statement[index+1]
+          if raw_statement[index+1] == ?' || nchar == ?\\
+            index += 1
+          end
+        when ?'
+          q_open = !q_open
+        when ','
+          if p_open
+            next if q_open
+            value_sep << index
+          else
+            comma_indexes << value_sep
+            value_sep = []
+          end
+        when ')'
+          p_open = false unless q_open
+        end
+      end
+
+      comma_indexes
+    end
 
     attr_reader :columns_section, :values_section
 
