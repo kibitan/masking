@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'masking/insert_statement/value'
 require 'masking/insert_statement/sql_builder'
 
 module Masking
