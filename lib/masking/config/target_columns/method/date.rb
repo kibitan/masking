@@ -8,7 +8,7 @@ module Masking
       class Method
         class Date
           def initialize(value)
-            @date = value
+            @date = value.strftime(FORMAT)
           end
 
           def call
@@ -21,7 +21,7 @@ module Masking
           FORMAT = '%Y-%m-%d'
 
           def date_format
-            date.strftime(FORMAT)
+            date
           end
         end
       end

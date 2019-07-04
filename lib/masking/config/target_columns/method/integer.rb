@@ -6,11 +6,11 @@ module Masking
       class Method
         class Integer
           def initialize(value)
-            @integer = value
+            @integer = value.to_s
           end
 
           def call
-            integer.to_s
+            integer
           end
 
           private

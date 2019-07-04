@@ -6,21 +6,20 @@ module Masking
       class Method
         class String
           def initialize(value)
-            @string   = value
+            @string   = value.split("%{n}")
             @sequence = 0
           end
 
           def call
-            "'#{output}'".b
+            "'" + output + "'"
           end
 
           private
 
           attr_reader :string
-          SEQUENTIAL_NUMBER_PLACEHOLDER = /%{n}/.freeze
 
           def output
-            string.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, sequence.to_s)
+            string.join(sequence.to_s)
           end
 
           def sequence
