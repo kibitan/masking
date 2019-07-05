@@ -5,26 +5,15 @@ require 'masking/insert_statement/sql_builder'
 module Masking
   class InsertStatement
     attr_reader :raw_statement, :table
-    VALUES_LITERAL = ') VALUES ('
 
     def initialize(raw_statement)
       @raw_statement = raw_statement
-      @value_start_index = @raw_statement.index(VALUES_LITERAL) + VALUES_LITERAL.size - 2
-      @value_end_index = @raw_statement.size - 3
 
       PARSE_REGEXP.match(raw_statement).tap do |match_data|
         @table           = match_data[:table]
         @columns_section = match_data[:columns_section]
         @values_section  = match_data[:values_section]
       end
-    end
-
-    def values_separators
-      @values_separater ||= [
-        @value_start_index + 1,
-        *value_separate_commas,
-        @value_end_index
-      ]
     end
 
     def columns
@@ -44,35 +33,6 @@ module Masking
     end
 
     private
-
-    attr_reader :raw_statement, :value_start_index, :value_end_index
-
-    def value_separate_commas
-      p_open = false
-      q_open = false
-      comma_indexes = []
-
-      index = value_start_index
-      while index < value_end_index
-        case raw_statement[index += 1]
-        when '('
-          p_open = true unless q_open
-        when '\\'
-          nchar = raw_statement[index + 1]
-          index += 1 if nchar == ?' || nchar == ?\\
-        when ?'
-          q_open = !q_open
-        when ','
-          next if p_open || q_open
-
-          comma_indexes << index
-        when ')'
-          p_open = false unless q_open
-        end
-      end
-
-      comma_indexes
-    end
 
     attr_reader :columns_section, :values_section
 
