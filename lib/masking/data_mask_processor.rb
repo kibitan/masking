@@ -19,27 +19,13 @@ module Masking
     def initialize(insert_statement_line, target_columns:)
       @raw_line         = insert_statement_line
       @target_columns   = target_columns
-      @insert_statement = InsertStatement.new(insert_statement_line)
+      @insert_statement = InsertStatement.new(insert_statement_line, target_columns)
     end
 
     # TODO: define insert_statement.mask_values(column, mask_method) method & refactoring
     # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     def process
       return raw_line unless target_table?
-
-      columns = target_columns.columns(table_name: insert_statement.table)
-      if columns.first.index.nil?
-        columns.each do |target_column|
-          target_column.index = insert_statement.columns.index(target_column.name)
-        end
-      end
-
-      insert_statement.values.each do |values|
-        columns.each do |target_column|
-          values[target_column.index] = target_column.masked_value unless target_column.index.nil?
-        end
-      end
-
       insert_statement.sql
     end
     # rubocop:enable Metrics/AbcSize,Metrics/MethodLength

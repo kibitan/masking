@@ -8,20 +8,29 @@ require 'masking/insert_statement'
 RSpec.describe Masking::InsertStatement do
   let(:raw_line) { insert_statement_fixture }
 
+  let(:table_columns) do 
+    columns = %i[id name email password_digest created_at updated_at].map do |name|
+      Masking::Config::TargetColumns::Column.new(name, table_name: "users", method_value: nil)
+    end
+    double(:table_columns, columns: columns)
+  end
+
+  let(:insert_statement) { described_class.new(raw_line, table_columns) }
+
   describe '#table' do
-    subject { described_class.new(raw_line).table }
+    subject { insert_statement.table }
 
     it { is_expected.to eq 'users' }
   end
 
   describe '#columns' do
-    subject { described_class.new(raw_line).columns }
+    subject { insert_statement.columns }
 
     it { is_expected.to eq %i[id name email password_digest created_at updated_at] }
   end
 
   describe '#sql' do
-    subject { described_class.new(raw_line).sql }
+    subject { insert_statement.sql }
 
     it 'call SQLBuilder' do
       expect(Masking::InsertStatement::SQLBuilder).to receive(:build).with(
@@ -37,7 +46,7 @@ RSpec.describe Masking::InsertStatement do
   end
 
   describe '#values_separators' do
-    subject { described_class.new(raw_line).values_separators }
+    subject { described_class.new(raw_line, table_columns).values_separators }
 
     context "with simple statement" do
       let(:raw_line) { insert_statement_fixture }
@@ -67,7 +76,7 @@ RSpec.describe Masking::InsertStatement do
 
   # rubocop:disable Metrics/LineLength
   describe '#values' do
-    subject { described_class.new(raw_line).values }
+    subject { described_class.new(raw_line, table_columns).values }
 
     it 'returns array of InsertStatement::Value' do
       is_expected.to match_array [
