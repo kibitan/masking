@@ -75,6 +75,7 @@ module Masking
       columns_to_anonymize.each do |target_column|
         values[target_column.index] = target_column.masked_value unless target_column.index.nil?
       end
+      values
     end
 
     def value_separate_commas
