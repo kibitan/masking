@@ -42,26 +42,25 @@ RSpec.describe Masking::InsertStatement do
     context "with simple statement" do
       let(:raw_line) { insert_statement_fixture }
       let(:start_idx) { 98 }
-      let(:value_separator1) { [100, 118, 140, 158, 180] }
-      let(:record_separator1) { 203 }
-      let(:value_separator2) { [206, 221, 245, 264, 286] }
       let(:end_idx) { 308 }
+      let(:record_separator) { 203 }
+      let(:value_separator1) { [start_idx, 100, 118, 140, 158, 180, record_separator - 1] }
+      let(:value_separator2) { [record_separator + 1, 206, 221, 245, 264, 286, end_idx] }
 
       it 'returns array of separators' do
-        is_expected.to match_array [start_idx, value_separators1, record_separator1, value_separator2, end_idx]
-      end
+        is_expected.to match_array [value_separator1, value_separator2] end
     end
 
     context "with comma and bracket in value" do
       let(:raw_line) { insert_statement_fixture('comma_and_bracket_and_single_quote_and_empty_string_and_null_in_value.sql') }
       let(:start_idx) { 57 }
-      let(:value_separator1) { [62, 166] }
-      let(:record_separator1) { 189 }
-      let(:value_separator2) { [195, 198] }
+      let(:record_separator) { 188 }
       let(:end_idx) { 203 }
+      let(:value_separator1) { [start_idx , 62, 166, record_separator] }
+      let(:value_separator2) { [record_separator + 2, 195, 198, end_idx] }
 
       it 'returns array of separators' do
-        is_expected.to match_array [start_idx, value_separators1, record_separator1, value_separator2, end_idx]
+        is_expected.to match_array [value_separator1, value_separator2]
       end
     end
   end
