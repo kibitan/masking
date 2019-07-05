@@ -69,6 +69,12 @@ gem install masking
       mysql -u USERNAME ANONYMIZED_DATABASE_NAME < anonymized_dump.sql
     ```
 
+    Tip: If you don't need to have anonymized dump file, you can directly insert from stream. It can be faster because it has less IO interaction.
+
+      ```bash
+        mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking | mysql -u USERNAME ANONYMIZED_DATABASE_NAME
+      ```
+
 ### options
 
 ```bash
