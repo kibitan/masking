@@ -166,7 +166,6 @@ $ bin/benchmark.rb
    1.152776   0.207064   1.359840 (  1.375090)
 ```
 
-
 ## Design Concept
 
 ### KISS ~ keep it simple, stupid ~

@@ -11,8 +11,8 @@ RSpec.describe Masking::InsertStatement::SQLBuilder do
     let(:columns) { %i[id name email address] }
     let(:values) do
       [
-        [1,"'John'","'john@example.com'","'berlin'"],
-        [2,"'Super Chikahiro'","'kibitan++@example.com'","'tokyo'"]
+        [1, "'John'", "'john@example.com'", "'berlin'"],
+        [2, "'Super Chikahiro'", "'kibitan++@example.com'", "'tokyo'"]
       ]
     end
 

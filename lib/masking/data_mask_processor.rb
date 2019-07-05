@@ -23,7 +23,7 @@ module Masking
     end
 
     # TODO: define insert_statement.mask_values(column, mask_method) method & refactoring
-    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     def process
       return raw_line unless target_table?
 
@@ -42,7 +42,7 @@ module Masking
 
       insert_statement.sql
     end
-    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/AbcSize,Metrics/MethodLength
 
     def target_table?
       target_columns.contains?(table_name: insert_statement.table)

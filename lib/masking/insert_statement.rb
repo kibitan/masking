@@ -5,7 +5,7 @@ require 'masking/insert_statement/sql_builder'
 module Masking
   class InsertStatement
     attr_reader :raw_statement, :table
-    VALUES_LITERAL = ") VALUES ("
+    VALUES_LITERAL = ') VALUES ('
 
     def initialize(raw_statement)
       @raw_statement = raw_statement
@@ -54,18 +54,17 @@ module Masking
 
       index = value_start_index
       while index < value_end_index
-        case raw_statement[index+=1]
+        case raw_statement[index += 1]
         when '('
           p_open = true unless q_open
         when '\\'
-          nchar = raw_statement[index+1]
-          if nchar == ?' || nchar == ?\\
-            index += 1
-          end
+          nchar = raw_statement[index + 1]
+          index += 1 if nchar == ?' || nchar == ?\\
         when ?'
           q_open = !q_open
         when ','
           next if p_open || q_open
+
           comma_indexes << index
         when ')'
           p_open = false unless q_open

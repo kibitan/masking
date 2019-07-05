@@ -41,9 +41,8 @@ module Masking
 
       # TODO: extract to other class
       def tables
-        @tables ||= data.reduce({}) do |r, kv|
+        @tables ||= data.each_with_object({}) do |kv, r|
           r[kv[0].to_sym] = Table.new(kv[0], columns: kv[1])
-          r
         end
       end
     end

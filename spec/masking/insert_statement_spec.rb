@@ -39,7 +39,7 @@ RSpec.describe Masking::InsertStatement do
   describe '#values_separators' do
     subject { described_class.new(raw_line).values_separators }
 
-    context "with simple statement" do
+    context 'with simple statement' do
       let(:raw_line) { insert_statement_fixture }
       let(:start_idx) { 98 }
       let(:separators) { 203 }
@@ -50,7 +50,7 @@ RSpec.describe Masking::InsertStatement do
       end
     end
 
-    context "with comma and bracket in value" do
+    context 'with comma and bracket in value' do
       let(:raw_line) { insert_statement_fixture('comma_and_bracket_and_single_quote_and_empty_string_and_null_in_value.sql') }
       let(:start_idx) { 57 }
       let(:separators) { 189 }
@@ -78,8 +78,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-            ['1.23', "'comma ,,, and bracket () and single quote \\'   and particular patten ),( and finished on backslash \\\\'", "'kibitan@example.com'"],
-            ['-2.5', "''", 'NULL']
+          ['1.23', "'comma ,,, and bracket () and single quote \\'   and particular patten ),( and finished on backslash \\\\'", "'kibitan@example.com'"],
+          ['-2.5', "''", 'NULL']
         ]
       end
     end
@@ -111,8 +111,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-           ['9.71726e-17', '1e+030', 'NULL'],
-           ['1.2E3', '-1.2E-3', "'test string'"]
+          ['9.71726e-17', '1e+030', 'NULL'],
+          ['1.2E3', '-1.2E-3', "'test string'"]
         ]
       end
     end

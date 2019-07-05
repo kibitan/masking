@@ -87,13 +87,11 @@ RSpec.describe Masking::Config::TargetColumns do
     subject { described_class.new(file_path).send(:tables) }
     let(:file_path) { config_fixture_path }
 
-    specify {
+    specify do
       is_expected.to match(
-        {
-          admin: instance_of(Masking::Config::TargetColumns::Table),
-          users: instance_of(Masking::Config::TargetColumns::Table)
-        }
+        admin: instance_of(Masking::Config::TargetColumns::Table),
+        users: instance_of(Masking::Config::TargetColumns::Table)
       )
-    }
+    end
   end
 end
