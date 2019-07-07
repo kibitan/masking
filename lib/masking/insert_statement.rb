@@ -118,7 +118,7 @@ module Masking
 
     attr_reader :columns_section, :values_section
 
-    PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\)/.freeze
+    PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES \(/.freeze
     COLUMNS_REGEXP = /`(.*?)`/.freeze
   end
 end

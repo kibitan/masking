@@ -8,7 +8,7 @@ require 'masking/insert_statement'
 RSpec.describe Masking::InsertStatement do
   let(:raw_line) { insert_statement_fixture }
 
-  let(:table_columns) do 
+  let(:table_columns) do
     columns = %i[id name email password_digest created_at updated_at].map do |name|
       Masking::Config::TargetColumns::Column.new(name, table_name: "users", method_value: nil)
     end
@@ -27,6 +27,12 @@ RSpec.describe Masking::InsertStatement do
     subject { insert_statement.columns }
 
     it { is_expected.to eq %i[id name email password_digest created_at updated_at] }
+
+    context 'with value with Parentheses' do
+      let(:raw_line) { insert_statement_fixture('with_quotes_in_value.sql') }
+
+      it { is_expected.to eq %i[id name] }
+    end
   end
 
   describe '#sql' do
