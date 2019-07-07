@@ -69,6 +69,12 @@ gem install masking
       mysql -u USERNAME ANONYMIZED_DATABASE_NAME < anonymized_dump.sql
     ```
 
+    Tip: If you don't need to have anonymized dump file, you can directly insert from stream. It can be faster because it has less IO interaction.
+
+      ```bash
+        mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking | mysql -u USERNAME ANONYMIZED_DATABASE_NAME
+      ```
+
 ### options
 
 ```bash
@@ -149,6 +155,16 @@ graph html is saved at /your/repo/profile/graph.html
 ```
 
 see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
+
+### Benchmark
+
+use `bin/benchmark.rb`
+
+```bash
+$ bin/benchmark.rb
+       user     system      total        real
+   1.152776   0.207064   1.359840 (  1.375090)
+```
 
 ## Design Concept
 

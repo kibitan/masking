@@ -23,19 +23,26 @@ module Masking
     end
 
     # TODO: define insert_statement.mask_values(column, mask_method) method & refactoring
-    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     def process
       return raw_line unless target_table?
 
-      target_columns.columns(table_name: insert_statement.table).each do |target_column|
-        insert_statement.values.map do |value|
-          value[target_column.name] = target_column.masked_value if value.column?(target_column.name)
+      columns = target_columns.columns(table_name: insert_statement.table)
+      if columns.first.index.nil?
+        columns.each do |target_column|
+          target_column.index = insert_statement.columns.index(target_column.name)
+        end
+      end
+
+      insert_statement.values.each do |values|
+        columns.each do |target_column|
+          values[target_column.index] = target_column.masked_value unless target_column.index.nil?
         end
       end
 
       insert_statement.sql
     end
-    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/AbcSize,Metrics/MethodLength
 
     def target_table?
       target_columns.contains?(table_name: insert_statement.table)

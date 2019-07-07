@@ -7,6 +7,7 @@ module Masking
     class TargetColumns
       class Column
         attr_reader :name, :table_name, :method_value
+        attr_accessor :index
 
         def initialize(name, table_name:, method_value:)
           @name         = name.to_sym

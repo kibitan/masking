@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'masking/insert_statement/value'
 require 'masking/insert_statement/sql_builder'
 
 module Masking
@@ -26,8 +25,7 @@ module Masking
       # NOTE: define and extract to ValueSet class?
       @values ||= values_section.split(VALUE_ROW_SPLITTER)
                                 .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat(rows, i) } }
-                                .map { |row| row.scan(values_regexp).flatten }
-                                .map { |data| Value.new(columns: columns, data: data) }
+                                .flat_map { |row| row.scan(values_regexp) }
     end
 
     def sql
@@ -65,7 +63,7 @@ module Masking
     #   e.g. INSERT ... VALUES (123,'string ),( abc'),(456,'ab');
     # refs: implementation of parsing CSV on ruby standard library FasterCSV (ja): https://www.clear-code.com/blog/2018/12/25.html
     def recursive_pattern_value_concat(value_rows, index)
-      return if value_rows[index].gsub(/\\\\/, '').gsub(/\\'/, '').scan(/'/).count.even?
+      return if value_rows[index].gsub(/\\\\/, '').gsub(/\\'/, '').count(?').even?
 
       value_rows[index] += VALUE_ROW_SPLITTER + value_rows.delete_at(index + 1)
       recursive_pattern_value_concat(value_rows, index)
