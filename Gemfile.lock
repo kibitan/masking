@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    masking (0.0.2)
+    masking (0.0.3)
 
 GEM
   remote: https://rubygems.org/
