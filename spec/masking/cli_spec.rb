@@ -25,6 +25,25 @@ RSpec.describe Masking::Cli do
       it_behaves_like 'set config and call Main.run'
     end
 
+    shared_examples 'print Version and exit' do
+      it do
+        expect { subject }.to raise_error(SystemExit) & \
+                              output(Masking::VERSION + "\n").to_stdout
+      end
+    end
+
+    context 'with option `-v`' do
+      let(:argv) { ['-v'] }
+
+      it_behaves_like 'print Version and exit'
+    end
+
+    context 'with option `--version`' do
+      let(:argv) { ['--version'] }
+
+      it_behaves_like 'print Version and exit'
+    end
+
     context 'with option `-c config.yml`' do
       let(:argv) { ['-c', 'config.yml'] }
 
