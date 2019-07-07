@@ -176,10 +176,6 @@ No connection to database, No handling file, Only dealing with stdin/stdout. ~ D
 
 Depend on only pure language standard libraries, no external libraries. (except development/test environment)
 
-### High Code Quality
-
-100% of code coverage [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master) and low complexity [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
-
 ## Future Todo
 
 * Pluguable/customizable for a mask way  e.g. integrate with [Faker](https://github.com/stympy/faker)
