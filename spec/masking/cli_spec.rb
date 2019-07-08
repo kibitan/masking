@@ -30,6 +30,15 @@ RSpec.describe Masking::Cli do
         expect { subject }.to raise_error(SystemExit) & \
                               output(Masking::VERSION + "\n").to_stdout
       end
+
+      it 'exit status is 0' do
+        $stdout = File.new(File::NULL, 'w')
+        subject
+      rescue SystemExit => e
+        expect(e.status).to eq(0)
+      ensure
+        $stdout = STDOUT
+      end
     end
 
     context 'with option `-v`' do
