@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Masking::Cli do
   describe '#run' do
     subject { Masking::Cli.new(argv).run }
@@ -66,43 +67,49 @@ RSpec.describe Masking::Cli do
     end
 
     context 'unhappy path' do
+      before do
+        allow(Masking).to receive(:run)
+          .and_raise(raising_error)
+      end
       let(:argv) { [] }
 
-      context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
-        before do
-          allow(Masking).to receive(:run)
-            .and_raise(Masking::Error::ConfigFileDoesNotExist)
-        end
-
+      shared_examples 'with errormessage and exitstatus is 1' do |error_text|
         it do
           expect { subject }.to raise_error(SystemExit) & \
-                                output("ERROR: config file (masking.yml) does not exist\n").to_stderr
+                                output(error_text).to_stderr
+        end
+
+        it 'exit status is 1' do
+          $stdout = File.new(File::NULL, 'w')
+          subject
+        rescue SystemExit => e
+          expect(e.status).to eq(1)
+        ensure
+          $stdout = STDOUT
         end
       end
 
       context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
-        before do
-          allow(Masking).to receive(:run)
-            .and_raise(Masking::Error::ConfigFileIsNotFile)
-        end
+        let(:raising_error) { Masking::Error::ConfigFileDoesNotExist }
 
-        it do
-          expect { subject }.to raise_error(SystemExit) & \
-                                output("ERROR: config file (masking.yml) is not file\n").to_stderr
-        end
+        it_behaves_like 'with errormessage and exitstatus is 1', \
+                        "ERROR: config file (masking.yml) does not exist\n"
+      end
+
+      context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
+        let(:raising_error) { Masking::Error::ConfigFileIsNotFile }
+
+        it_behaves_like 'with errormessage and exitstatus is 1', \
+                        "ERROR: config file (masking.yml) is not file\n"
       end
 
       context 'raise Masking::Config::TargetColumns::ConfigFileIsNotValidYaml' do
-        before do
-          allow(Masking).to receive(:run)
-            .and_raise(Masking::Error::ConfigFileIsNotValidYaml)
-        end
+        let(:raising_error) { Masking::Error::ConfigFileIsNotValidYaml }
 
-        it do
-          expect { subject }.to raise_error(SystemExit) & \
-                                output("ERROR: config file (masking.yml) is not valid yaml format\n").to_stderr
-        end
+        it_behaves_like 'with errormessage and exitstatus is 1', \
+                        "ERROR: config file (masking.yml) is not valid yaml format\n"
       end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
