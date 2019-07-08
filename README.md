@@ -81,6 +81,7 @@ gem install masking
 $ masking -h
 Usage: masking [options]
     -c, --config=FILE_PATH           specify config file. default: masking.yml
+    -v, --version                    version
 ```
 
 ## Use case of annonymized (production) database
