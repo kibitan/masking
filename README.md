@@ -119,6 +119,23 @@ You can also run `bin/console` for an interactive prompt that will allow you to 
 
 To install this gem onto your local machine, run `bundle exec rake install`.
 
+### boot
+
+```bash
+$ bundle exec exe/masking
+```
+
+## Development with Docker
+
+```bash
+$ docker build . -t masking
+$ echo "sample stdout" | docker run -i masking
+
+or
+
+$ docker run masking bundle exec exe/masking -v
+```
+
 ### Run test & rubocop & notes
 
 ```bash
