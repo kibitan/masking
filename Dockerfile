@@ -1,10 +1,11 @@
-FROM ruby:2.6
+FROM ruby:2.6-alpine
 
-WORKDIR /srv
-RUN groupadd -r app && useradd --no-log-init --create-home -r -g app app
+WORKDIR /app
+RUN apk add --no-cache build-base git
+RUN adduser -S app
 USER app
 
-COPY --chown=app:app . .
+COPY . .
 
 RUN bundle install -j "$(nproc)"
 
