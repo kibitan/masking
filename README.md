@@ -125,6 +125,18 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 $ bundle exec exe/masking
 ```
 
+### Run test & rubocop & notes
+
+```bash
+  bundle exec rake
+```
+
+#### [Markdown lint](https://github.com/markdownlint/markdownlint)
+
+```bash
+bundle exec mdl *.md
+```
+
 ## Development with Docker
 
 ```bash
@@ -136,30 +148,7 @@ or
 $ docker run masking bundle exec exe/masking -v
 ```
 
-### Run test & rubocop & notes
-
-```bash
-  bundle exec rake
-```
-
-#### Protip
-
-It's useful that set `rake` on [Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
-
-```bash
-touch .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit && cat << EOF > .git/hooks/pre-commit
-#!/usr/bin/env bash
-bundle exec rake
-EOF
-```
-
-#### [Markdown lint](https://github.com/markdownlint/markdownlint)
-
-```bash
-bundle exec mdl *.md
-```
-
-### Profiling
+## Profiling
 
 use `bin/masking_profile`
 
