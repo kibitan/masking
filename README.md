@@ -122,7 +122,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 ### boot
 
 ```bash
-$ bundle exec exe/masking
+  bundle exec exe/masking
 ```
 
 ### Run test & rubocop & notes
