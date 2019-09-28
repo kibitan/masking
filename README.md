@@ -140,12 +140,9 @@ bundle exec mdl *.md
 ## Development with Docker
 
 ```bash
-$ docker build . -t masking
-$ echo "sample stdout" | docker run -i masking
-
-or
-
-$ docker run masking bundle exec exe/masking -v
+docker build . -t masking --target app
+echo "sample stdout" | docker run -i masking
+docker run masking -v
 ```
 
 ## Profiling

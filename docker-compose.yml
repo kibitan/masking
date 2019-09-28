@@ -2,7 +2,9 @@ version: '3.7'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      target: docker-compose
     stdin_open: true
     volumes:
       - .:/app
