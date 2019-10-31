@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'masking/errors'
 require 'masking/insert_statement/value'
 require 'masking/insert_statement/sql_builder'
 
@@ -11,6 +12,8 @@ module Masking
       @raw_statement = raw_statement
 
       PARSE_REGEXP.match(raw_statement).tap do |match_data|
+        raise Error::InsertStatementParseError if match_data.nil?
+
         @table           = match_data[:table]
         @columns_section = match_data[:columns_section]
         @values_section  = match_data[:values_section]

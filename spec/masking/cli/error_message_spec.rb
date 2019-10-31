@@ -28,5 +28,12 @@ RSpec.describe Masking::Cli::ErrorMessage do
 
       it { is_expected.to eq 'ERROR: config file (tmp/target_columns.yml) is not valid yaml format' }
     end
+
+    describe 'Masking::Error::InsertStatementParseError' do
+      let(:error) { Masking::Error::InsertStatementParseError }
+      let(:keyword_args) { {} }
+
+      it { is_expected.to eq 'ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?' } # rubocop:disable Metrics/LineLength
+    end
   end
 end
