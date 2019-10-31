@@ -12,9 +12,12 @@ services:
       - /app/tmp
       - /app/vendor
     depends_on:
-      - mysql
+      - mysqldb
 
-  mysql:
+  mysqldb:
     image: mysql:5.7
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_USER: mysqluser
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: mydb
