@@ -155,8 +155,8 @@ RSpec.describe Masking::InsertStatement do
       end
     end
 
-    context "unhappy path" do
-      context "without --complete-insert-option statement" do
+    context 'unhappy path' do
+      context 'without --complete-insert-option statement' do
         let(:raw_line) { insert_statement_fixture('without_complete_insert_option.sql') }
 
         it 'raises error InsertStatementParseError' do
