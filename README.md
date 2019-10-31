@@ -131,6 +131,13 @@ To install this gem onto your local machine, run `bundle exec rake install`.
   bundle exec rake
 ```
 
+#### acceptance test (with docker)
+
+```bash
+ docker-compose run --entrypoint sh app acceptance/run_test.sh
+```
+
+
 #### [Markdown lint](https://github.com/markdownlint/markdownlint)
 
 ```bash
