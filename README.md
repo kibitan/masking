@@ -35,7 +35,7 @@ gem install masking
         integer: 12345
         float: 123.45
         boolean: true
-        null: null
+        null_column: null
         date: 2018-08-24
         time: 2018-08-24 15:54:06
         binary_or_blob: !binary | # Binary Data Language-Independent Type for YAML™ Version 1.1: http://yaml.org/type/binary.html
