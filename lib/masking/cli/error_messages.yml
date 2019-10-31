@@ -4,3 +4,5 @@ Masking::Error::ConfigFileIsNotFile:
   "ERROR: config file (<%= config_file_path %>) is not file"
 Masking::Error::ConfigFileIsNotValidYaml:
   "ERROR: config file (<%= config_file_path %>) is not valid yaml format"
+Masking::Error::InsertStatementParseError:
+  "ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?"
