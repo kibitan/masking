@@ -1,7 +1,33 @@
-+----+-------------+--------------------------+----------+--------+---------+------+------------+---------------------+----------------+
-| id | string      | email                    | inteager | float  | boolean | null | date       | time                | binary_or_blob |
-+----+-------------+--------------------------+----------+--------+---------+------+------------+---------------------+----------------+
-|  1 | anonymized  | anonymized+1@example.com |     1245 | 123.45 |       1 | NULL | 2018-08-24 | 2018-08-24 19:54:06 | \x92           |
-|  2 | anonymized  | anonymized+2@example.com |        0 | 123.45 |       1 | NULL | 2018-08-24 | 2018-08-24 19:54:06 | \x92\x92       |
-|  3 | anonymized  | anonymized+3@example.com |       -1 | 123.45 |       1 | NULL | 2018-08-24 | 2018-08-24 19:54:06 | NULL           |
-+----+-------------+--------------------------+----------+--------+---------+------+------------+---------------------+----------------+
+*************************** 1. row ***************************
+            id: 1
+        string: anonymized 
+         email: anonymized+1@example.com
+      inteager: 1245
+         float: 123.45
+       boolean: 1
+          null: NULL
+          date: 2018-08-24
+          time: 2018-08-24 15:54:06
+binary_or_blob: \x92       
+*************************** 2. row ***************************
+            id: 2
+        string: anonymized 
+         email: anonymized+2@example.com
+      inteager: 0
+         float: 123.45
+       boolean: 1
+          null: NULL
+          date: 2018-08-24
+          time: 2018-08-24 15:54:06
+binary_or_blob: \x92\x92   
+*************************** 3. row ***************************
+            id: 3
+        string: anonymized 
+         email: anonymized+3@example.com
+      inteager: -1
+         float: 123.45
+       boolean: 1
+          null: NULL
+          date: 2018-08-24
+          time: 2018-08-24 15:54:06
+binary_or_blob: NULL

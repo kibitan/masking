@@ -16,5 +16,5 @@ mysqldump -h mysqldb -u mysqluser -ppassword mydb --complete-insert | exe/maskin
 mysql -h mysqldb -u mysqluser -ppassword mydb < $FILEDIR/tmp/masking_dumpfile.sql
 
 ## compare
-mysql -h mysqldb -u mysqluser -ppassword mydb -e 'SELECT * FROM users ORDER BY id;' --table > $FILEDIR/tmp/query_result.txt
+mysql -h mysqldb -u mysqluser -ppassword mydb -e 'SELECT * FROM users ORDER BY id;' --vertical > $FILEDIR/tmp/query_result.txt
 diff $FILEDIR/tmp/query_result.txt $FILEDIR/expected_query_result.txt
