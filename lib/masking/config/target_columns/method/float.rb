@@ -6,11 +6,11 @@ module Masking
       class Method
         class Float
           def initialize(value)
-            @float = value
+            @float = value.to_s
           end
 
           def call
-            float.to_s
+            float
           end
 
           private

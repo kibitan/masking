@@ -6,7 +6,7 @@ module Masking
       class Method
         class Time
           def initialize(value)
-            @time = value
+            @time = value.strftime(FORMAT)
           end
 
           def call
@@ -19,7 +19,7 @@ module Masking
           FORMAT = '%Y-%m-%d %H:%M:%S'
 
           def time_format
-            time.strftime(FORMAT)
+            time
           end
         end
       end

@@ -28,6 +28,7 @@ module Masking
         parser.banner = 'Usage: masking [options]'
 
         define_config_option(parser)
+        define_version_option(parser)
       end
     end
 
@@ -36,6 +37,13 @@ module Masking
         Masking.configure do |config|
           config.target_columns_file_path = file_path
         end
+      end
+    end
+
+    def define_version_option(parser)
+      parser.on('-v', '--version', 'version') do
+        puts Masking::VERSION
+        exit(true)
       end
     end
   end

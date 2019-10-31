@@ -27,7 +27,7 @@ module Masking
       end
 
       def values_section
-        values.map(&:phrase).join(?,)
+        values.map { |value| '(' + value.join(',') + ')' }.join(',')
       end
     end
   end

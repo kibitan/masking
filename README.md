@@ -69,12 +69,19 @@ gem install masking
       mysql -u USERNAME ANONYMIZED_DATABASE_NAME < anonymized_dump.sql
     ```
 
+    Tip: If you don't need to have anonymized dump file, you can directly insert from stream. It can be faster because it has less IO interaction.
+
+      ```bash
+        mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking | mysql -u USERNAME ANONYMIZED_DATABASE_NAME
+      ```
+
 ### options
 
 ```bash
 $ masking -h
 Usage: masking [options]
     -c, --config=FILE_PATH           specify config file. default: masking.yml
+    -v, --version                    version
 ```
 
 ## Use case of annonymized (production) database
@@ -150,6 +157,16 @@ graph html is saved at /your/repo/profile/graph.html
 
 see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https://github.com/ruby-prof/ruby-prof)
 
+### Benchmark
+
+use `bin/benchmark.rb`
+
+```bash
+$ bin/benchmark.rb
+       user     system      total        real
+   1.152776   0.207064   1.359840 (  1.375090)
+```
+
 ## Design Concept
 
 ### KISS ~ keep it simple, stupid ~
@@ -159,10 +176,6 @@ No connection to database, No handling file, Only dealing with stdin/stdout. ~ D
 ### No External Dependency
 
 Depend on only pure language standard libraries, no external libraries. (except development/test environment)
-
-### High Code Quality
-
-100% of code coverage [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master) and low complexity [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 
 ## Future Todo
 

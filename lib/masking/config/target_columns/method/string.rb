@@ -11,13 +11,13 @@ module Masking
           end
 
           def call
-            "'#{output}'".b
+            ("'" + output + "'").b
           end
 
           private
 
+          SEQUENTIAL_NUMBER_PLACEHOLDER = '%{n}' # rubocop:disable Style/FormatStringToken
           attr_reader :string
-          SEQUENTIAL_NUMBER_PLACEHOLDER = /%{n}/.freeze
 
           def output
             string.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, sequence.to_s)

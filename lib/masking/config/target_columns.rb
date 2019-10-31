@@ -24,7 +24,7 @@ module Masking
 
       # TODO: refactoring
       def columns(table_name:)
-        tables.find { |table| table.name == table_name.to_sym }&.columns
+        tables[table_name.to_sym]&.columns
       end
 
       def ==(other)
@@ -41,10 +41,8 @@ module Masking
 
       # TODO: extract to other class
       def tables
-        @tables ||= [].tap do |arr|
-          data.each do |table_name, columns|
-            arr << Table.new(table_name, columns: columns)
-          end
+        @tables ||= data.each_with_object({}) do |kv, r|
+          r[kv[0].to_sym] = Table.new(kv[0], columns: kv[1])
         end
       end
     end

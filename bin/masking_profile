@@ -37,11 +37,11 @@ RubyProf::GraphHtmlPrinter.new(result).tap do |graph_html_printer|
 end
 
 # # this is quite slow so commented out. but it's useful
-# call_stack_html_file = Pathname(__dir__).join('../profile/call_stack.html')
-# RubyProf::CallStackPrinter.new(result).tap do |call_stack_html_printer|
-#   call_stack_html_printer.print(File.new(call_stack_html_file, 'w'))
-#   puts "call stack html is saved at #{call_stack_html_file}"
-# end
+call_stack_html_file = Pathname(__dir__).join('../profile/call_stack.html')
+RubyProf::CallStackPrinter.new(result).tap do |call_stack_html_printer|
+  call_stack_html_printer.print(File.new(call_stack_html_file, 'w'))
+  puts "call stack html is saved at #{call_stack_html_file}"
+end
 
 # # I'm not sure how to read this
 # call_graph_dot_file = Pathname(__dir__).join('../profile/call_graph.dot')
