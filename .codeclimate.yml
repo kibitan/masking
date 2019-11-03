@@ -12,5 +12,7 @@ plugins:
         enabled: false
       MD036:
         enabled: false
+      MD033: # MD033/no-inline-html
+        enabled: false
     exclude_patterns:
     - ".chglog/*.tpl.md"
