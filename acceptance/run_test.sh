@@ -3,7 +3,7 @@
 set -Ceu -o pipefail
 set -vx
 
-MYSQL_HOST=${MYSQL_HOST:-mysqldb}
+MYSQL_HOST=${MYSQL_HOST:-db}
 MYSQL_USER=${MYSQL_USER:-mysqluser}
 MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}
 MYSQL_DBNAME=${MYSQL_DBNAME:-mydb}
@@ -21,5 +21,5 @@ mysqldump -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DBNAME" 
 mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DBNAME" < "$FILEDIR/tmp/masking_dumpfile.sql"
 
 ## compare
-mysql -h mysqldb -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DBNAME" -e 'SELECT * FROM users ORDER BY id;' --vertical > "$FILEDIR/tmp/query_result.txt"
+mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DBNAME" -e 'SELECT * FROM users ORDER BY id;' --vertical > "$FILEDIR/tmp/query_result.txt"
 diff "$FILEDIR/tmp/query_result.txt" "$FILEDIR/expected_query_result.txt"
