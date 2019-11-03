@@ -1,0 +1,12 @@
+name: Acceptance Test
+on: [push, pull_request]
+
+jobs:
+  mysql8.0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build the stack
+        run: docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml build
+      - name: run test
+        run: docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run --entrypoint sh app acceptance/run_test.sh
