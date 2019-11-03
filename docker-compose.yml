@@ -13,11 +13,3 @@ services:
       - /app/vendor
     depends_on:
       - mysqldb
-
-  mysqldb:
-    image: mysql:5.7
-    environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
-      MYSQL_USER: mysqluser
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: mydb
