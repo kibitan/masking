@@ -19,11 +19,8 @@ gem install masking
 
 ## Supported RDBMS
 
-* MySQL 5.5[^1], 5.6, 5.7, 8.0
-* MariaDB: 5.5, 10.0[^2], 10.1, 10.2, 10.3, 10.4
-
-[^1]: MySQL 5.5 is [already not supported by official](https://www.mysql.com/support/supportedplatforms/database.html)
-[^2]: MariaDB 10.0 is [already not supported by official](https://mariadb.org/about/maintenance-policy/)
+* MySQL 5.5<sup>[1](#footnote1)</sup>, 5.6, 5.7, 8.0
+* MariaDB: 5.5, 10.0<sup>[2](#footnote2)</sup>, 10.1, 10.2, 10.3, 10.4
 
 ## Usage
 
@@ -137,23 +134,22 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 #### acceptance test (with docker)
 
-* MySQL 8.0
-
 ```bash
  docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run --entrypoint sh app acceptance/run_test.sh
 ```
 
-The docker-compose file names for other database versions, specify with that file.
+The docker-compose file names for other database versions, specify that file.
 
-* MySQL 5.7: `docker-compose_mysql57.yml`
-* MySQL 5.6: `docker-compose_mysql56.yml`
-* MySQL 5.5[^1]: `docker-compose_mysql55.yml`
-* MariaDB 10.4: `docker-compose_mariadb104.yml`
-* MariaDB 10.3: `docker-compose_mariadb103.yml`
-* MariaDB 10.2: `docker-compose_mariadb102.yml`
-* MariaDB 10.1: `docker-compose_mariadb101.yml`
-* MariaDB 10.0[^2]: `docker-compose_mariadb100.yml`
-* MariaDB 5.5: `docker-compose_mariadb55.yml`
+* MySQL 8.0: [`docker-compose_mysql80.yml`](./docker-compose_mysql80.yml)
+* MySQL 5.7: [`docker-compose_mysql57.yml`](./docker-compose_mysql57.yml)
+* MySQL 5.6: [`docker-compose_mysql56.yml`](./docker-compose_mysql56.yml)
+* MySQL 5.5<sup>[1](#footnote1)</sup>: [`docker-compose_mysql55.yml`](./docker-compose_mysql55.yml)
+* MariaDB 10.4: [`docker-compose_mariadb104.yml`](./docker-compose_mariadb104.yml)
+* MariaDB 10.3: [`docker-compose_mariadb103.yml`](./docker-compose_mariadb103.yml)
+* MariaDB 10.2: [`docker-compose_mariadb102.yml`](./docker-compose_mariadb102.yml)
+* MariaDB 10.1: [`docker-compose_mariadb101.yml`](./docker-compose_mariadb101.yml)
+* MariaDB 10.0<sup>[2](#footnote2)</sup>: [`docker-compose_mariadb100.yml`](./docker-compose_mariadb100.yml)
+* MariaDB 5.5: [`docker-compose_mariadb55.yml`](./docker-compose_mariadb55.yml)
 
 #### [Markdown lint](https://github.com/markdownlint/markdownlint)
 
@@ -227,3 +223,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Masking project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kibitan/masking/blob/master/CODE_OF_CONDUCT.md).
+
+<a name="footnote1">1</a>: MySQL 5.5 is already not supported by [official](https://www.mysql.com/support/supportedplatforms/database.html)
+
+<a name="footnote2">2</a>: MariaDB 10.0 is already not supported by [official](https://mariadb.org/about/maintenance-policy/)
