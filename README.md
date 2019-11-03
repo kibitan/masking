@@ -20,9 +20,11 @@ gem install masking
 ## Supported RDBMS
 
 * MySQL 5.5[^1], 5.6, 5.7, 8.0
+* MariaDB: 5.5, 10.0[^2], 10.1, 10.2, 10.3, 10.4
 
 [^1]: MySQL 5.5 is [already not supported by official](https://www.mysql.com/support/supportedplatforms/database.html)
-
+[^2]: MariaDB 10.0 is [already not supported by official](https://mariadb.org/about/maintenance-policy/)
+maintenance-policy/)
 
 ## Usage
 
@@ -142,11 +144,17 @@ To install this gem onto your local machine, run `bundle exec rake install`.
  docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run --entrypoint sh app acceptance/run_test.sh
 ```
 
-The docker-compose file names for other MySQL versions, specify with that files.
+The docker-compose file names for other database versions, specify with that file.
 
-* 5.7: `docker-compose_mysql57.yml`
-* 5.6: `docker-compose_mysql56.yml`
-* 5.5 [^1]: `docker-compose_mysql55.yml`
+* MySQL 5.7: `docker-compose_mysql57.yml`
+* MySQL 5.6: `docker-compose_mysql56.yml`
+* MySQL 5.5 [^1]: `docker-compose_mysql55.yml`
+* MariaDB 10.4: `docker-compose_mariadb104.yml`
+* MariaDB 10.3: `docker-compose_mariadb103.yml`
+* MariaDB 10.2: `docker-compose_mariadb102.yml`
+* MariaDB 10.1: `docker-compose_mariadb101.yml`
+* MariaDB 10.0[^2]: `docker-compose_mariadb100.yml`
+* MariaDB 5.5: `docker-compose_mariadb55.yml`
 
 #### [Markdown lint](https://github.com/markdownlint/markdownlint)
 
