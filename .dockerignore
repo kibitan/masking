@@ -1,5 +1,4 @@
 /.bundle/
-/.yardoc
 /_yardoc/
 /coverage/
 /doc/
@@ -7,13 +6,11 @@
 /spec/reports/
 /tmp/
 /profile/
-/.rspec
+/vendor/
+.DS_Store
 
 # rspec failure tracking
 .rspec_status
 
-# config
-/masking.yml
-
-# artifacts of acceptance test
-acceptance/tmp
+Dockerfile
+docker-compose.yml
