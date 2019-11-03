@@ -112,6 +112,26 @@ RSpec.describe Masking::InsertStatement do
         ]
       end
     end
+
+    context 'unhappy path' do
+      shared_examples_for 'raises error InsertStatementParseError' do
+        it 'raises error InsertStatementParseError' do
+          expect { subject }.to raise_error(Masking::Error::InsertStatementParseError)
+        end
+      end
+
+      context 'without --complete-insert-option statement' do
+        let(:raw_line) { insert_statement_fixture('without_complete_insert_option.sql') }
+
+        it_behaves_like 'raises error InsertStatementParseError'
+      end
+
+      context 'invalid insert statement' do
+        let(:raw_line) { insert_statement_fixture('invalid_insert_statement.sql') }
+
+        it_behaves_like 'raises error InsertStatementParseError'
+      end
+    end
   end
 
   # rubocop:enable Metrics/LineLength
