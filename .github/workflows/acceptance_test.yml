@@ -2,7 +2,7 @@ name: Acceptance Test
 on: [push, pull_request]
 
 jobs:
-  mysql8.0:
+  mysql8-0:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
