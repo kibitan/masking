@@ -133,22 +133,28 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 #### acceptance test (with docker)
 
-* mysql 8.0
+* MySQL 8.0
 
 ```bash
  docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run --entrypoint sh app acceptance/run_test.sh
 ```
 
-* mysql 5.7
+* MySQL 5.7
 
 ```bash
  docker-compose -f docker-compose.yml -f docker-compose_mysql57.yml run --entrypoint sh app acceptance/run_test.sh
 ```
 
-* mysql 5.6
+* MySQL 5.6
 
 ```bash
  docker-compose -f docker-compose.yml -f docker-compose_mysql56.yml run --entrypoint sh app acceptance/run_test.sh
+```
+
+* MySQL 5.5
+
+```bash
+ docker-compose -f docker-compose.yml -f docker-compose_mysql55.yml run --entrypoint sh app acceptance/run_test.sh
 ```
 
 #### [Markdown lint](https://github.com/markdownlint/markdownlint)
