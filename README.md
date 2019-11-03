@@ -224,6 +224,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 Everyone interacting in the Masking project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kibitan/masking/blob/master/CODE_OF_CONDUCT.md).
 
-<a name="footnote1">1</a>: MySQL 5.5 is already not supported by [official](https://www.mysql.com/support/supportedplatforms/database.html)
-
-<a name="footnote2">2</a>: MariaDB 10.0 is already not supported by [official](https://mariadb.org/about/maintenance-policy/)
+1. <small id="footnote1"> MySQL 5.5 is already not supported by [official](https://www.mysql.com/support/supportedplatforms/database.html)</small> [↩](#footnote1)
+2. <small id="footnote2"> MariaDB 10.0 is already not supported by [official](https://mariadb.org/about/maintenance-policy/)</small> [↩](#footnote1)
