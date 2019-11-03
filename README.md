@@ -19,7 +19,10 @@ gem install masking
 
 ## Supported RDBMS
 
-* MySQL 5.7...(TBC)
+* MySQL 5.5[^1], 5.6, 5.7, 8.0
+
+[^1]: MySQL 5.5 is [already not supported by official](https://www.mysql.com/support/supportedplatforms/database.html)
+
 
 ## Usage
 
@@ -139,23 +142,11 @@ To install this gem onto your local machine, run `bundle exec rake install`.
  docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run --entrypoint sh app acceptance/run_test.sh
 ```
 
-* MySQL 5.7
+The docker-compose file names for other MySQL versions, specify with that files.
 
-```bash
- docker-compose -f docker-compose.yml -f docker-compose_mysql57.yml run --entrypoint sh app acceptance/run_test.sh
-```
-
-* MySQL 5.6
-
-```bash
- docker-compose -f docker-compose.yml -f docker-compose_mysql56.yml run --entrypoint sh app acceptance/run_test.sh
-```
-
-* MySQL 5.5
-
-```bash
- docker-compose -f docker-compose.yml -f docker-compose_mysql55.yml run --entrypoint sh app acceptance/run_test.sh
-```
+* 5.7: `docker-compose_mysql57.yml`
+* 5.6: `docker-compose_mysql56.yml`
+* 5.5 [^1]: `docker-compose_mysql55.yml`
 
 #### [Markdown lint](https://github.com/markdownlint/markdownlint)
 
