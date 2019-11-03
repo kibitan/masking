@@ -24,7 +24,6 @@ gem install masking
 
 [^1]: MySQL 5.5 is [already not supported by official](https://www.mysql.com/support/supportedplatforms/database.html)
 [^2]: MariaDB 10.0 is [already not supported by official](https://mariadb.org/about/maintenance-policy/)
-maintenance-policy/)
 
 ## Usage
 
@@ -148,7 +147,7 @@ The docker-compose file names for other database versions, specify with that fil
 
 * MySQL 5.7: `docker-compose_mysql57.yml`
 * MySQL 5.6: `docker-compose_mysql56.yml`
-* MySQL 5.5 [^1]: `docker-compose_mysql55.yml`
+* MySQL 5.5[^1]: `docker-compose_mysql55.yml`
 * MariaDB 10.4: `docker-compose_mariadb104.yml`
 * MariaDB 10.3: `docker-compose_mariadb103.yml`
 * MariaDB 10.2: `docker-compose_mariadb102.yml`
