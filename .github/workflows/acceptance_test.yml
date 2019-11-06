@@ -12,9 +12,9 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: Build the stack
-        run: docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml build
+        run: docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml build
       - name: run test
-        run: docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run -e MYSQL_HOST=$MYSQL_HOST app acceptance/run_test.sh
+        run: docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=$MYSQL_HOST app acceptance/run_test.sh
   mysql57:
     runs-on: ubuntu-latest
     env:
@@ -25,6 +25,6 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: Build the stack
-        run: docker-compose -f docker-compose.yml -f docker-compose_mysql57.yml build
+        run: docker-compose -f docker-compose.yml -f docker-compose/mysql57.yml build
       - name: run test
-        run: docker-compose -f docker-compose.yml -f docker-compose_mysql57.yml run -e MYSQL_HOST=$MYSQL_HOST app acceptance/run_test.sh
+        run: docker-compose -f docker-compose.yml -f docker-compose/mysql57.yml run -e MYSQL_HOST=$MYSQL_HOST app acceptance/run_test.sh

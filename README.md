@@ -136,22 +136,22 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 #### acceptance test (with docker)
 
 ```bash
- docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml up -d
- docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run -e MYSQL_HOST=localhost app acceptance/run_test.sh
+ docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml up -d
+ docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=localhost app acceptance/run_test.sh
 ```
 
 The docker-compose file names for other database versions, specify that file.
 
-* MySQL 8.0: [`docker-compose_mysql80.yml`](./docker-compose_mysql80.yml)
-* MySQL 5.7: [`docker-compose_mysql57.yml`](./docker-compose_mysql57.yml)
-* MySQL 5.6: [`docker-compose_mysql56.yml`](./docker-compose_mysql56.yml)
-* MySQL 5.5<sup>[1](#footnote1)</sup>: [`docker-compose_mysql55.yml`](./docker-compose_mysql55.yml)
-* MariaDB 10.4: [`docker-compose_mariadb104.yml`](./docker-compose_mariadb104.yml)
-* MariaDB 10.3: [`docker-compose_mariadb103.yml`](./docker-compose_mariadb103.yml)
-* MariaDB 10.2: [`docker-compose_mariadb102.yml`](./docker-compose_mariadb102.yml)
-* MariaDB 10.1: [`docker-compose_mariadb101.yml`](./docker-compose_mariadb101.yml)
-* MariaDB 10.0<sup>[2](#footnote2)</sup>: [`docker-compose_mariadb100.yml`](./docker-compose_mariadb100.yml)
-* MariaDB 5.5: [`docker-compose_mariadb55.yml`](./docker-compose_mariadb55.yml)
+* MySQL 8.0: [`docker-compose/mysql80.yml`](./docker-compose/mysql80.yml)
+* MySQL 5.7: [`docker-compose/mysql57.yml`](./docker-compose/mysql57.yml)
+* MySQL 5.6: [`docker-compose/mysql56.yml`](./docker-compose/mysql56.yml)
+* MySQL 5.5<sup>[1](#footnote1)</sup>: [`docker-compose/mysql55.yml`](./docker-compose/mysql55.yml)
+* MariaDB 10.4: [`docker-compose/mariadb104.yml`](./docker-compose/mariadb104.yml)
+* MariaDB 10.3: [`docker-compose/mariadb103.yml`](./docker-compose/mariadb103.yml)
+* MariaDB 10.2: [`docker-compose/mariadb102.yml`](./docker-compose/mariadb102.yml)
+* MariaDB 10.1: [`docker-compose/mariadb101.yml`](./docker-compose/mariadb101.yml)
+* MariaDB 10.0<sup>[2](#footnote2)</sup>: [`docker-compose/mariadb100.yml`](./docker-compose/mariadb100.yml)
+* MariaDB 5.5: [`docker-compose/mariadb55.yml`](./docker-compose/mariadb55.yml)
 
 #### [Markdown lint](https://github.com/markdownlint/markdownlint)
 
