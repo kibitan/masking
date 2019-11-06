@@ -4,12 +4,12 @@ on: [push, pull_request]
 jobs:
   build_image:
     runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 1 # shallow clone
-    - name: Build the stack
-      run: docker-compose build
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: Build the stack
+        run: docker-compose build
   mysql80:
     needs: build_image
     runs-on: ubuntu-latest
