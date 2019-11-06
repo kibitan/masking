@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CONTAINER_USER: root
-      MYSQL_HOST: mysql80
     steps:
       - uses: actions/checkout@v1
         with:
@@ -14,12 +13,11 @@ jobs:
       - name: Build the stack
         run: docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml build
       - name: run test
-        run: docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=$MYSQL_HOST app acceptance/run_test.sh
+        run: docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=mysql80 app acceptance/run_test.sh
   mysql57:
     runs-on: ubuntu-latest
     env:
       CONTAINER_USER: root
-      MYSQL_HOST: mysql57
     steps:
       - uses: actions/checkout@v1
         with:
@@ -27,4 +25,4 @@ jobs:
       - name: Build the stack
         run: docker-compose -f docker-compose.yml -f docker-compose/mysql57.yml build
       - name: run test
-        run: docker-compose -f docker-compose.yml -f docker-compose/mysql57.yml run -e MYSQL_HOST=$MYSQL_HOST app acceptance/run_test.sh
+        run: docker-compose -f docker-compose.yml -f docker-compose/mysql57.yml run -e MYSQL_HOST=mysql57 app acceptance/run_test.sh
