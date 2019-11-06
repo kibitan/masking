@@ -4,6 +4,7 @@ services:
   app:
     depends_on:
       - mariadb55
+    entrypoint: ./wait-for-mysql.sh mariadb55
 
   mariadb55:
     image: mariadb:5.5

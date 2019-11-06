@@ -4,6 +4,7 @@ services:
   app:
     depends_on:
       - mysql55
+    entrypoint: ./wait-for-mysql.sh mysql55
 
   mysql55:
     image: mysql:5.5

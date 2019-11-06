@@ -4,6 +4,7 @@ services:
   app:
     depends_on:
       - mariadb104
+    entrypoint: ./wait-for-mysql.sh mariadb104
 
   mariadb104:
     image: mariadb:10.4
