@@ -17,7 +17,7 @@ gem install masking
 
 ## Requirement
 
-* Ruby 2.5/2.6
+* Ruby 2.5/2.6/2.7(preview)
 
 ## Supported RDBMS
 
