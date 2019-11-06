@@ -11,3 +11,6 @@ FROM app AS docker-compose
 USER root
 RUN apk add --no-cache mysql-client
 USER app
+
+FROM docker-compose AS ci
+USER root

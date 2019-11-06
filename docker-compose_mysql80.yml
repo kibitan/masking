@@ -4,7 +4,6 @@ services:
   db:
     image: mysql:8.0
     # fix for: ERROR 1045 (28000): Plugin caching_sha2_password could not be loaded:
-    # Error loading shared library /usr//usr/lib/mariadb/plugin/caching_sha2_password.so: No such file or directory
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
