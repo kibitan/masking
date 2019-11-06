@@ -16,7 +16,7 @@ jobs:
         with:
           ruby-version: '2.7'
       - name: run test
-          run: bundle exec rspec
+        run: bundle exec rspec
   ruby_head:
     runs-on: ubuntu-latest
     steps:
