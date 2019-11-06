@@ -18,6 +18,7 @@ jobs:
   mysql57:
     runs-on: ubuntu-latest
     env:
+      CONTAINER_USER: root
       MYSQL_HOST: mysql57
     steps:
       - uses: actions/checkout@v1
