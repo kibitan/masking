@@ -4,6 +4,8 @@ on: [push, pull_request]
 jobs:
   mysql80:
     runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
     steps:
       - uses: actions/checkout@v1
         with:
