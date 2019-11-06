@@ -13,7 +13,7 @@ jobs:
       - name: Build the stack
         run: docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml build
       - name: run test
-        run: docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run --entrypoint sh app ./wait-for-mysql.sh db acceptance/run_test.sh
+        run: docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run --entrypoint sh app ./wait-for-mysql.sh mysql80 acceptance/run_test.sh
   mysql57:
     runs-on: ubuntu-latest
     steps:
@@ -23,4 +23,4 @@ jobs:
       - name: Build the stack
         run: docker-compose -f docker-compose.yml -f docker-compose_mysql57.yml build
       - name: run test
-        run: docker-compose -f docker-compose.yml -f docker-compose_mysql57.yml run --entrypoint sh app ./wait-for-mysql.sh db acceptance/run_test.sh
+        run: docker-compose -f docker-compose.yml -f docker-compose_mysql57.yml run --entrypoint sh app ./wait-for-mysql.sh mysql57 acceptance/run_test.sh

@@ -1,7 +1,11 @@
 version: '3.7'
 
 services:
-  db:
+  app:
+    depends_on:
+      - mysql56
+
+  mysql56:
     image: mysql:5.6
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'

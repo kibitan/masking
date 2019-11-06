@@ -1,7 +1,11 @@
 version: '3.7'
 
 services:
-  db:
+  app:
+    depends_on:
+      - mariadb102
+
+  mariadb102:
     image: mariadb:10.2
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'

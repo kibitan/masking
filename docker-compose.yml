@@ -13,5 +13,3 @@ services:
     tmpfs:
       - /app/tmp
       - /app/vendor
-    depends_on:
-      - db
