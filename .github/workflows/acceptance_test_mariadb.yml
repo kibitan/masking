@@ -1,4 +1,4 @@
-name: Acceptance Test
+name: Acceptance Test MariaDB
 on:
   push:
     branches:
@@ -6,46 +6,6 @@ on:
   pull_request:
 
 jobs:
-  mysql80:
-    runs-on: ubuntu-latest
-    env:
-      CONTAINER_USER: root
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mysql80
-  mysql57:
-    runs-on: ubuntu-latest
-    env:
-      CONTAINER_USER: root
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mysql57
-  mysql56:
-    runs-on: ubuntu-latest
-    env:
-      CONTAINER_USER: root
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mysql56
-  mysql55:
-    runs-on: ubuntu-latest
-    env:
-      CONTAINER_USER: root
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mysql55
   mariadb104:
     runs-on: ubuntu-latest
     env:
