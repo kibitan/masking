@@ -1,6 +1,8 @@
 # MasKING🤴
 
 [![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
+![Acceptance Test MySQL Status](https://github.com/kibitan/masking/workflows/.github/workflows/acceptance_test_mysql.yml/badge.svg)
+![Acceptance Test MariaDB Status](https://github.com/kibitan/masking/workflows/.github/workflows/acceptance_test_mariadb.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Gem Version](https://badge.fury.io/rb/masking.svg)](https://badge.fury.io/rb/masking)
@@ -132,24 +134,43 @@ To install this gem onto your local machine, run `bundle exec rake install`.
   bundle exec rake
 ```
 
-#### acceptance test (with docker)
+#### acceptance test
 
 ```bash
- docker-compose -f docker-compose.yml -f docker-compose_mysql80.yml run --entrypoint sh app acceptance/run_test.sh
+./acceptance/run_test.sh
+```
+
+available option via environment variable:
+
+* `MYSQL_HOST`: database host(default: `localhost`)
+* `MYSQL_USER`: mysql user name(default: `mysqluser`}
+* `MYSQL_PASSWORD`: password for user(default: `password`)
+* `MYSQL_DBNAME`: database name(default: `mydb`)
+
+##### with docker
+
+```bash
+docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=mysql80 app acceptance/run_test.sh
+```
+
+or
+
+```bash
+docker-compose/acceptance_test.sh mysql80
 ```
 
 The docker-compose file names for other database versions, specify that file.
 
-* MySQL 8.0: [`docker-compose_mysql80.yml`](./docker-compose_mysql80.yml)
-* MySQL 5.7: [`docker-compose_mysql57.yml`](./docker-compose_mysql57.yml)
-* MySQL 5.6: [`docker-compose_mysql56.yml`](./docker-compose_mysql56.yml)
-* MySQL 5.5<sup>[1](#footnote1)</sup>: [`docker-compose_mysql55.yml`](./docker-compose_mysql55.yml)
-* MariaDB 10.4: [`docker-compose_mariadb104.yml`](./docker-compose_mariadb104.yml)
-* MariaDB 10.3: [`docker-compose_mariadb103.yml`](./docker-compose_mariadb103.yml)
-* MariaDB 10.2: [`docker-compose_mariadb102.yml`](./docker-compose_mariadb102.yml)
-* MariaDB 10.1: [`docker-compose_mariadb101.yml`](./docker-compose_mariadb101.yml)
-* MariaDB 10.0<sup>[2](#footnote2)</sup>: [`docker-compose_mariadb100.yml`](./docker-compose_mariadb100.yml)
-* MariaDB 5.5: [`docker-compose_mariadb55.yml`](./docker-compose_mariadb55.yml)
+* MySQL 8.0: [`docker-compose/mysql80.yml`](./docker-compose/mysql80.yml)
+* MySQL 5.7: [`docker-compose/mysql57.yml`](./docker-compose/mysql57.yml)
+* MySQL 5.6: [`docker-compose/mysql56.yml`](./docker-compose/mysql56.yml)
+* MySQL 5.5<sup>[1](#footnote1)</sup>: [`docker-compose/mysql55.yml`](./docker-compose/mysql55.yml)
+* MariaDB 10.4: [`docker-compose/mariadb104.yml`](./docker-compose/mariadb104.yml)
+* MariaDB 10.3: [`docker-compose/mariadb103.yml`](./docker-compose/mariadb103.yml)
+* MariaDB 10.2: [`docker-compose/mariadb102.yml`](./docker-compose/mariadb102.yml)
+* MariaDB 10.1: [`docker-compose/mariadb101.yml`](./docker-compose/mariadb101.yml)
+* MariaDB 10.0<sup>[2](#footnote2)</sup>: [`docker-compose/mariadb100.yml`](./docker-compose/mariadb100.yml)
+* MariaDB 5.5: [`docker-compose/mariadb55.yml`](./docker-compose/mariadb55.yml)
 
 #### [Markdown lint](https://github.com/markdownlint/markdownlint)
 

@@ -5,11 +5,11 @@ services:
     build:
       context: .
       target: docker-compose
+      args:
+        user: "${CONTAINER_USER:-app}"
     stdin_open: true
     volumes:
       - .:/app
     tmpfs:
       - /app/tmp
       - /app/vendor
-    depends_on:
-      - db
