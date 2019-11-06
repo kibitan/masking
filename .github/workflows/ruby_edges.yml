@@ -1,0 +1,30 @@
+name: Ruby edges
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  ruby27:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+      - name: run test
+        run: bundle exec rspec
+  ruby_head:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 'head'
+      - name: run test
+        run: bundle exec rspec
