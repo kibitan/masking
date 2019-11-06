@@ -12,6 +12,8 @@ jobs:
       CONTAINER_USER: root
     steps:
       - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mysql80
   mysql57:
@@ -20,5 +22,87 @@ jobs:
       CONTAINER_USER: root
     steps:
       - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mysql57
+  mysql56:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mysql56
+  mysql55:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mysql55
+  mariadb104:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb104
+  mariadb103:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb103
+  mariadb102:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb102
+  mariadb101:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb101
+  mariadb100:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb100
+  mariadb55:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb55
