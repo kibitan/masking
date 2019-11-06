@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ruby/ruby:2.7-rc
+      - image: circleci/ruby:2.7-rc
     steps:
       - checkout
       - run: bundle install
