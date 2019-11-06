@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -Ceu -o pipefail
-set -vx # for debug
+# set -vx # for debug
 
 MYSQL_HOST=${MYSQL_HOST:-db}
 MYSQL_USER=${MYSQL_USER:-mysqluser}
