@@ -3,7 +3,7 @@ ARG user="app"
 FROM ruby:2.6-alpine AS app
 RUN apk add --no-cache build-base git
 WORKDIR /app
-RUN adduser -S app
+RUN adduser -S $user
 USER $user
 COPY . .
 RUN bundle install -j "$(nproc)"
