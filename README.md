@@ -133,11 +133,15 @@ To install this gem onto your local machine, run `bundle exec rake install`.
   bundle exec rake
 ```
 
-#### acceptance test (with docker)
+#### acceptance test
 
 ```bash
- docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml up -d
- docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=localhost app acceptance/run_test.sh
+./acceptance/run_test.sh
+```
+
+(with docker)
+```bash
+ docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=mysql80 app acceptance/run_test.sh
 ```
 
 The docker-compose file names for other database versions, specify that file.
