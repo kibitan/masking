@@ -1,0 +1,11 @@
+version: 2.1
+executors:
+  ruby27:
+    docker:
+      - image: ruby/ruby:2.7
+
+jobs:
+  ruby27:
+    executor: ruby27
+    steps:
+      - run: bundle exec rspec
