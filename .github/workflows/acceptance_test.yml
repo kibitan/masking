@@ -5,23 +5,20 @@ on:
       - master
   pull_request:
 
-common_attributes: &common_attributes
-  runs-on: ubuntu-latest
-  env:
-    CONTAINER_USER: root
-  steps:
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 1 # shallow clone
-
 jobs:
   mysql80:
-    <<: *common_attributes
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
     steps:
+      - uses: actions/checkout@v1
       - name: run test
         run: docker-compose/acceptance_test.sh mysql80
   mysql57:
-    <<: *common_attributes
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_USER: root
     steps:
+      - uses: actions/checkout@v1
       - name: run test
         run: docker-compose/acceptance_test.sh mysql57
