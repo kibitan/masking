@@ -139,7 +139,15 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 ./acceptance/run_test.sh
 ```
 
-(with docker)
+available option via environment variable:
+
+* `MYSQL_HOST`: database host(default: `localhost`)
+* `MYSQL_USER`: mysql user name(default: `mysqluser`}
+* `MYSQL_PASSWORD`: password for user(default: `password`)
+* `MYSQL_DBNAME`: database name(default: `mydb`)
+
+##### with docker
+
 ```bash
  docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=mysql80 app acceptance/run_test.sh
 ```
