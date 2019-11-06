@@ -1,8 +1,8 @@
 # MasKING🤴
 
 [![Build Status](https://travis-ci.org/kibitan/masking.svg?branch=master)](https://travis-ci.org/kibitan/masking)
-![Acceptance Test MySQL Status](https://github.com/kibitan/masking/workflows/.github/workflows/acceptance_test_mysql.yml/badge.svg)
-![Acceptance Test MariaDB Status](https://github.com/kibitan/masking/workflows/.github/workflows/acceptance_test_mariadb.yml/badge.svg)
+![Acceptance Test MySQL Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MySQL/badge.svg)
+![Acceptance Test MariaDB Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MariaDB/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/kibitan/masking/badge.svg?branch=master)](https://coveralls.io/github/kibitan/masking?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Gem Version](https://badge.fury.io/rb/masking.svg)](https://badge.fury.io/rb/masking)
