@@ -5,6 +5,7 @@ jobs:
   mysql80:
     runs-on: ubuntu-latest
     env:
+      CONTAINER_USER: root
       MYSQL_HOST: mysql80
     steps:
       - uses: actions/checkout@v1
