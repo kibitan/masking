@@ -3,7 +3,7 @@
 set -Ceu -o pipefail
 # set -vx # for debug
 
-MYSQL_HOST=${MYSQL_HOST:localhost}
+MYSQL_HOST=${MYSQL_HOST:-localhost}
 MYSQL_USER=${MYSQL_USER:-mysqluser}
 MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}
 MYSQL_DBNAME=${MYSQL_DBNAME:-mydb}
