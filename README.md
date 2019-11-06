@@ -149,7 +149,13 @@ available option via environment variable:
 ##### with docker
 
 ```bash
- docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=mysql80 app acceptance/run_test.sh
+docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=mysql80 app acceptance/run_test.sh
+```
+
+or
+
+```bash
+docker-compose/acceptance_test.sh mysql80
 ```
 
 The docker-compose file names for other database versions, specify that file.

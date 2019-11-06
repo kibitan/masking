@@ -13,7 +13,7 @@ jobs:
       - name: Build the stack
         run: docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml build
       - name: run test
-        run: docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=mysql80 app acceptance/run_test.sh
+        run: docker-compose/acceptance_test.sh mysql80
   mysql57:
     runs-on: ubuntu-latest
     env:
@@ -25,4 +25,4 @@ jobs:
       - name: Build the stack
         run: docker-compose -f docker-compose.yml -f docker-compose/mysql57.yml build
       - name: run test
-        run: docker-compose -f docker-compose.yml -f docker-compose/mysql57.yml run -e MYSQL_HOST=mysql57 app acceptance/run_test.sh
+        run: docker-compose/acceptance_test.sh mysql57
