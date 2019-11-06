@@ -1,11 +1,10 @@
-version: 2.1
-executors:
-  ruby27:
-    docker:
-      - image: ruby/ruby:2.7
+version: 2
 
 jobs:
-  ruby27:
-    executor: ruby27
+  build:
+    docker:
+      - image: ruby/ruby:2.7-rc
     steps:
+      - checkout
+      - run: bundle install
       - run: bundle exec rspec
