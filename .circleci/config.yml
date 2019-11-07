@@ -23,7 +23,12 @@ jobs:
       - image: ruby:2.5
 
 workflows:
-  test:
+  # test:
+  #   jobs:
+  #     - test-ruby27
+  #     - test-ruby26
+  #     - test-ruby25
+  test-ruby-edges:
     jobs:
       - test-ruby27
       - test-ruby26
