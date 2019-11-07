@@ -6,6 +6,7 @@ jobs:
       - image: ruby:2.7-rc-alpine
     steps:
       - checkout
+      - run: apk add git # workaround for alpine..
       - run: ruby -v # debug
       - run: gem install bundler -v 1.17.3
       - run: bundle install -j "$(nproc)"
