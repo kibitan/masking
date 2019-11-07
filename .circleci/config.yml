@@ -11,16 +11,19 @@ test_steps: &test_steps
 jobs:
   test-ruby27:
     <<: *test_steps
-    docker: ruby:2.7-rc
+    docker:
+      - image: ruby:2.7-rc
   test-ruby26:
     <<: *test_steps
-    docker: ruby:2.6
+    docker:
+      - image: ruby:2.6
   test-ruby25:
     <<: *test_steps
-    docker: ruby:2.5
+    docker:
+      - image: ruby:2.5
 
 workflows:
-  test-ruby:
+  test-ruby27:
     jobs:
       - test-ruby27
       - test-ruby26
