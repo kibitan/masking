@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test-ruby27:
     docker:
-      - image: circleci/ruby:2.7-rc
+      - image: ruby:2.7-rc
     steps:
       - checkout
       - run: ruby -v # debug
