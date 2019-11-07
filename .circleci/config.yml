@@ -1,0 +1,34 @@
+version: 2.1
+
+test_steps: &test_steps
+  steps:
+    - checkout
+    - run: ruby -v # debug
+    - run: gem install bundler -v 1.17.3
+    - run: bundle install -j "$(nproc)"
+    - run: bundle exec rspec
+
+jobs:
+  test-rc:
+    <<: *test_steps
+    docker:
+      - image: ruby:rc
+  test-ruby26:
+    <<: *test_steps
+    docker:
+      - image: ruby:2.6
+  test-ruby25:
+    <<: *test_steps
+    docker:
+      - image: ruby:2.5
+
+workflows:
+  ## disable for all ruby test due to CircleCI has limit for free plan
+  # test:
+  #   jobs:
+  #     - test-rc
+  #     - test-ruby26
+  #     - test-ruby25
+  test-ruby-edges:
+    jobs:
+      - test-rc

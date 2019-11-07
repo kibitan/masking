@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add friendly parse error message [#26](https://github.com/kibitan/masking/pull/26)
 - Setup Docker and Acceptance test [#32](https://github.com/kibitan/masking/pull/32) [#36](https://github.com/kibitan/masking/pull/36)
 - setup acceptance test for ci [#34](https://github.com/kibitan/masking/pull/34)
+- add Ruby2.7(preview) [#35](https://github.com/kibitan/masking/pull/35)
 
 ## [v0.0.3] - 2019-07-07
 

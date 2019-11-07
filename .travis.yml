@@ -1,9 +1,14 @@
 sudo: false
 language: ruby
+cache: bundler
+branches:
+  only:
+    - master
 rvm:
-  - 2.5.3
-  - 2.6.0
+  - 2.5
+  - 2.6
 before_install: gem install bundler -v 1.17.3
 
 script:
+  - ruby -v # debug
   - bundle exec rspec
