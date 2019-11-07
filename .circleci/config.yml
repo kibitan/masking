@@ -17,7 +17,7 @@ jobs:
     <<: *test_steps
     docker:
       - image: ruby:2.6
-  test-ruby27:
+  test-ruby25:
     <<: *test_steps
     docker:
       - image: ruby:2.5
