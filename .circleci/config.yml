@@ -12,5 +12,4 @@ jobs:
       - run: ruby -v # debug
       - run: gem install bundler -v 1.17.3
       - run: bundle install -j "$(nproc)"
-  test:
-    - run: bundle exec rspec
+      - run: bundle exec rspec
