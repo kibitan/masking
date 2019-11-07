@@ -5,8 +5,6 @@ services:
     build:
       context: .
       target: app
-      args:
-        user: "${CONTAINER_USER:-app}"
     stdin_open: true
     volumes:
       - .:/app

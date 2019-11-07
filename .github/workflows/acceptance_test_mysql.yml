@@ -8,8 +8,6 @@ on:
 jobs:
   mysql80:
     runs-on: ubuntu-latest
-    env:
-      CONTAINER_USER: root
     steps:
       - uses: actions/checkout@v1
         with:
@@ -18,8 +16,6 @@ jobs:
         run: docker-compose/acceptance_test.sh mysql80
   mysql57:
     runs-on: ubuntu-latest
-    env:
-      CONTAINER_USER: root
     steps:
       - uses: actions/checkout@v1
         with:
@@ -28,8 +24,6 @@ jobs:
         run: docker-compose/acceptance_test.sh mysql57
   mysql56:
     runs-on: ubuntu-latest
-    env:
-      CONTAINER_USER: root
     steps:
       - uses: actions/checkout@v1
         with:
@@ -38,8 +32,6 @@ jobs:
         run: docker-compose/acceptance_test.sh mysql56
   mysql55:
     runs-on: ubuntu-latest
-    env:
-      CONTAINER_USER: root
     steps:
       - uses: actions/checkout@v1
         with:
