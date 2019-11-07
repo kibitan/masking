@@ -1,15 +1,17 @@
 version: 2.1
-executors:
-  ruby27:
-    docker:
-      - image: circleci/ruby:2.7-rc
 
 jobs:
-  build:
-    executor: ruby27
+  test-ruby27:
+    docker:
+      - image: circleci/ruby:2.7-rc
     steps:
       - checkout
       - run: ruby -v # debug
       - run: gem install bundler -v 1.17.3
       - run: bundle install -j "$(nproc)"
       - run: bundle exec rspec
+
+workflows:
+  test-ruby27:
+    jobs:
+      - test-ruby27
