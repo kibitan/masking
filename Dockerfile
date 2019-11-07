@@ -1,10 +1,9 @@
 FROM ruby:2.6-alpine AS app
 RUN apk add --no-cache build-base git
 WORKDIR /app
-ARG user=app
-RUN id -u $user || adduser -S $user
-USER $user
-COPY . .
+RUN adduser -S app
+USER app
+COPY --chown=app . ./
 RUN bundle install -j "$(nproc)"
 ENTRYPOINT ["bundle", "exec", "exe/masking"]
 
