@@ -3,10 +3,9 @@ version: 2.1
 jobs:
   test-ruby27:
     docker:
-      - image: ruby:2.7-rc-alpine
+      - image: ruby:2.7-rc
     steps:
       - checkout
-      - run: apk add git # workaround for alpine..
       - run: ruby -v # debug
       - run: gem install bundler -v 1.17.3
       - run: bundle install -j "$(nproc)"
