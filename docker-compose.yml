@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      target: docker-compose
+      target: app
       args:
         user: "${CONTAINER_USER:-app}"
     stdin_open: true

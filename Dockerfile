@@ -8,7 +8,7 @@ COPY . .
 RUN bundle install -j "$(nproc)"
 ENTRYPOINT ["bundle", "exec", "exe/masking"]
 
-FROM app AS docker-compose
+FROM app AS with-mysql-client
 USER root
 RUN apk add --no-cache mysql-client
 ARG user=app
