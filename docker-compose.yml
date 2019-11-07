@@ -2,9 +2,7 @@ version: '3.7'
 
 services:
   app:
-    build:
-      context: .
-      target: app
+    build: .
     stdin_open: true
     volumes:
       - .:/app
