@@ -181,7 +181,7 @@ bundle exec mdl *.md
 ## Development with Docker
 
 ```bash
-docker build . -t masking --target app
+docker build . -t masking
 echo "sample stdout" | docker run -i masking
 docker run masking -v
 ```

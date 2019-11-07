@@ -2,11 +2,7 @@ version: '3.7'
 
 services:
   app:
-    build:
-      context: .
-      target: docker-compose
-      args:
-        user: "${CONTAINER_USER:-app}"
+    build: .
     stdin_open: true
     volumes:
       - .:/app
