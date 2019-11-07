@@ -23,6 +23,7 @@ jobs:
       - image: ruby:2.5
 
 workflows:
+  ## disable for all ruby test due to CircleCI has limit for free plan
   # test:
   #   jobs:
   #     - test-ruby27
