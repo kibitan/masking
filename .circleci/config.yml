@@ -1,17 +1,30 @@
 version: 2.1
 
+test_steps: &test_steps
+  steps:
+    - checkout
+    - run: ruby -v # debug
+    - run: gem install bundler -v 1.17.3
+    - run: bundle install -j "$(nproc)"
+    - run: bundle exec rspec
+
 jobs:
   test-ruby27:
+    <<: *test_steps
     docker:
       - image: ruby:2.7-rc
-    steps:
-      - checkout
-      - run: ruby -v # debug
-      - run: gem install bundler -v 1.17.3
-      - run: bundle install -j "$(nproc)"
-      - run: bundle exec rspec
+  test-ruby26:
+    <<: *test_steps
+    docker:
+      - image: ruby:2.6
+  test-ruby27:
+    <<: *test_steps
+    docker:
+      - image: ruby:2.5
 
 workflows:
   test-ruby27:
     jobs:
       - test-ruby27
+      - test-ruby26
+      - test-ruby25
