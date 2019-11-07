@@ -1,12 +1,12 @@
 version: 2.1
 executors:
-  ruby-2.7:
+  ruby27:
     docker:
       - image: circleci/ruby:2.7-rc
 
 jobs:
   build:
-    executor: ruby-2.7
+    executor: ruby27
     steps:
       - checkout
       - run: ruby -v # debug
