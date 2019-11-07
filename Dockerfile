@@ -1,7 +1,7 @@
 FROM ruby:2.6-alpine AS app
 RUN apk add --no-cache build-base git
 WORKDIR /app
-RUN adduser -S app
+RUN addgroup -S app && adduser -S -G app app
 USER app
 COPY --chown=app . ./
 RUN bundle install -j "$(nproc)"
