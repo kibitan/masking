@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mysql80
+        run: sudo docker-compose/acceptance_test.sh mysql80
   mysql57:
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mysql57
+        run: sudo docker-compose/acceptance_test.sh mysql57
   mysql56:
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mysql56
+        run: sudo docker-compose/acceptance_test.sh mysql56
   mysql55:
     runs-on: ubuntu-latest
     steps:
@@ -37,4 +37,4 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mysql55
+        run: sudo docker-compose/acceptance_test.sh mysql55

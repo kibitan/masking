@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mariadb104
+        run: sudo docker-compose/acceptance_test.sh mariadb104
   mariadb103:
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mariadb103
+        run: sudo docker-compose/acceptance_test.sh mariadb103
   mariadb102:
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mariadb102
+        run: sudo docker-compose/acceptance_test.sh mariadb102
   mariadb101:
     runs-on: ubuntu-latest
     steps:
@@ -37,7 +37,7 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mariadb101
+        run: sudo docker-compose/acceptance_test.sh mariadb101
   mariadb100:
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +45,7 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mariadb100
+        run: sudo docker-compose/acceptance_test.sh mariadb100
   mariadb55:
     runs-on: ubuntu-latest
     steps:
@@ -53,4 +53,4 @@ jobs:
         with:
           fetch-depth: 1 # shallow clone
       - name: run test
-        run: docker-compose/acceptance_test.sh mariadb55
+        run: sudo docker-compose/acceptance_test.sh mariadb55
