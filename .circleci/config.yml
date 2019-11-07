@@ -9,10 +9,10 @@ test_steps: &test_steps
     - run: bundle exec rspec
 
 jobs:
-  test-ruby27:
+  test-rc:
     <<: *test_steps
     docker:
-      - image: ruby:2.7-rc
+      - image: ruby:rc
   test-ruby26:
     <<: *test_steps
     docker:
@@ -26,9 +26,9 @@ workflows:
   ## disable for all ruby test due to CircleCI has limit for free plan
   # test:
   #   jobs:
-  #     - test-ruby27
+  #     - test-rc
   #     - test-ruby26
   #     - test-ruby25
   test-ruby-edges:
     jobs:
-      - test-ruby27
+      - test-rc
