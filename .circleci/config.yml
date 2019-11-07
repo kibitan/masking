@@ -6,5 +6,6 @@ jobs:
       - image: circleci/ruby:2.7-rc
     steps:
       - checkout
-      - run: bundle install
+      - run: gem install bundler -v 1.17.3
+      - run: bundle install -j "$(nproc)"
       - run: bundle exec rspec
