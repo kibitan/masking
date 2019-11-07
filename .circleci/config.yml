@@ -31,5 +31,3 @@ workflows:
   test-ruby-edges:
     jobs:
       - test-ruby27
-      - test-ruby26
-      - test-ruby25
