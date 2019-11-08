@@ -2,6 +2,7 @@
 
 require_relative 'functional_spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'execute in command line' do
   context 'with target_columns.yml' do
     command_subject("masking -c #{config_fixture_path}", stdin: insert_statement_fixture)
@@ -107,3 +108,4 @@ RSpec.describe 'execute in command line' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

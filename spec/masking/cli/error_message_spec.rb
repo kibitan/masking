@@ -36,7 +36,7 @@ RSpec.describe Masking::Cli::ErrorMessage do
       it {
         is_expected.to eq \
           'ERROR: config file (tmp/target_columns.yml) is not valid, ' \
-          "column name contains `null`"
+          'column name contains `null`'
       }
     end
 
