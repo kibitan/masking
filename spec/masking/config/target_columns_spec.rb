@@ -93,5 +93,13 @@ RSpec.describe Masking::Config::TargetColumns do
         users: instance_of(Masking::Config::TargetColumns::Table)
       )
     end
+
+    context 'file is NOT valid Yaml(contains null as column name)' do
+      let(:file_path) { config_fixture_path('invalid_yaml_null_column.yml') }
+
+      it 'raise error' do
+        expect { subject }.to raise_error Masking::Error::ConfigFileContainsNullAsColumnName
+      end
+    end
   end
 end

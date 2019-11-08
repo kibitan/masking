@@ -44,6 +44,8 @@ module Masking
         @tables ||= data.each_with_object({}) do |kv, r|
           r[kv[0].to_sym] = Table.new(kv[0], columns: kv[1])
         end
+      rescue Masking::Config::TargetColumns::Column::ColumnNameIsNil
+        raise Masking::Error::ConfigFileContainsNullAsColumnName
       end
     end
   end
