@@ -4,7 +4,7 @@ test_steps: &test_steps
   steps:
     - checkout
     - run: ruby -v # debug
-    - run: gem install bundler
+    - run: gem install bundler -v 2.0.2
     - run: bundle install -j "$(nproc)"
     - run: bundle exec rspec
 
