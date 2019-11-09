@@ -29,6 +29,17 @@ RSpec.describe Masking::Cli::ErrorMessage do
       it { is_expected.to eq 'ERROR: config file (tmp/target_columns.yml) is not valid yaml format' }
     end
 
+    describe 'Masking::Error::ConfigFileContainsNullAsColumnName' do
+      let(:error) { Masking::Error::ConfigFileContainsNullAsColumnName }
+      let(:keyword_args) { { config_file_path: 'tmp/target_columns.yml' } }
+
+      it {
+        is_expected.to eq \
+          'ERROR: config file (tmp/target_columns.yml) is not valid, ' \
+          'column name contains `null`'
+      }
+    end
+
     describe 'Masking::Error::InsertStatementParseError' do
       let(:error) { Masking::Error::InsertStatementParseError }
       let(:keyword_args) { {} }

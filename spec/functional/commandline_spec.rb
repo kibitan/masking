@@ -2,6 +2,7 @@
 
 require_relative 'functional_spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'execute in command line' do
   context 'with target_columns.yml' do
     command_subject("masking -c #{config_fixture_path}", stdin: insert_statement_fixture)
@@ -61,6 +62,21 @@ RSpec.describe 'execute in command line' do
       end
     end
 
+    context 'with invalid yaml file path' do
+      command_subject(
+        "masking -c #{config_fixture_path('invalid_yaml_null_column.yml')}",
+        stdin: insert_statement_fixture
+      )
+
+      it 'should failed with error message', :aggregate_failures do
+        expect(stdout).to be_empty
+        expect(stderr).to eq \
+          'ERROR: config file (spec/fixtures/config/invalid_yaml_null_column.yml) is not valid, ' \
+          "column name contains `null`\n"
+        expect(exitstatus).to eq(1)
+      end
+    end
+
     pending 'with invalid config structure'
 
     shared_examples_for 'should fail with parse error message' do
@@ -92,3 +108,4 @@ RSpec.describe 'execute in command line' do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

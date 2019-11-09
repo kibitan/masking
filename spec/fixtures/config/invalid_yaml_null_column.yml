@@ -1,0 +1,7 @@
+# table_name:
+#   column_name: masked_value
+
+users:
+  name: name
+  null: aaa
+  password_digest: string
