@@ -4,7 +4,7 @@ test_attributes: &test_attributes
   machine: true
   steps:
     - checkout
-    - run: docker build -t masking-$CIRCLE_BRANCH-$RUBY_VERSION --build-arg ruby_version=$RUBY_VERSION .
+    - run: docker build -t masking-$RUBY_VERSION-$CIRCLE_SHA1 --build-arg ruby_version=$RUBY_VERSION .
     - run: docker run --entrypoint sh masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "ruby -v" # debug
     - run: docker run --entrypoint sh masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
 
