@@ -2,7 +2,7 @@
             id: 1
         string: anonymized 
          email: anonymized+1@example.com
-      inteager: 1245
+       integer: 12345
          float: 123.45
        boolean: 1
           null: NULL
@@ -13,7 +13,7 @@ binary_or_blob: \x92
             id: 2
         string: anonymized 
          email: anonymized+2@example.com
-      inteager: 0
+       integer: 12345
          float: 123.45
        boolean: 1
           null: NULL
@@ -24,7 +24,7 @@ binary_or_blob: \x92\x92
             id: 3
         string: anonymized 
          email: anonymized+3@example.com
-      inteager: -1
+       integer: 12345
          float: 123.45
        boolean: 1
           null: NULL
