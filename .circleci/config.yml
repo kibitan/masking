@@ -26,7 +26,6 @@ workflows:
   ## disable for all ruby test due to CircleCI has limit for free plan
   # test:
   #   jobs:
-  #     - test-rc
   #     - test-ruby26
   #     - test-ruby25
   test-ruby-edges:
