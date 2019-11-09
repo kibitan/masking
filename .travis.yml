@@ -7,7 +7,7 @@ branches:
 rvm:
   - 2.5
   - 2.6
-before_install: gem install bundler -v 1.17.3
+before_install: gem install bundler:2.0.2
 
 script:
   - ruby -v # debug
