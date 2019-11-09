@@ -1,4 +1,6 @@
-FROM ruby:2.6-alpine AS builder
+ARG ruby_version=2.6
+
+FROM ruby:$ruby_version-alpine AS builder
 RUN apk add --no-cache build-base git
 WORKDIR /app
 RUN addgroup -S app && adduser -S -G app app
@@ -11,7 +13,7 @@ USER root
 RUN apk add --no-cache mysql-client
 USER app
 
-FROM ruby:2.6-alpine
+FROM ruby:$ruby_version-alpine
 WORKDIR /app
 # TODO: remove dependecy of `git` from masking.gemspec:L19
 RUN apk add --no-cache git

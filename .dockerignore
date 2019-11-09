@@ -1,16 +1,14 @@
 /.bundle/
 /_yardoc/
-/coverage/
+/coverage/*
 /doc/
 /pkg/
-/spec/reports/
-/tmp/
+/spec/reports/*
+/tmp/*
 /profile/
 /vendor/
 .DS_Store
 
-# rspec failure tracking
-.rspec_status
-
 Dockerfile
 docker-compose.yml
+/docker-compose/
