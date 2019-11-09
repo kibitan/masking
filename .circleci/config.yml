@@ -1,33 +1,30 @@
 version: 2.1
 
-test_steps: &test_steps
+test_attributes: &test_attributes
+  machine: true
   steps:
     - checkout
-    - run: ruby -v # debug
-    - run: gem install bundler:2.0.2
-    - run: bundle install -j "$(nproc)"
-    - run: bundle exec rspec
+    - run: docker build -t masking-$RUBY_VERSION-$CIRCLE_SHA1 --build-arg ruby_version=$RUBY_VERSION .
+    - run: docker run --entrypoint sh masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "ruby -v" # debug
+    - run: docker run --entrypoint sh -e CI -e COVERALLS_REPO_TOKEN masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
 
 jobs:
-  test-rc:
-    <<: *test_steps
-    docker:
-      - image: ruby:rc
+  test-rubyrc:
+    <<: *test_attributes
+    environment:
+      RUBY_VERSION: rc
   test-ruby26:
-    <<: *test_steps
-    docker:
-      - image: ruby:2.6
+    <<: *test_attributes
+    environment:
+      RUBY_VERSION: '2.6'
   test-ruby25:
-    <<: *test_steps
-    docker:
-      - image: ruby:2.5
+    <<: *test_attributes
+    environment:
+      RUBY_VERSION: '2.5'
 
 workflows:
-  ## disable for all ruby test due to CircleCI has limit for free plan
-  # test:
-  #   jobs:
-  #     - test-ruby26
-  #     - test-ruby25
-  test-ruby-edges:
+  'CircleCI: build':
     jobs:
-      - test-rc
+      - test-ruby26
+      - test-ruby25
+      - test-rubyrc

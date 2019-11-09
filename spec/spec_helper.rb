@@ -19,8 +19,8 @@ end
 require 'masking'
 
 RSpec.configure do |config|
-  # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = '.rspec_status'
+  # Enable flags like --only-failures and --next-failure, disable for CI in order to avoid Permission denied error
+  config.example_status_persistence_file_path = '.rspec_status' unless ENV['CI'] == 'true'
 
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
