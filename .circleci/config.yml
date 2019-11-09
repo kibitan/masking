@@ -23,7 +23,7 @@ jobs:
       RUBY_VERSION: '2.5'
 
 workflows:
-  'ci/circleci: build':
+  'CircleCI: build':
     jobs:
       - test-ruby26
       - test-ruby25
