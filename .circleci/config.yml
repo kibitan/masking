@@ -1,6 +1,7 @@
 version: 2.1
 
-test_steps: &test_steps
+test_attributes: &test_attributes
+  machine: true
   steps:
     - checkout
     - run: docker build -t masking-$CIRCLE_BRANCH-$RUBY_VERSION --build-arg ruby_version=$RUBY_VERSION .
@@ -9,17 +10,17 @@ test_steps: &test_steps
 
 jobs:
   test-rubyrc:
-    <<: *test_steps
+    <<: *test_attributes
     environment:
       RUBY_VERSION: rc
   test-ruby26:
-    <<: *test_steps
+    <<: *test_attributes
     environment:
-      RUBY_VERSION: 2.6
+      RUBY_VERSION: '2.6'
   test-ruby25:
-    <<: *test_steps
+    <<: *test_attributes
     environment:
-      RUBY_VERSION: 2.5
+      RUBY_VERSION: '2.5'
 
 workflows:
   test:
