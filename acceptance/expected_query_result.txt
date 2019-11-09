@@ -1,8 +1,8 @@
 *************************** 1. row ***************************
             id: 1
-        string: anonymized 
+        string: anonymized string
          email: anonymized+1@example.com
-      inteager: 1245
+       integer: 12345
          float: 123.45
        boolean: 1
           null: NULL
@@ -11,9 +11,9 @@
 binary_or_blob: \x92       
 *************************** 2. row ***************************
             id: 2
-        string: anonymized 
+        string: anonymized string
          email: anonymized+2@example.com
-      inteager: 0
+       integer: 12345
          float: 123.45
        boolean: 1
           null: NULL
@@ -22,9 +22,9 @@ binary_or_blob: \x92
 binary_or_blob: \x92\x92   
 *************************** 3. row ***************************
             id: 3
-        string: anonymized 
+        string: anonymized string
          email: anonymized+3@example.com
-      inteager: -1
+       integer: 12345
          float: 123.45
        boolean: 1
           null: NULL
