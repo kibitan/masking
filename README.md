@@ -227,7 +227,6 @@ Depend on only pure language standard libraries, no external libraries. (except 
 * Pluguable/customizable for a mask way  e.g. integrate with [Faker](https://github.com/stympy/faker)
 * Compatible with other RDBMS  e.g. PostgreSQL, Oracle, SQL Server
 * Parse the schema type information and validate target columns value
-* Integration test with real database
 * Performance optimization
   * Write in streaming process
   * rewrite by another language?
