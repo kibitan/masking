@@ -101,7 +101,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 2.0)
   coveralls
   masking!
   mdl
