@@ -8,7 +8,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Gem Version](https://badge.fury.io/rb/masking.svg)](https://badge.fury.io/rb/masking)
 
-The command line tool for anonymizing database records by parsing a SQL dump file and build new SQL dump file with masking sensitive/credential data.
+The command line tool for anonymizing database records by parsing a SQL dump file and build a new SQL dump file with masking sensitive/credential data.
 
 ## Installation
 
@@ -49,7 +49,7 @@ gem install masking
           AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
     ```
 
-    A value will be implicitly converted to compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
+    A value will be implicitly converted to a compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
 
     ```yaml
       not-date: !!str 2002-04-28
@@ -57,7 +57,7 @@ gem install masking
 
     String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/refman/8.0/en/string-type-overview.html). Integer/Float should be matched with [MySQL Numeric Type](https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html). Date/Time should be matched with [MySQL Date and Time Type](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-type-overview.html).
 
-    *NOTE: MasKING doesn't check actual schema's type from dump. If you put uncomaptible value it will cause error during restoring to database.*
+    *NOTE: MasKING doesn't check actual schema's type from the dump. If you put incompatible value it will cause an error during restoring to the database.*
 
 1. Dump database with anonymizing
 
@@ -67,13 +67,13 @@ gem install masking
       mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking > anonymized_dump.sql
     ```
 
-1. Restore from anonymized dump file
+1. Restore from the anonymized dump file
 
     ```bash
       mysql -u USERNAME ANONYMIZED_DATABASE_NAME < anonymized_dump.sql
     ```
 
-    Tip: If you don't need to have anonymized dump file, you can directly insert from stream. It can be faster because it has less IO interaction.
+    Tip: If you don't need to have an anonymized dump file, you can directly insert it from the stream. It can be faster because it has less IO interaction.
 
       ```bash
         mysqldump --complete-insert -u USERNAME DATABASE_NAME | masking | mysql -u USERNAME ANONYMIZED_DATABASE_NAME
@@ -88,27 +88,21 @@ Usage: masking [options]
     -v, --version                    version
 ```
 
-## Use case of annonymized (production) database
+## Use case of anonymized (production) database
 
-* Simulate for database migration and find a problem before release
+* Analyzing production databases for BI, Machine Learning, troubleshooting with respecting GDPR
+* Stress test / Integration test
+* Performance optimization for slow query
 
-Some schema changing statement will lock table and it will cause trouble during the migration. But, without having a large number of record such as production, a migration will finish at the moment and easy to overlook.
+  The analyzing slow query often needs a similar amount of records/cardinality with production, the anonymized database help to analyze and tune the slow query.
 
-* Performance optimization of database queries
+* Simulating database migration
 
-Some database query can be slow, but some query isn't reproducible until you have similar amount of records/cardinality.
+  Some schema migration locks table and it causes trouble during the execution. With a smaller amount of database, the migration will finish in a short time and easy to overlook the problem. With the anonymized production database, it is easy to simulate the migration as the real release and makes it easy to find the problem.
 
-* Finding bug before release on production
+* Better feature development flow
 
-Some bugs are related to unexpected data in production (for instance so long text, invalid/not-well formatted data) and it might be noticed after releasing in production.
-
-* Better development/demo of a feature
-
-Using similar data with real one will be good to make a good view of how feature looks like. It makes easy to find out the things to be changed/fixed before release/check the feature in production.
-
-* Analyze metrics on our production data with respecting GDPR
-
-We can use this database for BI and some trouble shooting.
+  Using similar data with the production database makes better development experience. It makes easy to find out the things which should be changed/fixed. Also, some bugs are related to unexpected data in production, it makes easy to find them too.
 
 * And… your idea here!
 
@@ -216,19 +210,19 @@ $ bin/benchmark.rb
 
 ### KISS ~ keep it simple, stupid ~
 
-No connection to database, No handling file, Only dealing with stdin/stdout. ~ Do One Thing and Do It Well ~
+No connection to the database, No handling files, Only dealing with stdin/stdout. ~ Do One Thing and Do It Well ~
 
 ### No External Dependency
 
-Depend on only pure language standard libraries, no external libraries. (except development/test environment)
+Depend on only pure language standard libraries, no external libraries
 
 ## Future Todo
 
-* Pluguable/customizable for a mask way  e.g. integrate with [Faker](https://github.com/stympy/faker)
+* Pluggable/customizable for a mask way  e.g. integrate with [Faker](https://github.com/stympy/faker)
 * Compatible with other RDBMS  e.g. PostgreSQL, Oracle, SQL Server
 * Parse the schema type information and validate target columns value
 * Performance optimization
-  * Write in streaming process
+  * Write in the streaming process
   * rewrite by another language?
 * Well-documentation
 
