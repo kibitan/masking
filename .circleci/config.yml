@@ -6,10 +6,10 @@ test_attributes: &test_attributes
   steps:
     - checkout
     - setup_remote_docker:
-      docker_layer_caching: true
+        docker_layer_caching: 'true'
     - run: docker build -t masking-$RUBY_VERSION-$CIRCLE_SHA1 --build-arg ruby_version=$RUBY_VERSION .
-      environment:
-        DOCKER_BUILDKIT: 1 # for concurrent build & skip unused stage
+        environment:
+          DOCKER_BUILDKIT: 1 # for concurrent build & skip unused stage
     - run: docker run --entrypoint sh masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "ruby -v" # debug
     - run: docker run --entrypoint sh -e CI -e COVERALLS_REPO_TOKEN masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
 
