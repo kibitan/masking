@@ -14,8 +14,8 @@ module Masking
     def run
       option_parser.parse(argv)
       Masking.run
-    rescue Masking::Error => error
-      warn(Masking::Cli::ErrorMessage.new(error).message(config_file_path: Masking.config.target_columns_file_path))
+    rescue Masking::Error => e
+      warn(Masking::Cli::ErrorMessage.new(e).message(config_file_path: Masking.config.target_columns_file_path))
       exit(false)
     end
 
