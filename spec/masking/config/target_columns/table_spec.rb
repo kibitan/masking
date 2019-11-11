@@ -33,7 +33,7 @@ RSpec.describe Masking::Config::TargetColumns::Table do
   end
 
   describe '#==(other)' do
-    subject { described_class.new(name, columns: columns) == described_class.new(name, columns: columns) } # rubocop:disable Lint/UselessComparison,Metrics/LineLength
+    subject { described_class.new(name, columns: columns) == described_class.new(name, columns: columns) } # rubocop:disable Lint/UselessComparison
 
     it { is_expected.to be true }
   end
