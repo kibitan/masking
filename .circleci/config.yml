@@ -1,12 +1,21 @@
 version: 2.1
 
 test_attributes: &test_attributes
-  machine: true
+  docker:
+    - image: circleci/buildpack-deps:trusty
+  resource_class: small
   steps:
     - checkout
-    - run: docker build -t masking-$RUBY_VERSION-$CIRCLE_SHA1 --build-arg ruby_version=$RUBY_VERSION .
-    - run: docker run --entrypoint sh masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "ruby -v" # debug
-    - run: docker run --entrypoint sh -e CI -e COVERALLS_REPO_TOKEN masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
+    - setup_remote_docker
+    - run:
+        name: build docker image
+        command: docker build -t masking-$RUBY_VERSION-$CIRCLE_SHA1 --build-arg ruby_version=$RUBY_VERSION .
+    - run:
+        name: output Ruby version (debug)
+        command: docker run --entrypoint sh masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "ruby -v" # debug
+    - run:
+        name: run test
+        command: docker run --entrypoint sh -e CI -e COVERALLS_REPO_TOKEN masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
 
 jobs:
   test-rubyrc:
