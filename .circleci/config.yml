@@ -2,16 +2,14 @@ version: 2.1
 
 test_attributes: &test_attributes
   docker:
-    # - image: circleci/buildpack-deps:trusty # not supporting DOCKER_BUILDKIT
-    - image: docker:19.03
+    - image: circleci/buildpack-deps:trusty
+  resource_class: small
   steps:
     - checkout
     - setup_remote_docker
     - run:
         name: build docker image
         command: docker build -t masking-$RUBY_VERSION-$CIRCLE_SHA1 --build-arg ruby_version=$RUBY_VERSION .
-        environment:
-          DOCKER_BUILDKIT: 1 # for concurrent build & skip unused stage
     - run:
         name: output Ruby version (debug)
         command: docker run --entrypoint sh masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "ruby -v" # debug
