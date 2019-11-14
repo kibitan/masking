@@ -10,6 +10,8 @@ Metrics/LineLength:
 
 Metrics/BlockLength:
   Max: 75
+  Exclude:
+    - spec/**/*
 
 Style/Documentation:
   Enabled: false

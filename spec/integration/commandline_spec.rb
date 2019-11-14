@@ -2,7 +2,6 @@
 
 require_relative 'integration_spec_helper'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe 'execute in command line' do
   context 'with version option' do
     command_subject('masking -v')
@@ -118,4 +117,3 @@ RSpec.describe 'execute in command line' do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

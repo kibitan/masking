@@ -4,7 +4,6 @@ require 'spec_helper'
 
 require 'masking/insert_statement'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe Masking::InsertStatement do
   let(:raw_line) { insert_statement_fixture }
 
@@ -136,4 +135,3 @@ RSpec.describe Masking::InsertStatement do
 
   # rubocop:enable Metrics/LineLength
 end
-# rubocop:enable Metrics/BlockLength
