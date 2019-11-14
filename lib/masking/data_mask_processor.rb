@@ -20,7 +20,7 @@ module Masking
       columns = target_columns.columns(table_name: insert_statement.table)
       if columns.first.index.nil?
         columns.each do |target_column|
-          target_column.index = insert_statement.columns.index(target_column.name)
+          target_column.index = insert_statement.column_index(target_column.name)
         end
       end
 

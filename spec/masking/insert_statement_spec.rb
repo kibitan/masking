@@ -22,6 +22,22 @@ RSpec.describe Masking::InsertStatement do
     it { expect(subject.columns).to eq %i[id name email password_digest created_at updated_at] }
   end
 
+  describe '#column_index' do
+    subject { described_class.new(raw_line, sql_builder: sql_builder).column_index(column_name) }
+
+    context 'with contains column name' do
+      let(:column_name) { :password_digest }
+
+      it { is_expected.to eq 3 }
+    end
+
+    context 'without contains column name' do
+      let(:column_name) { 'hoge' }
+
+      it { is_expected.to eq nil }
+    end
+  end
+
   describe '#sql' do
     before do
       expect(sql_builder).to receive(:new).with(
