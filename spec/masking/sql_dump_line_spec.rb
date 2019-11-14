@@ -43,7 +43,7 @@ RSpec.describe Masking::SQLDumpLine do
 
       let(:line) { insert_statement_fixture }
       let(:mask_processor) do
-        double(Masking::DataMaskProcessor).tap do |double|
+        class_double(Masking::DataMaskProcessor).tap do |double|
           expect(double).to receive(:process).with(line).and_return(line)
         end
       end

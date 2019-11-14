@@ -20,7 +20,12 @@ RSpec.describe Masking do
       context "with input: 'string'" do
         let(:input) { StringIO.new('string') }
         let(:_output) { $stdout }
-        let(:line_processor) { double(new: double(output: 'string')) }
+        let(:line_processor) do
+          class_double(
+            Masking::SQLDumpLine,
+            new: instance_double(Masking::SQLDumpLine, output: 'string')
+          )
+        end
 
         it "output 'string' to STDOUT" do
           expect { subject }.to output('string').to_stdout
