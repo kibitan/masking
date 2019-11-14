@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'functional_spec_helper'
+require_relative 'integration_spec_helper'
 
 # rubocop:disable Metrics/BlockLength
 RSpec.describe 'execute in command line' do
