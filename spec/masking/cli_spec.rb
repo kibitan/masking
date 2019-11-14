@@ -2,7 +2,6 @@
 
 require 'spec_helper'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe Masking::Cli do
   describe '#run' do
     subject { Masking::Cli.new(argv).run }
@@ -112,4 +111,3 @@ RSpec.describe Masking::Cli do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

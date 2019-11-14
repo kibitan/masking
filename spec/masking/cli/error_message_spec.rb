@@ -44,7 +44,10 @@ RSpec.describe Masking::Cli::ErrorMessage do
       let(:error) { Masking::Error::InsertStatementParseError }
       let(:keyword_args) { {} }
 
-      it { is_expected.to eq 'ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?' } # rubocop:disable Metrics/LineLength
+      it {
+        is_expected.to eq \
+          'ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?'
+      }
     end
   end
 end

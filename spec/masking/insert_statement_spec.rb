@@ -1,30 +1,30 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-
 require 'masking/insert_statement'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe Masking::InsertStatement do
+  subject { described_class.new(raw_line, sql_builder: sql_builder) }
+
   let(:raw_line) { insert_statement_fixture }
+  let(:sql_builder) do
+    class_double(
+      Masking::InsertStatement::SQLBuilder,
+      new: instance_double(Masking::InsertStatement::SQLBuilder, sql: 'dummy sql')
+    )
+  end
 
   describe '#table' do
-    subject { described_class.new(raw_line).table }
-
-    it { is_expected.to eq 'users' }
+    it { expect(subject.table).to eq 'users' }
   end
 
   describe '#columns' do
-    subject { described_class.new(raw_line).columns }
-
-    it { is_expected.to eq %i[id name email password_digest created_at updated_at] }
+    it { expect(subject.columns).to eq %i[id name email password_digest created_at updated_at] }
   end
 
   describe '#sql' do
-    subject { described_class.new(raw_line).sql }
-
-    it 'call SQLBuilder' do
-      expect(Masking::InsertStatement::SQLBuilder).to receive(:build).with(
+    before do
+      expect(sql_builder).to receive(:new).with(
         table: 'users',
         columns: %i[id name email password_digest created_at updated_at],
         values: [
@@ -32,13 +32,16 @@ RSpec.describe Masking::InsertStatement do
           instance_of(Array)
         ]
       )
-      subject
+    end
+
+    it 'call SQLBuilder' do
+      expect { subject.sql }.not_to raise_error
     end
   end
 
   # rubocop:disable Metrics/LineLength
   describe '#values' do
-    subject { described_class.new(raw_line).values }
+    subject { described_class.new(raw_line, sql_builder: sql_builder).values }
 
     it 'returns array of InsertStatement::Value' do
       is_expected.to match_array [
@@ -133,7 +136,5 @@ RSpec.describe Masking::InsertStatement do
       end
     end
   end
-
   # rubocop:enable Metrics/LineLength
 end
-# rubocop:enable Metrics/BlockLength

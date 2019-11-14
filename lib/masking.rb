@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'masking/version'
 require 'masking/cli'
 require 'masking/config'
 require 'masking/sql_dump_line'
@@ -13,19 +12,20 @@ module Masking
   end
 
   class Main
-    def initialize(input: $stdin, output: $stdout)
+    def initialize(input: $stdin, output: $stdout, line_processor: SQLDumpLine)
       @input  = input.set_encoding(Encoding::ASCII_8BIT, Encoding::ASCII_8BIT)
       @output = output.set_encoding(Encoding::ASCII_8BIT, Encoding::ASCII_8BIT)
+      @line_processor = line_processor
     end
 
     def run
       input.each_line do |line|
-        output.print SQLDumpLine.new(line).output
+        output.print line_processor.new(line).output
       end
     end
 
     private
 
-    attr_reader :input, :output
+    attr_reader :input, :output, :line_processor
   end
 end

@@ -3,10 +3,6 @@
 require 'spec_helper'
 
 RSpec.describe Masking do
-  it 'has a version number' do
-    expect(Masking::VERSION).not_to be nil
-  end
-
   describe '.run' do
     subject { described_class.run }
 
@@ -19,10 +15,17 @@ RSpec.describe Masking do
 
   describe Masking::Main do
     describe '#run' do
-      subject { described_class.new(input: input).run }
+      subject { described_class.new(input: input, output: _output, line_processor: line_processor).run }
 
       context "with input: 'string'" do
         let(:input) { StringIO.new('string') }
+        let(:_output) { $stdout }
+        let(:line_processor) do
+          class_double(
+            Masking::SQLDumpLine,
+            new: instance_double(Masking::SQLDumpLine, output: 'string')
+          )
+        end
 
         it "output 'string' to STDOUT" do
           expect { subject }.to output('string').to_stdout

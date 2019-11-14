@@ -6,7 +6,8 @@ require 'masking/sql_dump_line'
 
 RSpec.describe Masking::SQLDumpLine do
   describe '#output' do
-    subject { described_class.new(line).output }
+    subject { described_class.new(line, mask_processor: mask_processor).output }
+    let(:mask_processor) { class_double(Masking::DataMaskProcessor) }
 
     shared_examples 'should be same with line' do
       it { is_expected.to eq line }
@@ -39,36 +40,27 @@ RSpec.describe Masking::SQLDumpLine do
     end
 
     context 'when line is insert statement' do
+      subject { described_class.new(line, mask_processor: mask_processor).output }
       let(:line) { insert_statement_fixture }
-
-      before { allow(Masking::DataMaskProcessor).to receive(:process).with(line).and_return(line) }
-
-      it 'call DataMaskProcessor' do
-        expect(Masking::DataMaskProcessor).to receive(:process).with(line)
-
-        expect { subject }.not_to raise_error
+      let(:mask_processor) do
+        data_mask_processor = instance_double(Masking::DataMaskProcessor)
+        expect(data_mask_processor).to receive(:process).and_return(line)
+        class_double(Masking::DataMaskProcessor, new: data_mask_processor)
       end
 
       it_behaves_like 'should be same with line'
-    end
 
-    context 'when line is insert statement including invalid utf8 char' do
-      let(:line) { insert_statement_fixture('with_binary.sql') }
+      context 'including invalid utf8 char' do
+        let(:line) { insert_statement_fixture('with_binary.sql') }
 
-      before { allow(Masking::DataMaskProcessor).to receive(:process).with(line.b).and_return(line.b) }
-
-      it 'call DataMaskProcessor' do
-        expect(Masking::DataMaskProcessor).to receive(:process).with(line.b)
-
-        expect { subject }.not_to raise_error
+        it_behaves_like 'should be same with line'
       end
-
-      it_behaves_like 'should be same with line'
     end
   end
 
   describe '#insert_statement?' do
-    subject { described_class.new(line).send(:insert_statement?) }
+    subject { described_class.new(line, mask_processor: mask_processor).insert_statement? }
+    let(:mask_processor) { class_double(Masking::DataMaskProcessor) }
 
     context 'when line is NOT insert statement' do
       context 'empty' do
