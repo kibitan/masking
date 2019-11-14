@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'masking/config'
+require 'masking/version'
 require 'masking/errors'
 require 'masking/cli/error_message'
 require 'optparse'

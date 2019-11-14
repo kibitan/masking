@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'masking/version'
 require 'masking/cli'
 require 'masking/config'
 require 'masking/sql_dump_line'
