@@ -132,6 +132,5 @@ RSpec.describe Masking::InsertStatement do
       end
     end
   end
-
   # rubocop:enable Metrics/LineLength
 end
