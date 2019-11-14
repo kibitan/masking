@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- refactoring [#48](https://github.com/kibitan/masking/pull/48)
+
 ## [v1.0.0] - 2019-11-10
 
 ### Added
