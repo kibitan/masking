@@ -7,8 +7,9 @@ module Masking
   class InsertStatement
     attr_reader :raw_statement, :table
 
-    def initialize(raw_statement)
+    def initialize(raw_statement, sql_builder: SQLBuilder)
       @raw_statement = raw_statement
+      @sql_builder = sql_builder
 
       PARSE_REGEXP.match(raw_statement).tap do |match_data|
         raise Error::InsertStatementParseError if match_data.nil?
@@ -32,12 +33,12 @@ module Masking
     end
 
     def sql
-      SQLBuilder.build(table: table, columns: columns, values: values)
+      sql_builder.build(table: table, columns: columns, values: values)
     end
 
     private
 
-    attr_reader :columns_section, :values_section
+    attr_reader :columns_section, :values_section, :sql_builder
 
     VALUE_ROW_SPLITTER = '),('
     PARSE_REGEXP = /INSERT INTO `(?<table>.+)` \((?<columns_section>.+)\) VALUES (?<values_section>.+);/.freeze
