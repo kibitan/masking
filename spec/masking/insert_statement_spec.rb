@@ -1,14 +1,18 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-
 require 'masking/insert_statement'
 
 RSpec.describe Masking::InsertStatement do
   subject { described_class.new(raw_line, sql_builder: sql_builder) }
 
   let(:raw_line) { insert_statement_fixture }
-  let(:sql_builder) { class_double(Masking::InsertStatement::SQLBuilder) }
+  let(:sql_builder) do
+    class_double(
+      Masking::InsertStatement::SQLBuilder,
+      new: instance_double(Masking::InsertStatement::SQLBuilder, sql: 'dummy sql')
+    )
+  end
 
   describe '#table' do
     it { expect(subject.table).to eq 'users' }
@@ -20,7 +24,7 @@ RSpec.describe Masking::InsertStatement do
 
   describe '#sql' do
     before do
-      expect(sql_builder).to receive(:build).with(
+      expect(sql_builder).to receive(:new).with(
         table: 'users',
         columns: %i[id name email password_digest created_at updated_at],
         values: [

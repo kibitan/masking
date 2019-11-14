@@ -3,24 +3,19 @@
 module Masking
   class InsertStatement
     class SQLBuilder
-      class << self
-        def build(table:, columns:, values:)
-          new(table: table, columns: columns, values: values).send(:build)
-        end
-      end
-
-      private
-
-      attr_reader :table, :columns, :values
       def initialize(table:, columns:, values:)
         @table   = table
         @columns = columns
         @values  = values
       end
 
-      def build
+      def sql
         %(INSERT INTO `#{table}` #{columns_section} VALUES #{values_section};\n)
       end
+
+      private
+
+      attr_reader :table, :columns, :values
 
       def columns_section
         '(' + columns.map { |column| "`#{column}`" }.join(', ') + ')'

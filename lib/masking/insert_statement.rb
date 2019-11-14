@@ -32,7 +32,7 @@ module Masking
     end
 
     def sql
-      sql_builder.build(table: table, columns: columns, values: values)
+      sql_builder.new(table: table, columns: columns, values: values).sql
     end
 
     private

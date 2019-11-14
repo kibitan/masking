@@ -5,8 +5,8 @@ require 'spec_helper'
 require 'masking/insert_statement/sql_builder'
 
 RSpec.describe Masking::InsertStatement::SQLBuilder do
-  describe '.build' do
-    subject { described_class.build(table: table, columns: columns, values: values) }
+  describe '#sql' do
+    subject { described_class.new(table: table, columns: columns, values: values).sql }
     let(:table) { 'users' }
     let(:columns) { %i[id name email address] }
     let(:values) do
