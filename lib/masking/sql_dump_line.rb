@@ -10,16 +10,16 @@ module Masking
     end
 
     def output
-      insert_statement? ? mask_processor.process(line) : line
+      insert_statement? ? mask_processor.new(line).process : line
+    end
+
+    def insert_statement?
+      line.match?(INSERT_STATEMENT_REGEXP)
     end
 
     private
 
     attr_reader :line, :mask_processor
     INSERT_STATEMENT_REGEXP = /^INSERT/.freeze
-
-    def insert_statement?
-      line.match?(INSERT_STATEMENT_REGEXP)
-    end
   end
 end

@@ -5,8 +5,8 @@ require 'spec_helper'
 require 'masking/data_mask_processor'
 
 RSpec.describe Masking::DataMaskProcessor do
-  describe '.process' do
-    subject { described_class.process(insert_statement_line, target_columns: target_columns) }
+  describe '#process' do
+    subject { described_class.new(insert_statement_line, target_columns: target_columns).process }
     # TODO: use mock instead of real object or refactoring
     let(:target_columns) { Masking::Config::TargetColumns.new(config_fixture_path) }
 
@@ -32,7 +32,7 @@ RSpec.describe Masking::DataMaskProcessor do
   end
 
   describe '#target_table?' do
-    subject { described_class.new(insert_statement_line, target_columns: target_columns).send(:target_table?) }
+    subject { described_class.new(insert_statement_line, target_columns: target_columns).target_table? }
 
     let(:insert_statement_line) { insert_statement_fixture }
     let(:target_columns) { instance_double(Masking::Config::TargetColumns, 'contains?': stub_target_columns_return) }

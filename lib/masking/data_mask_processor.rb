@@ -6,17 +6,7 @@ require 'masking/insert_statement'
 module Masking
   # TODO: find better naming/modeling of DataMaskProcessor
   class DataMaskProcessor
-    class << self
-      def process(insert_statement_line, target_columns: ::Masking.config.target_columns)
-        new(insert_statement_line, target_columns: target_columns).send(:process)
-      end
-    end
-
-    private
-
-    attr_reader :raw_line, :target_columns, :insert_statement
-
-    def initialize(insert_statement_line, target_columns:)
+    def initialize(insert_statement_line, target_columns: ::Masking.config.target_columns)
       @raw_line         = insert_statement_line
       @target_columns   = target_columns
       @insert_statement = InsertStatement.new(insert_statement_line)
@@ -47,5 +37,9 @@ module Masking
     def target_table?
       target_columns.contains?(table_name: insert_statement.table)
     end
+
+    private
+
+    attr_reader :raw_line, :target_columns, :insert_statement
   end
 end
