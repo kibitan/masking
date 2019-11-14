@@ -9,6 +9,8 @@ plugins:
         enabled: false
       MD033: # MD033/no-inline-html
         enabled: false
+      MD024: # Multiple headers with the same content, it is okay for CHANGELOG,md
+        enabled: false
       # below 3 checks are disabled because Codeclimate's Markdownlint is not latest version (0.5.0)
       MD023:
         enabled: false
