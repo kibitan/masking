@@ -39,31 +39,22 @@ RSpec.describe Masking::SQLDumpLine do
     end
 
     context 'when line is insert statement' do
+      subject { described_class.new(line, mask_processor: mask_processor).output }
+
       let(:line) { insert_statement_fixture }
-
-      before { allow(Masking::DataMaskProcessor).to receive(:process).with(line).and_return(line) }
-
-      it 'call DataMaskProcessor' do
-        expect(Masking::DataMaskProcessor).to receive(:process).with(line)
-
-        expect { subject }.not_to raise_error
+      let(:mask_processor) do
+        double(Masking::DataMaskProcessor).tap do |double|
+          expect(double).to receive(:process).with(line).and_return(line)
+        end
       end
 
       it_behaves_like 'should be same with line'
-    end
 
-    context 'when line is insert statement including invalid utf8 char' do
-      let(:line) { insert_statement_fixture('with_binary.sql') }
+      context 'including invalid utf8 char' do
+        let(:line) { insert_statement_fixture('with_binary.sql') }
 
-      before { allow(Masking::DataMaskProcessor).to receive(:process).with(line.b).and_return(line.b) }
-
-      it 'call DataMaskProcessor' do
-        expect(Masking::DataMaskProcessor).to receive(:process).with(line.b)
-
-        expect { subject }.not_to raise_error
+        it_behaves_like 'should be same with line'
       end
-
-      it_behaves_like 'should be same with line'
     end
   end
 
