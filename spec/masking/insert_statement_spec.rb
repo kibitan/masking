@@ -60,12 +60,12 @@ RSpec.describe Masking::InsertStatement do
     subject { described_class.new(raw_line).mask_value(column_index: column_index, mask_method: mask_method) }
 
     let(:column_index) { 2 }
-    let(:mask_method) { double(call: "'masked_email@email.com'") }
+    let(:mask_method) { double.tap { |d| allow(d).to receive(:call).and_return("'123@email.com'", "'456@email.com'") } }
 
     it {
       is_expected.to match_array [
-        ['1', "'Super Chikahiro'", "'masked_email@email.com'", "'password_digest'", "'2018-03-14 00:00:00'", "'2018-03-29 00:00:00'"],
-        ['2', "'Super Tokoro'", "'masked_email@email.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
+        ['1', "'Super Chikahiro'", "'123@email.com'", "'password_digest'", "'2018-03-14 00:00:00'", "'2018-03-29 00:00:00'"],
+        ['2', "'Super Tokoro'", "'456@email.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
       ]
     }
 
