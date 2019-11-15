@@ -22,8 +22,6 @@ module Masking
           name == other.name && table_name == other.table_name && method_value == other.method_value
         end
 
-        private
-
         class ColumnNameIsNil < StandardError; end
       end
     end
