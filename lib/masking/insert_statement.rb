@@ -6,6 +6,7 @@ require 'masking/insert_statement/sql_builder'
 module Masking
   class InsertStatement
     attr_reader :raw_statement, :table
+    class NoMathingColumn < StandardError; end
 
     def initialize(raw_statement, sql_builder: SQLBuilder)
       @raw_statement = raw_statement
@@ -33,6 +34,16 @@ module Masking
       @values ||= values_section.split(VALUE_ROW_SPLITTER)
                                 .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat(rows, i) } }
                                 .flat_map { |row| row.scan(values_regexp) }
+    end
+
+    def mask_value(column_index:, mask_method:)
+      # TODO: introduce strict mode
+      # raise NoMathingColumn if column_index.nil?
+      return if column_index.nil?
+
+      values.each do |value|
+        value[column_index] = mask_method.call
+      end
     end
 
     def sql

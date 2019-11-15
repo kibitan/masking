@@ -56,6 +56,26 @@ RSpec.describe Masking::InsertStatement do
   end
 
   # rubocop:disable Metrics/LineLength
+  describe '#mask_value' do
+    subject { described_class.new(raw_line).mask_value(column_index: column_index, mask_method: mask_method) }
+
+    let(:column_index) { 2 }
+    let(:mask_method) { double(call: "'masked_email@email.com'") }
+
+    it { is_expected.to match_array [
+        ['1', "'Super Chikahiro'", "'masked_email@email.com'", "'password_digest'", "'2018-03-14 00:00:00'", "'2018-03-29 00:00:00'"],
+        ['2', "'Super Tokoro'", "'masked_email@email.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
+      ]
+    }
+
+    context 'with not containing column_name' do
+      let(:column_index) { nil }
+
+      # it { expect { subject }.to raise_error Masking::InsertStatement::NoMathingColumn }
+      it { is_expected.to eq nil }
+    end
+  end
+
   describe '#values' do
     subject { described_class.new(raw_line, sql_builder: sql_builder).values }
 

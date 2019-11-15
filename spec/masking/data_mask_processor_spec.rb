@@ -49,4 +49,20 @@ RSpec.describe Masking::DataMaskProcessor do
       it { is_expected.to be false }
     end
   end
+
+  describe '#table' do
+    subject do
+      described_class.new(
+        insert_statement_line,
+        target_columns: target_columns,
+        insert_statement: insert_statement
+      ).table
+    end
+
+    let(:insert_statement_line) { insert_statement_fixture }
+    let(:target_columns) { instance_double(Masking::Config::TargetColumns) }
+    let(:insert_statement) { instance_double(Masking::InsertStatement, table: 'sample') }
+
+    it { is_expected.to be 'sample' }
+  end
 end
