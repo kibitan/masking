@@ -68,13 +68,6 @@ RSpec.describe Masking::InsertStatement do
         ['2', "'Super Tokoro'", "'456@email.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
       ]
     }
-
-    context 'with not containing column_name' do
-      let(:column_index) { nil }
-
-      # it { expect { subject }.to raise_error Masking::InsertStatement::NoMathingColumn }
-      it { is_expected.to eq nil }
-    end
   end
 
   describe '#values' do

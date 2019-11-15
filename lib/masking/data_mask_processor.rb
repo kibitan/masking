@@ -28,17 +28,11 @@ module Masking
         end
       end
 
-      # insert_statement.values.each do |values|
-      #   columns.each do |target_column|
-      #     values[target_column.index] = target_column.masked_value unless target_column.index.nil?
-      #   end
-      # end
-
       columns.each do |target_column|
         insert_statement.mask_value(
           column_index: target_column.index,
           mask_method: target_column.method
-        )
+        ) unless target_column.index.nil?
       end
 
       insert_statement.sql
