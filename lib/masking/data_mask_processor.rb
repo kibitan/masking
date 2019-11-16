@@ -4,7 +4,6 @@ require 'masking/config/target_columns'
 require 'masking/insert_statement'
 
 module Masking
-  # TODO: find better naming/modeling of DataMaskProcessor
   class DataMaskProcessor
     def initialize(
       insert_statement_line,
@@ -16,35 +15,30 @@ module Masking
       @insert_statement = insert_statement
     end
 
-    # TODO: define insert_statement.mask_values(column, mask_method) method & refactoring
-    # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     def process
       return raw_line unless target_table?
 
       columns = target_columns.columns(table_name: insert_statement.table)
       if columns.first.index.nil?
         columns.each do |target_column|
-          target_column.index = insert_statement.column_index(target_column.name)
+          target_column.store_index_by_insert_statement(insert_statement)
         end
       end
 
       columns.each do |target_column|
+        next if target_column.index.nil?
+
         insert_statement.mask_value(
           column_index: target_column.index,
           mask_method: target_column.method
-        ) unless target_column.index.nil?
+        )
       end
 
       insert_statement.sql
     end
-    # rubocop:enable Metrics/AbcSize,Metrics/MethodLength
 
     def target_table?
-      target_columns.contains?(table_name: table)
-    end
-
-    def table
-      insert_statement.table
+      target_columns.contains?(table_name: insert_statement.table)
     end
 
     private

@@ -28,6 +28,18 @@ RSpec.describe Masking::Config::TargetColumns::Column do
     it { is_expected.to eq :sample_table }
   end
 
+  describe '#store_index_by_insert_statement' do
+    subject { column.store_index_by_insert_statement(insert_statement) }
+
+    let(:column) { described_class.new(name, table_name: table_name, method_value: method_value) }
+    let(:insert_statement) { instance_double(Masking::InsertStatement, column_index: 4) }
+
+    it do
+      is_expected.to eq 4
+      expect(column.index).to eq 4
+    end
+  end
+
   describe '#==(other)' do
     subject do
       described_class.new(name, table_name: table_name, method_value: method_value) == # rubocop:disable Lint/UselessComparison
