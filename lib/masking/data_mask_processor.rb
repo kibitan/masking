@@ -18,22 +18,8 @@ module Masking
     def process
       return raw_line unless target_table?
 
-      columns = target_columns.columns(table_name: insert_statement.table)
-      if columns.first.index.nil?
-        columns.each do |target_column|
-          target_column.store_index_by_insert_statement(insert_statement)
-        end
-      end
-
-      columns.each do |target_column|
-        next if target_column.index.nil?
-
-        insert_statement.mask_value(
-          column_index: target_column.index,
-          mask_method: target_column.method
-        )
-      end
-
+      store_indexes_in_target_columns
+      mask_values
       insert_statement.sql
     end
 
@@ -42,6 +28,29 @@ module Masking
     end
 
     private
+
+    def store_indexes_in_target_columns
+      return unless columns.first.index.nil?
+
+      columns.each do |target_column|
+        target_column.index = insert_statement.column_index(target_column.name)
+      end
+    end
+
+    def mask_values
+      columns.each do |target_column|
+        next if target_column.index.nil?
+
+        insert_statement.mask_value(
+          column_index: target_column.index,
+          mask_method: target_column.method
+        )
+      end
+    end
+
+    def columns
+      @columns ||= target_columns.columns(table_name: insert_statement.table)
+    end
 
     attr_reader :raw_line, :target_columns, :insert_statement
   end
