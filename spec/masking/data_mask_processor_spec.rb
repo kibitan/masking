@@ -1,16 +1,20 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-
 require 'masking/data_mask_processor'
 
 RSpec.describe Masking::DataMaskProcessor do
   describe '#process' do
-    subject { described_class.new(insert_statement_line, target_columns: target_columns).process }
+    subject {
+      described_class.new(
+        insert_statement_line,
+        target_columns: target_columns,
+        cache_store: cache_store
+      ).process
+    }
     # TODO: use mock instead of real object or refactoring
     let(:target_columns) { Masking::Config::TargetColumns.new(config_fixture_path) }
-
-    # clear cache
+    let(:cache_store) { Masking::DataMaskProcessor::Cache.new(config_fixture_path) }
     before { Masking::DataMaskProcessor::Cache.clear }
 
     context 'when input InsertStatement Line is NOT target_table' do

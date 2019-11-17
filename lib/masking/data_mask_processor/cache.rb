@@ -3,13 +3,13 @@
 module Masking
   class DataMaskProcessor
     class Cache
-      def self.fetch_or_store_if_no_cache(table_name, proc)
+      def self.fetch_or_store_if_no_cache(table:, proc:)
         @cache ||= {}
 
-        if @cache.key?(table_name)
-          @cache[table_name]
+        if @cache.key?(table)
+          @cache[table]
         else
-          @cache[table_name] = proc.call
+          @cache[table] = proc.call
         end
       end
 
