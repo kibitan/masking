@@ -203,7 +203,7 @@ use `benchmark/run.rb`
 ```bash
 $ benchmark/run.rb
        user     system      total        real
-   1.210112   0.029267   1.239379 (  1.247086)
+   1.103012   0.009460   1.112472 (  1.123093)
 ```
 
 ## Design Concept
