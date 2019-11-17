@@ -198,12 +198,12 @@ see also: [ruby-prof/ruby-prof: ruby-prof: a code profiler for MRI rubies](https
 
 ### Benchmark
 
-use `bin/benchmark.rb`
+use `benchmark/run.rb`
 
 ```bash
-$ bin/benchmark.rb
+$ benchmark/run.rb
        user     system      total        real
-   1.152776   0.207064   1.359840 (  1.375090)
+   1.210112   0.029267   1.239379 (  1.247086)
 ```
 
 ## Design Concept

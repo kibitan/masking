@@ -1,0 +1,12 @@
+# table_name:
+#   column_name: masked_value
+
+users:
+  name: name %{n}
+  email: email%{n}@example.com
+  password_digest: password
+
+dummy:
+  first_name: first %{n}
+  last_name: last %{n}
+  birth_date: 2010-01-01

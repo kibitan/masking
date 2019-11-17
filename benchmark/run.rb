@@ -5,13 +5,13 @@ $LOAD_PATH.unshift('./lib')
 require 'benchmark'
 require 'masking'
 
-n = 10_000
-
 Masking.configure do |config|
-  config.target_columns_file_path = 'spec/fixtures/config/masking.yml'
+  config.target_columns_file_path = 'benchmark/masking.yml'
 end
 
-fixture = File.open('spec/fixtures/insert_statement/sample.sql')
+n = 1_000
+
+fixture = File.open('benchmark/users.sql')
 
 Benchmark.bm do |x|
   x.report do
