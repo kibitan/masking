@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'masking/data_mask_processor/cache'
 require 'masking/config/target_columns'
 require 'masking/insert_statement'
 
@@ -47,22 +48,6 @@ module Masking
 
     def columns
       @columns ||= target_columns.columns(table_name: insert_statement.table)
-    end
-
-    class Cache
-      def self.fetch_or_store_if_no_cache(table_name, column_indexes_mask_methods)
-        @cache ||= {}
-
-        if @cache.key?(table_name)
-          @cache[table_name]
-        else
-          @cache[table_name] = column_indexes_mask_methods
-        end
-      end
-
-      def self.clear # only for test
-        @cache = {}
-      end
     end
   end
 end

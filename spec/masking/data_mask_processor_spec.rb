@@ -10,6 +10,7 @@ RSpec.describe Masking::DataMaskProcessor do
     # TODO: use mock instead of real object or refactoring
     let(:target_columns) { Masking::Config::TargetColumns.new(config_fixture_path) }
 
+    # clear cache
     before { Masking::DataMaskProcessor::Cache.clear }
 
     context 'when input InsertStatement Line is NOT target_table' do
