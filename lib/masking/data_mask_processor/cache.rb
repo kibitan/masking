@@ -3,13 +3,13 @@
 module Masking
   class DataMaskProcessor
     class Cache
-      def self.fetch_or_store_if_no_cache(table_name, column_indexes_mask_methods)
+      def self.fetch_or_store_if_no_cache(table_name, proc)
         @cache ||= {}
 
         if @cache.key?(table_name)
           @cache[table_name]
         else
-          @cache[table_name] = column_indexes_mask_methods
+          @cache[table_name] = proc.call
         end
       end
 
