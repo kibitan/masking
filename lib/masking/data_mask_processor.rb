@@ -18,40 +18,51 @@ module Masking
     def process
       return raw_line unless target_table?
 
-      store_indexes_in_target_columns
-      mask_values
+      column_indexes_mask_methods.each do |column_index, mask_method|
+        next if column_index.nil?
+
+        insert_statement.mask_value(
+          column_index: column_index,
+          mask_method: mask_method
+        )
+      end
+
       insert_statement.sql
     end
+
+    private
+
+    attr_reader :raw_line, :target_columns, :insert_statement
 
     def target_table?
       target_columns.contains?(table_name: insert_statement.table)
     end
 
-    private
-
-    def store_indexes_in_target_columns
-      return unless columns.first.index.nil?
-
-      columns.each do |target_column|
-        target_column.index = insert_statement.column_index(target_column.name)
-      end
-    end
-
-    def mask_values
-      columns.each do |target_column|
-        next if target_column.index.nil?
-
-        insert_statement.mask_value(
-          column_index: target_column.index,
-          mask_method: target_column.method
-        )
-      end
+    def column_indexes_mask_methods
+      Cache.fetch_or_store_if_no_cache(
+        insert_statement.table,
+        columns.map { |column| [insert_statement.column_index(column.name), column.method] }
+      )
     end
 
     def columns
       @columns ||= target_columns.columns(table_name: insert_statement.table)
     end
 
-    attr_reader :raw_line, :target_columns, :insert_statement
+    class Cache
+      def self.fetch_or_store_if_no_cache(table_name, column_indexes_mask_methods)
+        @cache ||= {}
+
+        if @cache.key?(table_name)
+          @cache[table_name]
+        else
+          @cache[table_name] = column_indexes_mask_methods
+        end
+      end
+
+      def self.clear # only for test
+        @cache = {}
+      end
+    end
   end
 end

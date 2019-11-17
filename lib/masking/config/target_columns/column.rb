@@ -7,7 +7,6 @@ module Masking
     class TargetColumns
       class Column
         attr_reader :name, :table_name, :method_value, :method
-        attr_accessor :index
 
         def initialize(name, table_name:, method_value:)
           raise ColumnNameIsNil if name.nil?
