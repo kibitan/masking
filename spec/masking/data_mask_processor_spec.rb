@@ -12,15 +12,19 @@ RSpec.describe Masking::DataMaskProcessor do
         cache_store: cache_store
       ).process
     }
-    class DummyCache
-      def self.fetch_or_store_if_no_cache(table:, proc:) # rubocop:disable Lint/UnusedMethodArgument
-        proc.call
+    class FakeCache
+      def self.fetch(_)
+        nil
+      end
+
+      def self.store(_, value)
+        value
       end
     end
 
     # TODO: use mock instead of real object or refactoring
     let(:target_columns) { Masking::Config::TargetColumns.new(config_fixture_path) }
-    let(:cache_store) { DummyCache }
+    let(:cache_store) { FakeCache }
 
     context 'when input InsertStatement Line is NOT target_table' do
       let(:insert_statement_line) { insert_statement_fixture('dummy_table.sql') }

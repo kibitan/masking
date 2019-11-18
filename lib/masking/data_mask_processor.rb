@@ -42,14 +42,16 @@ module Masking
     end
 
     def column_indexes_mask_methods
-      cache_store.fetch_or_store_if_no_cache(
-        table: insert_statement.table,
-        proc: proc {
-          target_columns.columns(table_name: insert_statement.table).map do |column|
-            [insert_statement.column_index(column.name), column.method]
-          end
-        }
-      )
+      cache = cache_store.fetch(insert_statement.table)
+      return cache if cache
+
+      cache_store.store(insert_statement.table, column_indexes_mask_methods_set)
+    end
+
+    def column_indexes_mask_methods_set
+      target_columns.columns(table_name: insert_statement.table).map do |column|
+        [insert_statement.column_index(column.name), column.method]
+      end
     end
   end
 end
