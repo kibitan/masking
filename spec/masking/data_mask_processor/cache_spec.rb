@@ -5,19 +5,18 @@ require 'spec_helper'
 require 'masking/data_mask_processor'
 
 RSpec.describe Masking::DataMaskProcessor::Cache do
-  describe '.fetch&.store' do
-    subject { described_class.fetch(key) }
-    let(:key) { 'sample key' }
+  describe '.fetch_or_store_if_no_cache' do
+    subject { described_class.fetch_or_store_if_no_cache(table: 'sample_table', proc: proc { 'sample_value' }) }
+    before { described_class.clear }
 
-    context 'there is no cache(store)' do
-      it { is_expected.to eq nil }
+    context 'there is no cache' do
+      it { is_expected.to eq 'sample_value' }
     end
 
-    context 'there is a cache(store)' do
-      it do
-        expect(described_class.store('sample key', 'sample value')).to eq 'sample value'
-        is_expected.to eq 'sample value'
-      end
+    context 'if there is a cache' do
+      before { described_class.fetch_or_store_if_no_cache(table: 'sample_table', proc: proc { 'cached_value' }) }
+
+      it { is_expected.to eq 'cached_value' }
     end
   end
 end

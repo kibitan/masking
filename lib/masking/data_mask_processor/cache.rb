@@ -3,13 +3,19 @@
 module Masking
   class DataMaskProcessor
     class Cache
-      def self.fetch(key)
+      def self.fetch_or_store_if_no_cache(table:, proc:)
         @cache ||= {}
-        @cache[key]
+
+        if @cache.key?(table)
+          @cache[table]
+        else
+          @cache[table] = proc.call
+        end
       end
 
-      def self.store(key, value)
-        @cache[key] = value
+      # onlu for test
+      def self.clear
+        @cache = {}
       end
     end
   end
