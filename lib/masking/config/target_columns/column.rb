@@ -6,8 +6,7 @@ module Masking
   class Config
     class TargetColumns
       class Column
-        attr_reader :name, :table_name, :method_value
-        attr_accessor :index
+        attr_reader :name, :table_name, :method_value, :method
 
         def initialize(name, table_name:, method_value:)
           raise ColumnNameIsNil if name.nil?
@@ -18,17 +17,10 @@ module Masking
           @method       = Method.new(method_value)
         end
 
-        def masked_value
-          method.call
-        end
-
         def ==(other)
           name == other.name && table_name == other.table_name && method_value == other.method_value
         end
 
-        private
-
-        attr_reader :method
         class ColumnNameIsNil < StandardError; end
       end
     end

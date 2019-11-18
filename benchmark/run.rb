@@ -9,7 +9,7 @@ Masking.configure do |config|
   config.target_columns_file_path = 'benchmark/masking.yml'
 end
 
-n = 1_000
+n = 30
 
 fixture = File.open('benchmark/users.sql')
 

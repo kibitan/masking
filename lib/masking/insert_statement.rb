@@ -25,10 +25,20 @@ module Masking
       @columns ||= columns_section.scan(COLUMNS_REGEXP).flatten.map(&:to_sym)
     end
 
+    def column_index(column_name)
+      columns.index(column_name)
+    end
+
     def values
       @values ||= values_section.split(VALUE_ROW_SPLITTER)
                                 .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat(rows, i) } }
                                 .flat_map { |row| row.scan(values_regexp) }
+    end
+
+    def mask_value(column_index:, mask_method:)
+      values.each do |value|
+        value[column_index] = mask_method.call
+      end
     end
 
     def sql

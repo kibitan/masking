@@ -22,6 +22,22 @@ RSpec.describe Masking::InsertStatement do
     it { expect(subject.columns).to eq %i[id name email password_digest created_at updated_at] }
   end
 
+  describe '#column_index' do
+    subject { described_class.new(raw_line, sql_builder: sql_builder).column_index(column_name) }
+
+    context 'with contains column name' do
+      let(:column_name) { :password_digest }
+
+      it { is_expected.to eq 3 }
+    end
+
+    context 'without contains column name' do
+      let(:column_name) { 'hoge' }
+
+      it { is_expected.to eq nil }
+    end
+  end
+
   describe '#sql' do
     before do
       expect(sql_builder).to receive(:new).with(
@@ -40,6 +56,20 @@ RSpec.describe Masking::InsertStatement do
   end
 
   # rubocop:disable Metrics/LineLength
+  describe '#mask_value' do
+    subject { described_class.new(raw_line).mask_value(column_index: column_index, mask_method: mask_method) }
+
+    let(:column_index) { 2 }
+    let(:mask_method) { double.tap { |d| allow(d).to receive(:call).and_return("'123@email.com'", "'456@email.com'") } }
+
+    it {
+      is_expected.to match_array [
+        ['1', "'Super Chikahiro'", "'123@email.com'", "'password_digest'", "'2018-03-14 00:00:00'", "'2018-03-29 00:00:00'"],
+        ['2', "'Super Tokoro'", "'456@email.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
+      ]
+    }
+  end
+
   describe '#values' do
     subject { described_class.new(raw_line, sql_builder: sql_builder).values }
 

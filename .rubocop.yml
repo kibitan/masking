@@ -18,3 +18,8 @@ Style/Documentation:
 
 Style/CharacterLiteral:
   Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: true
+  Exclude:
+    - spec/**/*

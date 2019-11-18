@@ -36,15 +36,4 @@ RSpec.describe Masking::Config::TargetColumns::Column do
 
     it { is_expected.to be true }
   end
-
-  describe '#masked_value' do
-    subject { described_class.new(name, table_name: table_name, method_value: method_value).masked_value }
-
-    it do
-      expect(Masking::Config::TargetColumns::Method).to receive(:new).with(method_value).and_return(
-        instance_double(Masking::Config::TargetColumns::Method::String, call: nil)
-      )
-      subject
-    end
-  end
 end
