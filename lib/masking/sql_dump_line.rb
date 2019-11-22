@@ -9,8 +9,8 @@ module Masking
       @mask_processor = mask_processor
     end
 
-    def output
-      insert_statement? ? mask_processor.new(line).process : line
+    def mask
+      processor.new(line).process
     end
 
     def insert_statement?
@@ -21,5 +21,19 @@ module Masking
 
     attr_reader :line, :mask_processor
     INSERT_STATEMENT_REGEXP = /^INSERT/.freeze
+
+    def processor
+      insert_statement? ? mask_processor : NoMaskProcessor
+    end
+
+    class NoMaskProcessor
+      def initialize(line)
+        @line = line
+      end
+
+      def process
+        @line # do nothing
+      end
+    end
   end
 end
