@@ -21,7 +21,6 @@ module Masking
     end
 
     def columns
-      # NOTE: define and extract to ColumnSet class?
       @columns ||= columns_section.scan(COLUMNS_REGEXP).flatten.map(&:to_sym)
     end
 
