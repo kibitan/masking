@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe Masking::Config do
   describe 'Masking.configure' do
-    before { Masking.instance_variable_set(:@config, nil) }
+    before { Masking.instance_variable_set(:@config, nil) } # clear current config
     before { Masking.config(config_class: config_class) }
     let(:config_class) { double('config_class').tap { |double| allow(double).to receive(:sample_method=) } }
 
