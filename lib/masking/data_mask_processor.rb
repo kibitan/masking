@@ -8,7 +8,7 @@ module Masking
   class DataMaskProcessor
     def initialize(
       insert_statement_line,
-      target_columns: ::Masking.config.target_columns,
+      target_columns: ::Masking.config.mask_columns,
       insert_statement: InsertStatement.new(insert_statement_line),
       cache_store: Cache
     )

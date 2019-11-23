@@ -10,7 +10,7 @@ RSpec.describe Masking::Cli do
       it 'set config and call Main.run' do
         expect(Masking).to receive(:config).and_return(
           instance_double(Masking::Config).tap do |config|
-            expect(config).to receive(:target_columns_file_path=).with('config.yml')
+            expect(config).to receive(:file_path=).with('config.yml')
           end
         )
         expect(Masking).to receive(:run)
