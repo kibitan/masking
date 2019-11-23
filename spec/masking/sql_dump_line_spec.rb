@@ -5,8 +5,8 @@ require 'spec_helper'
 require 'masking/sql_dump_line'
 
 RSpec.describe Masking::SQLDumpLine do
-  describe '#output' do
-    subject { described_class.new(line, mask_processor: mask_processor).output }
+  describe '#mask' do
+    subject { described_class.new(line, mask_processor: mask_processor).mask }
     let(:mask_processor) { class_double(Masking::DataMaskProcessor) }
 
     shared_examples 'should be same with line' do
@@ -40,12 +40,15 @@ RSpec.describe Masking::SQLDumpLine do
     end
 
     context 'when line is insert statement' do
-      subject { described_class.new(line, mask_processor: mask_processor).output }
+      subject { described_class.new(line, mask_processor: mask_processor).mask }
       let(:line) { insert_statement_fixture }
       let(:mask_processor) do
-        data_mask_processor = instance_double(Masking::DataMaskProcessor)
-        expect(data_mask_processor).to receive(:process).and_return(line)
-        class_double(Masking::DataMaskProcessor, new: data_mask_processor)
+        class_double(
+          Masking::DataMaskProcessor,
+          new: instance_double(Masking::DataMaskProcessor).tap { |double|
+            expect(double).to receive(:process).and_return(line)
+          }
+        )
       end
 
       it_behaves_like 'should be same with line'

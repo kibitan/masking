@@ -20,7 +20,7 @@ module Masking
 
     def run
       input.each_line do |line|
-        output.print line_processor.new(line).output
+        output.print line_processor.new(line).mask
       end
     end
 

@@ -38,18 +38,22 @@ module Masking
     attr_reader :raw_line, :target_columns, :insert_statement, :cache_store
 
     def target_table?
-      target_columns.contains?(table_name: insert_statement.table)
+      target_columns.contains?(table_name: table_name)
     end
 
     def column_indexes_mask_methods
       cache_store.fetch_or_store_if_no_cache(
-        table: insert_statement.table,
+        table: table_name,
         proc: proc {
-          target_columns.columns(table_name: insert_statement.table).map do |column|
+          target_columns.columns(table_name: table_name).map do |column|
             [insert_statement.column_index(column.name), column.method]
           end
         }
       )
+    end
+
+    def table_name
+      @table_name = insert_statement.table
     end
   end
 end

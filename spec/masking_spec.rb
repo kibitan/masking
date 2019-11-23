@@ -23,7 +23,7 @@ RSpec.describe Masking do
         let(:line_processor) do
           class_double(
             Masking::SQLDumpLine,
-            new: instance_double(Masking::SQLDumpLine, output: 'string')
+            new: instance_double(Masking::SQLDumpLine, mask: 'string')
           )
         end
 
