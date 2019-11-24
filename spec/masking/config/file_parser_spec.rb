@@ -5,7 +5,7 @@ require 'masking/config/file_parser'
 
 RSpec.describe Masking::Config::FileParser do
   describe '.parse' do
-    subject { described_class.new(file_path).parse }
+    subject { described_class.parse(file_path) }
     let(:file_path) { config_fixture_path }
 
     it {
@@ -54,11 +54,11 @@ RSpec.describe Masking::Config::FileParser do
         end
       end
 
-      # wait for https://github.com/ruby/psych/pull/423
-      pending 'file is NOT valid Yaml(contains null as column name)' do
+      context 'file is NOT valid Yaml(contains null as column name)' do
         let(:file_path) { config_fixture_path('invalid_yaml_null_column.yml') }
 
         it 'raise error' do
+          pending 'waiting for bug fix of Yaml library https://github.com/ruby/psych/pull/423'
           expect { subject }.to raise_error Masking::Error::ConfigFileContainsNullAsColumnName
         end
       end
