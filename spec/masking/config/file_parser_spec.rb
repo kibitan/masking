@@ -5,17 +5,28 @@ require 'masking/config/file_parser'
 
 RSpec.describe Masking::Config::FileParser do
   describe '.parse' do
-    subject { described_class.parse(file_path) }
+    subject { described_class.new(file_path).parse }
     let(:file_path) { config_fixture_path }
 
     it {
-      is_expected.to eq({
+      is_expected.to eq(
+        admin: {
+          email: 'email+%{n}@example.com', # rubocop:disable Style/FormatStringToken
+          first_name: 'good_naming',
+          last_name: 'nice_name'
+        },
         users: {
           name: 'name',
           email: 'email',
-          password_digest: 'string'
+          password_digest: 'string',
+          integer: 12_345,
+          float: 123.45,
+          boolean: true,
+          null_column: nil,
+          date: Date.new(2018, 8, 24),
+          time: Time.utc(2018, 8, 24, 15, 54, 6)
         }
-      })
+      )
     }
 
     context 'unhappy path' do
@@ -43,7 +54,8 @@ RSpec.describe Masking::Config::FileParser do
         end
       end
 
-      context 'file is NOT valid Yaml(contains null as column name)' do
+      # wait for https://github.com/ruby/psych/pull/423
+      pending 'file is NOT valid Yaml(contains null as column name)' do
         let(:file_path) { config_fixture_path('invalid_yaml_null_column.yml') }
 
         it 'raise error' do

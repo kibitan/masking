@@ -5,7 +5,13 @@ users:
   name: name
   email: email
   password_digest: string
+  integer: 12345
+  float: 123.45
+  boolean: true
+  null_column: null
+  date: 2018-08-24
+  time: 2018-08-24 15:54:06
 admin:
   first_name: good_naming
   last_name: nice_name
-  email: email
+  email: email+%{n}@example.com
