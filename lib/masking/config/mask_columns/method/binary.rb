@@ -2,20 +2,20 @@
 
 module Masking
   class Config
-    class TargetColumns
+    class MaskColumns
       class Method
-        class Float
+        class Binary
           def initialize(value)
-            @float = value.to_s
+            @binary = value
           end
 
           def call
-            float
+            "_binary '#{binary}'".b
           end
 
           private
 
-          attr_reader :float
+          attr_reader :binary
         end
       end
     end

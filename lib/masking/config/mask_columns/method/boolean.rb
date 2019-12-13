@@ -2,7 +2,7 @@
 
 module Masking
   class Config
-    class TargetColumns
+    class MaskColumns
       class Method
         class Boolean
           def initialize(value)

@@ -1,25 +1,27 @@
 # frozen_string_literal: true
 
+require 'date'
+
 module Masking
   class Config
-    class TargetColumns
+    class MaskColumns
       class Method
-        class Time
+        class Date
           def initialize(value)
-            @time = value.strftime(FORMAT)
+            @date = value.strftime(FORMAT)
           end
 
           def call
-            "'#{time_format}'"
+            "'#{date_format}'"
           end
 
           private
 
-          attr_reader :time
-          FORMAT = '%Y-%m-%d %H:%M:%S'
+          attr_reader :date
+          FORMAT = '%Y-%m-%d'
 
-          def time_format
-            time
+          def date_format
+            date
           end
         end
       end

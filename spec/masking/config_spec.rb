@@ -29,7 +29,7 @@ RSpec.describe Masking::Config do
   end
 
   describe '#file_path=' do
-    let(:config) { Masking::Config.new(mask_column_class: class_double('Test', new: :sample_mask_columns)) }
+    let(:config) { Masking::Config.new(mask_columns_class: class_double('Test', from_file: :sample_mask_columns)) }
     subject { config.file_path = 'test.yml' }
     before { subject }
 
@@ -38,11 +38,11 @@ RSpec.describe Masking::Config do
   end
 
   describe '#mask_columns' do
-    subject { Masking::Config.new(mask_column_class: mask_column_class).mask_columns }
+    subject { Masking::Config.new(mask_columns_class: mask_columns_class).mask_columns }
 
-    let(:mask_column_class) {
+    let(:mask_columns_class) {
       class_double('Test').tap do |double|
-        expect(double).to receive(:new).with(Pathname('masking.yml')).and_return(:mask_column_called)
+        expect(double).to receive(:from_file).with(Pathname('masking.yml')).and_return(:mask_column_called)
       end
     }
 

@@ -13,7 +13,7 @@ RSpec.describe 'execute in command line' do
     end
   end
 
-  context 'with target_columns.yml' do
+  context 'with mask_columns.yml' do
     command_subject("masking -c #{config_fixture_path}", stdin: insert_statement_fixture)
 
     it 'should masked correctly', :aggregate_failures do

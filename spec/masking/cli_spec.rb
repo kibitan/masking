@@ -88,21 +88,21 @@ RSpec.describe Masking::Cli do
         end
       end
 
-      context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
+      context 'raise Masking::Config::MaskColumns::FileDoesNotExist' do
         let(:raising_error) { Masking::Error::ConfigFileDoesNotExist }
 
         it_behaves_like 'with errormessage and exitstatus is 1', \
                         "ERROR: config file (masking.yml) does not exist\n"
       end
 
-      context 'raise Masking::Config::TargetColumns::FileDoesNotExist' do
+      context 'raise Masking::Config::MaskColumns::FileDoesNotExist' do
         let(:raising_error) { Masking::Error::ConfigFileIsNotFile }
 
         it_behaves_like 'with errormessage and exitstatus is 1', \
                         "ERROR: config file (masking.yml) is not file\n"
       end
 
-      context 'raise Masking::Config::TargetColumns::ConfigFileIsNotValidYaml' do
+      context 'raise Masking::Config::MaskColumns::ConfigFileIsNotValidYaml' do
         let(:raising_error) { Masking::Error::ConfigFileIsNotValidYaml }
 
         it_behaves_like 'with errormessage and exitstatus is 1', \

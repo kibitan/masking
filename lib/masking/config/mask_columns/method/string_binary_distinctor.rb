@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'masking/config/target_columns/method/binary'
-require 'masking/config/target_columns/method/string'
+require 'masking/config/mask_columns/method/binary'
+require 'masking/config/mask_columns/method/string'
 
 module Masking
   class Config
-    class TargetColumns
+    class MaskColumns
       class Method
         module StringBinaryDistinctor
           class << self

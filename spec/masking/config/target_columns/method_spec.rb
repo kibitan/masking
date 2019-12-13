@@ -2,17 +2,17 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method'
+require 'masking/config/mask_columns/method'
 
-RSpec.describe Masking::Config::TargetColumns::Method do
+RSpec.describe Masking::Config::MaskColumns::Method do
   describe '.new' do
-    subject { Masking::Config::TargetColumns::Method.new(method) }
+    subject { Masking::Config::MaskColumns::Method.new(method) }
 
     context 'when String' do
       let(:method) { 'string' }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::StringBinaryDistinctor).to receive(:new).with('string')
+        expect(Masking::Config::MaskColumns::Method::StringBinaryDistinctor).to receive(:new).with('string')
         subject
       end
     end
@@ -21,7 +21,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { 123 }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Integer).to receive(:new).with(123)
+        expect(Masking::Config::MaskColumns::Method::Integer).to receive(:new).with(123)
         subject
       end
     end
@@ -30,7 +30,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { 123.456 }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Float).to receive(:new).with(123.456)
+        expect(Masking::Config::MaskColumns::Method::Float).to receive(:new).with(123.456)
         subject
       end
     end
@@ -39,7 +39,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { Date.new(2018, 3, 14) }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Date).to receive(:new).with(Date.new(2018, 3, 14))
+        expect(Masking::Config::MaskColumns::Method::Date).to receive(:new).with(Date.new(2018, 3, 14))
         subject
       end
     end
@@ -48,7 +48,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { Time.new(2018, 3, 14, 15, 31, 0) }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Time).to receive(:new).with(Time.new(2018, 3, 14, 15, 31, 0))
+        expect(Masking::Config::MaskColumns::Method::Time).to receive(:new).with(Time.new(2018, 3, 14, 15, 31, 0))
         subject
       end
     end
@@ -57,7 +57,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { true }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Boolean).to receive(:new).with(true)
+        expect(Masking::Config::MaskColumns::Method::Boolean).to receive(:new).with(true)
         subject
       end
     end
@@ -66,7 +66,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { false }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Boolean).to receive(:new).with(false)
+        expect(Masking::Config::MaskColumns::Method::Boolean).to receive(:new).with(false)
         subject
       end
     end
@@ -75,7 +75,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { nil }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Null).to receive(:new).with(nil)
+        expect(Masking::Config::MaskColumns::Method::Null).to receive(:new).with(nil)
         subject
       end
     end
@@ -83,16 +83,16 @@ RSpec.describe Masking::Config::TargetColumns::Method do
     context 'unhappy path: Unknown type' do
       let(:method) { NotImplementedError }
 
-      it { expect { subject }.to raise_error(Masking::Config::TargetColumns::Method::UnknownType) }
+      it { expect { subject }.to raise_error(Masking::Config::MaskColumns::Method::UnknownType) }
     end
   end
 
   describe '#call' do
-    subject { Masking::Config::TargetColumns::Method.new(nil).call }
+    subject { Masking::Config::MaskColumns::Method.new(nil).call }
 
     it 'delegate to concreate object' do
-      expect(Masking::Config::TargetColumns::Method::Null).to receive(:new).with(nil).and_return(
-        instance_double(Masking::Config::TargetColumns::Method::Null).tap do |double|
+      expect(Masking::Config::MaskColumns::Method::Null).to receive(:new).with(nil).and_return(
+        instance_double(Masking::Config::MaskColumns::Method::Null).tap do |double|
           expect(double).to receive(:call)
         end
       )

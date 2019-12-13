@@ -10,32 +10,32 @@ RSpec.describe Masking::Cli::ErrorMessage do
 
     describe 'Masking::Error::ConfigFileDoesNotExist' do
       let(:error) { Masking::Error::ConfigFileDoesNotExist }
-      let(:keyword_args) { { config_file_path: 'tmp/target_columns.yml' } }
+      let(:keyword_args) { { config_file_path: 'tmp/mask_columns.yml' } }
 
-      it { is_expected.to eq 'ERROR: config file (tmp/target_columns.yml) does not exist' }
+      it { is_expected.to eq 'ERROR: config file (tmp/mask_columns.yml) does not exist' }
     end
 
     describe 'Masking::Error::ConfigFileIsNotFile' do
       let(:error) { Masking::Error::ConfigFileIsNotFile }
-      let(:keyword_args) { { config_file_path: 'tmp/target_columns.yml' } }
+      let(:keyword_args) { { config_file_path: 'tmp/mask_columns.yml' } }
 
-      it { is_expected.to eq 'ERROR: config file (tmp/target_columns.yml) is not file' }
+      it { is_expected.to eq 'ERROR: config file (tmp/mask_columns.yml) is not file' }
     end
 
     describe 'Masking::Error::ConfigFileIsNotValidYaml' do
       let(:error) { Masking::Error::ConfigFileIsNotValidYaml }
-      let(:keyword_args) { { config_file_path: 'tmp/target_columns.yml' } }
+      let(:keyword_args) { { config_file_path: 'tmp/mask_columns.yml' } }
 
-      it { is_expected.to eq 'ERROR: config file (tmp/target_columns.yml) is not valid yaml format' }
+      it { is_expected.to eq 'ERROR: config file (tmp/mask_columns.yml) is not valid yaml format' }
     end
 
     describe 'Masking::Error::ConfigFileContainsNullAsColumnName' do
       let(:error) { Masking::Error::ConfigFileContainsNullAsColumnName }
-      let(:keyword_args) { { config_file_path: 'tmp/target_columns.yml' } }
+      let(:keyword_args) { { config_file_path: 'tmp/mask_columns.yml' } }
 
       it {
         is_expected.to eq \
-          'ERROR: config file (tmp/target_columns.yml) is not valid, ' \
+          'ERROR: config file (tmp/mask_columns.yml) is not valid, ' \
           'column name contains `null`'
       }
     end

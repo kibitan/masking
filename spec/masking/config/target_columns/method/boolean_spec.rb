@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method/boolean'
+require 'masking/config/mask_columns/method/boolean'
 
-RSpec.describe Masking::Config::TargetColumns::Method::Boolean do
+RSpec.describe Masking::Config::MaskColumns::Method::Boolean do
   describe '#call' do
     subject { described_class.new(value).call }
 
