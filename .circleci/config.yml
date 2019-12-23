@@ -15,7 +15,7 @@ test_attributes: &test_attributes
         command: docker run --entrypoint sh masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "ruby -v" # debug
     - run:
         name: run test
-        command: docker run --entrypoint sh -e CI masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
+        command: docker run --entrypoint sh -e CI -e CODECOV_TOKEN masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
 
 jobs:
   test-rubyrc:
