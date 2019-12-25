@@ -6,7 +6,7 @@ require 'masking/cli/error_message'
 
 RSpec.describe Masking::Cli::ErrorMessage do
   describe '#message' do
-    subject { Masking::Cli::ErrorMessage.new(error).message(keyword_args) }
+    subject { Masking::Cli::ErrorMessage.new(error).message(**keyword_args) }
 
     describe 'Masking::Error::ConfigFileDoesNotExist' do
       let(:error) { Masking::Error::ConfigFileDoesNotExist }
