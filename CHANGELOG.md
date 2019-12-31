@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.1] - 2019-12-31
+
 ### Added
 
 - add Ruby 2.7 support [#53](https://github.com/kibitan/masking/pull/53)
