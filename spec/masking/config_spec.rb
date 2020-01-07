@@ -3,53 +3,49 @@
 require 'spec_helper'
 
 RSpec.describe Masking::Config do
-  describe 'Masking.config' do
-    subject { Masking.config }
-
-    it { is_expected.to be_instance_of Masking::Config }
-  end
-
   describe 'Masking.configure' do
-    subject do
+    before { Masking.instance_variable_set(:@config, nil) } # clear current config
+    before { Masking.config(config_class: config_class) }
+    let(:config_class) { double('config_class').tap { |double| allow(double).to receive(:sample_method=) } }
+
+    subject {
       Masking.configure do |config|
-        config.sample_method = :sample
+        config.sample_method = :sample_value
       end
-    end
+    }
 
     it 'delegate method to config object' do
-      expect_any_instance_of(Masking::Config).to receive(:sample_method=).with(:sample)
+      expect(config_class).to receive(:sample_method=).with(:sample_value)
       subject
     end
   end
 
-  describe '#target_columns_file_path' do
-    subject { config.target_columns_file_path }
-    let(:config) { described_class.new }
+  describe '#file_path' do
+    subject { Masking::Config.new.file_path }
 
     context 'setting with default' do
-      it { expect(config.target_columns_file_path).to eq Pathname('masking.yml') }
+      it { is_expected.to eq Pathname('masking.yml') }
     end
   end
 
-  describe '#target_columns_file_path=' do
-    subject { config.target_columns_file_path = target_columns_file_path }
-    let(:config) { described_class.new }
-    let(:target_columns_file_path) { config_fixture_path }
+  describe '#file_path=' do
+    let(:config) { Masking::Config.new(mask_columns_class: class_double('Test', from_file: :sample_mask_columns)) }
+    subject { config.file_path = 'test.yml' }
+    before { subject }
 
-    it 'set target_columns_file_path' do
-      subject
-      expect(config.target_columns_file_path).to eq Pathname(config_fixture_path)
-      expect(config.target_columns).to eq Masking::Config::TargetColumns.new(config_fixture_path)
-    end
+    it { expect(config.file_path).to eq Pathname('test.yml') }
+    it { expect(config.mask_columns).to eq :sample_mask_columns }
   end
 
-  describe '#target_columns' do
-    subject { config.target_columns }
-    let(:config) { described_class.new }
+  describe '#mask_columns' do
+    subject { Masking::Config.new(mask_columns_class: mask_columns_class).mask_columns }
 
-    it 'return Masking::Config::TargetColumns' do
-      expect(Masking::Config::TargetColumns).to receive(:new).with(Pathname('masking.yml'))
-      subject
-    end
+    let(:mask_columns_class) {
+      class_double('Test').tap do |double|
+        expect(double).to receive(:from_file).with(Pathname('masking.yml')).and_return(:mask_column_called)
+      end
+    }
+
+    it { is_expected.to eq :mask_column_called }
   end
 end

@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method/time'
+require 'masking/config/mask_columns/method/time'
 
-RSpec.describe Masking::Config::TargetColumns::Method::Time do
+RSpec.describe Masking::Config::MaskColumns::Method::Time do
   describe '#call' do
     subject { described_class.new(value).call }
 

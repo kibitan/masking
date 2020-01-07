@@ -6,7 +6,7 @@ require 'benchmark'
 require 'masking'
 
 Masking.configure do |config|
-  config.target_columns_file_path = 'benchmark/masking.yml'
+  config.file_path = 'benchmark/masking.yml'
 end
 
 n = 30

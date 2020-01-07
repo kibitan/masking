@@ -16,7 +16,7 @@ module Masking
       option_parser.parse(argv)
       Masking.run
     rescue Masking::Error => e
-      warn(Masking::Cli::ErrorMessage.new(e).message(config_file_path: Masking.config.target_columns_file_path))
+      warn(Masking::Cli::ErrorMessage.new(e).message(config_file_path: Masking.config.file_path))
       exit(false)
     end
 
@@ -36,7 +36,7 @@ module Masking
     def define_config_option(parser)
       parser.on('-cFILE_PATH', '--config=FILE_PATH', 'specify config file. default: masking.yml') do |file_path|
         Masking.configure do |config|
-          config.target_columns_file_path = file_path
+          config.file_path = file_path
         end
       end
     end

@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 require 'masking/data_mask_processor/cache'
-require 'masking/config/target_columns'
+require 'masking/config/mask_columns'
 require 'masking/insert_statement'
 
 module Masking
   class DataMaskProcessor
     def initialize(
       insert_statement_line,
-      target_columns: ::Masking.config.target_columns,
+      mask_columns: ::Masking.config.mask_columns,
       insert_statement: InsertStatement.new(insert_statement_line),
       cache_store: Cache
     )
       @raw_line         = insert_statement_line
-      @target_columns   = target_columns
+      @mask_columns   = mask_columns
       @insert_statement = insert_statement
       @cache_store      = cache_store
     end
@@ -35,17 +35,17 @@ module Masking
 
     private
 
-    attr_reader :raw_line, :target_columns, :insert_statement, :cache_store
+    attr_reader :raw_line, :mask_columns, :insert_statement, :cache_store
 
     def target_table?
-      target_columns.contains?(table_name: table_name)
+      mask_columns.contains?(table_name: table_name)
     end
 
     def column_indexes_mask_methods
       cache_store.fetch_or_store_if_no_cache(
         table: table_name,
         proc: proc {
-          target_columns.columns(table_name: table_name).map do |column|
+          mask_columns.columns(table_name: table_name).map do |column|
             [insert_statement.column_index(column.name), column.method]
           end
         }

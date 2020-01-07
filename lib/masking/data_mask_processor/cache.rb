@@ -12,11 +12,6 @@ module Masking
           @cache[table] = proc.call
         end
       end
-
-      # onlu for test
-      def self.clear
-        @cache = {}
-      end
     end
   end
 end

@@ -6,7 +6,7 @@ Dir[Pathname(__FILE__).dirname.join('method/*.rb').to_s].each(&method(:require))
 
 module Masking
   class Config
-    class TargetColumns
+    class MaskColumns
       class Method
         extend Forwardable
 

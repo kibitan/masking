@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/column'
-require 'masking/config/target_columns/table'
+require 'masking/config/mask_columns/column'
+require 'masking/config/mask_columns/table'
 
-RSpec.describe Masking::Config::TargetColumns::Column do
+RSpec.describe Masking::Config::MaskColumns::Column do
   let(:name)         { 'sample_column' }
   let(:table_name)   { 'sample_table' }
   let(:method_value) { 'sample_method' }
@@ -18,7 +18,7 @@ RSpec.describe Masking::Config::TargetColumns::Column do
     context 'column name is nil' do
       let(:name) { nil }
 
-      it { expect { subject }.to raise_error Masking::Config::TargetColumns::Column::ColumnNameIsNil }
+      it { expect { subject }.to raise_error Masking::Config::MaskColumns::Column::ColumnNameIsNil }
     end
   end
 
