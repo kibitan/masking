@@ -142,7 +142,7 @@ available option via environment variable:
 * `MYSQL_PASSWORD`: password for user(default: `password`)
 * `MYSQL_DBNAME`: database name(default: `mydb`)
 
-##### with docker
+##### with docker-compose
 
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose/mysql80.yml run -e MYSQL_HOST=mysql80 app acceptance/run_test.sh
