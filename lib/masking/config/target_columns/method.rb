@@ -18,7 +18,7 @@ module Masking
 
         private
 
-        # rubocop:disable Layout/AlignHash
+        # rubocop:disable Layout/HashAlignment
         MAPPING = {
           ::String     => StringBinaryDistinctor,
           ::Integer    => Integer,
@@ -29,7 +29,7 @@ module Masking
           ::FalseClass => Boolean,
           ::NilClass   => Null
         }.freeze
-        # rubocop:enable Layout/AlignHash
+        # rubocop:enable Layout/HashAlignment
 
         def mapping(klass)
           MAPPING[klass] || raise(UnknownType)
