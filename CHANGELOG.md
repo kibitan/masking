@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- add Ruby 3.0 support [#53](https://github.com/kibitan/masking/pull/55)
+
 ### Security
 
 - chore(deps): bump kramdown from 2.1.0 to 2.3.0 [#54](https://github.com/kibitan/masking/pull/54)
