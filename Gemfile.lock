@@ -44,7 +44,7 @@ GEM
     rake-notes (0.2.2)
       colored
       rake
-    rexml (3.2.4)
+    rexml (3.2.5)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
