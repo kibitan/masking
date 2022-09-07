@@ -2,7 +2,7 @@ version: 2.1
 
 test_attributes: &test_attributes
   docker:
-    - image: cimg/base:current
+    - image: circleci/buildpack-deps:trusty
   resource_class: small
   steps:
     - checkout
