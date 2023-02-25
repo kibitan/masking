@@ -17,10 +17,10 @@ FROM ruby:$ruby_version-alpine
 # TODO: remove dependecy of `git` from masking.gemspec:L19
 RUN apk add --no-cache git
 RUN addgroup -S app && adduser -S -G app app
-USER app
-WORKDIR /app
 ENV PATH $PATH:/app/exe
+WORKDIR /app
 RUN chown app /app
+USER app
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=app . ./
 ENTRYPOINT ["bundle", "exec", "exe/masking"]
