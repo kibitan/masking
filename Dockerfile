@@ -20,6 +20,7 @@ RUN addgroup -S app && adduser -S -G app app
 USER app
 WORKDIR /app
 ENV PATH $PATH:/app/exe
+RUN chown app /app
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=app . ./
 ENTRYPOINT ["bundle", "exec", "exe/masking"]
