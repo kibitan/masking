@@ -34,7 +34,7 @@ module Masking
       private
 
       def data
-        @data ||= YAML.safe_load(file_path.read, [Date, Time])
+        @data ||= YAML.safe_load(file_path.read, permitted_classes: [Date, Time])
       rescue Psych::SyntaxError
         raise Masking::Error::ConfigFileIsNotValidYaml
       end
