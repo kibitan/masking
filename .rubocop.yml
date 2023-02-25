@@ -1,9 +1,10 @@
 AllCops:
+  NewCops: enable
   Exclude:
     - 'vendor/**/*'
     - 'spec/fixtures/**/*'
     - 'tmp/**/*'
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.0
 
 Metrics/LineLength:
   Max: 120
