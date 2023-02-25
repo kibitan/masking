@@ -6,7 +6,7 @@ RUN addgroup -S app && adduser -S -G app app
 USER app
 WORKDIR /app
 COPY --chown=app . ./
-RUN gem install bundler:2.1.2 && bundle install -j "$(nproc)"
+RUN gem install bundler:2.4.7 && bundle install -j "$(nproc)"
 
 FROM builder AS with-mysql-client
 USER root
