@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- add Ruby 3.0 support [#53](https://github.com/kibitan/masking/pull/55)
+- add Ruby 3.0 support [#55](https://github.com/kibitan/masking/pull/55)
+- add Ruby 3.1 support [#60](https://github.com/kibitan/masking/pull/60)
 
 ### Security
 

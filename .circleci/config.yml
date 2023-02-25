@@ -2,7 +2,7 @@ version: 2.1
 
 test_attributes: &test_attributes
   docker:
-    - image: circleci/buildpack-deps:trusty
+    - image: cimg/base:current
   resource_class: small
   steps:
     - checkout
@@ -18,10 +18,14 @@ test_attributes: &test_attributes
         command: docker run --entrypoint sh -e CI -e CODECOV_TOKEN masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
 
 jobs:
+  test-ruby31:
+    <<: *test_attributes
+    environment:
+      RUBY_VERSION: '3.1'
   test-ruby30:
     <<: *test_attributes
     environment:
-      RUBY_VERSION: '3.0-rc'
+      RUBY_VERSION: '3.0'
   test-ruby27:
     <<: *test_attributes
     environment:
@@ -30,15 +34,11 @@ jobs:
     <<: *test_attributes
     environment:
       RUBY_VERSION: '2.6'
-  test-ruby25:
-    <<: *test_attributes
-    environment:
-      RUBY_VERSION: '2.5'
 
 workflows:
   'CircleCI: build':
     jobs:
       - test-ruby26
-      - test-ruby25
       - test-ruby27
       - test-ruby30
+      - test-ruby31

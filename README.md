@@ -18,7 +18,7 @@ gem install masking
 
 ## Requirement
 
-* Ruby 2.5/2.6/2.7/3.0(preview)
+* Ruby 2.6/2.7/3.0/3.1
 
 ## Supported RDBMS
 
@@ -179,6 +179,7 @@ bundle exec mdl *.md
 docker build . -t masking
 echo "sample stdout" | docker run -i masking
 docker run masking -v
+docker run --entrypoint sh -it masking # inside of docker container
 ```
 
 ## Profiling
