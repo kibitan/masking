@@ -179,6 +179,7 @@ bundle exec mdl *.md
 docker build . -t masking
 echo "sample stdout" | docker run -i masking
 docker run masking -v
+docker run --entrypoint sh -it masking # inside of docker container
 ```
 
 ## Profiling
