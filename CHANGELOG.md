@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.0] - 2023-02-25 Happy #ruby30th Birthday!
+
 ### Added
 
 - add Ruby 3.0 support [#55](https://github.com/kibitan/masking/pull/55)
@@ -65,7 +67,8 @@ $ bin/benchmark.rb
 
 Initial release version. 🎉
 
-[Unreleased]: https://github.com/kibitan/masking/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/kibitan/masking/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/kibitan/masking/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/kibitan/masking/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/kibitan/masking/compare/v0.0.3...v1.0.0
 [v0.0.3]: https://github.com/kibitan/masking/compare/v0.0.2...v0.0.3
