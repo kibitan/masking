@@ -7,7 +7,7 @@ RSpec.describe 'execute in command line' do
     command_subject('masking -v')
 
     it 'should put version', :aggregate_failures do
-      expect(stdout).to eq(Masking::VERSION + "\n")
+      expect(stdout).to eq("#{Masking::VERSION}\n")
       expect(stderr).to be_empty
       expect(exitstatus).to eq(0)
     end
