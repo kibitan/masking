@@ -1,10 +1,10 @@
 # MasKING🤴
 
-[![CircleCI](https://circleci.com/gh/kibitan/masking/tree/master.svg?style=svg)](https://circleci.com/gh/kibitan/masking/tree/main)
-[![Acceptance Test MySQL Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MySQL/badge.svg?branch=main)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MySQL%22+branch%main)
+[![CircleCI](https://circleci.com/gh/kibitan/masking/tree/main.svg?style=svg)](https://circleci.com/gh/kibitan/masking/tree/main)
+[![Acceptance Test MySQL Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MySQL/badge.svg?branch=main)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MySQL%22+branch%3Amain)
 [![Acceptance Test MariaDB Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MariaDB/badge.svg?branch=main)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MariaDB%22+branch%3Amain)
 
-[![codecov](https://codecov.io/gh/kibitan/masking/branch/master/graph/badge.svg)](https://codecov.io/gh/kibitan/masking)
+[![codecov](https://codecov.io/gh/kibitan/masking/branch/main/graph/badge.svg)](https://codecov.io/gh/kibitan/masking)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Gem Version](https://badge.fury.io/rb/masking.svg)](https://badge.fury.io/rb/masking)
 
@@ -238,7 +238,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Masking project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kibitan/masking/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Masking project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kibitan/masking/blob/main/CODE_OF_CONDUCT.md).
 
 <a name="footnote1">1</a>: <small> MySQL 5.5 is already not supported by [official](https://www.mysql.com/support/supportedplatforms/database.html)</small>
 
