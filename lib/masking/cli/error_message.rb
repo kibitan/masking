@@ -29,7 +29,7 @@ module Masking
         ERB.new(
           error_messages.fetch(error_class.to_s)
         ).result(
-          OpenStruct.new(keyword_args).instance_eval { binding }
+          Struct.new(keyword_args).instance_eval { binding }
         )
       end
     end
