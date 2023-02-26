@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - add MariaDB 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 support [#65](https://github.com/kibitan/masking/pull/65)
 - add Ruby 3.2 support [#64](https://github.com/kibitan/masking/pull/64)
+- update development libraries [#61](https://github.com/kibitan/masking/pull/61)
 
 ## [v1.1.0] - 2023-02-25 Happy #ruby30th Birthday🎉
 
