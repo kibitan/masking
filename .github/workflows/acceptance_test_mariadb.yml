@@ -5,52 +5,65 @@ on:
       - main
   pull_request:
 
+mariadb_attributes: &mariadb_attributes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh $MARIADB_VERSION docker-compose-ci.yml
+
 jobs:
+  mariadb1011:
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb1011'
+  mariadb1010:
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb1010'
+  mariadb109:
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb109'
+  mariadb108:
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb108'
+  mariadb107:
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb107'
+  mariadb106:
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb106'
+  mariadb105:
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb105'
   mariadb104:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb104 docker-compose-ci.yml
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb104'
   mariadb103:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb103 docker-compose-ci.yml
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb103'
   mariadb102:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb102 docker-compose-ci.yml
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb102'
   mariadb101:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb101 docker-compose-ci.yml
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb101'
   mariadb100:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb100 docker-compose-ci.yml
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb100'
   mariadb55:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb55 docker-compose-ci.yml
+    <<: *mariadb_attributes
+    environment:
+      MARIADB_VERSION: 'mariadb55'
