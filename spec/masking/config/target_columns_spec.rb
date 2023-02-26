@@ -36,12 +36,13 @@ RSpec.describe Masking::Config::TargetColumns do
   describe '#contains?' do
     context 'arguments has just table_name' do
       subject { described_class.new(file_path).contains?(table_name: table_name) }
+
       let(:file_path) { config_fixture_path }
 
       context 'table_name is included in config yaml' do
         let(:table_name) { 'users' }
 
-        it { is_expected.to eq true }
+        it { is_expected.to be true }
 
         context 'file_path is NOT valid Yaml' do
           let(:file_path) { config_fixture_path('invalid_yaml.yml') }
@@ -55,20 +56,21 @@ RSpec.describe Masking::Config::TargetColumns do
       context 'table_name is NOT included in config yaml' do
         let(:table_name) { 'hogehoge' }
 
-        it { is_expected.to eq false }
+        it { is_expected.to be false }
       end
     end
   end
 
   describe '#columns' do
     subject { described_class.new(file_path).columns(table_name: table_name) }
+
     let(:file_path) { config_fixture_path }
 
     context 'table_name is included in config yaml' do
       let(:table_name) { 'users' }
 
       it do
-        is_expected.to match [
+        expect(subject).to match [
           Masking::Config::TargetColumns::Column.new('name',            table_name: 'users', method_value: 'name'),
           Masking::Config::TargetColumns::Column.new('email',           table_name: 'users', method_value: 'email'),
           Masking::Config::TargetColumns::Column.new('password_digest', table_name: 'users', method_value: 'string')
@@ -79,16 +81,17 @@ RSpec.describe Masking::Config::TargetColumns do
     context 'table_name is NOT included in config yaml' do
       let(:table_name) { 'dummy_users' }
 
-      it { is_expected.to eq nil }
+      it { is_expected.to be_nil }
     end
   end
 
   describe '#tables' do
     subject { described_class.new(file_path).send(:tables) }
+
     let(:file_path) { config_fixture_path }
 
     specify do
-      is_expected.to match(
+      expect(subject).to match(
         admin: instance_of(Masking::Config::TargetColumns::Table),
         users: instance_of(Masking::Config::TargetColumns::Table)
       )

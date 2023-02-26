@@ -7,6 +7,7 @@ require 'masking/sql_dump_line'
 RSpec.describe Masking::SQLDumpLine do
   describe '#mask' do
     subject { described_class.new(line, mask_processor: mask_processor).mask }
+
     let(:mask_processor) { class_double(Masking::DataMaskProcessor) }
 
     shared_examples 'should be same with line' do
@@ -41,6 +42,7 @@ RSpec.describe Masking::SQLDumpLine do
 
     context 'when line is insert statement' do
       subject { described_class.new(line, mask_processor: mask_processor).mask }
+
       let(:line) { insert_statement_fixture }
       let(:mask_processor) do
         class_double(
@@ -63,32 +65,33 @@ RSpec.describe Masking::SQLDumpLine do
 
   describe '#insert_statement?' do
     subject { described_class.new(line, mask_processor: mask_processor).insert_statement? }
+
     let(:mask_processor) { class_double(Masking::DataMaskProcessor) }
 
     context 'when line is NOT insert statement' do
       context 'empty' do
         let(:line) { '' }
 
-        it { is_expected.to eq false }
+        it { is_expected.to be false }
       end
 
       context 'headline' do
         let(:line) { sql_dump_line_fixture('headline.sql') }
 
-        it { is_expected.to eq false }
+        it { is_expected.to be false }
       end
     end
 
     context 'when line is insert statement' do
       let(:line) { insert_statement_fixture }
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when line is insert statement including invalid utf8 char' do
       let(:line) { insert_statement_fixture('with_binary.sql') }
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
   end
 end

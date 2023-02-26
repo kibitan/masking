@@ -6,7 +6,7 @@ RSpec.describe Masking::Config do
   describe 'Masking.config' do
     subject { Masking.config }
 
-    it { is_expected.to be_instance_of Masking::Config }
+    it { is_expected.to be_instance_of described_class }
   end
 
   describe 'Masking.configure' do
@@ -17,13 +17,14 @@ RSpec.describe Masking::Config do
     end
 
     it 'delegate method to config object' do
-      expect_any_instance_of(Masking::Config).to receive(:sample_method=).with(:sample)
+      expect_any_instance_of(described_class).to receive(:sample_method=).with(:sample)
       subject
     end
   end
 
   describe '#target_columns_file_path' do
     subject { config.target_columns_file_path }
+
     let(:config) { described_class.new }
 
     context 'setting with default' do
@@ -33,6 +34,7 @@ RSpec.describe Masking::Config do
 
   describe '#target_columns_file_path=' do
     subject { config.target_columns_file_path = target_columns_file_path }
+
     let(:config) { described_class.new }
     let(:target_columns_file_path) { config_fixture_path }
 
@@ -45,6 +47,7 @@ RSpec.describe Masking::Config do
 
   describe '#target_columns' do
     subject { config.target_columns }
+
     let(:config) { described_class.new }
 
     it 'return Masking::Config::TargetColumns' do

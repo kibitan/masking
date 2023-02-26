@@ -12,6 +12,7 @@ gem 'ruby-prof'
 # linter/static analyzer
 gem 'mdl'
 gem 'rubocop'
+gem 'rubocop-rspec'
 
 # test
 gem 'codecov'
