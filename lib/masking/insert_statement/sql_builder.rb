@@ -18,7 +18,7 @@ module Masking
       attr_reader :table, :columns, :values
 
       def columns_section
-        '(' + columns.map { |column| "`#{column}`" }.join(', ') + ')'
+        '(' + columns.map { |column| "`#{column}`" }.join(', ') + ')' # rubocop:disable Style/StringConcatenation
       end
 
       def values_section
