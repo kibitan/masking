@@ -23,7 +23,7 @@ gem install masking
 ## Supported RDBMS
 
 * MySQL: 5.5<sup>[1](#footnote1)</sup>, 5.6, 5.7, 8.0
-* MariaDB: 5.5, 10.0<sup>[2](#footnote2)</sup>, 10.1, 10.2, 10.3, 10.4
+* MariaDB: 5.5, 10.0<sup>[2](#footnote2)</sup>, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11
 
 ## Usage
 
