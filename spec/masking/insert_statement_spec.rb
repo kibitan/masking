@@ -55,7 +55,7 @@ RSpec.describe Masking::InsertStatement do
     end
   end
 
-  # rubocop:disable Metrics/LineLength
+  # rubocop:disableLayout/LineLength
   describe '#mask_value' do
     subject { described_class.new(raw_line).mask_value(column_index: column_index, mask_method: mask_method) }
 
@@ -64,8 +64,10 @@ RSpec.describe Masking::InsertStatement do
 
     it {
       is_expected.to match_array [
-        ['1', "'Super Chikahiro'", "'123@email.com'", "'password_digest'", "'2018-03-14 00:00:00'", "'2018-03-29 00:00:00'"],
-        ['2', "'Super Tokoro'", "'456@email.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
+        ['1', "'Super Chikahiro'", "'123@email.com'", "'password_digest'", "'2018-03-14 00:00:00'",
+         "'2018-03-29 00:00:00'"],
+        ['2', "'Super Tokoro'", "'456@email.com'", "'password_digest2'", "'2018-04-01 00:00:00'",
+         "'2018-04-03 12:00:00'"]
       ]
     }
   end
@@ -75,17 +77,22 @@ RSpec.describe Masking::InsertStatement do
 
     it 'returns array of InsertStatement::Value' do
       is_expected.to match_array [
-        ['1', "'Super Chikahiro'", "'kibitan@example.com'", "'password_digest'", "'2018-03-14 00:00:00'", "'2018-03-29 00:00:00'"],
-        ['2', "'Super Tokoro'", "'kibitan++@example.com'", "'password_digest2'", "'2018-04-01 00:00:00'", "'2018-04-03 12:00:00'"]
+        ['1', "'Super Chikahiro'", "'kibitan@example.com'", "'password_digest'", "'2018-03-14 00:00:00'",
+         "'2018-03-29 00:00:00'"],
+        ['2', "'Super Tokoro'", "'kibitan++@example.com'", "'password_digest2'", "'2018-04-01 00:00:00'",
+         "'2018-04-03 12:00:00'"]
       ]
     end
 
     context 'with comma and bracket in value' do
-      let(:raw_line) { insert_statement_fixture('comma_and_bracket_and_single_quote_and_empty_string_and_null_in_value.sql') }
+      let(:raw_line) {
+        insert_statement_fixture('comma_and_bracket_and_single_quote_and_empty_string_and_null_in_value.sql')
+      }
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          ['1.23', "'comma ,,, and bracket () and single quote \\'   and particular patten ),( and finished on backslash \\\\'", "'kibitan@example.com'"],
+          ['1.23',
+           "'comma ,,, and bracket () and single quote \\'   and particular patten ),( and finished on backslash \\\\'", "'kibitan@example.com'"],
           ['-2.5', "''", 'NULL']
         ]
       end
@@ -107,7 +114,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          ['1', "'sample text'", %q|'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|],
+          ['1', "'sample text'",
+           %q|'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|],
           ['2', "'sample text 2'", "'test text 2'"]
         ]
       end
@@ -130,7 +138,8 @@ RSpec.describe Masking::InsertStatement do
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
           ['1', "'sample text'", "_binary 'binarydata'", "_binary 'blob'", "'varchar2'", "'text text'", '123'],
-          ['2', "'sample text 2'", "_binary 'binarydata 2'", "_binary 'blob 2'", "'varchar2 2'", "'text text text'", '1234']
+          ['2', "'sample text 2'", "_binary 'binarydata 2'", "_binary 'blob 2'", "'varchar2 2'", "'text text text'",
+           '1234']
         ]
       end
     end
@@ -140,7 +149,8 @@ RSpec.describe Masking::InsertStatement do
 
       it 'returns array of InsertStatement::Value' do
         is_expected.to match_array [
-          ['1', "'sample text'", %q|_binary 'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|],
+          ['1', "'sample text'",
+           %q|_binary 'last order of columns and include apostrophe and ending parenthesis \') \') \') this pattern can be wrong'|],
           ['2', "'sample text 2'", "_binary 'test binary'"]
         ]
       end
@@ -166,5 +176,5 @@ RSpec.describe Masking::InsertStatement do
       end
     end
   end
-  # rubocop:enable Metrics/LineLength
+  # rubocop:enableLayout/LineLength
 end
