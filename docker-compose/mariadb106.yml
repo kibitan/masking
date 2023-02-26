@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      target: with-mysql-client
+    depends_on:
+      - mariadb106
+    entrypoint: docker-compose/wait-for-mysql.sh mariadb106
+
+  mariadb106:
+    image: mariadb:10.6
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_USER: mysqluser
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: mydb

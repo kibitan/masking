@@ -2,10 +2,66 @@ name: Acceptance Test MariaDB
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
+  mariadb1011:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb1011 docker-compose-ci.yml
+  mariadb1010:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb1010 docker-compose-ci.yml
+  mariadb109:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb109 docker-compose-ci.yml
+  mariadb108:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb108 docker-compose-ci.yml
+  mariadb107:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb107 docker-compose-ci.yml
+  mariadb106:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb106 docker-compose-ci.yml
+  mariadb105:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb105 docker-compose-ci.yml
   mariadb104:
     runs-on: ubuntu-latest
     steps:

@@ -9,8 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- add MariaDB 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 support [#65](https://github.com/kibitan/masking/pull/65)
+- add Ruby 3.2 support [#64](https://github.com/kibitan/masking/pull/64)
+
+## [v1.1.0] - 2023-02-25 Happy #ruby30th Birthday🎉
+
+### Added
+
 - add Ruby 3.0 support [#55](https://github.com/kibitan/masking/pull/55)
 - add Ruby 3.1 support [#60](https://github.com/kibitan/masking/pull/60)
+- drop Ruby 2.5 support [#60](https://github.com/kibitan/masking/pull/60)
 
 ### Security
 
@@ -65,7 +73,8 @@ $ bin/benchmark.rb
 
 Initial release version. 🎉
 
-[Unreleased]: https://github.com/kibitan/masking/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/kibitan/masking/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/kibitan/masking/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/kibitan/masking/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/kibitan/masking/compare/v0.0.3...v1.0.0
 [v0.0.3]: https://github.com/kibitan/masking/compare/v0.0.2...v0.0.3

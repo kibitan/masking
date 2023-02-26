@@ -18,6 +18,10 @@ test_attributes: &test_attributes
         command: docker run --entrypoint sh -e CI -e CODECOV_TOKEN masking-$RUBY_VERSION-$CIRCLE_SHA1 -c "bundle exec rspec"
 
 jobs:
+  test-ruby32:
+    <<: *test_attributes
+    environment:
+      RUBY_VERSION: '3.2'
   test-ruby31:
     <<: *test_attributes
     environment:
@@ -38,7 +42,8 @@ jobs:
 workflows:
   'CircleCI: build':
     jobs:
+      - test-ruby32
+      - test-ruby31
+      - test-ruby30
       - test-ruby26
       - test-ruby27
-      - test-ruby30
-      - test-ruby31

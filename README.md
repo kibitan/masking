@@ -1,10 +1,10 @@
 # MasKING🤴
 
-[![CircleCI](https://circleci.com/gh/kibitan/masking/tree/master.svg?style=svg)](https://circleci.com/gh/kibitan/masking/tree/master)
-[![Acceptance Test MySQL Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MySQL/badge.svg?branch=master)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MySQL%22+branch%3Amaster)
-[![Acceptance Test MariaDB Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MariaDB/badge.svg?branch=master)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MariaDB%22+branch%3Amaster)
+[![CircleCI](https://circleci.com/gh/kibitan/masking/tree/main.svg?style=svg)](https://circleci.com/gh/kibitan/masking/tree/main)
+[![Acceptance Test MySQL Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MySQL/badge.svg?branch=main)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MySQL%22+branch%3Amain)
+[![Acceptance Test MariaDB Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MariaDB/badge.svg?branch=main)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MariaDB%22+branch%3Amain)
 
-[![codecov](https://codecov.io/gh/kibitan/masking/branch/master/graph/badge.svg)](https://codecov.io/gh/kibitan/masking)
+[![codecov](https://codecov.io/gh/kibitan/masking/branch/main/graph/badge.svg)](https://codecov.io/gh/kibitan/masking)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![Gem Version](https://badge.fury.io/rb/masking.svg)](https://badge.fury.io/rb/masking)
 
@@ -18,12 +18,12 @@ gem install masking
 
 ## Requirement
 
-* Ruby 2.6/2.7/3.0/3.1
+* Ruby 2.6/2.7/3.0/3.1/3.2
 
-## Supported RDBMS
+## Supporting RDBMS
 
 * MySQL: 5.5<sup>[1](#footnote1)</sup>, 5.6, 5.7, 8.0
-* MariaDB: 5.5, 10.0<sup>[2](#footnote2)</sup>, 10.1, 10.2, 10.3, 10.4
+* MariaDB: 5.5, 10.0<sup>[2](#footnote2)</sup>, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11
 
 ## Usage
 
@@ -238,7 +238,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Masking project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kibitan/masking/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Masking project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kibitan/masking/blob/main/CODE_OF_CONDUCT.md).
 
 <a name="footnote1">1</a>: <small> MySQL 5.5 is already not supported by [official](https://www.mysql.com/support/supportedplatforms/database.html)</small>
 
