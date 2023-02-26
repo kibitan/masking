@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe Masking::Cli do
   describe '#run' do
-    subject { Masking::Cli.new(argv).run }
+    subject { described_class.new(argv).run }
 
     shared_examples 'set config and call Main.run' do
       it 'set config and call Main.run' do
@@ -28,7 +28,7 @@ RSpec.describe Masking::Cli do
     shared_examples 'print Version and exit' do
       it do
         expect { subject }.to raise_error(SystemExit) & \
-                              output(Masking::VERSION + "\n").to_stdout
+                              output("#{Masking::VERSION}\n").to_stdout
       end
 
       it 'exit status is 0' do
@@ -70,6 +70,7 @@ RSpec.describe Masking::Cli do
         allow(Masking).to receive(:run)
           .and_raise(raising_error)
       end
+
       let(:argv) { [] }
 
       shared_examples 'with errormessage and exitstatus is 1' do |error_text|

@@ -11,7 +11,7 @@ module Masking
           end
 
           def call
-            ("'" + output + "'").b
+            "'#{output}'".b
           end
 
           private

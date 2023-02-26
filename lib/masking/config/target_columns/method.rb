@@ -2,7 +2,7 @@
 
 require 'pathname'
 require 'forwardable'
-Dir[Pathname(__FILE__).dirname.join('method/*.rb').to_s].each(&method(:require))
+Dir[Pathname(__FILE__).dirname.join('method/*.rb').to_s].sort.each(&method(:require))
 
 module Masking
   class Config

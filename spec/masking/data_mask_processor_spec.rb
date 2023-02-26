@@ -3,6 +3,12 @@
 require 'spec_helper'
 require 'masking/data_mask_processor'
 
+class DummyCache
+  def self.fetch_or_store_if_no_cache(table:, proc:) # rubocop:disable Lint/UnusedMethodArgument
+    proc.call
+  end
+end
+
 RSpec.describe Masking::DataMaskProcessor do
   describe '#process' do
     subject {
@@ -12,11 +18,6 @@ RSpec.describe Masking::DataMaskProcessor do
         cache_store: cache_store
       ).process
     }
-    class DummyCache
-      def self.fetch_or_store_if_no_cache(table:, proc:) # rubocop:disable Lint/UnusedMethodArgument
-        proc.call
-      end
-    end
 
     # TODO: use mock instead of real object or refactoring
     let(:target_columns) { Masking::Config::TargetColumns.new(config_fixture_path) }

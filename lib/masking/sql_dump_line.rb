@@ -20,6 +20,7 @@ module Masking
     private
 
     attr_reader :line, :mask_processor
+
     INSERT_STATEMENT_REGEXP = /^INSERT/.freeze
 
     def processor

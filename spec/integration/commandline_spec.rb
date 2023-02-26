@@ -6,8 +6,8 @@ RSpec.describe 'execute in command line' do
   context 'with version option' do
     command_subject('masking -v')
 
-    it 'should put version', :aggregate_failures do
-      expect(stdout).to eq(Masking::VERSION + "\n")
+    it 'puts version', :aggregate_failures do
+      expect(stdout).to eq("#{Masking::VERSION}\n")
       expect(stderr).to be_empty
       expect(exitstatus).to eq(0)
     end
@@ -16,7 +16,7 @@ RSpec.describe 'execute in command line' do
   context 'with target_columns.yml' do
     command_subject("masking -c #{config_fixture_path}", stdin: insert_statement_fixture)
 
-    it 'should masked correctly', :aggregate_failures do
+    it 'maskeds correctly', :aggregate_failures do
       expect(stdout).to eq(insert_statement_fixture('sample_masked.sql'))
       expect(stderr).to be_empty
       expect(exitstatus).to eq(0)
@@ -31,7 +31,7 @@ RSpec.describe 'execute in command line' do
           stdin: sql_dump_line_fixture('multiple_lines_of_users.sql')
         )
 
-        it 'should masked correctly', :aggregate_failures do
+        it 'maskeds correctly', :aggregate_failures do
           expect(stdout).to eq(sql_dump_line_fixture('masked_multiple_lines_of_users.sql'))
           expect(stderr).to be_empty
           expect(exitstatus).to eq(0)
@@ -44,7 +44,7 @@ RSpec.describe 'execute in command line' do
     context 'with not exists config' do
       command_subject('masking -c not_exists.yml', stdin: insert_statement_fixture)
 
-      it 'should failed with error message', :aggregate_failures do
+      it 'faileds with error message', :aggregate_failures do
         expect(stdout).to be_empty
         expect(stderr).to eq "ERROR: config file (not_exists.yml) does not exist\n"
         expect(exitstatus).to eq(1)
@@ -54,7 +54,7 @@ RSpec.describe 'execute in command line' do
     context 'with directory path (not file)' do
       command_subject('masking -c tmp/', stdin: insert_statement_fixture)
 
-      it 'should failed with error message', :aggregate_failures do
+      it 'faileds with error message', :aggregate_failures do
         expect(stdout).to be_empty
         expect(stderr).to eq "ERROR: config file (tmp/) is not file\n"
         expect(exitstatus).to eq(1)
@@ -64,7 +64,7 @@ RSpec.describe 'execute in command line' do
     context 'with invalid yaml file path' do
       command_subject("masking -c #{config_fixture_path('invalid_yaml.yml')}", stdin: insert_statement_fixture)
 
-      it 'should failed with error message', :aggregate_failures do
+      it 'faileds with error message', :aggregate_failures do
         expect(stdout).to be_empty
         expect(stderr).to eq "ERROR: config file (spec/fixtures/config/invalid_yaml.yml) is not valid yaml format\n"
         expect(exitstatus).to eq(1)
@@ -77,7 +77,7 @@ RSpec.describe 'execute in command line' do
         stdin: insert_statement_fixture
       )
 
-      it 'should failed with error message', :aggregate_failures do
+      it 'faileds with error message', :aggregate_failures do
         expect(stdout).to be_empty
         expect(stderr).to eq \
           'ERROR: config file (spec/fixtures/config/invalid_yaml_null_column.yml) is not valid, ' \
@@ -89,7 +89,7 @@ RSpec.describe 'execute in command line' do
     pending 'with invalid config structure'
 
     shared_examples_for 'should fail with parse error message' do
-      it 'should failed with error message', :aggregate_failures do
+      it 'faileds with error message', :aggregate_failures do
         expect(stdout).to be_empty
         expect(stderr).to eq(
           "ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?\n"

@@ -1,11 +1,17 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rspec
+
 AllCops:
+  NewCops: enable
   Exclude:
     - 'vendor/**/*'
     - 'spec/fixtures/**/*'
     - 'tmp/**/*'
   TargetRubyVersion: 2.6
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/BlockLength:

@@ -18,6 +18,7 @@ module Masking
           private
 
           attr_reader :date
+
           FORMAT = '%Y-%m-%d'
 
           def date_format

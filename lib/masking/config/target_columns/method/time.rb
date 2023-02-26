@@ -16,6 +16,7 @@ module Masking
           private
 
           attr_reader :time
+
           FORMAT = '%Y-%m-%d %H:%M:%S'
 
           def time_format
