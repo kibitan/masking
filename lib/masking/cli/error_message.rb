@@ -29,7 +29,7 @@ module Masking
         ERB.new(
           error_messages.fetch(error_class.to_s)
         ).result(
-          Struct.new(keyword_args).instance_eval { binding }
+          OpenStruct.new(keyword_args).instance_eval { binding } # rubocop:disable Style/OpenStructUse
         )
       end
     end

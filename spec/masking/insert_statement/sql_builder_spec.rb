@@ -18,7 +18,7 @@ RSpec.describe Masking::InsertStatement::SQLBuilder do
 
     it {
       is_expected.to eq \
-        %|INSERT INTO `users` (`id`, `name`, `email`, `address`) VALUES (1,'John','john@example.com','berlin'),(2,'Super Chikahiro','kibitan++@example.com','tokyo');\n| # rubocop:disableLayout/LineLength
+        %|INSERT INTO `users` (`id`, `name`, `email`, `address`) VALUES (1,'John','john@example.com','berlin'),(2,'Super Chikahiro','kibitan++@example.com','tokyo');\n| # rubocop:disable Layout/LineLength
     }
   end
 end

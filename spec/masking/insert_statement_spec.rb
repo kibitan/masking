@@ -55,7 +55,7 @@ RSpec.describe Masking::InsertStatement do
     end
   end
 
-  # rubocop:disableLayout/LineLength
+  # rubocop:disable Layout/LineLength
   describe '#mask_value' do
     subject { described_class.new(raw_line).mask_value(column_index: column_index, mask_method: mask_method) }
 
@@ -176,5 +176,5 @@ RSpec.describe Masking::InsertStatement do
       end
     end
   end
-  # rubocop:enableLayout/LineLength
+  # rubocop:enable Layout/LineLength
 end
