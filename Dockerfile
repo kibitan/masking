@@ -1,4 +1,4 @@
-ARG ruby_version=2.6
+ARG ruby_version=3.2
 
 FROM ruby:$ruby_version-alpine AS builder
 RUN apk add --no-cache build-base git
