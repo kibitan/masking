@@ -5,7 +5,7 @@ services:
     build:
       target: with-mysql-client
     depends_on:
-      - mariadb104
+      - mariadb108
     entrypoint: docker-compose/wait-for-mysql.sh mariadb108
 
   mariadb108:
