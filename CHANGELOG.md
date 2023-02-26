@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- add Ruby 3.2 support [#64](https://github.com/kibitan/masking/pull/64)
+
 ## [v1.1.0] - 2023-02-25 Happy #ruby30th Birthday🎉
 
 ### Added
 
 - add Ruby 3.0 support [#55](https://github.com/kibitan/masking/pull/55)
 - add Ruby 3.1 support [#60](https://github.com/kibitan/masking/pull/60)
+- drop Ruby 2.5 support [#60](https://github.com/kibitan/masking/pull/60)
 
 ### Security
 
