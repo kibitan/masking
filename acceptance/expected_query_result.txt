@@ -23,7 +23,7 @@ nullable_integer: NULL
             time: 2018-08-24 15:54:06
   binary_or_blob: \x92\x92   
  nullable_string: NULL
-nullable_integer: 12
+nullable_integer: 33333
 *************************** 3. row ***************************
               id: 3
           string: anonymized string
@@ -36,4 +36,4 @@ nullable_integer: 12
             time: 2018-08-24 15:54:06
   binary_or_blob: NULL
  nullable_string: string3
-nullable_integer: -123
+nullable_integer: 33333
