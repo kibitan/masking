@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-
 require 'masking/config/target_columns/method/methodable'
 require 'masking/config/target_columns/method/ignore_null'
 
@@ -16,27 +15,21 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
     end
   end
 
-  let(:prepended_object) do
-    methodable_class.new('mask_value').tap { |obj| obj.singleton_class.prepend(described_class) }
-  end
-
-  let(:not_prepended_object) do
-    methodable_class.new('mask_value')
-  end
-
   describe '#call' do
-    subject { prepended_object.call(sql_value) }
+    let(:sql_value) { 'NULL' }
 
-    context 'when NULL' do
-      let(:sql_value) { 'NULL' }
-
-      it 'returns NULL' do
-        expect(subject).to eq('NULL')
+    context 'when prepended with IgnoreNull' do
+      let(:prepended_object) do
+        methodable_class.new('mask_value').tap { |obj| obj.singleton_class.prepend(described_class) }
       end
 
-      it 'does not effect another obeject' do
-        subject
-        expect(not_prepended_object.call(sql_value)).to eq('original call')
+      it 'returns NULL' do
+        expect(prepended_object.call(sql_value)).to eq('NULL')
+      end
+
+      it 'does not affect another object' do
+        prepended_object.call(sql_value)
+        expect(methodable_class.new('mask_value').call(sql_value)).to eq('original call')
       end
 
       context 'when sequence! method is defined' do
@@ -54,18 +47,22 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
           end
         end
 
-        it 'does call sequence! method' do
+        it 'calls sequence! method' do
           expect(prepended_object).to receive(:sequence!)
-          subject
+          prepended_object.call(sql_value)
         end
       end
     end
 
-    context 'when not NULL' do
+    context 'when not prepended with IgnoreNull' do
+      let(:not_prepended_object) do
+        methodable_class.new('mask_value')
+      end
+
       let(:sql_value) { 'abc' }
 
       it 'returns the original call' do
-        expect(subject).to eq('original call')
+        expect(not_prepended_object.call(sql_value)).to eq('original call')
       end
     end
   end

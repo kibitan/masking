@@ -1,31 +1,24 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-
 require 'masking/config/target_columns/method/methodable'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Methodable do
-  let(:methodable_class) do
-    Class.new do
-      include Masking::Config::TargetColumns::Method::Methodable
-    end
-  end
-
   describe '#value' do
-    subject { methodable_class.new(value).instance_variable_get(:@value) }
+    context 'when initialized with abc' do
+      let(:methodable) { Class.new { include Masking::Config::TargetColumns::Method::Methodable }.new('abc') }
 
-    context 'when abc' do
-      let(:value) { 'abc' }
-
-      it { is_expected.to eq('abc') }
+      it 'returns abc' do
+        expect(methodable.instance_variable_get(:@value)).to eq('abc')
+      end
     end
   end
 
   describe '#call' do
-    subject { methodable_class.new('test').call('sql_value') }
+    let(:methodable) { Class.new { include Masking::Config::TargetColumns::Method::Methodable }.new('test') }
 
-    it 'raise error' do
-      expect { subject }.to raise_error NotImplementedError
+    it 'raises NotImplementedError' do
+      expect { methodable.call('sql_value') }.to raise_error(NotImplementedError)
     end
   end
 end
