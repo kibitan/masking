@@ -8,13 +8,13 @@ RSpec.describe Masking::Config::TargetColumns::Method::Type::String do
   describe '#call' do
     subject { described_class.new(value).call('sql_value') }
 
-    context 'when "hoge"' do
+    context 'with "hoge"' do
       let(:value) { 'hoge' }
 
       it { is_expected.to eq "'hoge'" }
     end
 
-    context 'when "あああ"' do
+    context 'with "あああ"' do
       let(:value) { 'あああ' }
 
       it { is_expected.to eq "'あああ'".b }
@@ -22,14 +22,12 @@ RSpec.describe Masking::Config::TargetColumns::Method::Type::String do
 
     # rubocop:disable Style/FormatStringToken
     context 'with sequential number placeholder %{n}' do
-      subject { described_class.new(value) }
-
       let(:value) { 'number%{n}' }
 
       it 'increment number each by call' do
-        expect(subject.call('sql_value')).to eq "'number1'"
-        expect(subject.call('sql_value')).to eq "'number2'"
-        expect(subject.call('sql_value')).to eq "'number3'"
+        expect(described_class.new(value).call('sql_value')).to eq "'number1'"
+        expect(described_class.new(value).call('sql_value')).to eq "'number2'"
+        expect(described_class.new(value).call('sql_value')).to eq "'number3'"
       end
     end
     # rubocop:enable Style/FormatStringToken

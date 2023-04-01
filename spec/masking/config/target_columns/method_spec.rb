@@ -72,7 +72,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { Time.new(2018, 3, 14, 15, 31, 0) }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Type::Time).to receive(:new).with(Time.new(2018, 3, 14, 15, 31, 0))
+        expect(Masking::Config::TargetColumns::Method::Type::Time).to receive(:new).with(Time.new(2018, 3, 14, 15, 31,
+                                                                                                  0))
         subject
       end
 
