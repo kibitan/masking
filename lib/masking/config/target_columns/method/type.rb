@@ -1,19 +1,24 @@
 # frozen_string_literal: true
 
-require 'masking/config/target_columns/method/methodable'
-
 module Masking
   class Config
     class TargetColumns
       class Method
-        class Integer
-          include Methodable
+        module Type
+          def initialize(value)
+            @value = value
+          end
 
           def call(_sql_value)
-            value.to_s
+            raise NotImplementedError
           end
+
+          private
+
+          attr_reader :value
         end
       end
+
     end
   end
 end

@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method/integer'
+require 'masking/config/target_columns/method/type/integer'
 
-RSpec.describe Masking::Config::TargetColumns::Method::Integer do
+RSpec.describe Masking::Config::TargetColumns::Method::Type::Integer do
   describe '#call' do
     subject { described_class.new(value).call('sql_value') }
 

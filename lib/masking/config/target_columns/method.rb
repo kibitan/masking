@@ -2,7 +2,7 @@
 
 require 'pathname'
 require 'forwardable'
-Dir[Pathname(__FILE__).dirname.join('method/*.rb').to_s].sort.each(&method(:require))
+Dir[Pathname(__FILE__).dirname.join('method/type/*.rb').to_s].sort.each(&method(:require))
 
 module Masking
   class Config
@@ -22,14 +22,14 @@ module Masking
 
         # rubocop:disable Layout/HashAlignment
         MAPPING = {
-          ::String     => StringBinaryDistinctor,
-          ::Integer    => Integer,
-          ::Float      => Float,
-          ::Date       => Date,
-          ::Time       => Time,
-          ::TrueClass  => Boolean,
-          ::FalseClass => Boolean,
-          ::NilClass   => Null
+          ::String     => Type::StringBinaryDistinctor,
+          ::Integer    => Type::Integer,
+          ::Float      => Type::Float,
+          ::Date       => Type::Date,
+          ::Time       => Type::Time,
+          ::TrueClass  => Type::Boolean,
+          ::FalseClass => Type::Boolean,
+          ::NilClass   => Type::Null
         }.freeze
         # rubocop:enable Layout/HashAlignment
 

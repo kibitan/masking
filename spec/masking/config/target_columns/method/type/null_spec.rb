@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method/null'
+require 'masking/config/target_columns/method/type/null'
 
-RSpec.describe Masking::Config::TargetColumns::Method::Null do
+RSpec.describe Masking::Config::TargetColumns::Method::Type::Null do
   describe '#call' do
     subject { described_class.new(value).call('sql_value') }
 

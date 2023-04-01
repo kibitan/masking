@@ -28,7 +28,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { 'string' }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::StringBinaryDistinctor).to receive(:new).with('string')
+        expect(Masking::Config::TargetColumns::Method::Type::StringBinaryDistinctor).to receive(:new).with('string')
         subject
       end
 
@@ -39,7 +39,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { 123 }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Integer).to receive(:new).with(123)
+        expect(Masking::Config::TargetColumns::Method::Type::Integer).to receive(:new).with(123)
         subject
       end
 
@@ -50,7 +50,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { 123.456 }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Float).to receive(:new).with(123.456)
+        expect(Masking::Config::TargetColumns::Method::Type::Float).to receive(:new).with(123.456)
         subject
       end
 
@@ -61,7 +61,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { Date.new(2018, 3, 14) }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Date).to receive(:new).with(Date.new(2018, 3, 14))
+        expect(Masking::Config::TargetColumns::Method::Type::Date).to receive(:new).with(Date.new(2018, 3, 14))
         subject
       end
 
@@ -72,7 +72,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { Time.new(2018, 3, 14, 15, 31, 0) }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Time).to receive(:new).with(Time.new(2018, 3, 14, 15, 31, 0))
+        expect(Masking::Config::TargetColumns::Method::Type::Time).to receive(:new).with(Time.new(2018, 3, 14, 15, 31, 0))
         subject
       end
 
@@ -83,7 +83,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { true }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Boolean).to receive(:new).with(true)
+        expect(Masking::Config::TargetColumns::Method::Type::Boolean).to receive(:new).with(true)
         subject
       end
 
@@ -94,7 +94,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { false }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Boolean).to receive(:new).with(false)
+        expect(Masking::Config::TargetColumns::Method::Type::Boolean).to receive(:new).with(false)
         subject
       end
 
@@ -105,7 +105,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
       let(:method) { nil }
 
       it do
-        expect(Masking::Config::TargetColumns::Method::Null).to receive(:new).with(nil)
+        expect(Masking::Config::TargetColumns::Method::Type::Null).to receive(:new).with(nil)
         subject
       end
 
@@ -123,8 +123,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
     subject { described_class.new(nil).call('_sql_value') }
 
     it 'delegate to concreate object' do
-      expect(Masking::Config::TargetColumns::Method::Null).to receive(:new).with(nil).and_return(
-        instance_double(Masking::Config::TargetColumns::Method::Null).tap do |double|
+      expect(Masking::Config::TargetColumns::Method::Type::Null).to receive(:new).with(nil).and_return(
+        instance_double(Masking::Config::TargetColumns::Method::Type::Null).tap do |double|
           expect(double).to receive(:call)
         end
       )

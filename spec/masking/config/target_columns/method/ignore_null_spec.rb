@@ -2,13 +2,13 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method/methodable'
+require 'masking/config/target_columns/method/Type'
 require 'masking/config/target_columns/method/ignore_null'
 
 RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
   let(:methodable_class) do
     Class.new do
-      include Masking::Config::TargetColumns::Method::Methodable
+      include Masking::Config::TargetColumns::Method::Type
 
       def call(_sql_value)
         'original call'
@@ -40,7 +40,7 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
       context 'when sequence! method is defined' do
         let(:methodable_class) do
           Class.new do
-            include Masking::Config::TargetColumns::Method::Methodable
+            include Masking::Config::TargetColumns::Method::Type
 
             def call(_sql_value)
               'original call'
