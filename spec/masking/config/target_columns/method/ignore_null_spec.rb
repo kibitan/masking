@@ -20,6 +20,10 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
     methodable_class.new('mask_value').tap { |obj| obj.singleton_class.prepend(described_class) }
   end
 
+  let(:not_prepended_object) do
+    methodable_class.new('mask_value')
+  end
+
   describe '#call' do
     subject { prepended_object.call(sql_value) }
 
@@ -28,6 +32,11 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
 
       it 'returns NULL' do
         is_expected.to eq('NULL')
+      end
+
+      it 'does not effect another obeject' do
+        subject
+        expect(not_prepended_object.call(sql_value)).to eq('original call')
       end
     end
 
