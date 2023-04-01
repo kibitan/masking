@@ -8,7 +8,7 @@ module Masking
         class Boolean
           include Methodable
 
-          def call
+          def call(_sql_value)
             boolean_format.to_s
           end
 

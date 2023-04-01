@@ -7,7 +7,7 @@ module Masking
         class Null
           def initialize(*); end
 
-          def call
+          def call(_sql_value)
             'NULL'
           end
         end

@@ -6,7 +6,7 @@ require 'masking/config/target_columns/method/binary'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Binary do
   describe '#call' do
-    subject { described_class.new(value).call }
+    subject { described_class.new(value).call('sql_value') }
 
     context 'binary string (only ascii)' do
       let(:value) { 'only ascii binary' }

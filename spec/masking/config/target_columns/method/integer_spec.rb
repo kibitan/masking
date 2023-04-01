@@ -6,7 +6,7 @@ require 'masking/config/target_columns/method/integer'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Integer do
   describe '#call' do
-    subject { described_class.new(value).call }
+    subject { described_class.new(value).call('sql_value') }
 
     context 'when 12345' do
       let(:value) { 12_345 }

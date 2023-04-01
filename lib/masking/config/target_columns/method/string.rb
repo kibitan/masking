@@ -13,7 +13,7 @@ module Masking
             @sequence = 0
           end
 
-          def call
+          def call(_sql_value)
             "'#{output}'".b
           end
 

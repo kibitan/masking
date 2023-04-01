@@ -9,7 +9,7 @@ module Masking
         class Date
           include Methodable
 
-          def call
+          def call(_sql_value)
             "'#{date_format}'"
           end
 

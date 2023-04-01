@@ -6,7 +6,7 @@ require 'masking/config/target_columns/method/string'
 
 RSpec.describe Masking::Config::TargetColumns::Method::String do
   describe '#call' do
-    subject { described_class.new(value).call }
+    subject { described_class.new(value).call('sql_value') }
 
     context 'when "hoge"' do
       let(:value) { 'hoge' }
@@ -27,9 +27,9 @@ RSpec.describe Masking::Config::TargetColumns::Method::String do
       let(:value) { 'number%{n}' }
 
       it 'increment number each by call' do
-        expect(subject.call).to eq "'number1'"
-        expect(subject.call).to eq "'number2'"
-        expect(subject.call).to eq "'number3'"
+        expect(subject.call('sql_value')).to eq "'number1'"
+        expect(subject.call('sql_value')).to eq "'number2'"
+        expect(subject.call('sql_value')).to eq "'number3'"
       end
     end
     # rubocop:enable Style/FormatStringToken

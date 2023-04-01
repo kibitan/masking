@@ -8,7 +8,7 @@ module Masking
         class Binary
           include Methodable
 
-          def call
+          def call(_sql_value)
             "_binary '#{value}'".b
           end
         end

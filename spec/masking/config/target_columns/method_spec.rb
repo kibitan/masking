@@ -88,7 +88,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
   end
 
   describe '#call' do
-    subject { described_class.new(nil).call }
+    subject { described_class.new(nil).call('_sql_value') }
 
     it 'delegate to concreate object' do
       expect(Masking::Config::TargetColumns::Method::Null).to receive(:new).with(nil).and_return(

@@ -6,7 +6,7 @@ require 'masking/config/target_columns/method/date'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Date do
   describe '#call' do
-    subject { described_class.new(value).call }
+    subject { described_class.new(value).call('sql_value') }
 
     context 'when 2018-07-20' do
       let(:value) { Date.new(2018, 7, 20) }

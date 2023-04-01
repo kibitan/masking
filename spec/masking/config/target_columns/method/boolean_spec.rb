@@ -6,7 +6,7 @@ require 'masking/config/target_columns/method/boolean'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Boolean do
   describe '#call' do
-    subject { described_class.new(value).call }
+    subject { described_class.new(value).call('sql_value') }
 
     context 'when false' do
       let(:value) { false }

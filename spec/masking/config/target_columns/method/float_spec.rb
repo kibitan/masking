@@ -6,7 +6,7 @@ require 'masking/config/target_columns/method/float'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Float do
   describe '#call' do
-    subject { described_class.new(value).call }
+    subject { described_class.new(value).call('sql_value') }
 
     context 'when 1.2345' do
       let(:value) { 1.2345 }

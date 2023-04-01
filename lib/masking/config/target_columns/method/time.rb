@@ -8,7 +8,7 @@ module Masking
         class Time
           include Methodable
 
-          def call
+          def call(_sql_value)
             "'#{time_format}'"
           end
 

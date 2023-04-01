@@ -8,7 +8,7 @@ module Masking
         class Float
           include Methodable
 
-          def call
+          def call(_sql_value)
             value.to_s
           end
         end

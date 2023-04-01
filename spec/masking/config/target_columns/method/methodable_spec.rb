@@ -15,14 +15,14 @@ RSpec.describe Masking::Config::TargetColumns::Method::Methodable do
     subject { methodable_class.new(value).instance_variable_get(:@value) }
 
     context 'when abc' do
-      let(:value) { "abc" }
+      let(:value) { 'abc' }
 
-      it { is_expected.to eq("abc") }
+      it { is_expected.to eq('abc') }
     end
   end
 
   describe '#call' do
-    subject { methodable_class.new("test").call }
+    subject { methodable_class.new('test').call('sql_value') }
 
     it 'raise error' do
       expect { subject }.to raise_error NotImplementedError

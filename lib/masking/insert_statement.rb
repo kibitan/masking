@@ -36,7 +36,7 @@ module Masking
 
     def mask_value(column_index:, mask_method:)
       values.each do |value|
-        value[column_index] = mask_method.call
+        value[column_index] = mask_method.call(value[column_index])
       end
     end
 

@@ -27,7 +27,7 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
       let(:sql_value) { 'NULL' }
 
       it 'returns NULL' do
-        expect(prepended_object.call(sql_value)).to eq('NULL')
+        is_expected.to eq('NULL')
       end
     end
 
@@ -35,7 +35,7 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
       let(:sql_value) { 'abc' }
 
       it 'returns the original call' do
-        expect(prepended_object.call(sql_value)).to eq('original call')
+        is_expected.to eq('original call')
       end
     end
   end
