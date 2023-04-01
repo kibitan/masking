@@ -5,14 +5,14 @@ require 'spec_helper'
 require 'masking/config/target_columns/method/methodable'
 
 RSpec.describe Masking::Config::TargetColumns::Method::Methodable do
-  before do
-    class TestObject
+  let(:methodable_class) do
+    Class.new do
       include Masking::Config::TargetColumns::Method::Methodable
     end
   end
 
   describe '#value' do
-    subject { TestObject.new(value).instance_variable_get(:@value) }
+    subject { methodable_class.new(value).instance_variable_get(:@value) }
 
     context 'when abc' do
       let(:value) { "abc" }
@@ -22,7 +22,7 @@ RSpec.describe Masking::Config::TargetColumns::Method::Methodable do
   end
 
   describe '#call' do
-    subject { TestObject.new("test").call }
+    subject { methodable_class.new("test").call }
 
     it 'raise error' do
       expect { subject }.to raise_error NotImplementedError
