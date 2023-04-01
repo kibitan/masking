@@ -10,8 +10,10 @@ module Masking
       class Method
         extend Forwardable
 
-        def initialize(method)
-          @method_type = mapping(method.class).new(method)
+        def initialize(method, ignore_null: false)
+          @method_type = mapping(method.class).new(method).tap do |obj|
+            obj.singleton_class.prepend(IgnoreNull) if ignore_null
+          end
         end
 
         def_delegator :@method_type, :call

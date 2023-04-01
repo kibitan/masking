@@ -14,7 +14,7 @@ module Masking
           @original_name = name.to_sym
           @table_name    = table_name.to_sym
           @method_value  = method_value
-          @method        = Method.new(method_value)
+          @method        = Method.new(method_value, ignore_null: ignore_null?)
         end
 
         def ==(other)

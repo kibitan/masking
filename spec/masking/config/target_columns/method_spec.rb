@@ -3,8 +3,24 @@
 require 'spec_helper'
 
 require 'masking/config/target_columns/method'
+require 'masking/config/target_columns/method/ignore_null'
 
 RSpec.describe Masking::Config::TargetColumns::Method do
+  shared_examples_for 'with argument `ignore_null: true`' do
+    context 'with argument `ignore_null: true`' do
+      subject { described_class.new(method, ignore_null: true) }
+
+      it {
+        expect(
+          subject.instance_variable_get(:@method_type)
+            .singleton_class
+            .ancestors
+            .include?(Masking::Config::TargetColumns::Method::IgnoreNull)
+        ).to be true
+      }
+    end
+  end
+
   describe '.new' do
     subject { described_class.new(method) }
 
@@ -15,6 +31,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::StringBinaryDistinctor).to receive(:new).with('string')
         subject
       end
+
+      include_examples 'with argument `ignore_null: true`'
     end
 
     context 'when Integer' do
@@ -24,6 +42,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::Integer).to receive(:new).with(123)
         subject
       end
+
+      include_examples 'with argument `ignore_null: true`'
     end
 
     context 'when Float' do
@@ -33,6 +53,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::Float).to receive(:new).with(123.456)
         subject
       end
+
+      include_examples 'with argument `ignore_null: true`'
     end
 
     context 'when date' do
@@ -42,6 +64,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::Date).to receive(:new).with(Date.new(2018, 3, 14))
         subject
       end
+
+      include_examples 'with argument `ignore_null: true`'
     end
 
     context 'when time' do
@@ -51,6 +75,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::Time).to receive(:new).with(Time.new(2018, 3, 14, 15, 31, 0))
         subject
       end
+
+      include_examples 'with argument `ignore_null: true`'
     end
 
     context 'when true' do
@@ -60,6 +86,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::Boolean).to receive(:new).with(true)
         subject
       end
+
+      include_examples 'with argument `ignore_null: true`'
     end
 
     context 'when false' do
@@ -69,6 +97,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::Boolean).to receive(:new).with(false)
         subject
       end
+
+      include_examples 'with argument `ignore_null: true`'
     end
 
     context 'when nil' do
@@ -78,6 +108,8 @@ RSpec.describe Masking::Config::TargetColumns::Method do
         expect(Masking::Config::TargetColumns::Method::Null).to receive(:new).with(nil)
         subject
       end
+
+      include_examples 'with argument `ignore_null: true`'
     end
 
     context 'unhappy path: Unknown type' do
