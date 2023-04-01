@@ -1,12 +1,15 @@
 # frozen_string_literal: true
+require 'masking/config/target_columns/method/methodable'
 
 module Masking
   class Config
     class TargetColumns
       class Method
         class String
+          include Methodable
+
           def initialize(value)
-            @value = value
+            super(value)
             @sequence = 0
           end
 
@@ -17,7 +20,6 @@ module Masking
           private
 
           SEQUENTIAL_NUMBER_PLACEHOLDER = '%{n}' # rubocop:disable Style/FormatStringToken
-          attr_reader :value
 
           def output
             value.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, sequence.to_s)

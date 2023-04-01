@@ -1,13 +1,12 @@
 # frozen_string_literal: true
+require 'masking/config/target_columns/method/methodable'
 
 module Masking
   class Config
     class TargetColumns
       class Method
         class Time
-          def initialize(value)
-            @value = value
-          end
+          include Methodable
 
           def call
             "'#{time_format}'"
@@ -15,10 +14,7 @@ module Masking
 
           private
 
-          attr_reader :value
-
           FORMAT = '%Y-%m-%d %H:%M:%S'
-
           def time_format
             value.strftime(FORMAT)
           end

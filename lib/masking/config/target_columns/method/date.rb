@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'masking/config/target_columns/method/methodable'
 require 'date'
 
 module Masking
@@ -7,17 +7,13 @@ module Masking
     class TargetColumns
       class Method
         class Date
-          def initialize(value)
-            @value = value
-          end
+          include Methodable
 
           def call
             "'#{date_format}'"
           end
 
           private
-
-          attr_reader :value
 
           FORMAT = '%Y-%m-%d'
 

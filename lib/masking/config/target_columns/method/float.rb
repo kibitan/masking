@@ -1,21 +1,16 @@
 # frozen_string_literal: true
+require 'masking/config/target_columns/method/methodable'
 
 module Masking
   class Config
     class TargetColumns
       class Method
         class Float
-          def initialize(value)
-            @value = value
-          end
+          include Methodable
 
           def call
             value.to_s
           end
-
-          private
-
-          attr_reader :value
         end
       end
     end
