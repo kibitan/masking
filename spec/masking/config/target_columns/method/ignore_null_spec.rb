@@ -6,8 +6,8 @@ require 'masking/config/target_columns/method/methodable'
 require 'masking/config/target_columns/method/ignore_null'
 
 RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
-  before do
-    class MethodObject
+  let(:methodable_class) do
+    Class.new do
       include Masking::Config::TargetColumns::Method::Methodable
 
       def call(_sql_value)
@@ -16,20 +16,27 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
     end
   end
 
+  let(:prepended_object) do
+    methodable_class.new('mask_value').tap { |obj| obj.singleton_class.prepend(described_class) }
+  end
+
   describe '#call' do
-    let(:prepended_object) { MethodObject.new('mask_value').tap { |obj| obj.singleton_class.prepend(described_class) } }
     subject { prepended_object.call(sql_value) }
 
     context 'when NULL' do
       let(:sql_value) { 'NULL' }
 
-      it { is_expected.to eq 'NULL' }
+      it 'returns NULL' do
+        expect(prepended_object.call(sql_value)).to eq('NULL')
+      end
     end
 
-    context 'when abc' do
+    context 'when not NULL' do
       let(:sql_value) { 'abc' }
 
-      it { is_expected.to eq 'original call' }
+      it 'returns the original call' do
+        expect(prepended_object.call(sql_value)).to eq('original call')
+      end
     end
   end
 end
