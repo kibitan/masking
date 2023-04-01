@@ -6,16 +6,16 @@ module Masking
       class Method
         class Integer
           def initialize(value)
-            @integer = value.to_s
+            @value = value
           end
 
           def call
-            integer
+            value.to_s
           end
 
           private
 
-          attr_reader :integer
+          attr_reader :value
         end
       end
     end

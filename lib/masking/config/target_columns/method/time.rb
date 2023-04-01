@@ -6,7 +6,7 @@ module Masking
       class Method
         class Time
           def initialize(value)
-            @time = value.strftime(FORMAT)
+            @value = value
           end
 
           def call
@@ -15,12 +15,12 @@ module Masking
 
           private
 
-          attr_reader :time
+          attr_reader :value
 
           FORMAT = '%Y-%m-%d %H:%M:%S'
 
           def time_format
-            time
+            value.strftime(FORMAT)
           end
         end
       end

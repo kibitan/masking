@@ -6,7 +6,7 @@ module Masking
       class Method
         class String
           def initialize(value)
-            @string   = value
+            @value = value
             @sequence = 0
           end
 
@@ -17,10 +17,10 @@ module Masking
           private
 
           SEQUENTIAL_NUMBER_PLACEHOLDER = '%{n}' # rubocop:disable Style/FormatStringToken
-          attr_reader :string
+          attr_reader :value
 
           def output
-            string.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, sequence.to_s)
+            value.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, sequence.to_s)
           end
 
           def sequence

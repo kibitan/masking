@@ -6,16 +6,16 @@ module Masking
       class Method
         class Float
           def initialize(value)
-            @float = value.to_s
+            @value = value
           end
 
           def call
-            float
+            value.to_s
           end
 
           private
 
-          attr_reader :float
+          attr_reader :value
         end
       end
     end

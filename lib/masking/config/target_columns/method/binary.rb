@@ -6,16 +6,16 @@ module Masking
       class Method
         class Binary
           def initialize(value)
-            @binary = value
+            @value = value
           end
 
           def call
-            "_binary '#{binary}'".b
+            "_binary '#{value}'".b
           end
 
           private
 
-          attr_reader :binary
+          attr_reader :value
         end
       end
     end
