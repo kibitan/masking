@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method/type/string_binary_distinctor'
+require 'masking/config/target_columns/method/string_binary_distinctor'
 
-RSpec.describe Masking::Config::TargetColumns::Method::Type::StringBinaryDistinctor do
+RSpec.describe Masking::Config::TargetColumns::Method::StringBinaryDistinctor do
   describe '.new' do
     subject { described_class.new(arg) }
 

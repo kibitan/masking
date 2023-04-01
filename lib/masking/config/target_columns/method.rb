@@ -2,6 +2,8 @@
 
 require 'pathname'
 require 'forwardable'
+require 'masking/config/target_columns/method/ignore_null'
+require 'masking/config/target_columns/method/string_binary_distinctor'
 Dir[Pathname(__FILE__).dirname.join('method/type/*.rb').to_s].sort.each(&method(:require))
 
 module Masking
@@ -22,7 +24,7 @@ module Masking
 
         # rubocop:disable Layout/HashAlignment
         MAPPING = {
-          ::String     => Type::StringBinaryDistinctor,
+          ::String     => StringBinaryDistinctor,
           ::Integer    => Type::Integer,
           ::Float      => Type::Float,
           ::Date       => Type::Date,
