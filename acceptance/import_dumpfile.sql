@@ -34,6 +34,7 @@ CREATE TABLE `users` (
   `time` timestamp NULL DEFAULT NULL,
   `binary_or_blob` binary(11) DEFAULT NULL,
   `nullable_string` varchar(20) DEFAULT '',
+  `nullable_integer` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -44,7 +45,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `string`, `email`, `integer`, `float`, `boolean`, `null`, `date`, `time`, `binary_or_blob`, `nullable_string`) VALUES (1,'example@exa','test@example.com',1245,2.1,1,-321,NULL,NULL,_binary '\\x92\0\0\0\0\0\0\0','abcde'),(2,'あいうえお','invalid@email',0,-23.4422,0,321,NULL,NULL,_binary '\\x92\\x92\0\0\0',NULL),(3,'+-l;a*&^%$','chikahiro@test.com',-1,21.2321,NULL,-231321,'2019-10-31','2019-10-31 16:27:21',NULL,'abc123');
+INSERT INTO `users` (`id`, `string`, `email`, `integer`, `float`, `boolean`, `null`, `date`, `time`, `binary_or_blob`, `nullable_string`, `nullable_integer`) VALUES (1,'example@exa','test@example.com',1245,2.1,1,-321,NULL,NULL,_binary '\\x92\0\0\0\0\0\0\0','abcde',NULL),(2,'あいうえお','invalid@email',0,-23.4422,0,321,NULL,NULL,_binary '\\x92\\x92\0\0\0',NULL,12),(3,'+-l;a*&^%$','chikahiro@test.com',-1,21.2321,NULL,-231321,'2019-10-31','2019-10-31 16:27:21',NULL,'abc123',-123);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
