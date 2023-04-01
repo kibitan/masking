@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'masking/config/target_columns/method/methodable'
 
 module Masking
@@ -13,6 +14,7 @@ module Masking
           end
 
           private
+
           # NOTE: 11.1.1 Numeric Type Overview, chapter BOOL, BOOLEAN
           #       https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html
           def boolean_format

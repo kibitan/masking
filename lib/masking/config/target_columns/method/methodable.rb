@@ -9,7 +9,7 @@ module Masking
             @value = value
           end
 
-          def call(_sql_value)(_sql_value)
+          def call(_sql_value)
             raise NotImplementedError
           end
 

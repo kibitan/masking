@@ -31,7 +31,7 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
       let(:sql_value) { 'NULL' }
 
       it 'returns NULL' do
-        is_expected.to eq('NULL')
+        expect(subject).to eq('NULL')
       end
 
       it 'does not effect another obeject' do
@@ -65,7 +65,7 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
       let(:sql_value) { 'abc' }
 
       it 'returns the original call' do
-        is_expected.to eq('original call')
+        expect(subject).to eq('original call')
       end
     end
   end

@@ -11,6 +11,7 @@ RSpec.describe Masking::Config::TargetColumns::Column do
   let(:method_value) { 'sample_method' }
 
   let(:subject_object) { described_class.new(name, table_name: table_name, method_value: method_value) }
+
   describe '#name' do
     subject { subject_object.name }
 
