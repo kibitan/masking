@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'masking/config/target_columns/method/Type'
+require 'masking/config/target_columns/method/type/base'
 require 'date'
 
 module Masking
@@ -8,9 +8,7 @@ module Masking
     class TargetColumns
       class Method
         module Type
-          class Date
-            include Masking::Config::TargetColumns::Method::Type
-
+          class Date < Base
             def call(_sql_value)
               "'#{date_format}'"
             end

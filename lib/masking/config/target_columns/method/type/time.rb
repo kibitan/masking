@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-require 'masking/config/target_columns/method/Type'
+require 'masking/config/target_columns/method/type/base'
 
 module Masking
   class Config
     class TargetColumns
       class Method
         module Type
-          class Time
-            include Masking::Config::TargetColumns::Method::Type
-
+          class Time < Base
             def call(_sql_value)
               "'#{time_format}'"
             end

@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-require 'masking/config/target_columns/method/Type'
+require 'masking/config/target_columns/method/type/base'
 
 module Masking
   class Config
     class TargetColumns
       class Method
         module Type
-          class String
-            include Masking::Config::TargetColumns::Method::Type
-
+          class String < Base
             def initialize(value)
               super(value)
               @sequence = 0

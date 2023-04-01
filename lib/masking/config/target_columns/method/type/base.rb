@@ -5,10 +5,18 @@ module Masking
     class TargetColumns
       class Method
         module Type
-          class Null < Base
-            def call(_sql_value)
-              'NULL'
+          class Base
+            def initialize(value)
+              @value = value
             end
+
+            def call(_sql_value)
+              raise NotImplementedError
+            end
+
+            private
+
+            attr_reader :value
           end
         end
       end

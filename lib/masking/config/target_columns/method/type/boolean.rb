@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-require 'masking/config/target_columns/method/Type'
+require 'masking/config/target_columns/method/type/base'
 
 module Masking
   class Config
     class TargetColumns
       class Method
         module Type
-          class Boolean
-            include Masking::Config::TargetColumns::Method::Type
-
+          class Boolean < Base
             def call(_sql_value)
               boolean_format.to_s
             end

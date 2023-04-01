@@ -2,14 +2,12 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method/Type'
+require 'masking/config/target_columns/method/type/base'
 require 'masking/config/target_columns/method/ignore_null'
 
 RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
-  let(:methodable_class) do
-    Class.new do
-      include Masking::Config::TargetColumns::Method::Type
-
+  let(:base_type_class) do
+    Class.new(Masking::Config::TargetColumns::Method::Type::Base) do
       def call(_sql_value)
         'original call'
       end
@@ -17,11 +15,11 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
   end
 
   let(:prepended_object) do
-    methodable_class.new('mask_value').tap { |obj| obj.singleton_class.prepend(described_class) }
+    base_type_class.new('mask_value').tap { |obj| obj.singleton_class.prepend(described_class) }
   end
 
   let(:not_prepended_object) do
-    methodable_class.new('mask_value')
+    base_type_class.new('mask_value')
   end
 
   describe '#call' do
@@ -38,10 +36,8 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
       end
 
       context 'when sequence! method is defined' do
-        let(:methodable_class) do
-          Class.new do
-            include Masking::Config::TargetColumns::Method::Type
-
+        let(:base_type_class) do
+          Class.new(Masking::Config::TargetColumns::Method::Type::Base) do
             def call(_sql_value)
               'original call'
             end
