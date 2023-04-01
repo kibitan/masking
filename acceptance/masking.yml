@@ -7,6 +7,7 @@ users:
   'null': NULL
   date: 2018-08-24
   time: 2018-08-24 15:54:06
+  nullable_string?: string%{n}
   ## TODO: something not working well with binary...
   # binary_or_blob: !binary |
   #   R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5

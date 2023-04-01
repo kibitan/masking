@@ -8,7 +8,8 @@
           null: NULL
           date: 2018-08-24
           time: 2018-08-24 15:54:06
-binary_or_blob: \x92       
+binary_or_blob: \x92
+nullable_string: string1
 *************************** 2. row ***************************
             id: 2
         string: anonymized string
@@ -19,7 +20,8 @@ binary_or_blob: \x92
           null: NULL
           date: 2018-08-24
           time: 2018-08-24 15:54:06
-binary_or_blob: \x92\x92   
+binary_or_blob: \x92\x92
+nullable_string: NULL
 *************************** 3. row ***************************
             id: 3
         string: anonymized string
@@ -31,3 +33,4 @@ binary_or_blob: \x92\x92
           date: 2018-08-24
           time: 2018-08-24 15:54:06
 binary_or_blob: NULL
+nullable_string: string3
