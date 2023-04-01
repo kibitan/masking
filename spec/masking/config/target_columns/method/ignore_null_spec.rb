@@ -38,6 +38,11 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
         subject
         expect(not_prepended_object.call(sql_value)).to eq('original call')
       end
+
+      it 'call sequence method if defined' do
+        expect(prepended_object).to receive(:sequence)
+        subject
+      end
     end
 
     context 'when not NULL' do
