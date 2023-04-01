@@ -59,7 +59,7 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
       end
     end
 
-    context 'when not prepended with IgnoreNull' do
+    context 'when is not NULL' do
       let(:sql_value) { 'abc' }
 
       it 'returns the original call' do
