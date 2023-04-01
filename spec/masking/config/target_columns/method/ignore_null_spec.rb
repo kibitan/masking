@@ -39,9 +39,25 @@ RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
         expect(not_prepended_object.call(sql_value)).to eq('original call')
       end
 
-      it 'call sequence method if defined' do
-        expect(prepended_object).to receive(:sequence)
-        subject
+      context 'when sequence! method is defined' do
+        let(:methodable_class) do
+          Class.new do
+            include Masking::Config::TargetColumns::Method::Methodable
+
+            def call(_sql_value)
+              'original call'
+            end
+
+            private
+
+            def sequence!; end
+          end
+        end
+
+        it 'does call sequence! method' do
+          expect(prepended_object).to receive(:sequence!)
+          subject
+        end
       end
     end
 

@@ -14,6 +14,7 @@ module Masking
           end
 
           def call(_sql_value)
+            sequence!
             "'#{output}'".b
           end
 
@@ -22,10 +23,10 @@ module Masking
           SEQUENTIAL_NUMBER_PLACEHOLDER = '%{n}' # rubocop:disable Style/FormatStringToken
 
           def output
-            value.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, sequence.to_s)
+            value.sub(SEQUENTIAL_NUMBER_PLACEHOLDER, @sequence.to_s)
           end
 
-          def sequence
+          def sequence!
             @sequence += 1
           end
         end
