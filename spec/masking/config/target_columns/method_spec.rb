@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 require 'masking/config/target_columns/method'
-require 'masking/config/target_columns/method/ignore_null'
+require 'masking/config/target_columns/method/type/extension/ignore_null'
 
 RSpec.describe Masking::Config::TargetColumns::Method do
   shared_examples_for 'with argument `ignore_null: true`' do
@@ -15,7 +15,7 @@ RSpec.describe Masking::Config::TargetColumns::Method do
           subject.instance_variable_get(:@method_type)
             .singleton_class
             .ancestors
-            .include?(Masking::Config::TargetColumns::Method::IgnoreNull)
+            .include?(Masking::Config::TargetColumns::Method::Type::Extension::IgnoreNull)
         ).to be true
       }
     end

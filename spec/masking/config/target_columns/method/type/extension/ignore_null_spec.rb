@@ -3,9 +3,9 @@
 require 'spec_helper'
 
 require 'masking/config/target_columns/method/type/base'
-require 'masking/config/target_columns/method/ignore_null'
+require 'masking/config/target_columns/method/type/extension/ignore_null'
 
-RSpec.describe Masking::Config::TargetColumns::Method::IgnoreNull do
+RSpec.describe Masking::Config::TargetColumns::Method::Type::Extension::IgnoreNull do
   let(:base_type_class) do
     Class.new(Masking::Config::TargetColumns::Method::Type::Base) do
       def call(_sql_value)

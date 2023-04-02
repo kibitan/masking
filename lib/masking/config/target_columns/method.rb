@@ -2,7 +2,7 @@
 
 require 'pathname'
 require 'forwardable'
-require 'masking/config/target_columns/method/ignore_null'
+require 'masking/config/target_columns/method/type/extension/ignore_null'
 require 'masking/config/target_columns/method/string_binary_distinctor'
 Dir[Pathname(__FILE__).dirname.join('method/type/*.rb').to_s].sort.each(&method(:require))
 
@@ -14,7 +14,7 @@ module Masking
 
         def initialize(method, ignore_null: false)
           @method_type = mapping(method.class).new(method).tap do |obj|
-            obj.singleton_class.prepend(IgnoreNull) if ignore_null
+            obj.singleton_class.prepend(Type::Extension::IgnoreNull) if ignore_null
           end
         end
 
