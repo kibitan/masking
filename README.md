@@ -47,7 +47,9 @@ gem install masking
           OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
           +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
           AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
-        nullable_string?: anonymized nullable string # When a column name is suffixed with ?, the original NULL value will not be anonymized. This option can be beneficial for simulating SQL execution that closely resembles the original data.
+        # When a column name is suffixed with ?, the original NULL value will not be anonymized.
+        # This option can be beneficial for simulating SQL execution that closely resembles the original data.
+        nullable_string?: anonymized nullable %{n} string
     ```
 
     A value will be implicitly converted to a compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
