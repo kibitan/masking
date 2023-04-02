@@ -47,7 +47,7 @@ gem install masking
           OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
           +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
           AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
-        # When a column name is suffixed with ?, the original NULL value will not be anonymized.
+        # When a column name is suffixed with `?`, the original NULL value will not be anonymized.
         # This option can be beneficial for simulating SQL execution that closely resembles the original data.
         nullable_string?: anonymized nullable %{n} string
     ```
