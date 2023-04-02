@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'masking/config/target_columns/method/binary'
-require 'masking/config/target_columns/method/string'
+require 'masking/config/target_columns/method/type/binary'
+require 'masking/config/target_columns/method/type/string'
 
 module Masking
   class Config
@@ -10,7 +10,7 @@ module Masking
         module StringBinaryDistinctor
           class << self
             def new(value)
-              binary?(value) ? Binary.new(value) : String.new(value)
+              binary?(value) ? Type::Binary.new(value) : Type::String.new(value)
             end
 
             private

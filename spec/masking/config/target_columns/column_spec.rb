@@ -10,8 +10,10 @@ RSpec.describe Masking::Config::TargetColumns::Column do
   let(:table_name)   { 'sample_table' }
   let(:method_value) { 'sample_method' }
 
+  let(:subject_object) { described_class.new(name, table_name: table_name, method_value: method_value) }
+
   describe '#name' do
-    subject { described_class.new(name, table_name: table_name, method_value: method_value).name }
+    subject { subject_object.name }
 
     it { is_expected.to eq :sample_column }
 
@@ -23,7 +25,7 @@ RSpec.describe Masking::Config::TargetColumns::Column do
   end
 
   describe '#table_name' do
-    subject { described_class.new(name, table_name: table_name, method_value: method_value).table_name }
+    subject { subject_object.table_name }
 
     it { is_expected.to eq :sample_table }
   end
@@ -35,5 +37,27 @@ RSpec.describe Masking::Config::TargetColumns::Column do
     end
 
     it { is_expected.to be true }
+  end
+
+  describe '#ignore_null?' do
+    subject { subject_object.ignore_null? }
+
+    it { is_expected.to be false }
+  end
+
+  context "when column_name is end with '?'" do
+    let(:name) { 'sample_column?' }
+
+    describe '#name' do
+      subject { subject_object.name }
+
+      it { is_expected.to eq :sample_column }
+    end
+
+    describe '#ignore_null?' do
+      subject { subject_object.ignore_null? }
+
+      it { is_expected.to be true }
+    end
   end
 end

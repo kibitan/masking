@@ -4,11 +4,11 @@ module Masking
   class Config
     class TargetColumns
       class Method
-        class Null
-          def initialize(*); end
-
-          def call
-            'NULL'
+        module Type
+          class Null < Base
+            def call(_sql_value)
+              'NULL'
+            end
           end
         end
       end

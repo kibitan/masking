@@ -1,33 +1,39 @@
 *************************** 1. row ***************************
-            id: 1
-        string: anonymized string
-         email: anonymized+1@example.com
-       integer: 12345
-         float: 123.45
-       boolean: 1
-          null: NULL
-          date: 2018-08-24
-          time: 2018-08-24 15:54:06
-binary_or_blob: \x92       
+              id: 1
+          string: anonymized string
+           email: anonymized+1@example.com
+         integer: 12345
+           float: 123.45
+         boolean: 1
+            null: NULL
+            date: 2018-08-24
+            time: 2018-08-24 15:54:06
+  binary_or_blob: \x92       
+ nullable_string: string1
+nullable_integer: NULL
 *************************** 2. row ***************************
-            id: 2
-        string: anonymized string
-         email: anonymized+2@example.com
-       integer: 12345
-         float: 123.45
-       boolean: 1
-          null: NULL
-          date: 2018-08-24
-          time: 2018-08-24 15:54:06
-binary_or_blob: \x92\x92   
+              id: 2
+          string: anonymized string
+           email: anonymized+2@example.com
+         integer: 12345
+           float: 123.45
+         boolean: 1
+            null: NULL
+            date: 2018-08-24
+            time: 2018-08-24 15:54:06
+  binary_or_blob: \x92\x92   
+ nullable_string: NULL
+nullable_integer: 33333
 *************************** 3. row ***************************
-            id: 3
-        string: anonymized string
-         email: anonymized+3@example.com
-       integer: 12345
-         float: 123.45
-       boolean: 1
-          null: NULL
-          date: 2018-08-24
-          time: 2018-08-24 15:54:06
-binary_or_blob: NULL
+              id: 3
+          string: anonymized string
+           email: anonymized+3@example.com
+         integer: 12345
+           float: 123.45
+         boolean: 1
+            null: NULL
+            date: 2018-08-24
+            time: 2018-08-24 15:54:06
+  binary_or_blob: NULL
+ nullable_string: string3
+nullable_integer: 33333

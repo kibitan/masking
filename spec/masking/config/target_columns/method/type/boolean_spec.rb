@@ -2,11 +2,11 @@
 
 require 'spec_helper'
 
-require 'masking/config/target_columns/method/boolean'
+require 'masking/config/target_columns/method/type/integer'
 
-RSpec.describe Masking::Config::TargetColumns::Method::Boolean do
+RSpec.describe Masking::Config::TargetColumns::Method::Type::Boolean do
   describe '#call' do
-    subject { described_class.new(value).call }
+    subject { described_class.new(value).call('sql_value') }
 
     context 'when false' do
       let(:value) { false }

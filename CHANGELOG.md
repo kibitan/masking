@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- add ignore NULL option [#66](https://github.com/kibitan/masking/pull/66) requested feature by [#59](https://github.com/kibitan/masking/pull/59) from @spyro2000
 - add MariaDB 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 support [#65](https://github.com/kibitan/masking/pull/65)
 - add Ruby 3.2 support [#64](https://github.com/kibitan/masking/pull/64)
 - update development libraries [#61](https://github.com/kibitan/masking/pull/61)

@@ -2,7 +2,9 @@
 
 require 'pathname'
 require 'forwardable'
-Dir[Pathname(__FILE__).dirname.join('method/*.rb').to_s].sort.each(&method(:require))
+require 'masking/config/target_columns/method/type/extension/ignore_null'
+require 'masking/config/target_columns/method/string_binary_distinctor'
+Dir[Pathname(__FILE__).dirname.join('method/type/*.rb').to_s].sort.each(&method(:require))
 
 module Masking
   class Config
@@ -10,8 +12,10 @@ module Masking
       class Method
         extend Forwardable
 
-        def initialize(method)
-          @method_type = mapping(method.class).new(method)
+        def initialize(method, ignore_null: false)
+          @method_type = mapping(method.class).new(method).tap do |obj|
+            obj.singleton_class.prepend(Type::Extension::IgnoreNull) if ignore_null
+          end
         end
 
         def_delegator :@method_type, :call
@@ -21,13 +25,13 @@ module Masking
         # rubocop:disable Layout/HashAlignment
         MAPPING = {
           ::String     => StringBinaryDistinctor,
-          ::Integer    => Integer,
-          ::Float      => Float,
-          ::Date       => Date,
-          ::Time       => Time,
-          ::TrueClass  => Boolean,
-          ::FalseClass => Boolean,
-          ::NilClass   => Null
+          ::Integer    => Type::Integer,
+          ::Float      => Type::Float,
+          ::Date       => Type::Date,
+          ::Time       => Type::Time,
+          ::TrueClass  => Type::Boolean,
+          ::FalseClass => Type::Boolean,
+          ::NilClass   => Type::Null
         }.freeze
         # rubocop:enable Layout/HashAlignment
 
