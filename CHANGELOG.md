@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.1] - 2023-04-03
+
 ### Added
 
 - add ignore NULL option [#66](https://github.com/kibitan/masking/pull/66) requested feature by [#59](https://github.com/kibitan/masking/pull/59) from @spyro2000
