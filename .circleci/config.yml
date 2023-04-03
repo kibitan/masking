@@ -38,12 +38,16 @@ jobs:
     <<: *test_attributes
     environment:
       RUBY_VERSION: '2.6'
-
+  test-ruby25:
+    <<: *test_attributes
+    environment:
+      RUBY_VERSION: '2.5'
 workflows:
   'CircleCI: build':
     jobs:
       - test-ruby32
       - test-ruby31
       - test-ruby30
-      - test-ruby26
       - test-ruby27
+      - test-ruby26
+      - test-ruby25
