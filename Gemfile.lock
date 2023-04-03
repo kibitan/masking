@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    masking (1.1.1)
+    masking (1.1.2.pre.alpha)
 
 GEM
   remote: https://rubygems.org/
