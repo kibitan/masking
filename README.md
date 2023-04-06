@@ -27,8 +27,10 @@ gem install masking
 
 ## Usage
 
-1. Setup configuration for anonymizing target tables/columns to `masking.yml`
+1. Setup configuration for anonymizing target tables/columns to `masking.yml`. 
 
+    *NOTE: the columns which doesn't mention here will be NOT anonymized, it stays as it is.*
+    
     ```yaml
       # table_name:
       #   column_name: masked_value
