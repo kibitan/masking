@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - adding dockerfile for github container images [#77](https://github.com/kibitan/masking/pull/77)
 
+### Fix
+
+- fix the error on the error message [#74](https://github.com/kibitan/masking/pull/74) relates issue  [#73](https://github.com/kibitan/masking/issues/73)
+
 ## [v1.1.1] - 2023-04-03
 
 ### Added
