@@ -9,7 +9,7 @@ MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}
 MYSQL_DBNAME=${MYSQL_DBNAME:-mydb}
 
 FILEDIR="$( cd "$( dirname "$0" )" && pwd )"
-EXE_COMMAND=${EXE_COMMAND:-"masking"}
+EXE_COMMAND=${EXE_COMMAND:-"exe/masking"}
 
 # clear tmp file
 rm "$FILEDIR"/tmp/* || echo 'no tmp file'
