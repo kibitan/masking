@@ -1,0 +1,10 @@
+# `docker run ghcr.io/kibitan/masking`
+ARG RUBY_VERSION=3.2
+
+FROM ruby:$RUBY_VERSION-alpine
+RUN addgroup -S app && adduser -S -G app app
+USER app
+WORKDIR /app
+ARG MASKING_VERSION=1.1.1
+RUN gem install masking -v "${MASKING_VERSION}"
+ENTRYPOINT ["masking"]
