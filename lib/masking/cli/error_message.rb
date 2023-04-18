@@ -37,7 +37,7 @@ module Masking
         'Masking::Error::ConfigFileContainsNullAsColumnName' =>
           'ERROR: config file (<%= config_file_path %>) is not valid, column name contains `null`',
         'Masking::Error::InsertStatementParseError' =>
-          'ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?',
+          'ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?'
       }.freeze
     end
   end
