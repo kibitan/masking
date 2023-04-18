@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - adding dockerfile for github container images [#77](https://github.com/kibitan/masking/pull/77)
+- Update README.md about frequent asked question [#74](https://github.com/kibitan/masking/pull/74)
 
 ### Fix
 

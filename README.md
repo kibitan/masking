@@ -29,33 +29,35 @@ gem install masking
 
 1. Setup configuration for anonymizing target tables/columns to `masking.yml`
 
-    ```yaml
-      # table_name:
-      #   column_name: masked_value
+    *NOTE: the columns which doesn't mention here will be NOT anonymized, it stays as it is.*
 
-      users:
-        string: anonymized string
-        email: anonymized+%{n}@example.com # %{n} will be replaced with sequential number
-        integer: 12345
-        float: 123.45
-        boolean: true
-        null_column: null
-        date: 2018-08-24
-        time: 2018-08-24 15:54:06
-        binary_or_blob: !binary | # Binary Data Language-Independent Type for YAML™ Version 1.1: http://yaml.org/type/binary.html
-          R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
-          OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
-          +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
-          AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
-        # When a column name is suffixed with `?`, the original NULL value will not be anonymized.
-        # This option can be beneficial for simulating SQL execution that closely resembles the original data.
-        nullable_string?: anonymized nullable %{n} string
+    ```yaml
+    # table_name:
+    #   column_name: masked_value
+
+    users:
+      string: anonymized string
+      email: anonymized+%{n}@example.com # %{n} will be replaced with sequential number
+      integer: 12345
+      float: 123.45
+      boolean: true
+      null_column: null
+      date: 2018-08-24
+      time: 2018-08-24 15:54:06
+      binary_or_blob: !binary | # Binary Data Language-Independent Type for YAML™ Version 1.1: http://yaml.org/type/binary.html
+        R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
+        OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
+        +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
+        AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
+      # When a column name is suffixed with `?`, the original NULL value will not be anonymized.
+      # This option can be beneficial for simulating SQL execution that closely resembles the original data.
+      nullable_string?: anonymized nullable %{n} string
     ```
 
     A value will be implicitly converted to a compatible type. If you prefer to explicitly convert, you could use a tag as defined in [YAML Version 1.1](http://yaml.org/spec/current.html#id2503753)
 
     ```yaml
-      not-date: !!str 2002-04-28
+    not-date: !!str 2002-04-28
     ```
 
     String should be matched with [MySQL String Type]( https://dev.mysql.com/doc/refman/8.0/en/string-type-overview.html). Integer/Float should be matched with [MySQL Numeric Type](https://dev.mysql.com/doc/refman/8.0/en/numeric-type-overview.html). Date/Time should be matched with [MySQL Date and Time Type](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-type-overview.html).
