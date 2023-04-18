@@ -1,0 +1,2 @@
+ERROR: config file (/app/acceptance/no_file.yml) does not exist
+ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?

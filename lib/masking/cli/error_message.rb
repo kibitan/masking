@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'pathname'
 require 'erb'
 require 'ostruct'
+require 'masking/errors'
 
 module Masking
   class Cli
@@ -19,19 +19,26 @@ module Masking
 
       attr_reader :error_class
 
-      YAML_FILE_PATH = Pathname('lib/masking/cli/error_messages.yml')
-
-      def error_messages
-        @error_messages = YAML.safe_load(YAML_FILE_PATH.read)
-      end
-
       def error_message(keyword_args)
         ERB.new(
-          error_messages.fetch(error_class.to_s)
+          ERROR_MESSAGES.fetch(error_class.to_s)
         ).result(
           OpenStruct.new(keyword_args).instance_eval { binding } # rubocop:disable Style/OpenStructUse
         )
       end
+
+      ERROR_MESSAGES = {
+        'Masking::Error::ConfigFileDoesNotExist' =>
+          'ERROR: config file (<%= config_file_path %>) does not exist',
+        'Masking::Error::ConfigFileIsNotFile' =>
+          'ERROR: config file (<%= config_file_path %>) is not file',
+        'Masking::Error::ConfigFileIsNotValidYaml' =>
+          'ERROR: config file (<%= config_file_path %>) is not valid yaml format',
+        'Masking::Error::ConfigFileContainsNullAsColumnName' =>
+          'ERROR: config file (<%= config_file_path %>) is not valid, column name contains `null`',
+        'Masking::Error::InsertStatementParseError' =>
+          'ERROR: cannot parse SQL dump file. you may forget to put `--complete-insert` option in mysqldump?'
+      }.freeze
     end
   end
 end
