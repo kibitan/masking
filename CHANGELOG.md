@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - adding dockerfile for github container images [#77](https://github.com/kibitan/masking/pull/77)
 - Update README.md about frequent asked question [#74](https://github.com/kibitan/masking/pull/74)
+- enable codescene and add status badge [#80](https://github.com/kibitan/masking/pull/80)
 
 ### Fix
 
