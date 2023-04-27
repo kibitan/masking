@@ -6,7 +6,12 @@
 
 [![codecov](https://codecov.io/gh/kibitan/masking/branch/main/graph/badge.svg)](https://codecov.io/gh/kibitan/masking)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
+[![CodeScene Code Health](https://codescene.io/projects/38627/status-badges/code-health)](https://codescene.io/projects/38627)
 [![Gem Version](https://badge.fury.io/rb/masking.svg)](https://badge.fury.io/rb/masking)
+<!--
+[![CodeScene System Mastery](https://codescene.io/projects/38627/status-badges/system-mastery)](https://codescene.io/projects/38627)
+[![CodeScene Missed Goals](https://codescene.io/projects/38627/status-badges/missed-goals)](https://codescene.io/projects/38627)
+-->
 
 The command line tool for anonymizing database records by parsing a SQL dump file and build a new SQL dump file with masking sensitive/credential data.
 
