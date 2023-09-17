@@ -29,10 +29,10 @@ module Masking
     end
 
     def values
-      # NOTE: the reason to use `rows.each_with_index`
-      #   another simple implementations (e.g. `rows.count.time`) doesn't work. 
-      #   because during the block loop, rows array object can be destructively changed by the #recursive_pattern_value_concat! method and
-      #   it make different number of count to loop during the block loop, it needs to be checked by the object size.
+      # NOTE: the reason to use `rows.each_with_index()`
+      #   another simple implementations (e.g. `rows.count.time`) doesn't work.because during the block loop,
+      #   the `rows` array object can be destructively changed by the #recursive_pattern_value_concat! method and
+      #   it make different number of count to loop during the block loop, so it needs to be checked by the object size
       @values ||= values_section.split(VALUE_ROW_SPLITTER)
                                 .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat!(rows, i) } }
                                 .flat_map { |row| row.scan(values_regexp) }
