@@ -5,6 +5,9 @@ on:
       - main
   pull_request:
 
+env:
+  DEBUG: ${{ vars.DEBUG }}
+
 jobs:
   mariadb1011:
     runs-on: ubuntu-latest
@@ -12,6 +15,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb1011 docker-compose-ci.yml
   mariadb1010:
@@ -20,6 +26,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb1010 docker-compose-ci.yml
   mariadb109:
@@ -28,6 +37,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb109 docker-compose-ci.yml
   mariadb108:
@@ -36,6 +48,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb108 docker-compose-ci.yml
   mariadb107:
@@ -44,6 +59,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb107 docker-compose-ci.yml
   mariadb106:
@@ -52,6 +70,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb106 docker-compose-ci.yml
   mariadb105:
@@ -60,6 +81,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb105 docker-compose-ci.yml
   mariadb104:
@@ -68,6 +92,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb104 docker-compose-ci.yml
   mariadb103:
@@ -76,6 +103,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb103 docker-compose-ci.yml
   mariadb102:
@@ -84,6 +114,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb102 docker-compose-ci.yml
   mariadb101:
@@ -92,6 +125,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb101 docker-compose-ci.yml
   mariadb100:
@@ -100,6 +136,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb100 docker-compose-ci.yml
   mariadb55:
@@ -108,5 +147,8 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
+      - name: add trace option
+        if: ${{ env.DEBUG == 'true' }}
+        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb55 docker-compose-ci.yml
