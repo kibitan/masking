@@ -12,7 +12,7 @@ MYSQL_VERSION=${1:-mysql80}
 DOCKER_COMPOSE_FILE=${2:-docker-compose.yml}
 
 main() {
-  docker-compose -f "../$DOCKER_COMPOSE_FILE" -f "./$MYSQL_VERSION.yml" run -e "MYSQL_HOST=$MYSQL_VERSION" app acceptance/run_test.sh
+  docker-compose -f "../$DOCKER_COMPOSE_FILE" -f "./$MYSQL_VERSION.yml" run -e "MYSQL_HOST=$MYSQL_VERSION" -e "TRACE=$TRACE" app acceptance/run_test.sh
 }
 
 main "$@"
