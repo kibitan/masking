@@ -7,6 +7,9 @@ services:
     depends_on:
       - mariadb101
     entrypoint: docker-compose/wait-for-mysql.sh mariadb101
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
 
   mariadb101:
     image: mariadb:10.1

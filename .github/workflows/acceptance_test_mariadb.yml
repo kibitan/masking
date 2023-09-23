@@ -8,7 +8,10 @@ on:
 env:
   DEBUG: ${{ vars.DEBUG }}
 
-jobs:
+jobs:    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb1011:
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +21,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb1011 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb1010:
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +34,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb1010 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb109:
     runs-on: ubuntu-latest
     steps:
@@ -38,7 +47,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb109 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb108:
     runs-on: ubuntu-latest
     steps:
@@ -48,7 +60,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb108 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb107:
     runs-on: ubuntu-latest
     steps:
@@ -58,7 +73,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb107 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb106:
     runs-on: ubuntu-latest
     steps:
@@ -68,7 +86,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb106 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb105:
     runs-on: ubuntu-latest
     steps:
@@ -78,7 +99,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb105 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb104:
     runs-on: ubuntu-latest
     steps:
@@ -88,7 +112,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb104 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb103:
     runs-on: ubuntu-latest
     steps:
@@ -98,7 +125,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb103 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb102:
     runs-on: ubuntu-latest
     steps:
@@ -108,7 +138,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb102 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb101:
     runs-on: ubuntu-latest
     steps:
@@ -118,7 +151,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb101 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb100:
     runs-on: ubuntu-latest
     steps:
@@ -128,7 +164,10 @@ jobs:
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb100 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}
+          TRACE: ${{ vars.TRACE }}    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
   mariadb55:
     runs-on: ubuntu-latest
     steps:
