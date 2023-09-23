@@ -11,7 +11,7 @@ services:
   mariadb55:
     image: mariadb:5.5
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: root_password
       MYSQL_USER: mysqluser
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: mydb

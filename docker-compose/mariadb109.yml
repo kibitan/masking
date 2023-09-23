@@ -11,7 +11,7 @@ services:
   mariadb109:
     image: mariadb:10.9
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: root_password
       MYSQL_USER: mysqluser
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: mydb
