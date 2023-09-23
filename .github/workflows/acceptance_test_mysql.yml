@@ -5,9 +5,6 @@ on:
       - main
   pull_request:
 
-env:
-  DEBUG: ${{ vars.DEBUG }}
-
 jobs:
   mysql80:
     runs-on: ubuntu-latest
@@ -15,41 +12,37 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
-      - name: add trace option
-        if: ${{ env.DEBUG == 'true' }}
-        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mysql80 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mysql57:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
-      - name: add trace option
-        if: ${{ env.DEBUG == 'true' }}
-        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mysql57 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mysql56:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
-      - name: add trace option
-        if: ${{ env.DEBUG == 'true' }}
-        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mysql56 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mysql55:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1 # shallow clone
-      - name: add trace option
-        if: ${{ env.DEBUG == 'true' }}
-        run: export TRACE=1
       - name: run test
         run: docker-compose/acceptance_test.sh mysql55 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
