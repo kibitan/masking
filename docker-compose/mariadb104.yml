@@ -13,6 +13,7 @@ services:
 
   mariadb104:
     image: mariadb:10.4
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: mydb
