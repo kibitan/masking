@@ -6,8 +6,6 @@ if [[ "${TRACE-0}" == "1" ]]; then
     set -vx
 fi
 
-cd "$(dirname "$0")"
-
 MYSQL_HOST=${MYSQL_HOST:-localhost}
 MYSQL_USER=${MYSQL_USER:-mysqluser}
 MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}
