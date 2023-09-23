@@ -19,6 +19,11 @@ main() {
   # clear tmp file
   rm "$FILEDIR"/tmp/* || echo 'no tmp file'
 
+  # setup database user, relates following breaking change:
+  #  * https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html#mysqld-8-0-21-security
+  #  * https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_process
+  mysql -e "GRANT PROCESS ON *.* TO '$MYSQL_USER'@'%';"
+
   # import database
   mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DBNAME" < "$FILEDIR/import_dumpfile.sql"
 
