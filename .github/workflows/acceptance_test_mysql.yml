@@ -5,10 +5,7 @@ on:
       - main
   pull_request:
 
-jobs:    environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root_password
-
+jobs:
   mysql80:
     runs-on: ubuntu-latest
     steps:
@@ -18,10 +15,7 @@ jobs:    environment:
       - name: run test
         run: docker-compose/acceptance_test.sh mysql80 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}    environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root_password
-
+          TRACE: ${{ vars.TRACE }}
   mysql57:
     runs-on: ubuntu-latest
     steps:
@@ -31,10 +25,7 @@ jobs:    environment:
       - name: run test
         run: docker-compose/acceptance_test.sh mysql57 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}    environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root_password
-
+          TRACE: ${{ vars.TRACE }}
   mysql56:
     runs-on: ubuntu-latest
     steps:
@@ -44,10 +35,7 @@ jobs:    environment:
       - name: run test
         run: docker-compose/acceptance_test.sh mysql56 docker-compose-ci.yml
         env:
-          TRACE: ${{ vars.TRACE }}    environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root_password
-
+          TRACE: ${{ vars.TRACE }}
   mysql55:
     runs-on: ubuntu-latest
     steps:
