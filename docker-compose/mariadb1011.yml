@@ -12,6 +12,4 @@ services:
     image: mariadb:10.11
     environment:
       MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_USER: mysqluser
-      MYSQL_PASSWORD: password
       MYSQL_DATABASE: mydb
