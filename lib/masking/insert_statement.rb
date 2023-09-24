@@ -29,8 +29,12 @@ module Masking
     end
 
     def values
+      # NOTE: the reason to use `rows.each_with_index()`
+      #   another simple implementations (e.g. `rows.count.time`) doesn't work.because during the block loop,
+      #   the `rows` array object can be destructively changed by the #recursive_pattern_value_concat! method and
+      #   it make different number of count to loop during the block loop, so it needs to be checked by the object size
       @values ||= values_section.split(VALUE_ROW_SPLITTER)
-                                .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat(rows, i) } }
+                                .tap { |rows| rows.each_with_index { |_, i| recursive_pattern_value_concat!(rows, i) } }
                                 .flat_map { |row| row.scan(values_regexp) }
     end
 
@@ -74,11 +78,12 @@ module Masking
     # if it's odd, concat with next row (it means a value contains "),(" pattern)
     #   e.g. INSERT ... VALUES (123,'string ),( abc'),(456,'ab');
     # refs: implementation of parsing CSV on ruby standard library FasterCSV (ja): https://www.clear-code.com/blog/2018/12/25.html
-    def recursive_pattern_value_concat(value_rows, index)
+    def recursive_pattern_value_concat!(value_rows, index)
       return if value_rows[index].gsub(/\\\\/, '').gsub(/\\'/, '').count(?').even?
 
+      # make destructive change for values_rows
       value_rows[index] += VALUE_ROW_SPLITTER + value_rows.delete_at(index + 1)
-      recursive_pattern_value_concat(value_rows, index)
+      recursive_pattern_value_concat!(value_rows, index)
     end
   end
 end
