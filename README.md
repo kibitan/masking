@@ -98,6 +98,12 @@ Usage: masking [options]
     -v, --version                    version
 ```
 
+## presentation / demo
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tnGLUhmHclI/0.jpg)](https://www.youtube.com/watch?v=tnGLUhmHclI)
+
+presentation: [Generate anonymised database with MasKING](https://speakerdeck.com/kibitan/generate-anonymised-database-with-masking-2023-dot-09-dot-21-euruko-unconference-talk)
+
 ## Use case of anonymized (production) database
 
 * Analyzing production databases for BI, Machine Learning, troubleshooting with respecting GDPR
