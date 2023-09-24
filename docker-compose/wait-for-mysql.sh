@@ -3,7 +3,7 @@
 
 set -e
 
-MYSQL_USER=${MYSQL_USER:-mysqluser}
+MYSQL_USER=${MYSQL_USER:-root}
 MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}
 
 MYSQL_HOST="$1"

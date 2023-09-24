@@ -14,6 +14,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mysql80 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mysql57:
     runs-on: ubuntu-latest
     steps:
@@ -22,19 +24,5 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mysql57 docker-compose-ci.yml
-  mysql56:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mysql56 docker-compose-ci.yml
-  mysql55:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mysql55 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}

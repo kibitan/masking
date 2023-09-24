@@ -5,6 +5,9 @@ on:
       - main
   pull_request:
 
+env:
+  DEBUG: ${{ vars.DEBUG }}
+
 jobs:
   mariadb1011:
     runs-on: ubuntu-latest
@@ -14,6 +17,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb1011 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb1010:
     runs-on: ubuntu-latest
     steps:
@@ -22,6 +27,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb1010 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb109:
     runs-on: ubuntu-latest
     steps:
@@ -30,6 +37,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb109 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb108:
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +47,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb108 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb107:
     runs-on: ubuntu-latest
     steps:
@@ -46,6 +57,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb107 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb106:
     runs-on: ubuntu-latest
     steps:
@@ -54,6 +67,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb106 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb105:
     runs-on: ubuntu-latest
     steps:
@@ -62,6 +77,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb105 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb104:
     runs-on: ubuntu-latest
     steps:
@@ -70,6 +87,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb104 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb103:
     runs-on: ubuntu-latest
     steps:
@@ -78,6 +97,8 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb103 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb102:
     runs-on: ubuntu-latest
     steps:
@@ -86,27 +107,5 @@ jobs:
           fetch-depth: 1 # shallow clone
       - name: run test
         run: docker-compose/acceptance_test.sh mariadb102 docker-compose-ci.yml
-  mariadb101:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb101 docker-compose-ci.yml
-  mariadb100:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb100 docker-compose-ci.yml
-  mariadb55:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb55 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}

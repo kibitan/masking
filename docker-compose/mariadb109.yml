@@ -7,11 +7,14 @@ services:
     depends_on:
       - mariadb109
     entrypoint: docker-compose/wait-for-mysql.sh mariadb109
+    restart: always
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
 
   mariadb109:
     image: mariadb:10.9
+    restart: always
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
-      MYSQL_USER: mysqluser
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: mydb
