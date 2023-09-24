@@ -98,7 +98,6 @@ Usage: masking [options]
     -v, --version                    version
 ```
 
-
 ## presentation / demo
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tnGLUhmHclI/0.jpg)](https://www.youtube.com/watch?v=tnGLUhmHclI)
