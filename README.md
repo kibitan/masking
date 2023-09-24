@@ -27,7 +27,7 @@ gem install masking
 
 ## Supporting RDBMS
 
-* MySQL: 5.5<sup>[1](#footnote1)</sup>, 5.6, 5.7, 8.0
+* MySQL: 5.7, 8.0
 * MariaDB: 5.5, 10.0<sup>[2](#footnote2)</sup>, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11
 
 ## Usage
@@ -170,8 +170,6 @@ The docker-compose file names for other database versions, specify that file.
 
 * MySQL 8.0: [`docker-compose/mysql80.yml`](./docker-compose/mysql80.yml)
 * MySQL 5.7: [`docker-compose/mysql57.yml`](./docker-compose/mysql57.yml)
-* MySQL 5.6: [`docker-compose/mysql56.yml`](./docker-compose/mysql56.yml)
-* MySQL 5.5<sup>[1](#footnote1)</sup>: [`docker-compose/mysql55.yml`](./docker-compose/mysql55.yml)
 * MariaDB 10.11: [`docker-compose/mariadb1011.yml`](./docker-compose/mariadb1011.yml)
 * MariaDB 10.10: [`docker-compose/mariadb1010.yml`](./docker-compose/mariadb1010.yml)
 * MariaDB 10.9: [`docker-compose/mariadb109.yml`](./docker-compose/mariadb109.yml)
@@ -258,7 +256,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Masking project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kibitan/masking/blob/main/CODE_OF_CONDUCT.md).
-
-<a name="footnote1">1</a>: <small> MySQL 5.5 is already not supported by [official](https://www.mysql.com/support/supportedplatforms/database.html)</small>
 
 <a name="footnote2">2</a>: <small> MariaDB 10.0 is already not supported by [official](https://mariadb.org/about/maintenance-policy/)</small>
