@@ -28,7 +28,7 @@ gem install masking
 ## Supporting RDBMS
 
 * MySQL: 5.7, 8.0, 8.1
-* MariaDB: 10.2<sup>[1](#footnote1)</sup>, 10.3<sup>[1](#footnote1)</sup>, 10.4, 10.5, 10.6, 10.7<sup>[1](#footnote1)</sup>, 10.8<sup>[1](#footnote1)</sup>, 10.9<sup>[1](#footnote1)</sup>, 10.10, 10.11, 11.0, 11.1, 11.2
+* MariaDB: 10.2<sup>[1](#footnote1)</sup>, 10.3<sup>[1](#footnote1)</sup>, 10.4, 10.5, 10.6, 10.7<sup>[1](#footnote1)</sup>, 10.8<sup>[1](#footnote1)</sup>, 10.9<sup>[1](#footnote1)</sup>, 10.10, 10.11, 11.0, 11.1
 
 ## Usage
 
@@ -171,7 +171,6 @@ The docker-compose file names for other database versions, specify that file.
 * MySQL 8.1: [`docker-compose/mysql80.yml`](./docker-compose/mysql81.yml)
 * MySQL 8.0: [`docker-compose/mysql80.yml`](./docker-compose/mysql80.yml)
 * MySQL 5.7: [`docker-compose/mysql57.yml`](./docker-compose/mysql57.yml)
-* MariaDB 11.2: [`docker-compose/mariadb112.yml`](./docker-compose/mariadb112.yml)
 * MariaDB 11.1: [`docker-compose/mariadb111.yml`](./docker-compose/mariadb111.yml)
 * MariaDB 11.0: [`docker-compose/mariadb110.yml`](./docker-compose/mariadb110.yml)
 * MariaDB 10.11: [`docker-compose/mariadb1011.yml`](./docker-compose/mariadb1011.yml)
