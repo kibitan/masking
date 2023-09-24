@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - enable codescene and add status badge [#80](https://github.com/kibitan/masking/pull/80)
 - Drop support for MySQL 5.5, 5.6 and MariaDB 5.5, 10.0, 10.1 (EOL) [#90](https://github.com/kibitan/masking/pull/90) relates issue [#89](https://github.com/kibitan/masking/issues/89)
 - Add support for MySQL 8.1 and MariaDB 11.0/11.1 [#91](https://github.com/kibitan/masking/pull/90) relates issue [#82](https://github.com/kibitan/masking/issues/89)
+- add presentation and demo link [#87](https://github.com/kibitan/masking/pull/87)
 - Add comment for complicated part of code [#83](https://github.com/kibitan/masking/pull/83)
 
 ### Fix
