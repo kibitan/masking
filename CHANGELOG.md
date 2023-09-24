@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fix
 
 - fix the error on the error message [#74](https://github.com/kibitan/masking/pull/74) relates issue  [#73](https://github.com/kibitan/masking/issues/73)
+- fix ci error  [#74](https://github.com/kibitan/masking/pull/86)
 
 ## [v1.1.1] - 2023-04-03
 
