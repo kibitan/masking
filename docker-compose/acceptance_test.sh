@@ -1,8 +1,19 @@
 #!/usr/bin/env bash
+set -eu -o pipefail
+set -C # Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from overwriting existing files.
 
-set -Ceu -o pipefail
-#set -vx # for debug
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
+cd "$(dirname "$0")"
 
 MYSQL_VERSION=${1:-mysql80}
 DOCKER_COMPOSE_FILE=${2:-docker-compose.yml}
-docker-compose -f "$DOCKER_COMPOSE_FILE" -f "docker-compose/$MYSQL_VERSION.yml" run -e "MYSQL_HOST=$MYSQL_VERSION" app acceptance/run_test.sh
+TRACE=${TRACE:-0}
+
+main() {
+  docker-compose -f "../$DOCKER_COMPOSE_FILE" -f "./$MYSQL_VERSION.yml" run -e "MYSQL_HOST=$MYSQL_VERSION" -e "TRACE=$TRACE" app acceptance/run_test.sh
+}
+
+main "$@"
