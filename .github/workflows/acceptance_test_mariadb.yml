@@ -9,6 +9,26 @@ env:
   DEBUG: ${{ vars.DEBUG }}
 
 jobs:
+  mariadb111:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb111 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
+  mariadb110:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mariadb110 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mariadb1011:
     runs-on: ubuntu-latest
     steps:
