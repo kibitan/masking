@@ -109,33 +109,3 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb102 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
-  mariadb101:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb101 docker-compose-ci.yml
-        env:
-          TRACE: ${{ vars.TRACE }}
-  mariadb100:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb100 docker-compose-ci.yml
-        env:
-          TRACE: ${{ vars.TRACE }}
-  mariadb55:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1 # shallow clone
-      - name: run test
-        run: docker-compose/acceptance_test.sh mariadb55 docker-compose-ci.yml
-        env:
-          TRACE: ${{ vars.TRACE }}
