@@ -30,8 +30,8 @@ gem install masking
 
 ## Supporting RDBMS
 
-* MySQL: 5.7, 8.0
-* MariaDB: 10.2<sup>[1](#footnote1)</sup>, 10.3<sup>[1](#footnote1)</sup>, 10.4, 10.5, 10.6, 10.7<sup>[1](#footnote1)</sup>, 10.8<sup>[1](#footnote1)</sup>, 10.9<sup>[1](#footnote1)</sup>, 10.10, 10.11
+* MySQL: 5.7, 8.0, 8.1
+* MariaDB: 10.2<sup>[1](#footnote1)</sup>, 10.3<sup>[1](#footnote1)</sup>, 10.4, 10.5, 10.6, 10.7<sup>[1](#footnote1)</sup>, 10.8<sup>[1](#footnote1)</sup>, 10.9<sup>[1](#footnote1)</sup>, 10.10, 10.11, 11.0, 11.1
 
 ## Usage
 
@@ -100,6 +100,12 @@ Usage: masking [options]
     -c, --config=FILE_PATH           specify config file. default: masking.yml
     -v, --version                    version
 ```
+
+## presentation / demo
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tnGLUhmHclI/0.jpg)](https://www.youtube.com/watch?v=tnGLUhmHclI)
+
+presentation: [Generate anonymised database with MasKING](https://speakerdeck.com/kibitan/generate-anonymised-database-with-masking-2023-dot-09-dot-21-euruko-unconference-talk)
 
 ## Use case of anonymized (production) database
 
@@ -171,8 +177,11 @@ docker-compose/acceptance_test.sh mysql80
 
 The docker-compose file names for other database versions, specify that file.
 
+* MySQL 8.1: [`docker-compose/mysql80.yml`](./docker-compose/mysql81.yml)
 * MySQL 8.0: [`docker-compose/mysql80.yml`](./docker-compose/mysql80.yml)
 * MySQL 5.7: [`docker-compose/mysql57.yml`](./docker-compose/mysql57.yml)
+* MariaDB 11.1: [`docker-compose/mariadb111.yml`](./docker-compose/mariadb111.yml)
+* MariaDB 11.0: [`docker-compose/mariadb110.yml`](./docker-compose/mariadb110.yml)
 * MariaDB 10.11: [`docker-compose/mariadb1011.yml`](./docker-compose/mariadb1011.yml)
 * MariaDB 10.10: [`docker-compose/mariadb1010.yml`](./docker-compose/mariadb1010.yml)
 * MariaDB 10.9<sup>[1](#footnote1): [`docker-compose/mariadb109.yml`](./docker-compose/mariadb109.yml)

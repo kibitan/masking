@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.2] - 2023-09-24
+
 ### Added
 
 - adding dockerfile for github container images [#77](https://github.com/kibitan/masking/pull/77)
 - Update README.md about frequent asked question [#74](https://github.com/kibitan/masking/pull/74)
 - enable codescene and add status badge [#80](https://github.com/kibitan/masking/pull/80)
 - Drop support for MySQL 5.5, 5.6 and MariaDB 5.5, 10.0, 10.1 (EOL) [#90](https://github.com/kibitan/masking/pull/90) relates issue [#89](https://github.com/kibitan/masking/issues/89)
+- Add support for MySQL 8.1 and MariaDB 11.0/11.1 [#91](https://github.com/kibitan/masking/pull/90) relates issue [#82](https://github.com/kibitan/masking/issues/89)
+- add presentation and demo link [#87](https://github.com/kibitan/masking/pull/87)
+- Add comment for complicated part of code [#83](https://github.com/kibitan/masking/pull/83)
 
 ### Fix
 
@@ -89,7 +94,9 @@ $ bin/benchmark.rb
 
 Initial release version. 🎉
 
-[Unreleased]: https://github.com/kibitan/masking/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/kibitan/masking/compare/v1.1.2...HEAD
+[v1.1.2]: https://github.com/kibitan/masking/compare/v1.1.1...v1.1.2
+[v1.1.1]: https://github.com/kibitan/masking/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/kibitan/masking/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/kibitan/masking/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/kibitan/masking/compare/v0.0.3...v1.0.0

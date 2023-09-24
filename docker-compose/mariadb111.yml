@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      target: with-mysql-client
+    depends_on:
+      - mariadb111
+    entrypoint: docker-compose/wait-for-mysql.sh mariadb111
+    restart: always
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root_password
+
+  mariadb111:
+    image: mariadb:11.1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mydb

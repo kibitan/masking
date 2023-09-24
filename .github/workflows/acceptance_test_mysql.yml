@@ -6,6 +6,16 @@ on:
   pull_request:
 
 jobs:
+  mysql81:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: run test
+        run: docker-compose/acceptance_test.sh mysql81 docker-compose-ci.yml
+        env:
+          TRACE: ${{ vars.TRACE }}
   mysql80:
     runs-on: ubuntu-latest
     steps:
