@@ -98,10 +98,9 @@ Usage: masking [options]
     -v, --version                    version
 ```
 
+## demo links
 
-## presentation / demo
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tnGLUhmHclI/0.jpg)](https://www.youtube.com/watch?v=tnGLUhmHclI)
+[![Generate anonymised database with MasKING - Demo (full version with narration)](https://img.youtube.com/vi/i-iQpAP8q-o/0.jpg)](https://www.youtube.com/watch?v=i-iQpAP8q-o)
 
 presentation: [Generate anonymised database with MasKING](https://speakerdeck.com/kibitan/generate-anonymised-database-with-masking-2023-dot-09-dot-21-euruko-unconference-talk)
 
