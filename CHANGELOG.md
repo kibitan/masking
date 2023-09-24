@@ -12,10 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - adding dockerfile for github container images [#77](https://github.com/kibitan/masking/pull/77)
 - Update README.md about frequent asked question [#74](https://github.com/kibitan/masking/pull/74)
 - enable codescene and add status badge [#80](https://github.com/kibitan/masking/pull/80)
+- Drop support for MySQL 5.5, 5.6 and MariaDB 5.5, 10.0, 10.1 (EOL) [#90](https://github.com/kibitan/masking/pull/90) relates issue [#89](https://github.com/kibitan/masking/issues/89)
 
 ### Fix
 
 - fix the error on the error message [#74](https://github.com/kibitan/masking/pull/74) relates issue  [#73](https://github.com/kibitan/masking/issues/73)
+- fix ci error  [#74](https://github.com/kibitan/masking/pull/86)
 
 ## [v1.1.1] - 2023-04-03
 
