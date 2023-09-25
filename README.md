@@ -19,6 +19,15 @@ The command line tool for anonymizing database records by parsing a SQL dump fil
 
 ```bash
 gem install masking
+gem install masking --source https://rubygems.pkg.github.com/kibitan # for github package registry
+gem install masking --pre # for pre-release
+```
+
+### with docker
+
+```bash
+docker run -i -v ./masking.yml:/app/masking.yml kibitan/masking
+docker run -i -v ./masking.yml:/app/masking.yml ghcr.io/kibitan/masking # with github container registry
 ```
 
 ## Requirement
