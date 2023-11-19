@@ -5,6 +5,7 @@ set -C # Prevent output redirection using ‘>’, ‘>&’, and ‘<>’ from o
 if [[ "${TRACE-0}" == "1" ]]; then
     set -vx
 fi
+DUMPFILE_DEBUG="${DUMPFILE_DEBUG:-0}"
 
 MYSQL_HOST=${MYSQL_HOST:-localhost}
 MYSQL_USER=${MYSQL_USER:-root}
@@ -24,6 +25,12 @@ main() {
 
   #  masking & restore
   mysqldump -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DBNAME" --complete-insert > "$FILEDIR/tmp/mysqldump_output.sql"
+  if [[ "${DUMPFILE_DEBUG}" == "1" ]]; then
+    echo "--- mysqldump output ---"
+    cat "$FILEDIR/tmp/mysqldump_output.sql"
+    echo "--- mysqldump output end ---"
+    echo ""
+  fi
   cat "$FILEDIR/tmp/mysqldump_output.sql" | exe/masking -c "$FILEDIR/masking.yml" > "$FILEDIR/tmp/masking_dumpfile.sql"
 
   mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "CREATE DATABASE $MYSQL_ANONYMIZED_DBNAME;"
