@@ -5,9 +5,6 @@ on:
       - main
   pull_request:
 
-env:
-  DEBUG: ${{ vars.DEBUG }}
-
 jobs:
   mariadb111:
     runs-on: ubuntu-latest
@@ -19,6 +16,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb111 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb110:
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +27,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb110 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb1011:
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +38,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb1011 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb1010:
     runs-on: ubuntu-latest
     steps:
@@ -49,6 +49,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb1010 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb109:
     runs-on: ubuntu-latest
     steps:
@@ -59,6 +60,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb109 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb108:
     runs-on: ubuntu-latest
     steps:
@@ -69,6 +71,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb108 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb107:
     runs-on: ubuntu-latest
     steps:
@@ -79,6 +82,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb107 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb106:
     runs-on: ubuntu-latest
     steps:
@@ -89,6 +93,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb106 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb105:
     runs-on: ubuntu-latest
     steps:
@@ -99,6 +104,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb105 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb104:
     runs-on: ubuntu-latest
     steps:
@@ -109,6 +115,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb104 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb103:
     runs-on: ubuntu-latest
     steps:
@@ -119,6 +126,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb103 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mariadb102:
     runs-on: ubuntu-latest
     steps:
@@ -129,3 +137,4 @@ jobs:
         run: docker-compose/acceptance_test.sh mariadb102 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
