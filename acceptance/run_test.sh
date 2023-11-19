@@ -23,6 +23,10 @@ main() {
   # import database
   mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DBNAME" < "$FILEDIR/import_dumpfile.sql"
 
+  echo "mysql --version    : $(mysql --version)"
+  echo "mysqldump --version: $(mysqldump --version)"
+  echo
+
   #  masking & restore
   mysqldump -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DBNAME" --complete-insert > "$FILEDIR/tmp/mysqldump_output.sql"
   if [[ "${DUMPFILE_DEBUG}" == "1" ]]; then
