@@ -16,6 +16,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mysql81 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mysql80:
     runs-on: ubuntu-latest
     steps:
@@ -26,6 +27,7 @@ jobs:
         run: docker-compose/acceptance_test.sh mysql80 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}
   mysql57:
     runs-on: ubuntu-latest
     steps:
@@ -36,3 +38,4 @@ jobs:
         run: docker-compose/acceptance_test.sh mysql57 docker-compose-ci.yml
         env:
           TRACE: ${{ vars.TRACE }}
+          DUMPFILE_DEBUG: ${{ vars.DUMPFILE_DEBUG }}

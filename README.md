@@ -158,7 +158,7 @@ available option via environment variable:
 * `MYSQL_PASSWORD`: password for user(default: `password`)
 * `MYSQL_DBNAME`: database name(default: `mydb`)
 
-NOTE: run with `TRACE=1` will show debug print. for the CI, `TRACE` environment variable on [setting field in the repository](https://github.com/kibitan/masking/settings/variables/actions/TRACE)
+NOTE: run with `TRACE=1` will show debug print. for the CI, `TRACE` environment variable on [setting field in the repository](https://github.com/kibitan/masking/settings/variables/actions/TRACE) and run with `DUMPFILE_DEBUG=1` will show dumpfile to stdout, [setting field in the repository](https://github.com/kibitan/masking/settings/variables/actions/DUMPFILE_DEBUG)
 
 ##### with docker-compose
 
