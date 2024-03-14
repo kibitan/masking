@@ -27,7 +27,7 @@ RSpec.describe Masking::Cli do
 
     shared_examples 'print Version and exit' do
       it do
-        expect { subject }.to raise_error(SystemExit) & \
+        expect { subject }.to raise_error(SystemExit) &
                               output("#{Masking::VERSION}\n").to_stdout
       end
 
@@ -75,7 +75,7 @@ RSpec.describe Masking::Cli do
 
       shared_examples 'with errormessage and exitstatus is 1' do |error_text|
         it do
-          expect { subject }.to raise_error(SystemExit) & \
+          expect { subject }.to raise_error(SystemExit) &
                                 output(error_text).to_stderr
         end
 

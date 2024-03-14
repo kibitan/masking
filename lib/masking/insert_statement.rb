@@ -79,7 +79,7 @@ module Masking
     #   e.g. INSERT ... VALUES (123,'string ),( abc'),(456,'ab');
     # refs: implementation of parsing CSV on ruby standard library FasterCSV (ja): https://www.clear-code.com/blog/2018/12/25.html
     def recursive_pattern_value_concat!(value_rows, index)
-      return if value_rows[index].gsub(/\\\\/, '').gsub(/\\'/, '').count(?').even?
+      return if value_rows[index].gsub('\\\\', '').gsub("\\'", '').count(?').even?
 
       # make destructive change for values_rows
       value_rows[index] += VALUE_ROW_SPLITTER + value_rows.delete_at(index + 1)
