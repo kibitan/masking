@@ -44,7 +44,7 @@ module Masking
     def define_version_option(parser)
       parser.on('-v', '--version', 'version') do
         puts Masking::VERSION
-        exit(true)
+        exit
       end
     end
   end
