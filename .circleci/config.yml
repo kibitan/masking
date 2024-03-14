@@ -46,6 +46,7 @@ jobs:
 workflows:
   'CircleCI: build':
     jobs:
+      - test-ruby33
       - test-ruby32
       - test-ruby31
       - test-ruby30
