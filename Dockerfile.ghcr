@@ -1,5 +1,5 @@
 # `docker run ghcr.io/kibitan/masking`
-ARG RUBY_VERSION=3.2
+ARG RUBY_VERSION=3.3
 
 FROM ruby:$RUBY_VERSION-alpine
 RUN addgroup -S app && adduser -S -G app app
