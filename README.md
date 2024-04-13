@@ -15,6 +15,27 @@
 
 The command line tool for anonymizing database records by parsing a SQL dump file and build a new SQL dump file with masking sensitive/credential data.
 
+## Design Concept
+
+### KISS ~ keep it simple, stupid ~
+
+No connection to the database, No handling files, Only dealing with stdin/stdout. ~ Do One Thing and Do It Well ~ inspired by Unix Philosophy.
+
+### No External Dependency
+
+Depend on only pure language standard libraries, no external libraries
+
+### Quality of Code
+
+Heavily inspired by TDD. please see detail in presentation below.
+
+## Presentation / Demo
+
+[![presentation](https://img.youtube.com/vi/tnGLUhmHclI/0.jpg)](https://www.youtube.com/watch?v=oml7dcDo_jo)
+
+[demo](https://www.youtube.com/watch?v=tnGLUhmHclI) / slide: [Generate anonymised database with MasKING](https://speakerdeck.com/kibitan/generate-anonymised-database-with-masking-2023-dot-09-dot-21-euruko-unconference-talk)
+
+
 ## Installation
 
 ```bash
@@ -98,9 +119,9 @@ Usage: masking [options]
     -v, --version                    version
 ```
 
-## presentation / demo
+## presentation/demo
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tnGLUhmHclI/0.jpg)](https://www.youtube.com/watch?v=tnGLUhmHclI)
+[![demo](https://img.youtube.com/vi/tnGLUhmHclI/0.jpg)](https://www.youtube.com/watch?v=tnGLUhmHclI)
 
 presentation: [Generate anonymised database with MasKING](https://speakerdeck.com/kibitan/generate-anonymised-database-with-masking-2023-dot-09-dot-21-euruko-unconference-talk)
 
@@ -229,16 +250,6 @@ $ benchmark/run.rb
        user     system      total        real
    1.103012   0.009460   1.112472 (  1.123093)
 ```
-
-## Design Concept
-
-### KISS ~ keep it simple, stupid ~
-
-No connection to the database, No handling files, Only dealing with stdin/stdout. ~ Do One Thing and Do It Well ~
-
-### No External Dependency
-
-Depend on only pure language standard libraries, no external libraries
 
 ## Future Todo
 
