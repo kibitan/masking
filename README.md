@@ -119,12 +119,6 @@ Usage: masking [options]
     -v, --version                    version
 ```
 
-## presentation/demo
-
-[![demo](https://img.youtube.com/vi/tnGLUhmHclI/0.jpg)](https://www.youtube.com/watch?v=tnGLUhmHclI)
-
-presentation: [Generate anonymised database with MasKING](https://speakerdeck.com/kibitan/generate-anonymised-database-with-masking-2023-dot-09-dot-21-euruko-unconference-talk)
-
 ## Use case of anonymized (production) database
 
 * Analyzing production databases for BI, Machine Learning, troubleshooting with respecting GDPR
@@ -254,12 +248,11 @@ $ benchmark/run.rb
 ## Future Todo
 
 * Pluggable/customizable for a mask way  e.g. integrate with [Faker](https://github.com/stympy/faker)
-* Compatible with other RDBMS  e.g. PostgreSQL, Oracle, SQL Server
-* Parse the schema type information and validate target columns value
+* Parse the schema information and validate the target columns value
 * Performance optimization
   * Write in the streaming process
   * rewrite by another language?
-* Well-documentation
+  * establish benchmark
 
 ## Contributing
 
