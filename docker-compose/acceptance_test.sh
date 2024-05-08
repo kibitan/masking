@@ -11,9 +11,10 @@ cd "$(dirname "$0")"
 MYSQL_VERSION=${1:-mysql80}
 DOCKER_COMPOSE_FILE=${2:-docker-compose.yml}
 TRACE=${TRACE:-0}
+DUMPFILE_DEBUG=${DUMPFILE_DEBUG:-0}
 
 main() {
-  docker-compose -f "../$DOCKER_COMPOSE_FILE" -f "./$MYSQL_VERSION.yml" run -e "MYSQL_HOST=$MYSQL_VERSION" -e "TRACE=$TRACE" app acceptance/run_test.sh
+  docker-compose -f "../$DOCKER_COMPOSE_FILE" -f "./$MYSQL_VERSION.yml" run -e "MYSQL_HOST=$MYSQL_VERSION" -e "TRACE=$TRACE" -e "DUMPFILE_DEBUG=$DUMPFILE_DEBUG" app acceptance/run_test.sh
 }
 
 main "$@"
