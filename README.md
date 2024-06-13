@@ -3,10 +3,13 @@
 [![CircleCI](https://circleci.com/gh/kibitan/masking/tree/main.svg?style=svg)](https://circleci.com/gh/kibitan/masking/tree/main)
 [![Acceptance Test MySQL Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MySQL/badge.svg?branch=main)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MySQL%22+branch%3Amain)
 [![Acceptance Test MariaDB Status](https://github.com/kibitan/masking/workflows/Acceptance%20Test%20MariaDB/badge.svg?branch=main)](https://github.com/kibitan/masking/actions?query=workflow%3A%22Acceptance+Test+MariaDB%22+branch%3Amain)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=kibitan_masking)](https://sonarcloud.io/summary/new_code?id=kibitan_masking)
 
 [![codecov](https://codecov.io/gh/kibitan/masking/branch/main/graph/badge.svg)](https://codecov.io/gh/kibitan/masking)
 [![Maintainability](https://api.codeclimate.com/v1/badges/290b3005ecc193a3d138/maintainability)](https://codeclimate.com/github/kibitan/masking/maintainability)
 [![CodeScene Code Health](https://codescene.io/projects/38627/status-badges/code-health)](https://codescene.io/projects/38627)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=kibitan_masking&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=kibitan_masking)
+
 [![Gem Version](https://badge.fury.io/rb/masking.svg)](https://badge.fury.io/rb/masking)
 <!--
 [![CodeScene System Mastery](https://codescene.io/projects/38627/status-badges/system-mastery)](https://codescene.io/projects/38627)
