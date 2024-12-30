@@ -48,7 +48,7 @@ RSpec.describe Masking::SQLDumpLine do
         class_double(
           Masking::DataMaskProcessor,
           new: instance_double(Masking::DataMaskProcessor).tap { |double|
-            expect(double).to receive(:process).and_return(line)
+            expect(double).to receive(:process).and_return(line) # rubocop:disable RSpec/ExpectInLet
           }
         )
       end
