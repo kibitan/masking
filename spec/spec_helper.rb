@@ -7,7 +7,7 @@ require 'simplecov'
 
 if ENV['CI'] == 'true' &&
    # compare only for major/minor version of Ruby in order to enable report for Coverall
-   Gem::Version.new(RUBY_VERSION).segments[0..1] == \
+   Gem::Version.new(RUBY_VERSION).segments[0..1] ==
    Gem::Version.new(File.read(File.join(File.dirname(__FILE__), '../.ruby-version'))).segments[0..1]
   require 'codecov'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
