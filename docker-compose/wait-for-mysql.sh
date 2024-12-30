@@ -1,6 +1,10 @@
 #!/bin/sh
 # inspited from Control startup and shutdown order in Compose | Docker Documentation: https://docs.docker.com/compose/startup-order/
 
+if [[ "${TRACE-0}" == "1" ]]; then
+    set -vx
+fi
+
 set -e
 
 MYSQL_USER=${MYSQL_USER:-root}
