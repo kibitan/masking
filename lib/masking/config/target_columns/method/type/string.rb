@@ -9,7 +9,7 @@ module Masking
         module Type
           class String < Base
             def initialize(value)
-              super(value)
+              super
               @sequence = 0
             end
 

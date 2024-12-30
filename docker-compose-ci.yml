@@ -4,3 +4,6 @@ services:
   app:
     build: .
     stdin_open: true
+    environment:
+      MYSQL_OPTIONS: --ssl-mode=DISABLED
+      TRACE: 1

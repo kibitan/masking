@@ -1,8 +1,7 @@
-ARG RUBY_VERSION=3.3
+ARG RUBY_VERSION=3.4
 
 FROM ruby:${RUBY_VERSION}-alpine AS builder
-RUN apk add --no-cache build-base git
-RUN addgroup -S app && adduser -S -G app app
+RUN apk add --no-cache build-base git && addgroup -S app && adduser -S -G app app
 USER app
 WORKDIR /app
 COPY --chown=app . ./
@@ -15,8 +14,7 @@ USER app
 
 FROM ruby:${RUBY_VERSION}-alpine
 # TODO: remove dependecy of `git` from masking.gemspec:L19
-RUN apk add --no-cache git
-RUN addgroup -S app && adduser -S -G app app
+RUN apk add --no-cache git && addgroup -S app && adduser -S -G app app
 ENV PATH $PATH:/app/exe
 WORKDIR /app
 RUN chown app /app

@@ -23,12 +23,24 @@ RSpec.describe Masking::Config::TargetColumns::Table do
   describe '#columns' do
     subject { described_class.new(name, columns: columns) }
 
-    it do
-      expect(subject.columns).to match_array [
-        Masking::Config::TargetColumns::Column.new('column_a', table_name: name, method_value: 'string'),
-        Masking::Config::TargetColumns::Column.new('column_b', table_name: name, method_value: 123),
-        Masking::Config::TargetColumns::Column.new('column_c', table_name: name, method_value: nil)
-      ]
+    it do # rubocop:disable RSpec/ExampleLength
+      expect(subject.columns).to contain_exactly(
+        Masking::Config::TargetColumns::Column.new(
+          'column_a',
+          table_name: name,
+          method_value: 'string'
+        ),
+        Masking::Config::TargetColumns::Column.new(
+          'column_b',
+          table_name: name,
+          method_value: 123
+        ),
+        Masking::Config::TargetColumns::Column.new(
+          'column_c',
+          table_name: name,
+          method_value: nil
+        )
+      )
     end
   end
 
