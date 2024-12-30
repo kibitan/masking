@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- add Ruby 3.4 support [#102](https://github.com/kibitan/masking/pull/102)
+- add Ruby 3.4 support [#104](https://github.com/kibitan/masking/pull/102)
 - add Ruby 3.3 support [#99](https://github.com/kibitan/masking/pull/99)
 
 ## [v1.1.2] - 2023-09-24
