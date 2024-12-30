@@ -13,7 +13,7 @@ DOCKER_COMPOSE_FILE=${2:-docker-compose.yml}
 TRACE=${TRACE:-0}
 
 main() {
-  docker-compose -f "../$DOCKER_COMPOSE_FILE" -f "./$MYSQL_VERSION.yml" run -e "MYSQL_HOST=$MYSQL_VERSION" -e "TRACE=$TRACE" app acceptance/run_test.sh
+  docker compose -f "../$DOCKER_COMPOSE_FILE" -f "./$MYSQL_VERSION.yml" run -e "MYSQL_HOST=$MYSQL_VERSION" -e "TRACE=$TRACE" app acceptance/run_test.sh
 }
 
 main "$@"
